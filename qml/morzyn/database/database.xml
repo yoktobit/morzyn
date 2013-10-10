@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<Morzyn>
+  <Spells>
+    <Creatures>
+      <Creature name="Amazon"         category="2" attitude="good" manacost="12" life="7"  attack="3"  defense="4" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="amazon [a-z].png"         cheat=""                         distfile="" />
+      <Creature name="Angel"          category="3" attitude="good" manacost="50" life="18" attack="8"  defense="7" speed="2" distattack="true"  distrange="4" distdam="4" immune="holy"  file="angel [a-z].png"          cheat=""                         distfile="spell holy flash.png" />
+      <Creature name="Bat"            category="1" attitude="both" manacost="5"  life="2"  attack="3"  defense="2" speed="6" distattack="false" distrange="0" distdam="0" immune="chaos" file="bat [a-z].png"            cheat=""                         distfile="" />
+      <Creature name="Basilisk"       category="2" attitude="evil" manacost="20" life="6"  attack="5"  defense="6" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="basilisk [a-z].png"       cheat=""                         distfile="" />
+      <Creature name="Carnivora"      category="2" attitude="both" manacost="15" life="7"  attack="5"  defense="4" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="carnivora [a-z].png"      cheat=""                         distfile="" />
+      <Creature name="Centaur"        category="2" attitude="good" manacost="15" life="6"  attack="5"  defense="4" speed="4" distattack="false" distrange="0" distdam="0" immune=""      file="centaur [a-z].png"        cheat=""                         distfile="" />
+      <Creature name="Crab"           category="1" attitude="evil" manacost="9"  life="4"  attack="4"  defense="3" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="crab [a-z].png"           cheat=""                         distfile="" />
+      <Creature name="Cyclops"        category="3" attitude="evil" manacost="35" life="15" attack="9"  defense="7" speed="1" distattack="false" distrange="0" distdam="0" immune="chaos" file="cyclops [a-z].png"        cheat=""                         distfile="" />
+      <Creature name="Varth Dader"    category="4" attitude="evil" manacost="20" life="20" attack="10" defense="8" speed="2" distattack="false" distrange="0" distdam="0" immune="chaos" file="vader [a-z].png"          cheat="iamyourfather"            distfile="" />
+      <Creature name="Death Knight"   category="2" attitude="evil" manacost="18" life="7"  attack="5"  defense="5" speed="1" distattack="false" distrange="0" distdam="0" immune="chaos" file="death knight [a-z].png"   cheat=""                         distfile="" />
+      <Creature name="Devil"          category="3" attitude="evil" manacost="42" life="17" attack="6"  defense="8" speed="1" distattack="true"  distrange="3" distdam="4" immune="fire"  file="devil [a-z].png"          cheat=""                         distfile="spell fire bolt a.png" />
+      <Creature name="Dire Wolf"      category="1" attitude="both" manacost="9"  life="5"  attack="4"  defense="4" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="dire wolf [a-z].png"      cheat=""                         distfile="" />
+      <Creature name="Dragon"         category="3" attitude="good" manacost="38" life="15" attack="8"  defense="7" speed="1" distattack="true"  distrange="2" distdam="3" immune="fire"  file="dragon [a-z].png"         cheat=""                         distfile="spell fire bolt a.png" />
+      <Creature name="Dwarf"          category="2" attitude="good" manacost="23" life="6"  attack="5"  defense="5" speed="1" distattack="true"  distrange="4" distdam="3" immune=""      file="dwarf [a-z].png"          cheat=""                         distfile="spell axe.png" />
+      <Creature name="Earthworm"      category="2" attitude="both" manacost="25" life="14" attack="4"  defense="6" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="earthworm [a-z].png"      cheat=""                         distfile="" />
+      <Creature name="Elvish Bowman"  category="2" attitude="good" manacost="17" life="5"  attack="3"  defense="2" speed="1" distattack="true"  distrange="5" distdam="2" immune=""      file="elvish bowman [a-z].png"  cheat=""                         distfile="spell magic arrow.png" />
+      <Creature name="Elvish Warrior" category="2" attitude="good" manacost="16" life="6"  attack="4"  defense="5" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="elvish warrior [a-z].png" cheat=""                         distfile="" />
+      <Creature name="Ent"            category="2" attitude="good" manacost="16" life="8"  attack="4"  defense="4" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="ent [a-z].png"            cheat=""                         distfile="" />
+      <Creature name="Evil Eye"       category="2" attitude="evil" manacost="14" life="5"  attack="4"  defense="7" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="evil eye [a-z].png"       cheat=""                         distfile="" />
+      <Creature name="Fairy"          category="2" attitude="good" manacost="27" life="5"  attack="3"  defense="8" speed="3" distattack="true"  distrange="4" distdam="5" immune="holy"  file="fairy [a-z].png"          cheat=""                         distfile="spell magic attack [a-z].png" />
+      <Creature name="Fairy Dragon"   category="2" attitude="good" manacost="22" life="7"  attack="4"  defense="4" speed="2" distattack="false" distrange="0" distdam="0" immune="ice"   file="fairy dragon [a-z].png"   cheat=""                         distfile="" />
+      <Creature name="Fire Golem"     category="3" attitude="both" manacost="30" life="9"  attack="7"  defense="8" speed="1" distattack="true"  distrange="2" distdam="3" immune="fire"  file="fire golem [a-z].png"     cheat=""                         distfile="spell fire bolt [a-z].png" />
+      <Creature name="Flying Death"   category="2" attitude="evil" manacost="19" life="4"  attack="6"  defense="6" speed="4" distattack="false" distrange="0" distdam="0" immune="chaos" file="flying death [a-z].png"   cheat=""                         distfile="" />
+      <Creature name="Ghost"          category="2" attitude="evil" manacost="13" life="6"  attack="3"  defense="5" speed="3" distattack="false" distrange="0" distdam="0" immune=""      file="ghost [a-z].png"          cheat=""                         distfile="" />
+      <Creature name="Giant"          category="2" attitude="good" manacost="24" life="12" attack="7"  defense="5" speed="2" distattack="false" distrange="0" distdam="0" immune=""      file="giant [a-z].png"          cheat=""                         distfile="" />
+      <Creature name="Giant Warrior"  category="3" attitude="good" manacost="33" life="13" attack="10" defense="8" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="giant warrior [a-z].png"  cheat=""                         distfile="" />
+      <Creature name="Gnome"          category="0" attitude="both" manacost="2"  life="2"  attack="2"  defense="2" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="gnome [a-z].png"          cheat=""                         distfile="" />
+      <Creature name="Gorilla"        category="2" attitude="both" manacost="20" life="6"  attack="6"  defense="6" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="gorilla [a-z].png"        cheat=""                         distfile="" />
+      <Creature name="Gremlin"        category="1" attitude="evil" manacost="7"  life="3"  attack="4"  defense="2" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="gremlin [a-z].png"        cheat=""                         distfile="" />
+      <Creature name="Hangman"        category="2" attitude="evil" manacost="14" life="6"  attack="5"  defense="3" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="hangman [a-z].png"        cheat=""                         distfile="" />
+      <Creature name="Horn Beast"     category="2" attitude="evil" manacost="21" life="7"  attack="6"  defense="5" speed="2" distattack="false" distrange="0" distdam="0" immune="fire"  file="horn beast [a-z].png"     cheat=""                         distfile="" />
+      <Creature name="Hornet"         category="1" attitude="both" manacost="6"  life="2"  attack="3"  defense="3" speed="3" distattack="false" distrange="0" distdam="0" immune=""      file="hornet [a-z].png"         cheat=""                         distfile="" />
+      <Creature name="Ice Golem"      category="2" attitude="both" manacost="14" life="5"  attack="4"  defense="4" speed="1" distattack="true"  distrange="2" distdam="2" immune="ice"   file="ice golem [a-z].png"      cheat=""                         distfile="spell ice bolt b.png" />
+      <Creature name="Lady Death"     category="3" attitude="evil" manacost="31" life="6"  attack="5"  defense="5" speed="1" distattack="true"  distrange="3" distdam="5" immune="chaos" file="lady death [a-z].png"     cheat=""                         distfile="spell death ball.png" />
+      <Creature name="Mummy"          category="1" attitude="both" manacost="8 " life="5"  attack="4"  defense="3" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="mummy [a-z].png"          cheat=""                         distfile="" />
+      <Creature name="Mutant"         category="3" attitude="evil" manacost="31" life="12" attack="8"  defense="7" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="mutant [a-z].png"         cheat=""                         distfile="" />
+      <Creature name="Obolix"         category="4" attitude="good" manacost="20" life="20" attack="15" defense="9" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="obelix [a-z].png"         cheat="sonopazziquestiromani"    distfile="" />
+      <Creature name="Orc"            category="1" attitude="evil" manacost="10" life="6"  attack="4"  defense="4" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="orc [a-z].png"            cheat=""                         distfile="" />
+      <Creature name="Osamana"        category="4" attitude="evil" manacost="10" life="10" attack="8"  defense="8" speed="1" distattack="false" distrange="0" distdam="0" immune="chaos" file="osama [a-z].png"          cheat="nineeleven"               distfile="" />
+      <Creature name="Pharaoh"        category="2" attitude="good" manacost="28" life="12" attack="8"  defense="5" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="pharaoh [a-z].png"        cheat=""                         distfile="" />
+      <Creature name="Rat"            category="1" attitude="both" manacost="4"  life="3"  attack="2"  defense="1" speed="3" distattack="false" distrange="0" distdam="0" immune=""      file="rat [a-z].png"            cheat=""                         distfile="" />
+      <Creature name="Santa"          category="4" attitude="good" manacost="10" life="10" attack="5"  defense="5" speed="1" distattack="false" distrange="0" distdam="0" immune="holy"  file="santa [a-z].png"          cheat="santaclausiscomingtotown" distfile="" />
+      <Creature name="Son Geku"       category="4" attitude="good" manacost="20" life="20" attack="10" defense="5" speed="3" distattack="false" distrange="0" distdam="0" immune=""      file="son goku [a-z].png"       cheat="kamehameha"               distfile="" />
+      <Creature name="Skeleton"       category="2" attitude="evil" manacost="12" life="8"  attack="4"  defense="3" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="skeleton [a-z].png"       cheat=""                         distfile="" />
+      <Creature name="Snake"          category="1" attitude="both" manacost="6"  life="3"  attack="3"  defense="1" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="snake [a-z].png"          cheat=""                         distfile="" />
+      <Creature name="Spider"         category="1" attitude="both" manacost="8"  life="4"  attack="4"  defense="2" speed="2" distattack="false" distrange="0" distdam="0" immune=""      file="spider [a-z].png"         cheat=""                         distfile="" />
+      <Creature name="Bobsponge"      category="4" attitude="good" manacost="10" life="10" attack="2"  defense="2" speed="4" distattack="false" distrange="0" distdam="0" immune=""      file="spongebob [a-z].png"      cheat="bikinibottom"             distfile="" />
+      <Creature name="Stone Golem"    category="2" attitude="both" manacost="12" life="5"  attack="4"  defense="5" speed="1" distattack="false" distrange="0" distdam="0" immune="fire"  file="stone golem [a-z].png"    cheat=""                         distfile="" />
+      <Creature name="Sword Master"   category="2" attitude="both" manacost="18" life="7"  attack="7"  defense="3" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="sword master [a-z].png"   cheat=""                         distfile="" />
+      <Creature name="Triton"         category="2" attitude="good" manacost="28" life="11" attack="7"  defense="6" speed="1" distattack="false" distrange="0" distdam="0" immune="ice"   file="triton [a-z].png"         cheat=""                         distfile="" />
+      <Creature name="Troll"          category="3" attitude="evil" manacost="32" life="15" attack="9"  defense="7" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="troll [a-z].png"          cheat=""                         distfile="" />
+      <Creature name="Vampire"        category="2" attitude="evil" manacost="14" life="5"  attack="3"  defense="4" speed="2" distattack="false" distrange="0" distdam="0" immune=""      file="vampire [a-z].png"        cheat=""                         distfile="" />
+      <Creature name="Vulture"        category="2" attitude="evil" manacost="13" life="5"  attack="3"  defense="3" speed="3" distattack="false" distrange="0" distdam="0" immune=""      file="vulture [a-z].png"        cheat=""                         distfile="" />
+      <Creature name="Werewolf"       category="3" attitude="evil" manacost="30" life="10" attack="8"  defense="8" speed="1" distattack="false" distrange="0" distdam="0" immune=""      file="werewolf [a-z].png"       cheat=""                         distfile="" />
+      <Creature name="Wisp"           category="2" attitude="good" manacost="26" life="6"  attack="4"  defense="8" speed="2" distattack="true"  distrange="4" distdam="5" immune=""      file="wisp [a-z].png"           cheat=""                         distfile="spell magic attack b.png" />
+      <Creature name="Witch"          category="2" attitude="evil" manacost="24" life="6"  attack="5"  defense="5" speed="1" distattack="true"  distrange="3" distdam="4" immune="chaos" file="witch [a-z].png"          cheat=""                         distfile="spell magic attack c.png" />
+      <Creature name="Yeti"           category="2" attitude="both" manacost="20" life="6"  attack="6"  defense="4" speed="1" distattack="false" distrange="0" distdam="0" immune="ice"   file="yeti [a-z].png"           cheat=""                         distfile="" />
+      <Creature name="Yado"           category="4" attitude="good" manacost="20" life="20" attack="10" defense="8" speed="3" distattack="false" distrange="0" distdam="0" immune="chaos" file="yoda [a-z].png"           cheat="maytheforcebewithyou"     distfile="" />
+      <Creature name="Zombie"         category="1" attitude="evil" manacost="9"  life="5"  attack="4"  defense="3" speed="1" distattack="false" distrange="0" distdam="0" immune="chaos" file="zombie [a-z].png"         cheat=""                         distfile="" />
+    </Creatures>
+    <Scrolls>
+      <Scroll name="Fire Bolt"     type="fire"  manacost="14" mindam="4" maxdam="8"  range="4" jumps="0" file="spell fire bolt [a-z].png" />
+      <Scroll name="Fire Storm"    type="fire"  manacost="18" mindam="5" maxdam="10" range="4" jumps="0" file="spell fire storm.png" />
+      <Scroll name="Ice Bolt"      type="ice"   manacost="12" mindam="3" maxdam="6"  range="5" jumps="0" file="spell ice bolt [a-z].png" />
+      <Scroll name="Snowflake"     type="ice"   manacost="3"  mindam="1" maxdam="2"  range="8" jumps="0" file="spell snowflake.png" />
+      <Scroll name="Holy Flash"    type="holy"  manacost="6"  mindam="2" maxdam="4"  range="4" jumps="0" file="spell holy flash.png" />
+      <Scroll name="Magic Missile" type="holy"  manacost="5"  mindam="2" maxdam="3"  range="6" jumps="0" file="spell magic attack [a-z].png" />
+      <Scroll name="Thunderbolt"   type="holy"  manacost="15" mindam="0" maxdam="2"  range="3" jumps="3" file="spell thunderbolt.png" />
+      <Scroll name="Death Ball"    type="chaos" manacost="10" mindam="3" maxdam="7"  range="3" jumps="0" file="spell death ball.png" />
+      <Scroll name="Shadow Blast"  type="chaos" manacost="25" mindam="6" maxdam="12" range="4" jumps="1" file="spell shadow blast.png" />
+    </Scrolls>
+  </Spells>
+  <PlayerColors>
+    <PlayerColor name="Blue"   file="dark priest blue.png" class="dark priest"/>
+    <PlayerColor name="Blue"   file="dark priest night.png" class="dark priest"/>
+    <PlayerColor name="Brown"  file="dark priest brown.png" class="dark priest"/>
+    <PlayerColor name="Orange" file="dark priest orange.png" class="dark priest"/>
+    <PlayerColor name="Gold"   file="dark priest gold.png" class="dark priest"/>
+    <PlayerColor name="Green"  file="dark priest green.png" class="dark priest"/>
+    <PlayerColor name="Lime"   file="dark priest lime.png" class="dark priest"/>
+    <PlayerColor name="Red"    file="dark priest red.png" class="dark priest"/>
+    <PlayerColor name="DarkRed"  file="dark priest blood.png" class="dark priest"/>
+    <PlayerColor name="Purple" file="dark priest purple.png" class="dark priest"/>
+    <PlayerColor name="Pink"   file="dark priest pink.png" class="dark priest"/>
+    <PlayerColor name="White"  file="dark priest white.png" class="dark priest"/>
+    <PlayerColor name="Gray"   file="dark priest grey.png" class="dark priest"/>
+    <PlayerColor name="Black"  file="dark priest black.png" class="dark priest"/>
+    <PlayerColor name="Black"  file="rogue black.png" class="rogue"/>
+    <PlayerColor name="Blood"  file="rogue blood.png" class="rogue"/>
+    <PlayerColor name="Blue"   file="rogue blue.png" class="rogue"/>
+    <PlayerColor name="Gold"   file="rogue gold.png" class="rogue"/>
+    <PlayerColor name="Green"  file="rogue green.png" class="rogue"/>
+    <PlayerColor name="Night"  file="rogue night.png" class="rogue"/>
+    <PlayerColor name="Pink"   file="rogue pink.png" class="rogue"/>
+    <PlayerColor name="Purple" file="rogue purple.png" class="rogue"/>
+    <PlayerColor name="Red"    file="rogue red.png" class="rogue"/>
+    <PlayerColor name="White"  file="rogue white.png" class="rogue"/>
+    <PlayerColor name="Black"  file="sorcerer black.png" class="sorcerer"/>
+    <PlayerColor name="Blood"  file="sorcerer blood.png" class="sorcerer"/>
+    <PlayerColor name="Blue"   file="sorcerer blue.png" class="sorcerer"/>
+    <PlayerColor name="Gold"   file="sorcerer gold.png" class="sorcerer"/>
+    <PlayerColor name="Green"  file="sorcerer green.png" class="sorcerer"/>
+    <PlayerColor name="Night"  file="sorcerer night.png" class="sorcerer"/>
+    <PlayerColor name="Pink"   file="sorcerer pink.png" class="sorcerer"/>
+    <PlayerColor name="Purple" file="sorcerer purple.png" class="sorcerer"/>
+    <PlayerColor name="Red"    file="sorcerer red.png" class="sorcerer"/>
+    <PlayerColor name="White"  file="sorcerer white.png" class="sorcerer"/>
+    <PlayerColor name="Black"  file="warrior black.png" class="warrior"/>
+    <PlayerColor name="Blood"  file="warrior blood.png" class="warrior"/>
+    <PlayerColor name="Blue"   file="warrior blue.png" class="warrior"/>
+    <PlayerColor name="Gold"   file="warrior gold.png" class="warrior"/>
+    <PlayerColor name="Green"  file="warrior green.png" class="warrior"/>
+    <PlayerColor name="Night"  file="warrior night.png" class="warrior"/>
+    <PlayerColor name="Pink"   file="warrior pink.png" class="warrior"/>
+    <PlayerColor name="Purple" file="warrior purple.png" class="warrior"/>
+    <PlayerColor name="Red"    file="warrior red.png" class="warrior"/>
+    <PlayerColor name="White"  file="warrior white.png" class="warrior"/>
+  </PlayerColors>
+  <EnemyNames>
+    <EnemyName name="Gandalf" class="sorcerer" />
+    <EnemyName name="Theoron" class="rogue" />
+    <EnemyName name="Morkin" class="sorcerer" />
+    <EnemyName name="Khadgar" class="sorcerer" />
+    <EnemyName name="Merlin" class="sorcerer" />
+    <EnemyName name="Syphir" class="rogue" />
+    <EnemyName name="Tyron" class="warrior" />
+    <EnemyName name="Valetis" class="rogue" />
+    <EnemyName name="Iromir" class="warrior" />
+    <EnemyName name="Vayenno" class="sorcerer" />
+    <EnemyName name="Dio" class="sorcerer" />
+    <EnemyName name="Farkon" class="rogue" />
+    <EnemyName name="Liyon" class="rogue" />
+    <EnemyName name="Tzargh" class="warrior" />
+    <EnemyName name="Langhil" class="rogue" />
+    <EnemyName name="Torin" class="warrior" />
+    <EnemyName name="Goran" class="warrior" />
+    <EnemyName name="Argon" class="rogue" />
+    <EnemyName name="Vinitor" class="sorcerer" />
+    <EnemyName name="Septor" class="sorcerer" />
+    <EnemyName name="Irun" class="rogue" />
+    <EnemyName name="Vela" class="rogue" />
+    <EnemyName name="Bargk" class="warrior" />
+    <EnemyName name="Phatu" class="warrior" />
+    <EnemyName name="Levidion" class="sorcerer" />
+    <EnemyName name="Mergyo" class="sorcerer" />
+    <EnemyName name="Asus" class="rogue" />
+    <EnemyName name="Wesson" class="warrior" />
+    <EnemyName name="Khaladril" class="rogue" />
+    <EnemyName name="Isromer" class="warrior" />
+    <EnemyName name="Shazam" class="sorcerer" />
+    <EnemyName name="Runh" class="warrior" />
+    <EnemyName name="Mentor" class="sorcerer" />
+    <EnemyName name="Ionur" class="rogue" />
+    <EnemyName name="Devio" class="warrior" />
+    <EnemyName name="Elrond" class="rogue" />
+    <EnemyName name="Grunt" class="warrior" />
+    <EnemyName name="Magire" class="sorcerer" />
+    <EnemyName name="Radagast" class="sorcerer" />
+    <EnemyName name="Alatar" class="warrior" />
+    <EnemyName name="Pallando" class="warrior" />
+    <EnemyName name="Dumbledore" class="sorcerer" />
+    <EnemyName name="Scrimgour" class="sorcerer"/>
+    <EnemyName name="Ithronion" class="rogue" />
+    <EnemyName name="Zuljin" class="rogue" />
+    <EnemyName name="Horth" class="warrior" />
+    <EnemyName name="Azrael" class="rogue" />
+    <EnemyName name="Zale" class="sorcerer" />
+    <EnemyName name="Glengale" class="warrior" />
+    <EnemyName name="Vargas" class="warrior" />
+    <EnemyName name="Taliesin" class="sorcerer" />
+    <EnemyName name="Hermogenes" class="rogue" />
+    <EnemyName name="Rumburak" class="warrior" />
+    <EnemyName name="Hasien" class="warrior" />
+    <EnemyName name="Cromdale" class="sorcerer" />
+    <EnemyName name="Lord Grom" class="warrior" />
+    <EnemyName name="Lord Silchor" class="rogue" />
+    <EnemyName name="Lord Doome" class="sorcerer" />
+    <EnemyName name="Kantor" class="warrior" />
+    <EnemyName name="Guanshing" class="sorcerer" />
+    <EnemyName name="Juan" class="rogue" />
+    <EnemyName name="Ming Li" class="sorcerer" />
+    <EnemyName name="Noctua Zen" class="sorcerer" />
+    <EnemyName name="Linock" class="warrior" />
+    <EnemyName name="Hazien" class="rogue" />
+    <EnemyName name="Wulfgar" class="warrior" />
+    <EnemyName name="Kromlek" class="warrior" />
+    <EnemyName name="Wutan Sin" class="warrior" />
+    <EnemyName name="Aigyn" class="rogue" />
+    <EnemyName name="Tavaris" class="warrior" />
+    <EnemyName name="Rettan" class="rogue" />
+    <EnemyName name="Morgos" class="sorcerer" />
+    <EnemyName name="Ispardu" class="rogue" />
+    <EnemyName name="Rahmil" class="warrior" />
+    <EnemyName name="Elander" class="rogue" />
+    <EnemyName name="Heop" class="rogue" />
+    <EnemyName name="Silnaris" class="rogue" />
+    <EnemyName name="Vatar" class="warrior" />
+  </EnemyNames>
+</Morzyn>

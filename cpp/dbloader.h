@@ -8,6 +8,7 @@
 #include "scroll.h"
 #include "enemyname.h"
 #include <QVariantList>
+#include <QtQml>
 #include <QQmlListProperty>
 
 class Library : public QObject
@@ -38,8 +39,8 @@ public:
     void loadPlayerColors();
     Q_INVOKABLE void getAllCreatures();
     QQmlListProperty<Creature> creatures();
-    int creatureCount() const;
-    Creature* creature(int index) const;
+    static int creatureCount(QQmlListProperty<Creature> *list);
+    static Creature* creature(QQmlListProperty<Creature> *list, int index);
 signals:
 
 public slots:

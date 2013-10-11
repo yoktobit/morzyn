@@ -8,10 +8,9 @@ Rectangle {
     id: grimoireView
     anchors.fill: parent
 
-    color: "blue"
     property var creature1: null
     property var creature2: null
-    /*
+
     Image {
         id: playerCountViewBack
         source: "images/titleback.png"
@@ -148,5 +147,5 @@ Rectangle {
         onClicked: {
             game.state = "mainMenuState";
         }
-    }*/
+    }
 }

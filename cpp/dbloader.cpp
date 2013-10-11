@@ -58,23 +58,25 @@ void Library::loadPlayerColors()
     }
 }
 
+int Library::creatureCount(QQmlListProperty<Creature> *list)
+{
+    Library *library = qobject_cast<Library*>(list->object);
+    return library->lstAllCreatures.count();
+}
+
+Creature *Library::creature(QQmlListProperty<Creature> *list, int index)
+{
+    Library *library = qobject_cast<Library*>(list->object);
+    return library->lstAllCreatures.at(index);
+}
+
 QQmlListProperty<Creature> Library::creatures()
 {
     if (lstAllCreatures.length() == 0)
     {
         getAllCreatures();
     }
-    return QQmlListProperty<Creature>(this, lstAllCreatures);
-}
-
-int Library::creatureCount() const
-{
-    return lstAllCreatures.count();
-}
-
-Creature *Library::creature(int index) const
-{
-    return lstAllCreatures.at(index);
+    return QQmlListProperty<Creature>(this, 0, &Library::creatureCount, &Library::creature);
 }
 
 void Library::getAllCreatures()

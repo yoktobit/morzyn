@@ -31,7 +31,7 @@ HEADERS += \
     cpp/dbloader.h
 
 # QML files and folders
-qml.files = *.qml qml *.xml sailfish/qml
+qml.files = qml sailfish/qml
 
 # The .desktop file
 desktop.files = morzyn.desktop
@@ -41,8 +41,4 @@ include(cpp/sailfish/sailfishapplication/sailfishapplication.pri)
 
 OTHER_FILES = \
     rpm/morzyn.yaml \
-    rpm/morzyn.spec \
-    qml/morzyn/MorzynSwitch.qml
-
-RESOURCES +=
-
+    rpm/morzyn.spec

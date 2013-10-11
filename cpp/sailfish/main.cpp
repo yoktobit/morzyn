@@ -26,6 +26,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<Game>("de.yoktobit.software.morzyn", 1,0 , "Game");
     qmlRegisterType<Scroll>("de.yoktobit.software.morzyn", 1,0 , "Scroll");
     qmlRegisterType<Statistics>("de.yoktobit.software.morzyn", 1,0 , "Statistics");
+    qmlRegisterType<Library>("de.yoktobit.software.morzyn", 1,0 , "Library");
 
     qsrand ( time(NULL) );
 
@@ -38,18 +39,19 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     GameService gs;
     Game g;
     Constants c;
-    Library l;
+    Library library;
     Statistics s;
-    //gs.setStateManager(&sm);
+
     gs.setGame(&g);
     gs.setConstants(&c);
-    gs.setLibrary(&l);
+    gs.setLibrary(&library);
     gs.setStatistics(&s);
 
-    //QScopedPointer<QQuickView> view(Sailfish::createView("qml/morzyn/main.qml"));
+    //QScopedPointer<QQuickView> view(Sailfish::createView("main.qml"));
     QScopedPointer<QQuickView> view(Sailfish::createView());
     view.data()->rootContext()->setContextProperty("gameService", &gs);
     view.data()->rootContext()->setContextProperty("game", &g);
+    view.data()->rootContext()->setContextProperty("library", &library);
     view.data()->rootContext()->setContextProperty("statistics", &s);
     view.data()->setTitle("Morzyn v0.8.0");
     Sailfish::setView(view.data(), "qml/morzyn/main.qml");

@@ -213,3 +213,10 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# QtCreator
+moc/
+RPMS/
+Makefile
+*.list
+morzyn

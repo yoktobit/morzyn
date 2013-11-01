@@ -32,6 +32,7 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     creature1 = modelData;
+                    grimoireLeftImages.model = gameService.getCreatureImages(creature1.imageFilePattern);
                     console.log(modelData.species);
                     console.log(modelData.unitClass);
                 }
@@ -54,6 +55,7 @@ Rectangle {
                 anchors.fill: parent
                 onClicked: {
                     creature2 = modelData;
+                    grimoireRightImages.model = gameService.getCreatureImages(creature2.imageFilePattern);
                 }
             }
         }
@@ -71,6 +73,18 @@ Rectangle {
             GrowingText {
                 standardSize: 20
                 text: creature1 ? creature1.species : ""
+            }
+            ListView {
+                id: grimoireLeftImages
+                orientation: ListView.Horizontal
+                width: parent.width
+                height: 30 * mainWindow.height / mainWindow.sourceHeight
+                delegate: Image {
+                    id: creatureLeftImage
+                    source: modelData === undefined || modelData === null ? "" : "images/" + modelData
+                    height: sourceSize.height * mainWindow.height / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+                    width: sourceSize.height * mainWindow.height / mainWindow.sourceHeight
+                }
             }
             CreatureInformation {
                 hoveredCreature: creature1
@@ -103,6 +117,18 @@ Rectangle {
                 standardSize: 20
                 text: creature2 ? creature2.species : ""
             }
+            ListView {
+                id: grimoireRightImages
+                orientation: ListView.Horizontal
+                width: parent.width
+                height: 30 * mainWindow.height / mainWindow.sourceHeight
+                delegate: Image {
+                    id: creatureRightImage
+                    source: modelData === undefined || modelData === null ? "" : "images/" + modelData
+                    height: sourceSize.height * mainWindow.height / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+                    width: sourceSize.height * mainWindow.height / mainWindow.sourceHeight
+                }
+            }
             CreatureInformation {
                 hoveredCreature: creature2
                 player: Player {
@@ -126,6 +152,26 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 140 * mainWindow.height / mainWindow.sourceHeight
+        SequentialAnimation on opacity {
+            id: longMessageAnimation
+            running: false
+            NumberAnimation {
+                from: 1
+                to: 0
+            }
+            NumberAnimation {
+                from: 0
+                to: 1
+            }
+        }
+        SequentialAnimation on opacity {
+            id: shortMessageAnimation
+            running: false
+            NumberAnimation {
+                from: 0
+                to: 1
+            }
+        }
     }
 
     MorzynButton {
@@ -136,6 +182,14 @@ Rectangle {
         visible: creature1 && creature2
         onClicked: {
             console.log("Fight " + creature1.species + " against " + creature2.species);
+            if (gameService.message !== "")
+            {
+                longMessageAnimation.start();
+            }
+            else
+            {
+                shortMessageAnimation.start();
+            }
             gameService.simulateFight(creature1, creature2);
         }
     }

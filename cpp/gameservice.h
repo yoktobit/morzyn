@@ -83,6 +83,7 @@ public:
     Q_INVOKABLE int getColorIndex(QString imageFilename);
     Q_INVOKABLE void setFullScreen(bool fullscreen);
     Q_INVOKABLE void simulateFight(Creature* c1, Creature* c2);
+    Q_INVOKABLE QStringList getCreatureImages(QString filenamePattern);
 
     void emitCreatureMoved(Creature* creature);
     void emitPlayerSwitched(Player* player);

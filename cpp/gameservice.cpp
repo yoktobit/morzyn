@@ -327,24 +327,7 @@ void GameService::castScroll(Scroll *s, int x, int y)
 
 void GameService::setCreatureImage(Creature *creature)
 {
-    QString strFilePattern = creature->imageFilePattern();
-    QStringList lstMatchingFiles;
-#ifdef Q_OS_ANDROID
-    QDir dirImages("assets:/qml/morzyn/images");
-#else
-    QDir dirImages(QString(DEPLOYMENT_PATH) + QString("qml/morzyn/images"));
-    //QDir dirImages(QString(":/qml/morzyn/images"));
-#endif
-    QStringList lstFilters;
-    lstFilters << "*.png";
-    dirImages.setNameFilters(lstFilters);
-    // creature image
-    QRegExp rex(strFilePattern);
-    foreach(QString strFileName, dirImages.entryList())
-    {
-        if (rex.exactMatch(strFileName))
-            lstMatchingFiles.append(strFileName);
-    }
+    QStringList lstMatchingFiles = getCreatureImages(creature->imageFilePattern());
     int nFileNumber = rand() % lstMatchingFiles.count();
     QString strFileName = lstMatchingFiles[nFileNumber];
     creature->setImageFilename(strFileName);
@@ -352,14 +335,9 @@ void GameService::setCreatureImage(Creature *creature)
     // distance image
     if (creature->hasDistanceAttack())
     {
-        strFilePattern = creature->distanceImageFilePattern();
-        QRegExp rex(strFilePattern);
+        QString strFilePattern = creature->distanceImageFilePattern();
         lstMatchingFiles.clear();
-        foreach(QString strFileName, dirImages.entryList())
-        {
-            if (rex.exactMatch(strFileName))
-                lstMatchingFiles.append(strFileName);
-        }
+        lstMatchingFiles = getCreatureImages(strFilePattern);
         nFileNumber = rand() % lstMatchingFiles.count();
         strFileName = lstMatchingFiles[nFileNumber];
         creature->setDistanceImageFilename(strFileName);
@@ -1406,6 +1384,28 @@ void GameService::simulateFight(Creature *c1, Creature *c2)
         setMessage(QString("%0 wins (left side)").arg(cLeft->species()));
     else
         setMessage(QString("%0 wins (right side)").arg(cRight->species()));
+}
+
+QStringList GameService::getCreatureImages(QString filenamePattern)
+{
+    QString strFilePattern = filenamePattern;
+    QStringList lstMatchingFiles;
+#ifdef Q_OS_ANDROID
+    QDir dirImages("assets:/qml/morzyn/images");
+#else
+    QDir dirImages("qml/morzyn/images");
+#endif
+    QStringList lstFilters;
+    lstFilters << "*.png";
+    dirImages.setNameFilters(lstFilters);
+    // creature image
+    QRegExp rex(strFilePattern);
+    foreach(QString strFileName, dirImages.entryList())
+    {
+        if (rex.exactMatch(strFileName))
+            lstMatchingFiles.append(strFileName);
+    }
+    return lstMatchingFiles;
 }
 
 void GameService::setGame(Game *g)

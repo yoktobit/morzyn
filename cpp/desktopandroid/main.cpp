@@ -10,6 +10,7 @@
 #include "../creature.h"
 #include "../scroll.h"
 #include "../statistics.h"
+#include "../iai.h"
 #include <time.h>
 #include <QTranslator>
 
@@ -42,6 +43,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<Game>("de.yoktobit.software.morzyn", 1,0 , "Game");
     qmlRegisterType<Scroll>("de.yoktobit.software.morzyn", 1,0 , "Scroll");
     qmlRegisterType<Statistics>("de.yoktobit.software.morzyn", 1,0 , "Statistics");
+    //qmlRegisterType<IAI>("de.yoktobit.software.morzyn", 1,0 , "IAI");
 
     qsrand ( time(NULL) );
 

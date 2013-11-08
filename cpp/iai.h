@@ -21,7 +21,7 @@ public:
         Creature* creature;
         QPoint point;
     };
-    explicit IAI(Player *parent, GameService *g = 0);
+    explicit IAI(Player *parent = 0, GameService *g = 0);
     ~IAI();
     QTimer *m_timerMovement;
     QTimer *timerCast;
@@ -33,6 +33,7 @@ public:
     Creature *tmpCreature;
     QPoint tmpPoint;
     int nCreatureIndex;
+    bool passive;
     MovementAction* aAction;
     //QMap<Creature*, QList<QPoint> > m_lstWayPoints;
     QList<Creature*> m_lstDoneDistanceAttacks;
@@ -45,6 +46,7 @@ public:
     void doAttack();
     void doDistanceAttack();
     GameService *gameService;
+    virtual bool isInputPossible(int, int) { return false; };
 private:
 
 public slots:

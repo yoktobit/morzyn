@@ -31,7 +31,9 @@ SOURCES += cpp/desktopandroid/main.cpp \
     cpp/scroll.cpp \
     cpp/playercolor.cpp \
     cpp/player.cpp \
-    cpp/statistics.cpp
+    cpp/statistics.cpp \
+    cpp/tutorialplayerai.cpp \
+    cpp/tutorialopponentai.cpp
 
 TRANSLATIONS = morzyn_de.ts
 
@@ -76,7 +78,9 @@ HEADERS += \
     cpp/playercolor.h \
     cpp/player.h \
     cpp/scroll.h \
-    cpp/statistics.h
+    cpp/statistics.h \
+    cpp/tutorialplayerai.h \
+    cpp/tutorialopponentai.h
 
 OTHER_FILES += \
     android/AndroidManifest.xml \

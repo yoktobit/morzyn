@@ -8,6 +8,7 @@ import Sailfish.Silica 1.0
 
 ApplicationWindow {
     allowedOrientations: Qt.LandscapeOrientation
+    cover: Qt.resolvedUrl("cover/CoverPage.qml")
     initialPage:
         Page {
             allowedOrientations: Qt.LandscapeOrientation

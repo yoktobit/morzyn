@@ -2,13 +2,17 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    Label {
+    Image {
         id: label
+        width: parent.width
+        height: parent.width
+        antialiasing: false
+        smooth: false
         anchors.centerIn: parent
-        text: "My Cover"
+        source: "../images/dark priest red.png"
     }
     
-    CoverActionList {
+    /*CoverActionList {
         id: coverAction
         
         CoverAction {
@@ -18,7 +22,7 @@ CoverBackground {
         CoverAction {
             iconSource: "image://theme/icon-cover-pause"
         }
-    }
+    }*/
 }
 
 

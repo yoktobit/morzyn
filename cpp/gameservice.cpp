@@ -1393,7 +1393,7 @@ QStringList GameService::getCreatureImages(QString filenamePattern)
 #ifdef Q_OS_ANDROID
     QDir dirImages("assets:/qml/morzyn/images");
 #else
-    QDir dirImages("qml/morzyn/images");
+    QDir dirImages(QString(DEPLOYMENT_PATH) + QString("qml/morzyn/images"));
 #endif
     QStringList lstFilters;
     lstFilters << "*.png";
@@ -1406,6 +1406,77 @@ QStringList GameService::getCreatureImages(QString filenamePattern)
             lstMatchingFiles.append(strFileName);
     }
     return lstMatchingFiles;
+}
+
+IAI *GameService::getAI(Player *player)
+{
+    if (!game->m_AI.contains(player)) return NULL;
+    return game->m_AI[player];
+}
+
+void GameService::setGameMode(QString mode)
+{
+    game->mode = mode;
+}
+
+void GameService::initTutorialGame()
+{
+    game->mode = "tutorial";
+    addPlayers(2, 1);
+    start();
+}
+
+void GameService::addTutorialPlayers()
+{
+    setTotalPlayers(2);
+    setHumanPlayers(1);
+
+    Player* p = new Player(game);
+    p->setName("Tutorial Player");
+    addPlayer(p);
+
+    Player* p2 = new Player(game);
+    p2->setName("Tutorial Opponent");
+    addPlayer(p2);
+
+    game->playersChanged();
+    game->creaturesChanged();
+}
+
+void GameService::addTutorialPlayer(Player *player)
+{
+    // wenn aktuelle Spieleranzahl schon die der menschlichen Spieler erreicht hat,
+    // dann ist alles weitere NPC
+    /*if (game->m_players.count() >= game->humanPlayers)
+    {
+        player->setIsNPC(true);
+        IAI *ai = new EasyAI(player, this);
+        //player->setName(getRandomCreatureName());
+        game->m_AI.insert(player, ai);
+    }
+    player->setUnitClass("Player");
+    player->setOriginalName(tr("Player %1", "standard player original name (for remembering it)").arg(game->m_players.count() + 1));
+    player->setName(tr("Player %1", "standard player name").arg(game->m_players.count() + 1));
+    // "rogue", "warrior", "sorcerer"
+    int randRace = randomInteger(0, 3);
+    if (randRace == 0)
+        player->setRace("rogue");
+    else if (randRace == 1)
+        player->setRace("warrior");
+    else if (randRace == 2)
+        player->setRace("sorcerer");
+    player->setX(0);
+    player->setY(0);
+    getRandomPlayerColor(player);
+    //player->setImageFilename(library->lstPlayerColors.at(game->m_players.count())->file);
+    game->m_players.append(player);
+    game->m_creatures.append(player);
+    emit creatureCasted(player);*/
+}
+
+void GameService::placeTutorialPlayers()
+{
+
 }
 
 void GameService::setGame(Game *g)

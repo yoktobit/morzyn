@@ -43,6 +43,7 @@ public:
     QSet<int> arrUsedPlayerColors;
     bool isOver;
     bool m_hasBegun;
+    QString mode;
     QString strCurrentCheat;
     QStringList arrLastPlayerNames;
     QQmlListProperty<Player> players()

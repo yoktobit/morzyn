@@ -35,6 +35,16 @@ Rectangle {
             game.state = "totalPlayerCountState";
         }
     }
+    /*MorzynButton {
+        id: mainMenuTutorialButton
+        x: parent.width * 0.6
+        y: parent.height * 0.1
+        text: qsTr("Tutorial", "Tutorial in main menu")
+        onClicked: {
+            gameService.resetGame();
+            game.state = "totalPlayerCountState";
+        }
+    }*/
     MorzynButton {
         id: mainMenuGrimoireButton
         x: parent.width * 0.6

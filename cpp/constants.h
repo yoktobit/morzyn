@@ -43,4 +43,12 @@ public:
     }
 };
 
+class Instruction
+{
+public:
+    QString type;
+    QPoint target;
+    int round;
+};
+
 #endif // CONSTANTS_H

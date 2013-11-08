@@ -18,6 +18,7 @@ IAI::IAI(Player *parent, GameService* g) :
     m_timerMovement->setInterval(500);
     timerCast = new QTimer(this);
     timerCast->setInterval(10);
+    passive = false;
     nCreatureIndex = 0;
     connect(m_timerMovement, SIGNAL(timeout()), SLOT(onTimerElapsedMovement()));
     aAction = NULL;

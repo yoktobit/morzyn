@@ -84,6 +84,12 @@ public:
     Q_INVOKABLE void setFullScreen(bool fullscreen);
     Q_INVOKABLE void simulateFight(Creature* c1, Creature* c2);
     Q_INVOKABLE QStringList getCreatureImages(QString filenamePattern);
+    Q_INVOKABLE IAI* getAI(Player* player);
+    Q_INVOKABLE void setGameMode(QString mode);
+    Q_INVOKABLE void initTutorialGame();
+    Q_INVOKABLE void addTutorialPlayers();
+    Q_INVOKABLE void addTutorialPlayer(Player* player);
+    Q_INVOKABLE void placeTutorialPlayers();
 
     void emitCreatureMoved(Creature* creature);
     void emitPlayerSwitched(Player* player);

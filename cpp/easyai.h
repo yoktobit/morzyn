@@ -20,6 +20,7 @@ public:
     virtual void calculateDistanceAttack();
     int nCreatureIndex;
     QMap<Creature*, QList<QPoint> > lstWayPoints;
+    virtual bool isInputPossible(int, int) { return false; }
 private:
 signals:
 

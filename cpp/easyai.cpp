@@ -9,6 +9,7 @@ EasyAI::EasyAI(Player *parent, GameService *g) :
 {
     connect(gameService, SIGNAL(playerSwitched(Player*)), SLOT(initializeForNextRound(Player*)));
     nCreatureIndex = 0;
+    passive = false;
 }
 
 Creature* EasyAI::calculateSpellSelection()

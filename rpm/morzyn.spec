@@ -17,7 +17,7 @@ Name:       morzyn
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Morzyn - a tribute to Morkin 2
-Version:    0.8.0
+Version:    0.7.14
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -48,7 +48,7 @@ Short description of my SailfishOS Application
 
 %qtc_qmake5 
 
-%qtc_make %{?jobs:-j%jobs}
+%qtc_make %{?_smp_mflags}
 
 # >> build post
 # << build post

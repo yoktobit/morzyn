@@ -13,7 +13,9 @@ SOURCES += cpp/sailfish/main.cpp \
     cpp/enemyname.cpp \
     cpp/easyai.cpp \
     cpp/creature.cpp \
-    cpp/dbloader.cpp
+    cpp/dbloader.cpp \
+    cpp/tutorialopponentai.cpp \
+    cpp/tutorialplayerai.cpp
 
 # C++ headers
 HEADERS += \
@@ -28,10 +30,12 @@ HEADERS += \
     cpp/easyai.h \
     cpp/creature.h \
     cpp/constants.h \
-    cpp/dbloader.h
+    cpp/dbloader.h \
+    cpp/tutorialopponentai.h \
+    cpp/tutorialplayerai.h
 
 # QML files and folders
-qml.files = qml sailfish/qml
+qml.files = qml sailfish/qml *.png
 
 # The .desktop file
 desktop.files = morzyn.desktop

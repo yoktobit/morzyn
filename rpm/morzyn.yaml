@@ -1,6 +1,6 @@
 Name: morzyn
 Summary: Morzyn - a tribute to Morkin 2
-Version: 0.8.0
+Version: 0.7.14
 Release: 1
 Group: Qt/Qt
 License: LICENSE
@@ -21,7 +21,6 @@ Requires:
 - sailfishsilica-qt5
 - mapplauncherd-booster-silica-qt5
 Files:
-- 
 - /usr/bin
 - /usr/share/morzyn
 - /usr/share/applications

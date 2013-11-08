@@ -16,7 +16,6 @@ Library::Library(QObject *parent) :
     QFile file("assets:/qml/morzyn/database/database.xml");
 #else
     QFile file(QString(DEPLOYMENT_PATH) + QString("qml/morzyn/database/database.xml"));
-    //QFile file(QString(":/qml/morzyn/database/database.xml"));
 #endif
 
     if (!file.open(QIODevice::ReadOnly))

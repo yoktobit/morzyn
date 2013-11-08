@@ -21,8 +21,6 @@ public:
     explicit Player(QObject *parent = 0);
     inline QString name() const { return m_Name; }
     inline void setName(QString name) { m_Name = name; /*emit propertyChanged();*/ }
-    //inline PlayerColor* color() const { return m_Color; }
-    //void setColor(PlayerColor* color);
     inline int spellPoints() const { return m_SpellPoints; }
     void setSpellPoints(int spellPoints);
     bool isNPC() { return m_isNPC; }
@@ -49,7 +47,6 @@ protected:
     QString m_Name;
     int m_SpellPoints;
     bool m_isNPC;
-    //PlayerColor* m_Color;
     QString m_type;
     QString m_race;
 signals:

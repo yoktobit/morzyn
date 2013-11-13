@@ -1,8 +1,14 @@
 # The name of your app
 TARGET = morzyn
 
+CONFIG += sailfishapp
+
+QT += xml
+
+DEFINES += SAILFISH
+
 # C++ sources
-SOURCES += cpp/sailfish/main.cpp \
+SOURCES += cpp/morzyn.cpp \
     cpp/statistics.cpp \
     cpp/scroll.cpp \
     cpp/playercolor.cpp \
@@ -34,15 +40,14 @@ HEADERS += \
     cpp/tutorialopponentai.h \
     cpp/tutorialplayerai.h
 
-# QML files and folders
-qml.files = qml sailfish/qml *.png
-
-# The .desktop file
-desktop.files = morzyn.desktop
-
-# Please do not modify the following line.
-include(cpp/sailfish/sailfishapplication/sailfishapplication.pri)
-
 OTHER_FILES = \
     rpm/morzyn.yaml \
-    rpm/morzyn.spec
+    rpm/morzyn.spec \
+	qml/* \
+	qml/cover/* \
+	qml/database/* \
+	qml/fonts/* \
+	qml/images/* \
+	qml/sounds/* \
+        translations/* \
+	morzyn.desktop

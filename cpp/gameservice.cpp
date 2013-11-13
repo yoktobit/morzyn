@@ -2,8 +2,7 @@
 #include "game.h"
 #include <QObject>
 #include <QList>
-#include <cstdlib>
-#include <math.h>
+//#include <math.h>
 #include <QStringList>
 #include <QDir>
 #include <QDebug>
@@ -11,6 +10,9 @@
 #include "dbloader.h"
 #include "easyai.h"
 #include <QPropertyAnimation>
+#ifdef SAILFISH
+#include <sailfishapp.h>
+#endif
 
 #ifndef DEPLOYMENT_PATH
 #define DEPLOYMENT_PATH ""
@@ -1391,9 +1393,13 @@ QStringList GameService::getCreatureImages(QString filenamePattern)
     QString strFilePattern = filenamePattern;
     QStringList lstMatchingFiles;
 #ifdef Q_OS_ANDROID
-    QDir dirImages("assets:/qml/morzyn/images");
+    QDir dirImages("assets:/qml/images");
 #else
-    QDir dirImages(QString(DEPLOYMENT_PATH) + QString("qml/morzyn/images"));
+#ifdef SAILFISH
+    QDir dirImages(SailfishApp::pathTo("qml/images").toLocalFile());
+#else
+    QDir dirImages(QString(DEPLOYMENT_PATH) + QString("qml/images"));
+#endif
 #endif
     QStringList lstFilters;
     lstFilters << "*.png";
@@ -1477,6 +1483,11 @@ void GameService::addTutorialPlayer(Player *player)
 void GameService::placeTutorialPlayers()
 {
 
+}
+
+void GameService::quit()
+{
+    qApp->quit();
 }
 
 void GameService::setGame(Game *g)

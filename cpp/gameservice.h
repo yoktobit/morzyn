@@ -90,6 +90,7 @@ public:
     Q_INVOKABLE void addTutorialPlayers();
     Q_INVOKABLE void addTutorialPlayer(Player* player);
     Q_INVOKABLE void placeTutorialPlayers();
+    Q_INVOKABLE void quit();
 
     void emitCreatureMoved(Creature* creature);
     void emitPlayerSwitched(Player* player);

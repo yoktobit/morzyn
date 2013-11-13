@@ -4,22 +4,22 @@
 #include <QQmlEngine>
 #include <QQmlContext>
 #include <QQuickItem>
-#include "../game.h"
-#include "../constants.h"
-#include "../gameservice.h"
-#include "../dbloader.h"
-#include "../creature.h"
-#include "../scroll.h"
-#include "../statistics.h"
+#include "game.h"
+#include "constants.h"
+#include "gameservice.h"
+#include "dbloader.h"
+#include "creature.h"
+#include "scroll.h"
+#include "statistics.h"
 #include <time.h>
 #include <QTranslator>
 #include <QScreen>
 
-#include "sailfishapplication.h"
+#include <sailfishapp.h>
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    QScopedPointer<QGuiApplication> app(Sailfish::createApplication(argc, argv));
+    QGuiApplication* app = SailfishApp::application(argc, argv);
 
     qmlRegisterType<Creature>("de.yoktobit.software.morzyn", 1,0 , "Creature");
     qmlRegisterType<Player>("de.yoktobit.software.morzyn", 1,0 , "Player");
@@ -34,7 +34,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QTranslator translator;
     translator.load(QString("morzyn_") + locale, "translations");
-    app.data()->installTranslator(&translator);
+    app->installTranslator(&translator);
 
     GameService gs;
     Game g;
@@ -47,15 +47,15 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     gs.setLibrary(&library);
     gs.setStatistics(&s);
 
-    //QScopedPointer<QQuickView> view(Sailfish::createView("main.qml"));
-    QScopedPointer<QQuickView> view(Sailfish::createView());
-    view.data()->rootContext()->setContextProperty("gameService", &gs);
-    view.data()->rootContext()->setContextProperty("game", &g);
-    view.data()->rootContext()->setContextProperty("library", &library);
-    view.data()->rootContext()->setContextProperty("statistics", &s);
-    view.data()->setTitle("Morzyn v0.8.0");
-    Sailfish::setView(view.data(), "qml/morzyn/main.qml");
-    Sailfish::showView(view.data());
+    QQuickView* view = SailfishApp::createView();
+    view->rootContext()->setContextProperty("gameService", &gs);
+    view->rootContext()->setContextProperty("game", &g);
+    view->rootContext()->setContextProperty("library", &library);
+    view->rootContext()->setContextProperty("statistics", &s);
+    view->rootContext()->setContextProperty("os", QVariant("sailfish"));
+    view->setTitle("Morzyn v0.7.14");
+    view->setSource(SailfishApp::pathTo("qml/morzyn.qml"));
+    view->show();
     
     return app->exec();
 }

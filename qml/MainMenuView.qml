@@ -60,7 +60,7 @@ Rectangle {
         y: parent.height * 0.5
         text: qsTr("Quit", "Quit in main menu")
         onClicked: {
-            Qt.quit();
+            gameService.quit();
         }
     }
 }

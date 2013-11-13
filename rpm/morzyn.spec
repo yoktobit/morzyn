@@ -16,7 +16,7 @@ Name:       morzyn
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    Morzyn - a tribute to Morkin 2
+Summary:    Morzyn - A Tribute to Morkin 2
 Version:    0.7.14
 Release:    1
 Group:      Qt/Qt
@@ -24,10 +24,9 @@ License:    LICENSE
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  morzyn.yaml
 Requires:   sailfishsilica-qt5
-Requires:   mapplauncherd-booster-silica-qt5
+BuildRequires:  pkgconfig(sailfishapp)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(qdeclarative5-boostable)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
@@ -64,8 +63,9 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-/usr/bin
-/usr/share/morzyn
-/usr/share/applications
+%{_datadir}/icons/hicolor/90x90/apps
+%{_bindir}
+%{_datadir}/morzyn
+%{_datadir}/applications
 # >> files
 # << files

@@ -7,10 +7,12 @@ import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 
 ApplicationWindow {
+    id: morzynApp
     allowedOrientations: Qt.LandscapeOrientation
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     initialPage:
         Page {
+            id: morzynPage
             allowedOrientations: Qt.LandscapeOrientation
             SilicaGridView {
                 anchors.fill: parent

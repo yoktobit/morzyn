@@ -3,6 +3,7 @@
 #include <QList>
 #include <QtXml>
 #include "playercolor.h"
+#include <sailfishapp.h>
 
 #ifndef DEPLOYMENT_PATH
 #define DEPLOYMENT_PATH ""
@@ -13,9 +14,13 @@ Library::Library(QObject *parent) :
 {
     library = QDomDocument("mydocument");
 #ifdef Q_OS_ANDROID
-    QFile file("assets:/qml/morzyn/database/database.xml");
+    QFile file("assets:/qml/database/database.xml");
 #else
-    QFile file(QString(DEPLOYMENT_PATH) + QString("qml/morzyn/database/database.xml"));
+#ifdef SAILFISH
+    QFile file(SailfishApp::pathTo("qml/database/database.xml").toLocalFile());
+#else
+    QFile file(QString(DEPLOYMENT_PATH) + QString("qml/database/database.xml"));
+#endif
 #endif
 
     if (!file.open(QIODevice::ReadOnly))

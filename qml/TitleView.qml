@@ -4,6 +4,9 @@
 import QtQuick 2.1
 
 Rectangle {
+
+    signal exitTitle
+
     Image {
         source: "images/titelbild.png"
         anchors.fill: parent
@@ -13,6 +16,7 @@ Rectangle {
             onClicked: {
                 titleViewTimer.stop();
                 game.state = "mainMenuState";
+                exitTitle();
             }
         }
         Image {
@@ -30,6 +34,7 @@ Rectangle {
         running: true
         onTriggered: {
             game.state = "mainMenuState";
+            exitTitle();
         }
     }
     onVisibleChanged: {
@@ -38,6 +43,5 @@ Rectangle {
             titleSound.volume = 1.0;
         }
     }
-
     anchors.fill: parent
 }

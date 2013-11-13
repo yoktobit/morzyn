@@ -2,138 +2,15 @@
 // Do not remove copyright notice
 
 import QtQuick 2.1
-import de.yoktobit.software.morzyn 1.0
 import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 
 ApplicationWindow {
-    id: morzynApp
-    allowedOrientations: Qt.LandscapeOrientation
+    id: morzynApp    
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     initialPage:
-        Page {
-            id: morzynPage
-            allowedOrientations: Qt.LandscapeOrientation
-            SilicaGridView {
-                anchors.fill: parent
-
-                Rectangle {
-
-                    id: mainWindow
-                    anchors.fill: parent
-
-                    property int sourceWidth: 693
-                    property int sourceHeight: 499
-
-                    FontLoader {
-                        source: "fonts/vivaldi.ttf"
-                    }
-                    TitleView {
-                        visible: game.state === "titleScreenState"
-                    }
-                    MainMenuView {
-                        visible: game.state === "mainMenuState"
-                    }
-                    PlayerCountView {
-                        id: totalPlayerCountView
-                        type: "total"
-                        visible: game.state === "totalPlayerCountState"
-                        min: 2
-                        max: 7
-                    }
-                    PlayerCountView {
-                        id: humanPlayerCountView
-                        type: "human"
-                        visible: game.state === "humanPlayerCountState"
-                        min: 0
-                        max: totalPlayerCountView.selected
-                    }
-                    PlayerNameView {
-                        id: playerNameView
-                        visible: game.state === "playerNameState"
-                    }
-                    Connections {
-                        target: game
-                        onStateChanged: {
-                            if (game.state === "spellSelectState")
-                            {
-                                gameView.visible = true;
-                                gameView.focus = true;
-                            }
-                            else if (game.state === "mainMenuState")
-                            {
-                                gameView.visible = false;
-                                gameView.allreadyShown = false;
-                            }
-                        }
-                    }
-                    GrimoireView {
-                        id: grimoireView
-                        visible: game.state === "grimoireState"
-                    }
-
-                    GameView {
-                        id: gameView
-                        visible: false
-                        onVisibleChanged: {
-                            console.log(visible);
-                        }
-                    }
-                    GameOverView {
-                        id: gameOverView
-                    }
-
-                    Audio {
-                        id: titleSound
-                        source: "sounds/morzyn intro.mp3"
-                        autoPlay: true
-                        loops: Audio.Infinite
-                        Behavior on volume {
-                            PropertyAnimation {
-                                duration: 2000
-                                onRunningChanged: {
-                                    if (!running)
-                                    {
-                                        if (titleSound.volume === 0)
-                                        {
-                                            titleSound.pause();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    Connections {
-                        target: game
-                        onStateChanged: {
-                            // Neustart beim Zurückkehren
-                            if (game.state === "mainMenuState")
-                            {
-                                if (!titleSound.playing())
-                                {
-                                    titleSound.volume = 1.0;
-                                    titleSound.play();
-                                }
-                            }
-                        }
-                    }
-
-                    Component.onCompleted: {
-                        //console.log(morzyn.Spells.Creatures.Creature[0].name);
-                        //gameService.playTitleSong(true);
-                        console.log("Library count: " + library.creatures.count);
-                    }
-
-                    property bool fullscreen: false
-                    Keys.onPressed: {
-                        if ((event.key === Qt.Key_PageUp))
-                        {
-                            fullscreen = !fullscreen;
-                            gameService.setFullScreen(fullscreen);
-                        }
-                    }
-                }
-            }
+        MorzynPage {}
+    Component.onCompleted: {
+        library.loadAll();
     }
 }

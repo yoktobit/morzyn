@@ -38,6 +38,7 @@ public:
     void loadEnemyNames();
     void loadPlayerColors();
     Q_INVOKABLE void getAllCreatures();
+    Q_INVOKABLE void loadAll();
     QQmlListProperty<Creature> creatures();
     static int creatureCount(QQmlListProperty<Creature> *list);
     static Creature* creature(QQmlListProperty<Creature> *list, int index);

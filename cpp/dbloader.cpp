@@ -13,32 +13,6 @@ Library::Library(QObject *parent) :
     QObject(parent)
 {
     library = QDomDocument("mydocument");
-#ifdef Q_OS_ANDROID
-    QFile file("assets:/qml/database/database.xml");
-#else
-#ifdef SAILFISH
-    QFile file(SailfishApp::pathTo("qml/database/database.xml").toLocalFile());
-#else
-    QFile file(QString(DEPLOYMENT_PATH) + QString("qml/database/database.xml"));
-#endif
-#endif
-
-    if (!file.open(QIODevice::ReadOnly))
-    {
-        qDebug() << file.fileName() << "does not exist";
-        return;
-    }
-    if (!library.setContent(&file))
-    {
-        qDebug() << file.fileName() << "is not well formed";
-        file.close();
-        return;
-    }
-    file.close();
-    loadPlayerColors();
-    loadCreatures();
-    loadScrolls();
-    loadEnemyNames();
 }
 
 void Library::loadPlayerColors()
@@ -102,6 +76,36 @@ void Library::getAllCreatures()
     {
         lstAllCreatures << c;
     }
+}
+
+void Library::loadAll()
+{
+#ifdef Q_OS_ANDROID
+    QFile file("assets:/qml/database/database.xml");
+#else
+#ifdef SAILFISH
+    QFile file(SailfishApp::pathTo("qml/database/database.xml").toLocalFile());
+#else
+    QFile file(QString(DEPLOYMENT_PATH) + QString("qml/database/database.xml"));
+#endif
+#endif
+
+    if (!file.open(QIODevice::ReadOnly))
+    {
+        qDebug() << file.fileName() << "does not exist";
+        return;
+    }
+    if (!library.setContent(&file))
+    {
+        qDebug() << file.fileName() << "is not well formed";
+        file.close();
+        return;
+    }
+    file.close();
+    loadPlayerColors();
+    loadCreatures();
+    loadScrolls();
+    loadEnemyNames();
 }
 
 void Library::loadCreatures()

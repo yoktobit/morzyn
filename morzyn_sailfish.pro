@@ -50,4 +50,7 @@ OTHER_FILES = \
 	qml/images/* \
 	qml/sounds/* \
         translations/* \
-	morzyn.desktop
+	morzyn.desktop \
+    qml/Views.qml \
+    qml/TitlePage.qml \
+    qml/MorzynPage.qml

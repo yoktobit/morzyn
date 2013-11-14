@@ -6,7 +6,7 @@ import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 
 ApplicationWindow {
-    id: morzynApp    
+    id: morzynApp
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     initialPage:
         MorzynPage {}

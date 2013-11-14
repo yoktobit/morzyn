@@ -44,6 +44,7 @@ Rectangle {
 
     function playMeleeHit()
     {
+        if (!mainWindow.playSounds) return;
         var randomnumber = Math.floor(Math.random() * 5);
         console.log("MeleeHit " + randomnumber);
         switch (randomnumber)
@@ -73,6 +74,7 @@ Rectangle {
 
     function playMeleeMiss()
     {
+        if (!mainWindow.playSounds) return;
         var randomnumber = Math.floor(Math.random() * 3);
         console.log("MeleeMiss " + randomnumber);
         switch (randomnumber)
@@ -175,8 +177,8 @@ Rectangle {
 
     function emptyFieldClicked(index)
     {
-        var y = index / 13;
-        var x = index % 13;
+        var y = index / vCount;
+        var x = index % hCount;
         if (game.state === "castSpellState")
         {
             gameService.tryCast(x, y, spellSelectView.selectedCreature);
@@ -198,15 +200,15 @@ Rectangle {
             Grid {
                 id: gameViewBackRowGrid
                 anchors.centerIn: parent
-                width: 13 * ((32.0 * mainWindow.height) / mainWindow.sourceHeight)
-                height: 13 * ((32.0 * mainWindow.height) / mainWindow.sourceHeight) // Absicht, damit height immer = width
-                rows: 13
-                columns: 13
+                width: hCount * (((416.0 / hCount) * mainWindow.height) / mainWindow.sourceHeight)
+                height: vCount * (((416.0 / vCount) * mainWindow.height) / mainWindow.sourceHeight) // Absicht, damit height immer = width
+                rows: vCount
+                columns: hCount
                 Repeater {
-                    model: (13 * 13)
+                    model: (hCount * vCount)
                     delegate: Rectangle {
                         width: height // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-                        height: (32.0 * mainWindow.height) / mainWindow.sourceHeight
+                        height: ((416.0 / hCount) * mainWindow.height) / mainWindow.sourceHeight
                         color: "transparent"
                         border.width: 1
                         border.color: "black"

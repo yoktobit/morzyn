@@ -66,7 +66,7 @@ Item {
             // Neustart beim Zurückkehren
             if (game.state === "mainMenuState")
             {
-                if (!titleSound.playing())
+                if (!titleSound.playing() && morzynApp.applicationActive)
                 {
                     titleSound.volume = 1.0;
                     titleSound.play();

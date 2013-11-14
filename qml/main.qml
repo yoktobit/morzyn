@@ -14,6 +14,8 @@ Rectangle {
     property int sourceWidth: 693
     property int sourceHeight: 499
 
+    property bool playSounds: true
+
     FontLoader {
         source: "fonts/vivaldi.ttf"
     }

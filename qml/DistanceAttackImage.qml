@@ -69,6 +69,7 @@ Image {
 
     function playOneOf(sound1, sound2, sound3)
     {
+        if (!mainWindow.playSounds) return;
         var randomnumber = Math.floor(Math.random() * 3);
         console.log("DistFire " + randomnumber);
         switch (randomnumber)
@@ -98,10 +99,10 @@ Image {
         console.log("Rotation of Distance Image:" + ret);
         return ret;
     }
-    x: attackingCreature ? attackingCreature.xField * ((32.0 * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-    y: attackingCreature ? attackingCreature.yField * ((32.0 * mainWindow.height) / mainWindow.sourceHeight) : 0
+    x: attackingCreature ? attackingCreature.xField * (((416.0 / hCount) * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+    y: attackingCreature ? attackingCreature.yField * (((416.0 / vCount) * mainWindow.height) / mainWindow.sourceHeight) : 0
     z: 5000
-    height: (sourceSize.height * mainWindow.height) / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+    height: ((416.0 / vCount) * mainWindow.height) / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
     width: height
     source: attackingCreature ? "images/" + attackingCreature.distanceImageFilename : ""
     rotation: calculateRotation(attackingCreature, attackedCreature)
@@ -122,8 +123,8 @@ Image {
             id: distanceAttackImageAnimationX
             target: distanceAttackImage
             property: "x"
-            from: attackingCreature ? attackingCreature.xField * ((32.0 * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-            to: attackedCreature ? attackedCreature.xField * ((32.0 * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+            from: attackingCreature ? attackingCreature.xField * (((416.0 / hCount) * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+            to: attackedCreature ? attackedCreature.xField * (((416.0 / vCount) * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
             duration: getDuration(attackingCreature ? attackingCreature.xField : 0, attackedCreature ? attackedCreature.xField : 0, attackingCreature ? attackingCreature.yField : 0, attackedCreature ? attackedCreature.yField : 0);
             running: false
         }
@@ -132,8 +133,8 @@ Image {
             id: distanceAttackImageAnimationY
             target: distanceAttackImage
             property: "y"
-            from: attackingCreature ? attackingCreature.yField * ((32.0 * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-            to: attackedCreature ? attackedCreature.yField * ((32.0 * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+            from: attackingCreature ? attackingCreature.yField * (((416.0 / hCount) * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+            to: attackedCreature ? attackedCreature.yField * (((416.0 / vCount) * mainWindow.height) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
             duration: getDuration(attackingCreature ? attackingCreature.xField : 0, attackedCreature ? attackedCreature.xField : 0, attackingCreature ? attackingCreature.yField : 0, attackedCreature ? attackedCreature.yField : 0);
             running: false
         }

@@ -39,6 +39,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     GameService gs;
     Game g;
     Constants c;
+    c.HCOUNT = 10;
+    c.VCOUNT = 10;
     Library library;
     Statistics s;
 
@@ -53,6 +55,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     view->rootContext()->setContextProperty("library", &library);
     view->rootContext()->setContextProperty("statistics", &s);
     view->rootContext()->setContextProperty("os", QVariant("sailfish"));
+    view->rootContext()->setContextProperty("hCount", QVariant(c.HCOUNT));
+    view->rootContext()->setContextProperty("vCount", QVariant(c.VCOUNT));
     view->setTitle("Morzyn v0.7.14");
     view->setSource(SailfishApp::pathTo("qml/morzyn.qml"));
     view->show();

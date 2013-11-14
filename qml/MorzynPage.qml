@@ -12,6 +12,9 @@ Page {
         property int sourceWidth: 693
         property int sourceHeight: 499
 
+        property bool playSounds: true
+        property bool titleSoundLastPlayState: false
+
         Loader {
             anchors.fill: parent
             source: "Views.qml"
@@ -21,6 +24,33 @@ Page {
 
         TitleView {
             visible: game.state === "titleScreenState"
+        }
+
+        Connections {
+            target: morzynApp
+            onApplicationActiveChanged: {
+                if (!morzynApp.applicationActive)
+                {
+                    mainWindow.playSounds = false;
+                    if (titleSound.playbackState == Audio.PlayingState)
+                    {
+                        mainWindow.titleSoundLastPlayState = true;
+                        console.log("TitleSound was running");
+                    }
+
+                    titleSound.pause();
+                    console.log("TitleSound stopped");
+                }
+                else
+                {
+                    mainWindow.playSounds = true;
+                    if (mainWindow.titleSoundLastPlayState)
+                    {
+                        titleSound.play();
+                        console.log("TitleSound resumed");
+                    }
+                }
+            }
         }
 
         Audio {

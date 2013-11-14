@@ -10,8 +10,8 @@ Rectangle {
     color: "transparent"
     width: creatureImage.width
     height: creatureImage.height
-    x: modelData === undefined || modelData === null ? 0 : modelData.xField * ((32.0 * mainWindow.height) / mainWindow.sourceHeight) // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-    y: modelData === undefined || modelData === null ? 0 : modelData.yField * ((32.0 * mainWindow.height) / mainWindow.sourceHeight)
+    x: modelData === undefined || modelData === null ? 0 : modelData.xField * (((416.0 / hCount) * mainWindow.height) / mainWindow.sourceHeight) // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+    y: modelData === undefined || modelData === null ? 0 : modelData.yField * (((416.0 / vCount) * mainWindow.height) / mainWindow.sourceHeight)
     property bool isDying: false
 
     property int movements: 0
@@ -126,8 +126,8 @@ Rectangle {
     Image {
         id: creatureImage
         source: modelData === undefined || modelData === null ? "" : "images/" + modelData.imageFilename
-        height: sourceSize.height * mainWindow.height / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-        width: sourceSize.height * mainWindow.height / mainWindow.sourceHeight
+        height: (416.0 / vCount) * mainWindow.height / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+        width: (416.0 / vCount) * mainWindow.height / mainWindow.sourceHeight
         MouseArea {
             anchors.fill: parent
             acceptedButtons: Qt.LeftButton

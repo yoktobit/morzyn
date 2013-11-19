@@ -3,7 +3,9 @@
 #include <QList>
 #include <QtXml>
 #include "playercolor.h"
+#ifdef SAILFISH
 #include <sailfishapp.h>
+#endif
 
 #ifndef DEPLOYMENT_PATH
 #define DEPLOYMENT_PATH ""

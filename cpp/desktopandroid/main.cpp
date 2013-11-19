@@ -74,7 +74,10 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("game", &g);
     viewer.rootContext()->setContextProperty("statistics", &s);
     viewer.rootContext()->setContextProperty("library", &l);
-    viewer.setMainQmlFile(QStringLiteral("qml/morzyn/main.qml"));
+    viewer.rootContext()->setContextProperty("os", QVariant("desktop"));
+    viewer.rootContext()->setContextProperty("hCount", QVariant(c.HCOUNT));
+    viewer.rootContext()->setContextProperty("vCount", QVariant(c.VCOUNT));
+    viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
     viewer.setTitle("Morzyn v0.8.0");
     //viewer.showExpanded();
     viewer.showFullScreen();

@@ -4,7 +4,7 @@ import de.yoktobit.software.morzyn 1.0
 
 Item {
     anchors.fill: parent
-
+    focus: true
     FontLoader {
         source: "fonts/vivaldi.ttf"
     }

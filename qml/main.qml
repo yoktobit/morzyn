@@ -16,12 +16,39 @@ Rectangle {
 
     property bool playSounds: true
 
-    FontLoader {
-        source: "fonts/vivaldi.ttf"
+    Loader {
+        anchors.fill: parent
+        source: "Views.qml"
+        focus: true
+        asynchronous: true
+        visible: status == Loader.Ready
     }
+
     TitleView {
         visible: game.state === "titleScreenState"
     }
+
+    Audio {
+        id: titleSound
+        source: "sounds/morzyn intro.mp3"
+        autoPlay: true
+        loops: Audio.Infinite
+        Behavior on volume {
+            PropertyAnimation {
+                duration: 2000
+                onRunningChanged: {
+                    if (!running)
+                    {
+                        if (titleSound.volume === 0)
+                        {
+                            titleSound.pause();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /*
     MainMenuView {
         visible: game.state === "mainMenuState"
     }
@@ -108,19 +135,18 @@ Rectangle {
                 }
             }
         }
-    }
+    }*/
 
     Component.onCompleted: {
-        //console.log(morzyn.Spells.Creatures.Creature[0].name);
-        //gameService.playTitleSong(true);
+        library.loadAll();
     }
 
-    property bool fullscreen: false
+    /*property bool fullscreen: false
     Keys.onPressed: {
         if ((event.key === Qt.Key_PageUp))
         {
             fullscreen = !fullscreen;
             gameService.setFullScreen(fullscreen);
         }
-    }
+    }*/
 }

@@ -37,6 +37,11 @@ Page {
                         mainWindow.titleSoundLastPlayState = true;
                         console.log("TitleSound was running");
                     }
+                    else
+                    {
+                        mainWindow.titleSoundLastPlayState = false;
+                        console.log("TitleSound was not running");
+                    }
 
                     titleSound.pause();
                     console.log("TitleSound stopped");

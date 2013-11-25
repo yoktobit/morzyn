@@ -1,6 +1,6 @@
 import QtQuick 2.1
 import QtMultimedia 5.0
-import de.yoktobit.software.morzyn 1.0
+import harbour.de.yoktobit.morzyn 1.0
 
 Item {
     anchors.fill: parent

@@ -1,5 +1,5 @@
 # The name of your app
-TARGET = morzyn
+TARGET = harbour-morzyn
 
 CONFIG += sailfishapp
 
@@ -41,8 +41,8 @@ HEADERS += \
     cpp/tutorialplayerai.h
 
 OTHER_FILES = \
-    rpm/morzyn.yaml \
-    rpm/morzyn.spec \
+    rpm/harbour-morzyn.yaml \
+    rpm/harbour-morzyn.spec \
 	qml/* \
 	qml/cover/* \
 	qml/database/* \
@@ -50,7 +50,7 @@ OTHER_FILES = \
 	qml/images/* \
 	qml/sounds/* \
         translations/* \
-	morzyn.desktop \
     qml/Views.qml \
     qml/TitlePage.qml \
-    qml/MorzynPage.qml
+    qml/MorzynPage.qml \
+    harbour-morzyn.desktop

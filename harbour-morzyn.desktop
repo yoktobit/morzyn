@@ -1,7 +1,7 @@
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
+Encoding=UTF-8
 X-Nemo-Application-Type=silica-qt5
 Name=Morzyn
-Icon=harbour-morzyn.png
+Icon=harbour-morzyn
 Exec=harbour-morzyn

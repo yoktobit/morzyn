@@ -1,11 +1,30 @@
 # The name of your app
 TARGET = harbour-morzyn
 
-CONFIG += sailfishapp
+#CONFIG += sailfishapp
 
-QT += xml
+QT += quick qml xml
 
 DEFINES += SAILFISH
+
+CONFIG += link_pkgconfig
+PKGCONFIG += sailfishapp
+INCLUDEPATH += /usr/include/sailfishapp
+
+TARGETPATH = /usr/bin
+target.path = $$TARGETPATH
+
+DEPLOYMENT_PATH = /usr/share/$$TARGET
+qml.files = qml
+qml.path = $$DEPLOYMENT_PATH
+
+desktop.files = harbour-morzyn.desktop
+desktop.path = /usr/share/applications
+
+icon.files = harbour-morzyn.png
+icon.path = /usr/share/icons/hicolor/86x86/apps
+
+INSTALLS += target icon desktop qml
 
 # C++ sources
 SOURCES += cpp/morzyn.cpp \

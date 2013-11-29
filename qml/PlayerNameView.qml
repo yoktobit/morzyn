@@ -2,7 +2,7 @@
 // Do not remove copyright notice
 
 import QtQuick 2.1
-import harbour.de.yoktobit.morzyn 1.0
+import harbour.morzyn 1.0
 
 Rectangle {
     id: playerNameView

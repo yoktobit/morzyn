@@ -21,12 +21,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication* app = SailfishApp::application(argc, argv);
 
-    qmlRegisterType<Creature>("harbour.de.yoktobit.morzyn", 1,0 , "Creature");
-    qmlRegisterType<Player>("harbour.de.yoktobit.morzyn", 1,0 , "Player");
-    qmlRegisterType<Game>("harbour.de.yoktobit.morzyn", 1,0 , "Game");
-    qmlRegisterType<Scroll>("harbour.de.yoktobit.morzyn", 1,0 , "Scroll");
-    qmlRegisterType<Statistics>("harbour.de.yoktobit.morzyn", 1,0 , "Statistics");
-    qmlRegisterType<Library>("harbour.de.yoktobit.morzyn", 1,0 , "Library");
+    qmlRegisterType<Creature>("harbour.morzyn", 1,0 , "Creature");
+    qmlRegisterType<Player>("harbour.morzyn", 1,0 , "Player");
+    qmlRegisterType<Game>("harbour.morzyn", 1,0 , "Game");
+    qmlRegisterType<Scroll>("harbour.morzyn", 1,0 , "Scroll");
+    qmlRegisterType<Statistics>("harbour.morzyn", 1,0 , "Statistics");
+    qmlRegisterType<Library>("harbour.morzyn", 1,0 , "Library");
 
     qsrand ( time(NULL) );
 

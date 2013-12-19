@@ -10,12 +10,19 @@ Rectangle {
 
     signal backClicked
 
-    GrowingText {
+    /*GrowingText {
         id: backButtonGrowingText
         color: "red"
         anchors.centerIn: parent
         standardSize: 20
         text: "<-----"
+    }*/
+    Image {
+        id: backButtonGrowingText
+        source: "images/buttonok.png"
+        width: 64 * mainWindow.width / mainWindow.sourceWidth
+        height: 36 * mainWindow.height / mainWindow.sourceHeight
+        anchors.centerIn: parent
     }
     MouseArea {
         anchors.fill: parent

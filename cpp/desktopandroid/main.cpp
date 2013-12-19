@@ -38,12 +38,12 @@ int main(int argc, char *argv[])
     //qInstallMessageHandler(myMessageOutput); //install : set the callback
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<Creature>("de.yoktobit.software.morzyn", 1,0 , "Creature");
-    qmlRegisterType<Player>("de.yoktobit.software.morzyn", 1,0 , "Player");
-    qmlRegisterType<Game>("de.yoktobit.software.morzyn", 1,0 , "Game");
-    qmlRegisterType<Scroll>("de.yoktobit.software.morzyn", 1,0 , "Scroll");
-    qmlRegisterType<Statistics>("de.yoktobit.software.morzyn", 1,0 , "Statistics");
-    //qmlRegisterType<IAI>("de.yoktobit.software.morzyn", 1,0 , "IAI");
+    qmlRegisterType<Creature>("harbour.morzyn", 1,0 , "Creature");
+    qmlRegisterType<Player>("harbour.morzyn", 1,0 , "Player");
+    qmlRegisterType<Game>("harbour.morzyn", 1,0 , "Game");
+    qmlRegisterType<Scroll>("harbour.morzyn", 1,0 , "Scroll");
+    qmlRegisterType<Statistics>("harbour.morzyn", 1,0 , "Statistics");
+    //qmlRegisterType<IAI>("harbour.morzyn", 1,0 , "IAI");
 
     qsrand ( time(NULL) );
 
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("hCount", QVariant(c.HCOUNT));
     viewer.rootContext()->setContextProperty("vCount", QVariant(c.VCOUNT));
     viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
-    viewer.setTitle("Morzyn v0.8.0");
+    viewer.setTitle("Morzyn v0.7.15");
     //viewer.showExpanded();
     viewer.showFullScreen();
 

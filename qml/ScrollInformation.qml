@@ -4,9 +4,11 @@
 import QtQuick 2.1
 
 Grid {
+    property var hoveredCreature
+    property var player
     flow: Grid.LeftToRight
     columns: 2
-    visible: hoveredCreature !== null && hoveredCreature.unitClass !== "Creature"
+    visible: hoveredCreature && hoveredCreature !== null && hoveredCreature.unitClass !== "Creature"
     enabled: hoveredCreature !== null
     spacing: (10 * mainWindow.width) / mainWindow.sourceWidth
     GrowingText {

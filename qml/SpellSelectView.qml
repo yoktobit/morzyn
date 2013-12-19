@@ -28,6 +28,17 @@ Rectangle {
 
             width: mainWindow.width * 2/7
             height: mainWindow.height
+
+            BackButton {
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
+                anchors.horizontalCenter: parent.horizontalCenter
+                onBackClicked: {
+                    if (checkInput()) return;
+                    gameService.abort();
+                }
+            }
+
             Column {
                 anchors.topMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
                 anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
@@ -49,7 +60,8 @@ Rectangle {
                     player: game.currentPlayer
                 }
                 ScrollInformation {
-
+                    hoveredCreature: hoverCreature
+                    player: game.currentPlayer
                 }
 
                 Text {

@@ -253,7 +253,7 @@ Rectangle {
             source: "images/statusback.png"
             width: mainWindow.width * 2/7
             height: mainWindow.height
-            Text {
+            /*Text {
                 anchors.topMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
                 anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
                 anchors.leftMargin: (30 * mainWindow.width) / mainWindow.sourceWidth
@@ -266,6 +266,18 @@ Rectangle {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 color: "#00FF00"
                 visible: hoveredCreature === undefined
+            }*/
+            BackButton {
+                //x: gameViewBackRowStatusBack.x - width - (20 * mainWindow.width / mainWindow.sourceWidth)
+                //y: mainWindow.height - height - (50 * mainWindow.height / mainWindow.sourceHeight)
+                //anchors.bottomMargin: 10 * mainWindow.height / mainWindow.sourceHeight
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
+                anchors.horizontalCenter: parent.horizontalCenter
+                onBackClicked: {
+                    if (checkInput()) return;
+                    gameService.abort();
+                }
             }
             Column {
                 anchors.topMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
@@ -371,16 +383,6 @@ Rectangle {
     SpellSelectView {
         id: spellSelectView
         visible: game.state === "spellSelectState" && game.currentPlayer !== null && !game.currentPlayer.isNPC
-    }
-    BackButton {
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.rightMargin: 20 * mainWindow.width / mainWindow.sourceWidth
-        anchors.bottomMargin: 10 * mainWindow.height / mainWindow.sourceHeight
-        onBackClicked: {
-            if (checkInput()) return;
-            gameService.abort();
-        }
     }
     GrowingText {
         text: gameService.message

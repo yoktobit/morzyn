@@ -21,6 +21,11 @@ Rectangle {
         opacity: 0.5
         anchors.fill: parent
     }
+    MenuButton {
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.margins: 0.02 * mainWindow.width
+    }
     Text {
         font.family: "VivaldiD"
         font.pixelSize: (50 * mainWindow.height) / mainWindow.sourceHeight

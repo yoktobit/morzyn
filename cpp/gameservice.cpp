@@ -174,7 +174,6 @@ void GameService::placePlayers()
     statistics->setFirstPlayer(placedPlayers[0]);
     game->playersChanged();
     game->creaturesChanged();
-    game->setHasBegun(true);
 
     //game->emitPropertyChanged();
 }
@@ -979,6 +978,7 @@ void GameService::start()
             game->arrLastPlayerNames.append(p->name());
     }
     statistics->reset();
+    game->setHasBegun(true);
     game->setState("spellSelectState");
 }
 

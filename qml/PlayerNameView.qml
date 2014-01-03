@@ -173,4 +173,9 @@ Rectangle {
             gameService.start();
         }
     }
+    MenuButton {
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.margins: 0.02 * mainWindow.width
+    }
 }

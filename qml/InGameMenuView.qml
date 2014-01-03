@@ -137,7 +137,7 @@ Rectangle {
                             parent.color = "black";
                         }
                         onClicked: {
-                            Qt.quit();
+                            gameService.quit();
                         }
                     }
                 }

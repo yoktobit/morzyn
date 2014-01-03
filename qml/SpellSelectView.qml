@@ -12,14 +12,20 @@ Rectangle {
     property variant selectedCreature
 
     Row {
-        Image {
-            id: wiese
-            source: "images/wiese.png"
-            opacity: 0.1
-            visible: true
+        Item {
             width: mainWindow.width * 5/7
             height: mainWindow.height
-
+            Image {
+                id: wiese
+                source: "images/wiese.png"
+                opacity: 0.1
+                anchors.fill: parent
+            }
+            MenuButton {
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.margins: 0.02 * mainWindow.width
+            }
         }
         Image {
             id: statusback

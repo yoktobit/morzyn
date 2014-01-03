@@ -197,6 +197,14 @@ Rectangle {
             source: "images/wiese.png"
             width: mainWindow.width * 5/7
             height: mainWindow.height
+
+            MenuButton {
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.margins: 0.02 * mainWindow.width
+                visible: game.state !== "spellSelectState"
+            }
+
             Grid {
                 id: gameViewBackRowGrid
                 anchors.centerIn: parent

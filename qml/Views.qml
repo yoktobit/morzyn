@@ -66,7 +66,7 @@ Item {
             // Neustart beim Zurückkehren
             if (game.state === "mainMenuState")
             {
-                if (!titleSound.playing() && morzynApp.applicationActive)
+                if (!titleSound.playing() && mainWindow.applicationActive)
                 {
                     titleSound.volume = 1.0;
                     titleSound.play();
@@ -83,10 +83,30 @@ Item {
 
     property bool fullscreen: false
     Keys.onPressed: {
+        console.log("KEY_PRESSED: " + event.key)
         if ((event.key === Qt.Key_PageUp))
         {
             fullscreen = !fullscreen;
             gameService.setFullScreen(fullscreen);
+        }
+    }
+
+    Keys.onReleased: {
+        console.log("KEY_PRESSED: " + event.key)
+        if ((event.key === Qt.BackButton) || event.key == Qt.Key_Back || event.key == Qt.Key_MediaPrevious || event.key == 16777313)
+        {
+            event.accepted = true;
+            if (game.hasBegun)
+            {
+                console.debug("calling in-game-menu");
+                gameView.inGameMenuViewExternal.visible = true;
+            }
+            else
+            {
+                console.debug("directly back to menu");
+                gameService.resetGame();
+                game.state = "mainMenuState";
+            }
         }
     }
 }

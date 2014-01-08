@@ -13,7 +13,7 @@ Rectangle {
         anchors.fill: parent
         Text {
             font.family: "VivaldiD"
-            font.pixelSize: (50 * mainWindow.height) / mainWindow.sourceHeight
+            font.pixelSize: (50 * mainWindow.myHeight) / mainWindow.sourceHeight
             text: qsTr("%1 wins!", "... wins!").arg(winner)
             anchors.centerIn: parent
         }

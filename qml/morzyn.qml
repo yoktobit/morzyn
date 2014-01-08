@@ -6,10 +6,20 @@ import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 
 ApplicationWindow {
-    id: morzynApp
+    id: mainWindow
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+
+    // rumdrehen...Sailfish...tztztz
+    property double myWidth: height
+    property double myHeight: width
+
+    property double sourceWidth: 693
+    property double sourceHeight: 499
+    property bool playSounds: true
+    property bool titleSoundLastPlayState: false
+
     initialPage:
-        MorzynPage {}
+        Component { MorzynPage {} }
     Component.onCompleted: {
         library.loadAll();
     }

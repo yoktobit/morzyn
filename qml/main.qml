@@ -14,6 +14,9 @@ Rectangle {
     property int sourceWidth: 693
     property int sourceHeight: 499
 
+    property double myWidth: width
+    property double myHeight: height
+
     property bool playSounds: true
 
     Loader {

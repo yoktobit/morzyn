@@ -13,8 +13,8 @@ Rectangle {
 
     Row {
         Item {
-            width: mainWindow.width * 5/7
-            height: mainWindow.height
+            width: mainWindow.myWidth * 5/7
+            height: mainWindow.myHeight
             Image {
                 id: wiese
                 source: "images/wiese.png"
@@ -24,7 +24,7 @@ Rectangle {
             MenuButton {
                 anchors.top: parent.top
                 anchors.right: parent.right
-                anchors.margins: 0.02 * mainWindow.width
+                anchors.margins: 0.02 * mainWindow.myWidth
             }
         }
         Image {
@@ -32,12 +32,12 @@ Rectangle {
             source: "images/statusback.png"
             visible: true
 
-            width: mainWindow.width * 2/7
-            height: mainWindow.height
+            width: mainWindow.myWidth * 2/7
+            height: mainWindow.myHeight
 
             BackButton {
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
+                anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
                 anchors.horizontalCenter: parent.horizontalCenter
                 onBackClicked: {
                     if (checkInput()) return;
@@ -46,19 +46,19 @@ Rectangle {
             }
 
             Column {
-                anchors.topMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
-                anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
-                anchors.leftMargin: (30 * mainWindow.width) / mainWindow.sourceWidth
-                anchors.rightMargin: (30 * mainWindow.width) / mainWindow.sourceWidth
+                anchors.topMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
+                anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
+                anchors.leftMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
+                anchors.rightMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
                 anchors.fill: parent
                 visible: hoverCreature !== null
                 Text {
-                    font.pixelSize: (20 * mainWindow.height) / mainWindow.sourceHeight
+                    font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                     text: hoverCreature ? hoverCreature.species : ""
                     color: (!hoverCreature || hoverCreature.manaCost == "undefined") ? "#000000" : (game.currentPlayer.spellPoints >= hoverCreature.manaCost ? "#00FF00" : "red")
                 }
                 Item {
-                    height: (20 * mainWindow.height) / mainWindow.sourceHeight
+                    height: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                     width: 100
                 }
                 CreatureInformation {
@@ -71,9 +71,9 @@ Rectangle {
                 }
 
                 Text {
-                    height: (50 * mainWindow.height) / mainWindow.sourceHeight
+                    height: (50 * mainWindow.myHeight) / mainWindow.sourceHeight
                     verticalAlignment: Text.AlignVCenter
-                    font.pixelSize: (20 * mainWindow.height) / mainWindow.sourceHeight
+                    font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                     text: game.currentPlayer ? game.currentPlayer.spellPoints : ""
                     anchors.horizontalCenter: parent.horizontalCenter
                     color: (!hoverCreature || hoverCreature.manaCost == "undefined") ? "#000000" : (game.currentPlayer.spellPoints >= hoverCreature.manaCost ? "#00FF00" : "red")
@@ -91,7 +91,7 @@ Rectangle {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: game.currentPlayer ? game.currentPlayer.name : ""
-            font.pixelSize: (35 * mainWindow.height) / mainWindow.sourceHeight
+            font.pixelSize: (35 * mainWindow.myHeight) / mainWindow.sourceHeight
             font.family: "VivaldiD"
             color: "white"
         }
@@ -99,13 +99,13 @@ Rectangle {
     Component {
         id: spellSelectComponent
         Item {
-            width: Math.max(spellSelectComponentText.width, (230 * mainWindow.width) / mainWindow.sourceWidth)
+            width: Math.max(spellSelectComponentText.width, (230 * mainWindow.myWidth) / mainWindow.sourceWidth)
             height: spellSelectComponentText.height
             Text {
                 id: spellSelectComponentText
                 text: species
                 //width: 230
-                font.pixelSize: (34 * mainWindow.height) / mainWindow.sourceHeight
+                font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
                 font.family: "VivaldiD"
                 color: game.currentPlayer.spellPoints >= manaCost ? "#00FF00" : "red"
                 MouseArea {
@@ -132,10 +132,10 @@ Rectangle {
 
     Flow {
         x: 20
-        y: (40 * mainWindow.height) / mainWindow.sourceHeight
+        y: (40 * mainWindow.myHeight) / mainWindow.sourceHeight
         flow: GridView.TopToBottom
         width: wiese.width
-        height: wiese.height - ((40 * mainWindow.height) / mainWindow.sourceHeight)
+        height: wiese.height - ((40 * mainWindow.myHeight) / mainWindow.sourceHeight)
         spacing: 5
         Repeater {
             model: game.currentPlayer ? game.currentPlayer.possibleCreatures : null

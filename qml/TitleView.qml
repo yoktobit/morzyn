@@ -23,7 +23,7 @@ Rectangle {
             source: "images/menu text bat.png"
             anchors.centerIn: parent
             width: height * sourceSize.width / sourceSize.height
-            height: ((sourceSize.height * mainWindow.height) / 600)
+            height: ((sourceSize.height * mainWindow.myHeight) / 600)
 
         }
     }

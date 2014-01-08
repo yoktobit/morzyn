@@ -20,8 +20,8 @@ Rectangle {
     Image {
         id: backButtonGrowingText
         source: "images/buttonok.png"
-        width: 64 * mainWindow.width / mainWindow.sourceWidth
-        height: 36 * mainWindow.height / mainWindow.sourceHeight
+        width: 64 * mainWindow.myWidth / mainWindow.sourceWidth
+        height: 36 * mainWindow.myHeight / mainWindow.sourceHeight
         anchors.centerIn: parent
     }
     MouseArea {

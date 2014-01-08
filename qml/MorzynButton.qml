@@ -10,12 +10,12 @@ Image {
     signal clicked
 
     source: "images/button.png"
-    width: (sourceSize.width * mainWindow.width) / 800 // fix, weil sonst zu groß
-    height: (sourceSize.height * mainWindow.height) / 600 // fix, weil sonst zu groß
+    width: (sourceSize.width * mainWindow.myWidth) / 800 // fix, weil sonst zu groß
+    height: (sourceSize.height * mainWindow.myHeight) / 600 // fix, weil sonst zu groß
 
     Text {
         id: morzynButtonText
-        font.pixelSize: (30 * mainWindow.height) / mainWindow.sourceHeight
+        font.pixelSize: (30 * mainWindow.myHeight) / mainWindow.sourceHeight
         font.family: "VivaldiD"
         anchors.centerIn: parent
     }

@@ -17,6 +17,8 @@ Rectangle {
 
     signal distanceAnimationFinished(var attackingCreature, var attackedCreature, int nDamage)
 
+    property InGameMenuView inGameMenuViewExternal: inGameMenuView
+
     property var creatures: [];
 
     Component {
@@ -195,28 +197,28 @@ Rectangle {
         Image {
             id: gameViewBackRowWiese
             source: "images/wiese.png"
-            width: mainWindow.width * 5/7
-            height: mainWindow.height
+            width: mainWindow.myWidth * 5/7
+            height: mainWindow.myHeight
 
             MenuButton {
                 anchors.top: parent.top
                 anchors.right: parent.right
-                anchors.margins: 0.02 * mainWindow.width
+                anchors.margins: 0.02 * mainWindow.myWidth
                 visible: game.state !== "spellSelectState"
             }
 
             Grid {
                 id: gameViewBackRowGrid
                 anchors.centerIn: parent
-                width: hCount * (((416.0 / hCount) * mainWindow.height) / mainWindow.sourceHeight)
-                height: vCount * (((416.0 / vCount) * mainWindow.height) / mainWindow.sourceHeight) // Absicht, damit height immer = width
+                width: hCount * (((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight)
+                height: vCount * (((416.0 / vCount) * mainWindow.myHeight) / mainWindow.sourceHeight) // Absicht, damit height immer = width
                 rows: vCount
                 columns: hCount
                 Repeater {
                     model: (hCount * vCount)
                     delegate: Rectangle {
                         width: height // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-                        height: ((416.0 / hCount) * mainWindow.height) / mainWindow.sourceHeight
+                        height: ((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight
                         color: "transparent"
                         border.width: 1
                         border.color: "black"
@@ -259,28 +261,28 @@ Rectangle {
         Image {
             id: gameViewBackRowStatusBack
             source: "images/statusback.png"
-            width: mainWindow.width * 2/7
-            height: mainWindow.height
+            width: mainWindow.myWidth * 2/7
+            height: mainWindow.myHeight
             /*Text {
-                anchors.topMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
-                anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
-                anchors.leftMargin: (30 * mainWindow.width) / mainWindow.sourceWidth
-                anchors.rightMargin: (30 * mainWindow.width) / mainWindow.sourceWidth
+                anchors.topMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
+                anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
+                anchors.leftMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
+                anchors.rightMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
                 anchors.fill: parent
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: parent.width
-                font.pixelSize: (20 * mainWindow.height) / mainWindow.sourceHeight
+                font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                 text: game.state === "moveState" ? game.currentPlayer.name + ", make your move!" : (game.state === "castSpellState" ? game.currentPlayer.name + ", cast your spell!" : "")
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 color: "#00FF00"
                 visible: hoveredCreature === undefined
             }*/
             BackButton {
-                //x: gameViewBackRowStatusBack.x - width - (20 * mainWindow.width / mainWindow.sourceWidth)
-                //y: mainWindow.height - height - (50 * mainWindow.height / mainWindow.sourceHeight)
-                //anchors.bottomMargin: 10 * mainWindow.height / mainWindow.sourceHeight
+                //x: gameViewBackRowStatusBack.x - width - (20 * mainWindow.myWidth / mainWindow.sourceWidth)
+                //y: mainWindow.myHeight - height - (50 * mainWindow.myHeight / mainWindow.sourceHeight)
+                //anchors.bottomMargin: 10 * mainWindow.myHeight / mainWindow.sourceHeight
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
+                anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
                 anchors.horizontalCenter: parent.horizontalCenter
                 onBackClicked: {
                     if (checkInput()) return;
@@ -288,30 +290,30 @@ Rectangle {
                 }
             }
             Column {
-                anchors.topMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
-                anchors.bottomMargin: (80 * mainWindow.height) / mainWindow.sourceHeight
-                anchors.leftMargin: (30 * mainWindow.width) / mainWindow.sourceWidth
-                anchors.rightMargin: (30 * mainWindow.width) / mainWindow.sourceWidth
+                anchors.topMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
+                anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
+                anchors.leftMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
+                anchors.rightMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
                 anchors.fill: parent
                 visible: hoveredCreature !== null
                 enabled: hoveredCreature !== null
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: parent.width
-                    font.pixelSize: (20 * mainWindow.height) / mainWindow.sourceHeight
+                    font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                     text: hoveredCreature && hoveredCreature.species === "wizard" ? hoveredCreature.name : hoveredCreature ? hoveredCreature.player.name + "'s " + hoveredCreature.species : ""
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
                 }
                 Item {
-                    height: (20 * mainWindow.height) / mainWindow.sourceHeight
+                    height: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                     width: 100
                 }
                 Grid {
                     flow: Grid.LeftToRight
                     columns: 2
                     visible: hoveredCreature !== null && hoveredCreature !== undefined
-                    spacing: (10 * mainWindow.width) / mainWindow.sourceWidth
+                    spacing: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
                     GrowingText {
                         text: hoveredCreature && hoveredCreature.species === "wizard" ? qsTr("Spell Points", "Spell Points in game status view") : ""
                         color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
@@ -399,7 +401,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         horizontalAlignment: Text.AlignHCenter
-        anchors.margins: 10 * mainWindow.height / mainWindow.sourceHeight
+        anchors.margins: 10 * mainWindow.myHeight / mainWindow.sourceHeight
         font.family: "VivaldiD"
         color: "white"
     }

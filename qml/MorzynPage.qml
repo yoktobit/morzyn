@@ -3,17 +3,18 @@ import Sailfish.Silica 1.0
 import QtMultimedia 5.0
 
 Page {
-    id: morzynPage
+    id: mainWindow1
     allowedOrientations: Qt.LandscapeOrientation
+
+    onWidthChanged: {
+        console.log("Width:" + mainWindow.myWidth);
+    }
+    onHeightChanged: {
+        console.log("Height: " + mainWindow.myHeight);
+    }
+
     SilicaGridView {
         anchors.fill: parent
-        id: mainWindow
-
-        property int sourceWidth: 693
-        property int sourceHeight: 499
-
-        property bool playSounds: true
-        property bool titleSoundLastPlayState: false
 
         Loader {
             anchors.fill: parent
@@ -27,9 +28,9 @@ Page {
         }
 
         Connections {
-            target: morzynApp
+            target: mainWindow
             onApplicationActiveChanged: {
-                if (!morzynApp.applicationActive)
+                if (!mainWindow.applicationActive)
                 {
                     mainWindow.playSounds = false;
                     if (titleSound.playbackState == Audio.PlayingState)
@@ -60,8 +61,9 @@ Page {
 
         Audio {
             id: titleSound
-            source: "sounds/morzyn intro.mp3"
-            autoPlay: true
+            // temporary disabled
+            source: null//"sounds/morzyn intro.mp3"
+            autoPlay: false
             loops: Audio.Infinite
             Behavior on volume {
                 PropertyAnimation {

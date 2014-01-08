@@ -5,6 +5,6 @@ import QtQuick 2.1
 
 Text {
     property int standardSize: 14
-    font.pixelSize: (standardSize * mainWindow.height) / mainWindow.sourceHeight
+    font.pixelSize: (standardSize * mainWindow.myHeight) / mainWindow.sourceHeight
     height: font.pixelSize + 2
 }

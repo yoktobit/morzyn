@@ -18,9 +18,9 @@ Rectangle {
     Image {
         id: playerColorSelectorImage
         source: "images/" + imageFilename // playerColors.get(current).file
-        width: height * sourceSize.width / sourceSize.height
-        height: (sourceSize.height * mainWindow.height) / mainWindow.sourceHeight
-
+        width: height //* sourceSize.width / sourceSize.height
+        height: (sourceSize.height * mainWindow.myHeight) / mainWindow.sourceHeight
+        anchors.centerIn: parent
         MouseArea {
             anchors.fill: parent
             acceptedButtons: Qt.LeftButton

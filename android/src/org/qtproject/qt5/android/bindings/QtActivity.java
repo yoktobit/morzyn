@@ -1372,33 +1372,33 @@ public class QtActivity extends Activity
     //////////////// Activity API 12 /////////////
 
 //@ANDROID-12
-//QtCreator     @Override
-//QtCreator     public boolean dispatchGenericMotionEvent(MotionEvent ev)
-//QtCreator     {
-//QtCreator         if (QtApplication.m_delegateObject != null  && QtApplication.dispatchGenericMotionEvent != null)
-//QtCreator             return (Boolean) QtApplication.invokeDelegateMethod(QtApplication.dispatchGenericMotionEvent, ev);
-//QtCreator         else
-//QtCreator             return super.dispatchGenericMotionEvent(ev);
-//QtCreator     }
-//QtCreator     public boolean super_dispatchGenericMotionEvent(MotionEvent event)
-//QtCreator     {
-//QtCreator         return super.dispatchGenericMotionEvent(event);
-//QtCreator     }
-//QtCreator     //---------------------------------------------------------------------------
-//QtCreator 
-//QtCreator     @Override
-//QtCreator     public boolean onGenericMotionEvent(MotionEvent event)
-//QtCreator     {
-//QtCreator         if (QtApplication.m_delegateObject != null  && QtApplication.onGenericMotionEvent != null)
-//QtCreator             return (Boolean) QtApplication.invokeDelegateMethod(QtApplication.onGenericMotionEvent, event);
-//QtCreator         else
-//QtCreator             return super.onGenericMotionEvent(event);
-//QtCreator     }
-//QtCreator     public boolean super_onGenericMotionEvent(MotionEvent event)
-//QtCreator     {
-//QtCreator         return super.onGenericMotionEvent(event);
-//QtCreator     }
-//QtCreator     //---------------------------------------------------------------------------
+    @Override
+    public boolean dispatchGenericMotionEvent(MotionEvent ev)
+    {
+        if (QtApplication.m_delegateObject != null  && QtApplication.dispatchGenericMotionEvent != null)
+            return (Boolean) QtApplication.invokeDelegateMethod(QtApplication.dispatchGenericMotionEvent, ev);
+        else
+            return super.dispatchGenericMotionEvent(ev);
+    }
+    public boolean super_dispatchGenericMotionEvent(MotionEvent event)
+    {
+        return super.dispatchGenericMotionEvent(event);
+    }
+    //---------------------------------------------------------------------------
+
+    @Override
+    public boolean onGenericMotionEvent(MotionEvent event)
+    {
+        if (QtApplication.m_delegateObject != null  && QtApplication.onGenericMotionEvent != null)
+            return (Boolean) QtApplication.invokeDelegateMethod(QtApplication.onGenericMotionEvent, event);
+        else
+            return super.onGenericMotionEvent(event);
+    }
+    public boolean super_onGenericMotionEvent(MotionEvent event)
+    {
+        return super.onGenericMotionEvent(event);
+    }
+    //---------------------------------------------------------------------------
 //@ANDROID-12
 
 }

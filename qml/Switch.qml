@@ -9,8 +9,8 @@ Rectangle {
     property int currentIndex: 0
     property string selectedItem: model.get(currentIndex)
 
-    width: (100 * mainWindow.width) / mainWindow.sourceWidth
-    height: (25 * mainWindow.height) / mainWindow.sourceHeight
+    width: (100 * mainWindow.myWidth) / mainWindow.sourceWidth
+    height: (25 * mainWindow.myHeight) / mainWindow.sourceHeight
     border.width: 1
     border.color: "red"
     color: "black"
@@ -30,7 +30,7 @@ Rectangle {
 
     Text {
         id: dropListText
-        font.pixelSize: (20 * mainWindow.height) / mainWindow.sourceHeight
+        font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
         anchors.centerIn: parent
         color: "red"
         text: selectedItem

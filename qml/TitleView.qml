@@ -40,7 +40,10 @@ Rectangle {
     onVisibleChanged: {
         if (visible)
         {
-            titleSound.volume = 1.0;
+            if (os !== "sailfish")
+                titleSound.volume = 1.0;
+            else
+                titleSound.play();
         }
     }
     anchors.fill: parent

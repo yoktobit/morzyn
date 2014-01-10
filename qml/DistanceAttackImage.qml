@@ -14,57 +14,69 @@ Image {
 
     Audio {
         id: distFire01
-        source: "sounds/distfire01.mp3"
+        source: "sounds/distfire01.wav"
+        autoLoad: true
     }
     Audio {
         id: distFire02
-        source: "sounds/distfire02.mp3"
+        source: "sounds/distfire02.wav"
+        autoLoad: true
     }
     Audio {
         id: distFire03
         source: "sounds/distfire03.mp3"
+        autoLoad: true
     }
 
     Audio {
         id: distFly01
         source: "sounds/distfly01.mp3"
-        volume: 0.5
+        //volume: 0.5
+        autoLoad: true
     }
     Audio {
         id: distFly02
         source: "sounds/distfly02.mp3"
-        volume: 0.5
+        //volume: 0.5
+        autoLoad: true
     }
     Audio {
         id: distFly03
         source: "sounds/distfly03.mp3"
-        volume: 0.5
+        //volume: 0.5
+        autoLoad: true
     }
 
     Audio {
         id: distHit01
-        source: "sounds/disthit01.mp3"
+        source: "sounds/disthit01.wav"
+        autoLoad: true
     }
     Audio {
         id: distHit02
         source: "sounds/disthit02.mp3"
+        autoLoad: true
     }
     Audio {
         id: distHit03
         source: "sounds/disthit03.mp3"
+        autoLoad: true
     }
 
     Audio {
         id: distMiss01
         source: "sounds/distmiss01.mp3"
+        autoLoad: true
     }
     Audio {
         id: distMiss02
         source: "sounds/distmiss02.mp3"
+        autoLoad: true
     }
     Audio {
         id: distMiss03
         source: "sounds/distmiss03.mp3"
+        autoLoad: true
     }
 
     function playOneOf(sound1, sound2, sound3)
@@ -151,7 +163,6 @@ Image {
                 {
                     playOneOf(distMiss01, distMiss02, distMiss03);
                 }
-                //
                 distanceAttackImageRotation.stop();
                 visible = false;
 

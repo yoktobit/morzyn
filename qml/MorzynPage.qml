@@ -17,6 +17,7 @@ Page {
         anchors.fill: parent
 
         Loader {
+            id: viewViews
             anchors.fill: parent
             source: "Views.qml"
             asynchronous: true
@@ -24,7 +25,7 @@ Page {
         }
 
         TitleView {
-            visible: game.state === "titleScreenState"
+            visible: game.state === "titleScreenState" || viewViews.status !== Loader.Ready
         }
 
         Connections {
@@ -62,10 +63,10 @@ Page {
         Audio {
             id: titleSound
             // temporary disabled
-            source: null//"sounds/morzyn intro.mp3"
+            source: "sounds/morzyn intro.mp3"
             autoPlay: false
             loops: Audio.Infinite
-            Behavior on volume {
+            /*Behavior on volume {
                 PropertyAnimation {
                     duration: 2000
                     onRunningChanged: {
@@ -78,7 +79,14 @@ Page {
                         }
                     }
                 }
-            }
+            }*/
+        }
+        Audio {
+            id: noSound
+            source: "sounds/noSound.wav"
+        }
+        Component.onCompleted: {
+            noSound.play();
         }
     }
 }

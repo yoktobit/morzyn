@@ -68,7 +68,8 @@ Item {
             {
                 if (!titleSound.playing() && mainWindow.applicationActive)
                 {
-                    titleSound.volume = 1.0;
+                    if (os !== "sailfish")
+                        titleSound.volume = 1.0;
                     titleSound.play();
                 }
             }

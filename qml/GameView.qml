@@ -139,42 +139,45 @@ Rectangle {
                 gameService.placePlayers();
                 console.log("ImageFilename Player 0" + game.creatures[0].imageFilename);
                 allreadyShown = true;
-                titleSound.volume = 0.0;
+                if (os !== "sailfish")
+                    titleSound.volume = 0.0;
+                else
+                    titleSound.pause();
             }
         }
     }
 
-    Audio {
+    SoundEffect {
         id: meleeHit1
-        source: "sounds/meleehit01.mp3"
+        source: "sounds/meleehit01.wav"
     }
-    Audio {
+    SoundEffect {
         id: meleeHit2
-        source: "sounds/meleehit02.mp3"
+        source: "sounds/meleehit02.wav"
     }
-    Audio {
+    SoundEffect {
         id: meleeHit3
-        source: "sounds/meleehit03.mp3"
+        source: "sounds/meleehit03.wav"
     }
-    Audio {
+    SoundEffect {
         id: meleeHit4
-        source: "sounds/meleehit04.mp3"
+        source: "sounds/meleehit04.wav"
     }
-    Audio {
+    SoundEffect {
         id: meleeHit5
-        source: "sounds/meleehit05.mp3"
+        source: "sounds/meleehit05.wav"
     }
-    Audio {
+    SoundEffect {
         id: meleeMiss1
-        source: "sounds/meleemiss01.mp3"
+        source: "sounds/meleemiss01.wav"
     }
-    Audio {
+    SoundEffect {
         id: meleeMiss2
-        source: "sounds/meleemiss02.mp3"
+        source: "sounds/meleemiss02.wav"
     }
-    Audio {
+    SoundEffect {
         id: meleeMiss3
-        source: "sounds/meleemiss03.mp3"
+        source: "sounds/meleemiss03.wav"
     }
 
     function emptyFieldClicked(index)

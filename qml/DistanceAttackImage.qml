@@ -12,76 +12,58 @@ Image {
     visible: false
     signal animationFinished(var attackedCreature, int nDamage)
 
-    Audio {
+    SoundEffect {
         id: distFire01
         source: "sounds/distfire01.wav"
-        autoLoad: true
     }
-    Audio {
+    SoundEffect {
         id: distFire02
         source: "sounds/distfire02.wav"
-        autoLoad: true
     }
-    Audio {
+    SoundEffect {
         id: distFire03
-        source: "sounds/distfire03.mp3"
-        autoLoad: true
+        source: "sounds/distfire03.wav"
     }
-
-    Audio {
+    SoundEffect {
         id: distFly01
-        source: "sounds/distfly01.mp3"
-        //volume: 0.5
-        autoLoad: true
+        source: "sounds/distfly01.wav"
     }
-    Audio {
+    SoundEffect {
         id: distFly02
-        source: "sounds/distfly02.mp3"
-        //volume: 0.5
-        autoLoad: true
+        source: "sounds/distfly02.wav"
     }
-    Audio {
+    SoundEffect {
         id: distFly03
-        source: "sounds/distfly03.mp3"
-        //volume: 0.5
-        autoLoad: true
+        source: "sounds/distfly03.wav"
     }
-
-    Audio {
+    SoundEffect {
         id: distHit01
         source: "sounds/disthit01.wav"
-        autoLoad: true
     }
-    Audio {
+    SoundEffect {
         id: distHit02
-        source: "sounds/disthit02.mp3"
-        autoLoad: true
+        source: "sounds/disthit02.wav"
     }
-    Audio {
+    SoundEffect {
         id: distHit03
-        source: "sounds/disthit03.mp3"
-        autoLoad: true
+        source: "sounds/disthit03.wav"
     }
-
-    Audio {
+    SoundEffect {
         id: distMiss01
-        source: "sounds/distmiss01.mp3"
-        autoLoad: true
+        source: "sounds/distmiss01.wav"
     }
-    Audio {
+    SoundEffect {
         id: distMiss02
-        source: "sounds/distmiss02.mp3"
-        autoLoad: true
+        source: "sounds/distmiss02.wav"
     }
-    Audio {
+    SoundEffect {
         id: distMiss03
-        source: "sounds/distmiss03.mp3"
-        autoLoad: true
+        source: "sounds/distmiss03.wav"
     }
 
     function playOneOf(sound1, sound2, sound3)
     {
-        if (!mainWindow.playSounds) return;
+        if (!mainWindow.playSounds || os === "sailfish") return;
         var randomnumber = Math.floor(Math.random() * 3);
         console.log("DistFire " + randomnumber);
         switch (randomnumber)
@@ -154,12 +136,11 @@ Image {
             if (!running)
             {
                 animationFinished(attackedCreature, nDamage);
-                distFly01.stop(); distFly02.stop(); distFly03.stop();
-                if (nDamage > 0 && (!attackingCreature.immune || attackingCreature.immune !== attackedCreature.immune))
+                if (nDamage > 0 && (!attackingCreature.immune || attackingCreature.immune !== attackedCreature.immune) && os !== "sailfish")
                 {
                     playOneOf(distHit01, distHit02, distHit03);
                 }
-                else
+                else if (os !== "sailfish")
                 {
                     playOneOf(distMiss01, distMiss02, distMiss03);
                 }
@@ -189,8 +170,10 @@ Image {
         console.log("toY: " + distanceAttackImageAnimationY.to);
         visible = true;
         distanceAttackImageAnimation.start();
-        playOneOf(distFire01, distFire02, distFire03);
-        playOneOf(distFly01, distFly02, distFly03);
+        if (os !== "sailfish") {
+            playOneOf(distFire01, distFire02, distFire03);
+            playOneOf(distFly01, distFly02, distFly03);
+        }
         if (attackingCreature.distanceImageFilename.indexOf("arrow") < 0)
         {
             distanceAttackImageRotation.start();

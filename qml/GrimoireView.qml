@@ -16,46 +16,63 @@ Rectangle {
         source: "images/titleback.png"
         anchors.fill: parent
     }
-    ListView {
-        id: grimoireLeftList
+    Rectangle {
+        color: "#AAEEEEEE"
         visible: creature1 === null
         x: parent.width * 0.2
         y: parent.height * 0.1
         width: parent.width * 0.3
         height: parent.height * 0.6
-        model: library.creatures
-        delegate: GrowingText {
-            standardSize: 18
-            text: modelData.species
-            color: "green"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    creature1 = modelData;
-                    grimoireLeftImages.model = gameService.getCreatureImages(creature1.imageFilePattern);
-                    console.log(modelData.species);
-                    console.log(modelData.unitClass);
+        ListView {
+            id: grimoireLeftList
+            anchors.fill: parent
+            anchors.margins: (18 * mainWindow.myHeight) / mainWindow.sourceHeight
+            model: library.creatures
+            delegate: GrowingText {
+                standardSize: 18
+                text: modelData.species
+                color: "green"
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        creature1 = modelData;
+                        grimoireLeftImages.model = gameService.getCreatureImages(creature1.imageFilePattern);
+                        console.log(modelData.species);
+                        console.log(modelData.unitClass);
+                    }
                 }
             }
         }
     }
-    ListView {
-        id: grimoireRightList
+    GrowingText {
+        text: "VS"
+        standardSize: 30
+        x: parent.width * 0.525
+        y: parent.height * 0.4
+    }
+
+    Rectangle {
+        color: "#AAEEEEEE"
         visible: creature2 === null
         x: parent.width * 0.6
         y: parent.height * 0.1
         width: parent.width * 0.3
         height: parent.height * 0.6
-        model: library.creatures
-        delegate: GrowingText {
-            standardSize: 18
-            text: modelData.species
-            color: "green"
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    creature2 = modelData;
-                    grimoireRightImages.model = gameService.getCreatureImages(creature2.imageFilePattern);
+        ListView {
+            id: grimoireRightList
+            anchors.fill: parent
+            anchors.margins: (18 * mainWindow.myHeight) / mainWindow.sourceHeight
+            model: library.creatures
+            delegate: GrowingText {
+                standardSize: 18
+                text: modelData.species
+                color: "green"
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        creature2 = modelData;
+                        grimoireRightImages.model = gameService.getCreatureImages(creature2.imageFilePattern);
+                    }
                 }
             }
         }

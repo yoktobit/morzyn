@@ -46,7 +46,7 @@ Rectangle {
 
     function playMeleeHit()
     {
-        if (!mainWindow.playSounds) return;
+        if (!mainWindow.playSounds || os === "sailfish") return;
         var randomnumber = Math.floor(Math.random() * 5);
         console.log("MeleeHit " + randomnumber);
         switch (randomnumber)
@@ -76,7 +76,7 @@ Rectangle {
 
     function playMeleeMiss()
     {
-        if (!mainWindow.playSounds) return;
+        if (!mainWindow.playSounds || os === "sailfish") return;
         var randomnumber = Math.floor(Math.random() * 3);
         console.log("MeleeMiss " + randomnumber);
         switch (randomnumber)

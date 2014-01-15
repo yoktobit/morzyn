@@ -3,6 +3,7 @@ import QtMultimedia 5.0
 import harbour.morzyn 1.0
 
 Item {
+    id: allViews
     anchors.fill: parent
     focus: true
     FontLoader {
@@ -47,6 +48,10 @@ Item {
     GrimoireView {
         id: grimoireView
         visible: game.state === "grimoireState"
+    }
+    OptionsView {
+        id: optionsView
+        visible: game.state === "optionsState"
     }
 
     GameView {

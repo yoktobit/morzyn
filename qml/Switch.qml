@@ -7,7 +7,8 @@ Rectangle {
     id: theswitch
     property ListModel model
     property int currentIndex: 0
-    property string selectedItem: model.get(currentIndex)
+    property string selectedItem: model.get(currentIndex).name
+    property string selectedValue: model.get(currentIndex).value
 
     width: (100 * mainWindow.myWidth) / mainWindow.sourceWidth
     height: (25 * mainWindow.myHeight) / mainWindow.sourceHeight
@@ -33,17 +34,18 @@ Rectangle {
         font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
         anchors.centerIn: parent
         color: "red"
-        text: selectedItem
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                console.log("Selected " + model.name);
-                currentIndex++;
-                currentIndex = currentIndex % model.count;
-                selectedItem = model.get(currentIndex).name;
-                playerColorSelector.current = (selectedItem != "dark priest" ? Math.min(playerColorSelector.current, 9) : playerColorSelector.current);
-                playerColorSelector.set();
-            }
+        text: selectedItem   
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            console.log("Selected " + model.name);
+            currentIndex++;
+            currentIndex = currentIndex % model.count;
+            selectedItem = model.get(currentIndex).name;
+            selectedValue = model.get(currentIndex).value
+            playerColorSelector.current = (selectedItem != "dark priest" ? Math.min(playerColorSelector.current, 9) : playerColorSelector.current);
+            playerColorSelector.set();
         }
     }
     Component.onCompleted: {

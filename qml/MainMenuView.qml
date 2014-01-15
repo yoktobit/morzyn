@@ -55,9 +55,18 @@ Rectangle {
         }
     }
     MorzynButton {
-        id: mainMenuQuitButton
+        id: mainMenuOptionsButton
         x: parent.width * 0.6
         y: parent.height * 0.5
+        text: qsTr("Options", "Options in main menu")
+        onClicked: {
+            game.state = "optionsState";
+        }
+    }
+    MorzynButton {
+        id: mainMenuQuitButton
+        x: parent.width * 0.6
+        y: parent.height * 0.7
         text: qsTr("Quit", "Quit in main menu")
         onClicked: {
             gameService.quit();

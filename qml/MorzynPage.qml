@@ -22,6 +22,12 @@ Page {
             source: "Views.qml"
             asynchronous: true
             visible: status == Loader.Ready
+            onStatusChanged: {
+                if (game.state === "titleScreenState" && status === Loader.Ready)
+                {
+                    game.state = "mainMenuState";
+                }
+            }
         }
 
         TitleView {

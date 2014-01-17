@@ -18,6 +18,8 @@ ApplicationWindow {
     property bool playSounds: true
     property bool titleSoundLastPlayState: false
 
+    property bool
+
     initialPage:
         Component { MorzynPage {} }
     Component.onCompleted: {

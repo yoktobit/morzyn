@@ -15,8 +15,8 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 titleViewTimer.stop();
-                game.state = "mainMenuState";
-                exitTitle();
+                //game.state = "mainMenuState";
+                //exitTitle();
             }
         }
         Image {
@@ -24,7 +24,6 @@ Rectangle {
             anchors.centerIn: parent
             width: height * sourceSize.width / sourceSize.height
             height: ((sourceSize.height * mainWindow.myHeight) / 600)
-
         }
     }
     Timer {
@@ -33,8 +32,8 @@ Rectangle {
         repeat: false
         running: true
         onTriggered: {
-            game.state = "mainMenuState";
-            exitTitle();
+            //game.state = "mainMenuState";
+            //exitTitle();
         }
     }
     onVisibleChanged: {

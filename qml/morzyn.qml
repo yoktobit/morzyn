@@ -15,8 +15,12 @@ ApplicationWindow {
 
     property double sourceWidth: 693
     property double sourceHeight: 499
+
     property bool playSounds: true
     property bool titleSoundLastPlayState: false
+
+    property bool soundActivated: gameService.getBoolSetting("sound")
+    property bool musicActivated: gameService.getBoolSetting("music")
 
     property bool
 

@@ -29,6 +29,7 @@ class Game : public QObject
     Q_PROPERTY(int lastDamage READ lastDamage WRITE setLastDamage NOTIFY lastDamageChanged)
     Q_PROPERTY(bool hasBegun READ hasBegun WRITE setHasBegun NOTIFY hasBegunChanged)
     Q_PROPERTY(bool manaMode READ manaMode WRITE setManaMode NOTIFY manaModeChanged)
+
 public:
     explicit Game(QObject *parent = 0);
     void reset();

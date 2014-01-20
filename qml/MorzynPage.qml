@@ -40,7 +40,7 @@ Page {
                 if (!mainWindow.applicationActive)
                 {
                     mainWindow.playSounds = false;
-                    if (titleSound.playbackState == Audio.PlayingState)
+                    if (gameService.isTitleSongPlaying())
                     {
                         mainWindow.titleSoundLastPlayState = true;
                         console.log("TitleSound was running");
@@ -50,8 +50,7 @@ Page {
                         mainWindow.titleSoundLastPlayState = false;
                         console.log("TitleSound was not running");
                     }
-
-                    titleSound.pause();
+                    gameService.playTitleSong(false);
                     console.log("TitleSound stopped");
                 }
                 else
@@ -59,7 +58,7 @@ Page {
                     mainWindow.playSounds = true;
                     if (mainWindow.titleSoundLastPlayState)
                     {
-                        titleSound.play();
+                        gameService.playTitleSong(true);
                         console.log("TitleSound resumed");
                     }
                 }

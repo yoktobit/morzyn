@@ -23,6 +23,7 @@ GameService::GameService(QObject *parent) :
 {
     //connect(statemanager, SIGNAL(playerSwitched(Player*)), SLOT(initPlayerForNewRound(Player*)));
     //connect(statemanager->totalPlayerCountState, SIGNAL(entered()), this, SLOT(resetGame()));
+    titleSound = NULL;
 }
 
 QList<int> GameService::generateDistinctNumberList(int count, int min, int max)
@@ -1243,34 +1244,46 @@ void GameService::getEnemiesAround(Creature *creature, QList<Creature *> &lstEne
     }
 }
 
-void GameService::playTitleSong(bool /*startstop*/)
+bool GameService::isTitleSongPlaying()
 {
-//    if (!titleSongPlayer)
-//    {
-//        titleSongPlayer = new QMediaPlayer;
-//        titleSongPlayer->setMedia(QUrl("qml/morzyn/sounds/morzyn mystic.mp3"));
-//        qDebug() << titleSongPlayer->availability();
-//        titleSongPlayer->play();
-//        qDebug() << "Loaded song " << "qml/morzyn/sounds/morzyn mystic.mp3";
-//    }
-//    if (startstop)
-//    {
-//        QPropertyAnimation* animation = new QPropertyAnimation(titleSongPlayer, "volume", this);
-//        animation->setDuration(2000);
-//        animation->setStartValue(0);
-//        animation->setEndValue(100);
-//        qDebug() << "Fading in song " << "qml/morzyn/sounds/morzyn mystic.mp3";
-//        animation->start(QAbstractAnimation::DeleteWhenStopped);
-//    }
-//    else
-//    {
-//        QPropertyAnimation* animation = new QPropertyAnimation(titleSongPlayer, "volume", this);
-//        animation->setDuration(2000);
-//        animation->setStartValue(100);
-//        animation->setEndValue(0);
-//        qDebug() << "Fading out song " << "qml/morzyn/sounds/morzyn mystic.mp3";
-//        animation->start(QAbstractAnimation::DeleteWhenStopped);
-    //    }
+    return titleSound && titleSound->state() == QMediaPlayer::PlayingState;
+}
+
+void GameService::playTitleSong(bool startstop)
+{
+    bool musicAllowed = settings->value("music", false).toBool();
+    if (!titleSound)
+    {
+        titleSound = new QMediaPlayer;
+#ifdef SAILFISH
+    QString file(SailfishApp::pathTo("qml/sounds/morzyn intro.mp3").toLocalFile());
+#else
+    QString file("qml/sounds/morzyn intro.mp3");
+#endif
+        titleSound->setMedia(QUrl::fromLocalFile(file));
+        qDebug() << titleSound->availability();
+        qDebug() << "Loaded song " << "qml/morzyn/sounds/morzyn intro.mp3";
+    }
+    if (musicAllowed && startstop && titleSound->state() != QMediaPlayer::PlayingState)
+    {
+        QPropertyAnimation* animation = new QPropertyAnimation(titleSound, "volume", this);
+        animation->setDuration(2000);
+        animation->setStartValue(0);
+        animation->setEndValue(100);
+        qDebug() << "Fading in song " << "qml/morzyn/sounds/morzyn intro.mp3";
+        animation->start(QAbstractAnimation::DeleteWhenStopped);
+        titleSound->play();
+    }
+    else if (!musicAllowed || !startstop && titleSound->state() == QMediaPlayer::PlayingState)
+    {
+        QPropertyAnimation* animation = new QPropertyAnimation(titleSound, "volume", this);
+        animation->setDuration(2000);
+        animation->setStartValue(100);
+        animation->setEndValue(0);
+        qDebug() << "Fading out song " << "qml/morzyn/sounds/morzyn intro.mp3";
+        connect(animation, SIGNAL(finished()), titleSound, SLOT(pause()));
+        animation->start(QAbstractAnimation::DeleteWhenStopped);
+    }
 }
 
 void GameService::getRandomPlayerColor(Player *player)
@@ -1347,6 +1360,7 @@ void GameService::setFullScreen(bool fullscreen)
     {
         viewer->showNormal();
     }
+    setBoolSetting("fullscreen", fullscreen);
 }
 
 void GameService::simulateFight(Creature *c1, Creature *c2)
@@ -1418,6 +1432,25 @@ IAI *GameService::getAI(Player *player)
 {
     if (!game->m_AI.contains(player)) return NULL;
     return game->m_AI[player];
+}
+
+void GameService::saveSettings(bool bMusic, bool bSound, bool bFullscreen)
+{
+    settings->setValue("fullscreen", QVariant((bool) bFullscreen));
+}
+
+bool GameService::getBoolSetting(QString name)
+{
+    qDebug() << "Boolean Setting" << name << ":" << settings->value(name, QVariant((bool)false)).toBool();
+    return settings->value(name, QVariant((bool)false)).toBool();
+}
+
+void GameService::setBoolSetting(QString name, bool bValue)
+{
+    settings->setValue(name, QVariant((bool)bValue));
+    if (name == "music")
+        playTitleSong(bValue);
+    settings->sync();
 }
 
 void GameService::setGameMode(QString mode)
@@ -1512,6 +1545,11 @@ void GameService::setLibrary(Library *l)
 void GameService::setStatistics(Statistics *s)
 {
     this->statistics = s;
+}
+
+void GameService::setSettings(QSettings *s)
+{
+    this->settings = s;
 }
 
 void GameService::resetGame()

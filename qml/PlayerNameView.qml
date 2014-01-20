@@ -69,22 +69,25 @@ Rectangle {
             }
             Switch {
                 id: playerColorCategory
-                selectedItem: race
+                selectedValue: race
                 model: ListModel {
                     ListElement {
                         name: "rogue"
+                        value: "rogue"
                     }
                     ListElement {
                         name: "sorcerer"
+                        value: "sorcerer"
                     }
                     ListElement {
                         name: "warrior"
+                        value: "warrior"
                     }
                 }
-                onSelectedItemChanged: {
-                    console.log("Race: " + selectedItem);
-                    game.players[index].race = selectedItem;
-                    game.creatures[index].race = selectedItem;
+                onSelectedValueChanged: {
+                    console.log("Race: " + selectedValue);
+                    game.players[index].race = selectedValue;
+                    game.creatures[index].race = selectedValue;
                 }
             }
             /*DropList {

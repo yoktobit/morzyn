@@ -71,11 +71,15 @@ Item {
             // Neustart beim Zurückkehren
             if (game.state === "mainMenuState")
             {
-                if (!titleSound.playing() && mainWindow.applicationActive)
+                /*if (!titleSound.playing() && mainWindow.applicationActive)
                 {
                     if (os !== "sailfish")
                         titleSound.volume = 1.0;
                     titleSound.play();
+                }*/
+                if (mainWindow.applicationActive)
+                {
+                    gameService.playTitleSong(true);
                 }
             }
         }
@@ -87,7 +91,7 @@ Item {
         console.log("Library count: " + library.creatures.count);
     }
 
-    property bool fullscreen: false
+    property bool fullscreen: gameService.getBoolSetting("fullscreen");
     Keys.onPressed: {
         console.log("KEY_PRESSED: " + event.key)
         if ((event.key === Qt.Key_PageUp))

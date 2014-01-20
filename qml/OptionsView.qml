@@ -21,6 +21,7 @@ Item {
         Switch {
             id: switchFullscreen
             visible: os !== "sailfish"
+            selectedValue: gameService.getBoolSetting("fullscreen")
             model: ListModel {
                 ListElement {
                     name: "X"
@@ -32,9 +33,9 @@ Item {
                 }
             }
             onSelectedValueChanged: {
-                allViews.fullscreen = !allViews.fullscreen;
+                allViews.fullscreen = selectedValue === "true";
                 console.log(allViews.fullscreen);
-                gameService.setFullScreen(fullscreen);
+                gameService.setFullScreen(allViews.fullscreen);
             }
         }
         GrowingText {
@@ -43,6 +44,7 @@ Item {
         }
         Switch {
             id: switchMusic
+            selectedValue: mainWindow.musicActivated
             model: ListModel {
                 ListElement {
                     name: "X"
@@ -52,6 +54,10 @@ Item {
                     name: "-"
                     value: "false"
                 }
+            }
+            onSelectedValueChanged: {
+                mainWindow.musicActivated = selectedValue == "true";
+                gameService.setBoolSetting("music", mainWindow.musicActivated);
             }
         }
     }

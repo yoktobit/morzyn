@@ -10,12 +10,15 @@
 #include "constants.h"
 #include "dbloader.h"
 #include "statistics.h"
+#include <QSettings>
 #include <QtQuick/QQuickView>
+#include <QMediaPlayer>
 
 class GameService : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString message READ message WRITE setMessage NOTIFY messageChanged)
+
 public:
     explicit GameService(QObject *parent = 0);
     Q_INVOKABLE QList<int> generateDistinctNumberList(int count, int min, int max);
@@ -86,6 +89,8 @@ public:
     Q_INVOKABLE QStringList getCreatureImages(QString filenamePattern);
     Q_INVOKABLE IAI* getAI(Player* player);
     Q_INVOKABLE void saveSettings(bool bMusic, bool bSound, bool bFullscreen);
+    Q_INVOKABLE bool getBoolSetting(QString name);
+    Q_INVOKABLE void setBoolSetting(QString name, bool bValue);
     Q_INVOKABLE void setGameMode(QString mode);
     Q_INVOKABLE void initTutorialGame();
     Q_INVOKABLE void addTutorialPlayers();
@@ -108,22 +113,27 @@ public:
     void gotoMoveState();
     void emitCreatureDistanceAttacked(Creature *attackingCreature, Creature *attackedCreature, int nDamage);
 
+    QMediaPlayer* titleSound;
+
     //void setStateManager(StateManager* sm);
     void setGame(Game* g);
     void setConstants(Constants* c);
     void setLibrary(Library* l);
     void setStatistics(Statistics* s);
+    void setSettings(QSettings* s);
     //StateManager* statemanager;
     Game* game;
     Constants* config;
     Library* library;
     Statistics* statistics;
+    QSettings* settings;
     QQuickView* viewer;
     QString message() const
     {
         return m_message;
     }
 
+    Q_INVOKABLE bool isTitleSongPlaying();
 private:
 
     QString m_message;

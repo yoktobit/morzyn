@@ -13,6 +13,7 @@
 #include "../iai.h"
 #include <time.h>
 #include <QTranslator>
+#include <QSettings>
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -38,12 +39,23 @@ int main(int argc, char *argv[])
     //qInstallMessageHandler(myMessageOutput); //install : set the callback
     QGuiApplication app(argc, argv);
 
+    QCoreApplication::setOrganizationDomain("yoktobit");
+    QCoreApplication::setOrganizationName("yoktobit");
+    QCoreApplication::setApplicationName("morzyn");
+
     qmlRegisterType<Creature>("harbour.morzyn", 1,0 , "Creature");
     qmlRegisterType<Player>("harbour.morzyn", 1,0 , "Player");
     qmlRegisterType<Game>("harbour.morzyn", 1,0 , "Game");
     qmlRegisterType<Scroll>("harbour.morzyn", 1,0 , "Scroll");
     qmlRegisterType<Statistics>("harbour.morzyn", 1,0 , "Statistics");
     //qmlRegisterType<IAI>("harbour.morzyn", 1,0 , "IAI");
+
+    QSettings settings;
+    if (!settings.contains("fullscreen"))
+        settings.setValue("fullscreen", QVariant((bool)true));
+    bool bFullscreen = settings.value("fullscreen").toBool();
+    qDebug() << "Fullscreen:" << bFullscreen;
+    settings.sync();
 
     qsrand ( time(NULL) );
 
@@ -65,6 +77,7 @@ int main(int argc, char *argv[])
     gs.setConstants(&c);
     gs.setLibrary(&l);
     gs.setStatistics(&s);
+    gs.setSettings(&settings);
     gs.viewer = &viewer;
 
 #ifndef Q_OS_ANDROID
@@ -80,7 +93,10 @@ int main(int argc, char *argv[])
     viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
     viewer.setTitle("Morzyn v0.7.15");
     //viewer.showExpanded();
-    viewer.showFullScreen();
+    if (bFullscreen)
+        viewer.showFullScreen();
+    else
+        viewer.show();
 
     return app.exec();
 }

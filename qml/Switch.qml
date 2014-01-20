@@ -20,7 +20,7 @@ Rectangle {
     {
         for (var ii = 0; ii < model.count; ii++)
         {
-            if (model.get(ii).name === selectedItem)
+            if (model.get(ii).value === selectedValue)
             {
                 currentIndex = ii;
                 console.debug("currentIndex synced " + ii);
@@ -39,17 +39,17 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            console.log("Selected " + model.name);
+            console.log("Selected " + model.value);
             currentIndex++;
             currentIndex = currentIndex % model.count;
             selectedItem = model.get(currentIndex).name;
-            selectedValue = model.get(currentIndex).value
-            playerColorSelector.current = (selectedItem != "dark priest" ? Math.min(playerColorSelector.current, 9) : playerColorSelector.current);
+            selectedValue = model.get(currentIndex).value;
+            playerColorSelector.current = (selectedValue != "dark priest" ? Math.min(playerColorSelector.current, 9) : playerColorSelector.current);
             playerColorSelector.set();
         }
     }
     Component.onCompleted: {
-        console.debug("Switch completed with " + selectedItem);
+        console.debug("Switch completed with " + selectedValue);
         sync();
     }
 }

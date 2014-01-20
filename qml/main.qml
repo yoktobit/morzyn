@@ -19,6 +19,9 @@ Rectangle {
 
     property bool playSounds: true
 
+    property bool soundActivated: gameService.getBoolSetting("sound")
+    property bool musicActivated: gameService.getBoolSetting("music")
+
     Loader {
         anchors.fill: parent
         source: "Views.qml"
@@ -29,6 +32,7 @@ Rectangle {
             if (game.state === "titleScreenState" && status === Loader.Ready)
             {
                 game.state = "mainMenuState";
+                gameService.playTitleSong(true);
             }
         }
     }
@@ -37,7 +41,7 @@ Rectangle {
         visible: game.state === "titleScreenState"
     }
 
-    Audio {
+    /*Audio {
         id: titleSound
         source: "sounds/morzyn intro.mp3"
         autoPlay: true
@@ -56,7 +60,7 @@ Rectangle {
                 }
             }
         }
-    }
+    }*/
     /*
     MainMenuView {
         visible: game.state === "mainMenuState"

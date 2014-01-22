@@ -17,7 +17,7 @@ Rectangle {
         anchors.fill: parent
     }
     Rectangle {
-        color: "#AAEEEEEE"
+        color: "#AA222222"
         visible: creature1 === null
         x: parent.width * 0.2
         y: parent.height * 0.1
@@ -31,7 +31,7 @@ Rectangle {
             delegate: GrowingText {
                 standardSize: 18
                 text: modelData.species
-                color: "green"
+                color: "white"
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
@@ -52,7 +52,7 @@ Rectangle {
     }
 
     Rectangle {
-        color: "#AAEEEEEE"
+        color: "#AA222222"
         visible: creature2 === null
         x: parent.width * 0.6
         y: parent.height * 0.1
@@ -66,7 +66,7 @@ Rectangle {
             delegate: GrowingText {
                 standardSize: 18
                 text: modelData.species
-                color: "green"
+                color: "white"
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
@@ -77,17 +77,19 @@ Rectangle {
             }
         }
     }
-    Item {
+    Rectangle {
         id: grimoireLeftDetails
         visible: creature1 !== null
         x: parent.width * 0.2
         y: parent.height * 0.1
         width: parent.width * 0.3
         height: parent.height * 0.6
+        color: "#AA222222"
         Column {
-            anchors.fill: parent
+            anchors.centerIn: parent
             spacing: 10 * mainWindow.height / mainWindow.sourceHeight
             GrowingText {
+                color: "white"
                 standardSize: 20
                 text: creature1 ? creature1.species : ""
             }
@@ -108,7 +110,7 @@ Rectangle {
                 player: Player {
                     spellPoints: 10000
                 }
-                positiveColor: "black"
+                positiveColor: "white"
             }
         }
         MouseArea {
@@ -120,19 +122,21 @@ Rectangle {
         }
     }
 
-    Item {
+    Rectangle {
         id: grimoireRightDetails
         x: parent.width * 0.6
         y: parent.height * 0.1
         width: parent.width * 0.3
         height: parent.height * 0.6
         visible: creature2 !== null
+        color: "#AA222222"
         Column {
-            anchors.fill: parent
+            anchors.centerIn: parent
             spacing: 10 * mainWindow.height / mainWindow.sourceHeight
             GrowingText {
                 standardSize: 20
                 text: creature2 ? creature2.species : ""
+                color: "white"
             }
             ListView {
                 id: grimoireRightImages
@@ -151,7 +155,7 @@ Rectangle {
                 player: Player {
                     spellPoints: 10000
                 }
-                positiveColor: "black"
+                positiveColor: "white"
             }
         }
         MouseArea {
@@ -168,7 +172,7 @@ Rectangle {
         color: "red"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 140 * mainWindow.height / mainWindow.sourceHeight
+        anchors.bottomMargin: 100 * mainWindow.height / mainWindow.sourceHeight
         SequentialAnimation on opacity {
             id: longMessageAnimation
             running: false

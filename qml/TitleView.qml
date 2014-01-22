@@ -36,7 +36,7 @@ Rectangle {
             //exitTitle();
         }
     }
-    onVisibleChanged: {
+    /*onVisibleChanged: {
         if (visible)
         {
             if (os !== "sailfish")
@@ -44,6 +44,6 @@ Rectangle {
             else
                 titleSound.play();
         }
-    }
+    }*/
     anchors.fill: parent
 }

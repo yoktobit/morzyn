@@ -55,7 +55,7 @@ Rectangle {
                 Text {
                     font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                     text: hoverCreature ? hoverCreature.species : ""
-                    color: (!hoverCreature || hoverCreature.manaCost == "undefined") ? "#000000" : (game.currentPlayer.spellPoints >= hoverCreature.manaCost ? "#00FF00" : "red")
+                    color: (!hoverCreature || hoverCreature.manaCost == "undefined") ? "#000000" : (game.currentPlayer.spellPoints >= hoverCreature.manaCost ? "#FFFFFF" : "#AAAAAA")
                 }
                 Item {
                     height: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
@@ -70,14 +70,27 @@ Rectangle {
                     player: game.currentPlayer
                 }
 
-                Text {
-                    height: (50 * mainWindow.myHeight) / mainWindow.sourceHeight
-                    verticalAlignment: Text.AlignVCenter
-                    font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
-                    text: game.currentPlayer ? game.currentPlayer.spellPoints : ""
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    color: (!hoverCreature || hoverCreature.manaCost == "undefined") ? "#000000" : (game.currentPlayer.spellPoints >= hoverCreature.manaCost ? "#00FF00" : "red")
-                }
+
+            }
+            GrowingText {
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: (145 * mainWindow.myHeight) / mainWindow.sourceHeight
+                color: "#0000FF"
+                standardSize: 15
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Available mana", "available mana in SpellSelectView")
+            }
+
+            Text {
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: (105 * mainWindow.myHeight) / mainWindow.sourceHeight
+                height: (50 * mainWindow.myHeight) / mainWindow.sourceHeight
+                verticalAlignment: Text.AlignVCenter
+                font.bold: true
+                font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
+                text: game.currentPlayer ? game.currentPlayer.spellPoints : ""
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: "#0000FF"
             }
         }
     }
@@ -107,18 +120,16 @@ Rectangle {
                 //width: 230
                 font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
                 font.family: "VivaldiD"
-                color: game.currentPlayer.spellPoints >= manaCost ? "#00FF00" : "red"
+                color: game.currentPlayer.spellPoints >= manaCost ? "#FFFFFF" : "#AAAAAA"
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
                     acceptedButtons: Qt.LeftButton
                     //propagateComposedEvents: true
                     onEntered: {
-                        //parent.color = "red";
                         hoverCreature = modelData;
                     }
                     onExited: {
-                        //parent.color = "black";
                     }
                     onClicked: {
                         if (checkInput()) return;

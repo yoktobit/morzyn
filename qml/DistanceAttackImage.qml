@@ -155,7 +155,7 @@ Image {
         id: distanceAttackImageRotation
         from: 0
         to: 360
-        duration: 400
+        duration: 800
         running: false
         loops: Animation.Infinite
     }

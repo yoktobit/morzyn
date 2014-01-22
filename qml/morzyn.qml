@@ -22,8 +22,6 @@ ApplicationWindow {
     property bool soundActivated: gameService.getBoolSetting("sound")
     property bool musicActivated: gameService.getBoolSetting("music")
 
-    property bool
-
     initialPage:
         Component { MorzynPage {} }
     Component.onCompleted: {

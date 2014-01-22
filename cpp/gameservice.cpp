@@ -1264,21 +1264,21 @@ void GameService::playTitleSong(bool startstop)
         qDebug() << titleSound->availability();
         qDebug() << "Loaded song " << "qml/morzyn/sounds/morzyn intro.mp3";
     }
-    if (musicAllowed && startstop && titleSound->state() != QMediaPlayer::PlayingState)
+    if (musicAllowed && startstop /* && titleSound->state() != QMediaPlayer::PlayingState*/)
     {
         QPropertyAnimation* animation = new QPropertyAnimation(titleSound, "volume", this);
         animation->setDuration(2000);
-        animation->setStartValue(0);
+        //animation->setStartValue(0);
         animation->setEndValue(100);
         qDebug() << "Fading in song " << "qml/morzyn/sounds/morzyn intro.mp3";
         animation->start(QAbstractAnimation::DeleteWhenStopped);
         titleSound->play();
     }
-    else if (!musicAllowed || !startstop && titleSound->state() == QMediaPlayer::PlayingState)
+    else if (!musicAllowed || (!startstop /*&& titleSound->state() == QMediaPlayer::PlayingState*/))
     {
         QPropertyAnimation* animation = new QPropertyAnimation(titleSound, "volume", this);
         animation->setDuration(2000);
-        animation->setStartValue(100);
+        //animation->setStartValue(100);
         animation->setEndValue(0);
         qDebug() << "Fading out song " << "qml/morzyn/sounds/morzyn intro.mp3";
         connect(animation, SIGNAL(finished()), titleSound, SLOT(pause()));

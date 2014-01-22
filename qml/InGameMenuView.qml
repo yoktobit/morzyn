@@ -16,15 +16,15 @@ Rectangle {
             source: "images/wiese.png"
             opacity: 0.1
             visible: true
-            width: (sourceSize.width * mainWindow.myWidth) / mainWindow.sourceWidth
-            height: (sourceSize.height * mainWindow.myHeight) / mainWindow.sourceHeight
+            width: mainWindow.myWidth * 5/7
+            height: mainWindow.myHeight
         }
         Image {
             id: statusback
             source: "images/statusback.png"
             visible: true
-            width: (sourceSize.width * mainWindow.myWidth) / mainWindow.sourceWidth
-            height: (sourceSize.height * mainWindow.myHeight) / mainWindow.sourceHeight
+            width: mainWindow.myWidth * 2/7
+            height: mainWindow.myHeight
         }
     }
 

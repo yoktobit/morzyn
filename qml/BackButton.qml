@@ -4,9 +4,11 @@
 import QtQuick 2.1
 
 Rectangle {
-    width: backButtonGrowingText.width
+    width: backButtonGrowingText.width * 2
     height: backButtonGrowingText.height
-    color: "transparent"
+    color: "#55555555"
+    border.width: 1
+    border.color: "#888888"
 
     signal backClicked
 
@@ -19,8 +21,8 @@ Rectangle {
     }*/
     Image {
         id: backButtonGrowingText
-        source: "images/buttonok.png"
-        width: 64 * mainWindow.myWidth / mainWindow.sourceWidth
+        source: "images/haken.png"
+        width: 36 * mainWindow.myWidth / mainWindow.sourceWidth
         height: 36 * mainWindow.myHeight / mainWindow.sourceHeight
         anchors.centerIn: parent
     }

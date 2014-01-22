@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     //qInstallMessageHandler(myMessageOutput); //install : set the callback
     QGuiApplication app(argc, argv);
 
-    QCoreApplication::setOrganizationDomain("yoktobit");
+    QCoreApplication::setOrganizationDomain("de.yoktobit");
     QCoreApplication::setOrganizationName("yoktobit");
     QCoreApplication::setApplicationName("morzyn");
 
@@ -50,9 +50,14 @@ int main(int argc, char *argv[])
     qmlRegisterType<Statistics>("harbour.morzyn", 1,0 , "Statistics");
     //qmlRegisterType<IAI>("harbour.morzyn", 1,0 , "IAI");
 
-    QSettings settings;
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, "yoktobit", "morzyn");
     if (!settings.contains("fullscreen"))
         settings.setValue("fullscreen", QVariant((bool)true));
+    if (!settings.contains("music"))
+        settings.setValue("music", QVariant((bool)true));
+    if (!settings.contains("sound"))
+        settings.setValue("sound", QVariant((bool)true));
+
     bool bFullscreen = settings.value("fullscreen").toBool();
     qDebug() << "Fullscreen:" << bFullscreen;
     settings.sync();

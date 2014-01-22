@@ -4,7 +4,7 @@ TARGET = harbour-morzyn
 CONFIG += sailfishapp
 
 #QT += quick qml xml
-QT += xml
+QT += xml multimedia
 
 DEFINES += SAILFISH
 

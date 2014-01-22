@@ -14,6 +14,7 @@
 #include <time.h>
 #include <QTranslator>
 #include <QScreen>
+#include <QSettings>
 
 #include <sailfishapp.h>
 
@@ -27,6 +28,15 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<Scroll>("harbour.morzyn", 1,0 , "Scroll");
     qmlRegisterType<Statistics>("harbour.morzyn", 1,0 , "Statistics");
     qmlRegisterType<Library>("harbour.morzyn", 1,0 , "Library");
+
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope, "yoktobit", "morzyn");
+    if (!settings.contains("fullscreen"))
+        settings.setValue("fullscreen", QVariant((bool)true));
+    if (!settings.contains("music"))
+        settings.setValue("music", QVariant((bool)true));
+    if (!settings.contains("sound"))
+        settings.setValue("sound", QVariant((bool)true));
+
 
     qsrand ( time(NULL) );
 
@@ -48,6 +58,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     gs.setConstants(&c);
     gs.setLibrary(&library);
     gs.setStatistics(&s);
+    gs.setSettings(&settings);
 
     QQuickView* view = SailfishApp::createView();
     view->rootContext()->setContextProperty("gameService", &gs);

@@ -44,8 +44,11 @@ Rectangle {
             currentIndex = currentIndex % model.count;
             selectedItem = model.get(currentIndex).name;
             selectedValue = model.get(currentIndex).value;
-            playerColorSelector.current = (selectedValue != "dark priest" ? Math.min(playerColorSelector.current, 9) : playerColorSelector.current);
-            playerColorSelector.set();
+            if (playerColorSelector)
+            {
+                playerColorSelector.current = (selectedValue != "dark priest" ? Math.min(playerColorSelector.current, 9) : playerColorSelector.current);
+                playerColorSelector.set();
+            }
         }
     }
     Component.onCompleted: {

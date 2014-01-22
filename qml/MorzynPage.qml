@@ -65,13 +65,13 @@ Page {
             }
         }
 
-        Audio {
+        /*Audio {
             id: titleSound
             // temporary disabled
             source: "sounds/morzyn intro.mp3"
             autoPlay: false
             loops: Audio.Infinite
-            /*Behavior on volume {
+            Behavior on volume {
                 PropertyAnimation {
                     duration: 2000
                     onRunningChanged: {
@@ -84,7 +84,7 @@ Page {
                         }
                     }
                 }
-            }*/
+            }
         }
         Audio {
             id: noSound
@@ -92,6 +92,6 @@ Page {
         }
         Component.onCompleted: {
             noSound.play();
-        }
+        }*/
     }
 }

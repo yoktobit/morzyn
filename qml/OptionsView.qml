@@ -8,56 +8,61 @@ Item {
         anchors.fill: parent
     }
 
-    Grid {
+    Column {
         anchors.centerIn: parent
         spacing: 0.1 * (parent.height)
-        rows: 2
-        columns: 2
-        GrowingText {
-            text: qsTr("Fullscreen:", "Fullscreen: in options")
-            standardSize: 20
-            visible: os !== "sailfish"
-        }
-        Switch {
-            id: switchFullscreen
-            visible: os !== "sailfish"
-            selectedValue: gameService.getBoolSetting("fullscreen")
-            model: ListModel {
-                ListElement {
-                    name: "X"
-                    value: "true"
-                }
-                ListElement {
-                    name: "-"
-                    value: "false"
-                }
+        Row {
+            GrowingText {
+                text: qsTr("Fullscreen:", "Fullscreen: in options")
+                standardSize: 20
+                visible: os !== "sailfish"
+                anchors.verticalCenter: parent.verticalCenter
+                width: mainWindow.width * 0.2
             }
-            onSelectedValueChanged: {
-                allViews.fullscreen = selectedValue === "true";
-                console.log(allViews.fullscreen);
-                gameService.setFullScreen(allViews.fullscreen);
+            MorzynCheckBox {
+                id: switchFullscreen
+                visible: os !== "sailfish"
+                checked: gameService.getBoolSetting("fullscreen")
+                onCheckedChanged: {
+                    if (os === "sailfish") return;
+                    if (os === "android") return;
+                    allViews.fullscreen = checked;
+                    console.log(allViews.fullscreen);
+                    gameService.setFullScreen(allViews.fullscreen);
+                }
+                anchors.verticalCenter: parent.verticalCenter
             }
         }
-        GrowingText {
-            text: qsTr("Music:", "Music: in options")
-            standardSize: 20
-        }
-        Switch {
-            id: switchMusic
-            selectedValue: mainWindow.musicActivated
-            model: ListModel {
-                ListElement {
-                    name: "X"
-                    value: "true"
-                }
-                ListElement {
-                    name: "-"
-                    value: "false"
+        Row {
+            GrowingText {
+                text: qsTr("Music:", "Music: in options")
+                standardSize: 20
+                anchors.verticalCenter: parent.verticalCenter
+                width: mainWindow.width * 0.2
+            }
+            MorzynCheckBox {
+                id: switchMusic
+                checked: mainWindow.musicActivated
+                onCheckedChanged: {
+                    mainWindow.musicActivated = checked;
+                    gameService.setBoolSetting("music", mainWindow.musicActivated);
                 }
             }
-            onSelectedValueChanged: {
-                mainWindow.musicActivated = selectedValue == "true";
-                gameService.setBoolSetting("music", mainWindow.musicActivated);
+        }
+        Row {
+            GrowingText {
+                text: qsTr("Sound:", "Sound: in options")
+                standardSize: 20
+                anchors.verticalCenter: parent.verticalCenter
+                width: mainWindow.width * 0.2
+            }
+            MorzynCheckBox {
+                id: switchSound
+                checked: mainWindow.soundActivated
+                onCheckedChanged: {
+                    mainWindow.soundActivated = checked;
+                    gameService.setBoolSetting("sound", mainWindow.soundActivated);
+                }
             }
         }
     }

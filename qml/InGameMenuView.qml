@@ -31,8 +31,7 @@ Rectangle {
     Rectangle {
         width: wiese.width
         height: wiese.height
-        color: "gray"
-        opacity: 0.5
+        color: "#AA222222"
     }
 
     Item {
@@ -68,7 +67,7 @@ Rectangle {
                     text: qsTr("Continue", "Continue in in-game-menu")
                     font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
                     font.family: "VivaldiD"
-                    color: "black"
+                    color: "white"
                     MouseArea {
                         anchors.fill: parent
                         hoverEnabled: true
@@ -78,7 +77,7 @@ Rectangle {
                             parent.color = "red";
                         }
                         onExited: {
-                            parent.color = "black";
+                            parent.color = "white";
                         }
                         onClicked: {
                             inGameMenuView.visible = false;
@@ -95,7 +94,7 @@ Rectangle {
                     text: qsTr("Back to Main Menu", "Back to Main Menu in in-game-menu")
                     font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
                     font.family: "VivaldiD"
-                    color: "black"
+                    color: "white"
                     MouseArea {
                         anchors.fill: parent
                         hoverEnabled: true
@@ -105,7 +104,7 @@ Rectangle {
                             parent.color = "red";
                         }
                         onExited: {
-                            parent.color = "black";
+                            parent.color = "white";
                         }
                         onClicked: {
                             gameService.resetGame();
@@ -124,7 +123,7 @@ Rectangle {
                     text: qsTr("Quit", "Quit in main menu")
                     font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
                     font.family: "VivaldiD"
-                    color: "black"
+                    color: "white"
                     MouseArea {
                         anchors.fill: parent
                         hoverEnabled: true
@@ -134,7 +133,7 @@ Rectangle {
                             parent.color = "red";
                         }
                         onExited: {
-                            parent.color = "black";
+                            parent.color = "white";
                         }
                         onClicked: {
                             gameService.quit();

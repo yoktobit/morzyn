@@ -72,4 +72,22 @@ Rectangle {
             gameService.quit();
         }
     }
+    Rectangle {
+        width: childrenRect.width
+        height: childrenRect.height
+        color: "#AA222222"
+        anchors.right: parent.right
+        anchors.rightMargin: 0.1 * parent.width
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0.1 * parent.height
+        GrowingText {
+            standardSize: 20
+            color: "white"
+            text: version
+        }
+    }
+    onVisibleChanged: {
+        if (visible)
+            gameService.playTitleSong(true);
+    }
 }

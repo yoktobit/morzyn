@@ -32,6 +32,7 @@ Page {
 
         TitleView {
             visible: game.state === "titleScreenState" || viewViews.status !== Loader.Ready
+            tempLoader: viewViews
         }
 
         Connections {

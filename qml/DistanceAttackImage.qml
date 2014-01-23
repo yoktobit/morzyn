@@ -136,6 +136,7 @@ Image {
             if (!running)
             {
                 animationFinished(attackedCreature, nDamage);
+                distFly01.stop(); distFly02.stop(); distFly03.stop();
                 if (nDamage > 0 && (!attackingCreature.immune || attackingCreature.immune !== attackedCreature.immune) && os !== "sailfish")
                 {
                     playOneOf(distHit01, distHit02, distHit03);

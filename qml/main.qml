@@ -23,22 +23,24 @@ Rectangle {
     property bool musicActivated: gameService.getBoolSetting("music")
 
     Loader {
+        id: loaderViews
         anchors.fill: parent
         source: "Views.qml"
         focus: true
         asynchronous: true
         visible: status == Loader.Ready
         onStatusChanged: {
-            if (game.state === "titleScreenState" && status === Loader.Ready)
+            /*if (game.state === "titleScreenState" && status === Loader.Ready)
             {
                 game.state = "mainMenuState";
                 gameService.playTitleSong(true);
-            }
+            }*/
         }
     }
 
     TitleView {
         visible: game.state === "titleScreenState"
+        tempLoader: loaderViews
     }
 
     /*Audio {

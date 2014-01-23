@@ -39,9 +39,12 @@ int main(int argc, char *argv[])
     //qInstallMessageHandler(myMessageOutput); //install : set the callback
     QGuiApplication app(argc, argv);
 
+    QString version("v0.7.15");
+
     QCoreApplication::setOrganizationDomain("de.yoktobit");
     QCoreApplication::setOrganizationName("yoktobit");
     QCoreApplication::setApplicationName("morzyn");
+    QCoreApplication::setApplicationVersion(version);
 
     qmlRegisterType<Creature>("harbour.morzyn", 1,0 , "Creature");
     qmlRegisterType<Player>("harbour.morzyn", 1,0 , "Player");
@@ -95,8 +98,9 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("os", QVariant("desktop"));
     viewer.rootContext()->setContextProperty("hCount", QVariant(c.HCOUNT));
     viewer.rootContext()->setContextProperty("vCount", QVariant(c.VCOUNT));
+    viewer.rootContext()->setContextProperty("version", QVariant(version));
     viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
-    viewer.setTitle("Morzyn v0.7.15");
+    viewer.setTitle(QString("Morzyn %0").arg(version));
     //viewer.showExpanded();
     if (bFullscreen)
         viewer.showFullScreen();

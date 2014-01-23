@@ -287,6 +287,7 @@ Rectangle {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
                 anchors.horizontalCenter: parent.horizontalCenter
+                visible: game.currentPlayer && !game.currentPlayer.isNPC
                 onBackClicked: {
                     if (checkInput()) return;
                     gameService.abort();
@@ -306,7 +307,7 @@ Rectangle {
                     font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                     text: hoveredCreature && hoveredCreature.species === "wizard" ? hoveredCreature.name : hoveredCreature ? hoveredCreature.player.name + "'s " + hoveredCreature.species : ""
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                    color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                 }
                 Item {
                     height: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
@@ -319,75 +320,75 @@ Rectangle {
                     spacing: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
                     GrowingText {
                         text: hoveredCreature && hoveredCreature.species === "wizard" ? qsTr("Spell Points", "Spell Points in game status view") : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: hoveredCreature && hoveredCreature.species === "wizard" ? hoveredCreature.spellPoints : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: qsTr("Health", "Health in game status view")
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: hoveredCreature ? hoveredCreature.hp : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: qsTr("Strength", "Strength in game status view")
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: hoveredCreature ? hoveredCreature.strength : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: qsTr("Defense", "Defense in game status view")
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: hoveredCreature ? hoveredCreature.defense : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: qsTr("Speed", "Speed in game status view")
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: hoveredCreature ? hoveredCreature.speed : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: qsTr("Remaining", "Remaining move points in game status view")
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: hoveredCreature ? hoveredCreature.remainingMovePoints : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: !hoveredCreature || hoveredCreature.species === "wizard" || !hoveredCreature.hasDistanceAttack ? "" : qsTr("Dist. Range", "Distance Range in game status view")
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: !hoveredCreature || hoveredCreature.species === "wizard" ? "" : hoveredCreature.hasDistanceAttack ? hoveredCreature.distanceRange : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: !hoveredCreature || hoveredCreature.species === "wizard" || !hoveredCreature.hasDistanceAttack ? "" : qsTr("Dist. Strength", "Distance Strength in game status view")
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: !hoveredCreature || hoveredCreature.species === "wizard" ? "" : hoveredCreature.hasDistanceAttack ? hoveredCreature.distanceStrength : ""
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: (!hoveredCreature || hoveredCreature.immune === "") ? "" : qsTr("Immune", "Immune in game status view")
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                     GrowingText {
                         text: (!hoveredCreature || hoveredCreature.immune === "") ? "" : hoveredCreature.immune
-                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#00FF00" : "red"
+                        color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                     }
                 }
             }

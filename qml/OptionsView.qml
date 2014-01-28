@@ -20,15 +20,15 @@ Item {
                 GrowingText {
                     text: qsTr("Fullscreen:", "Fullscreen: in options")
                     standardSize: 20
-                    visible: os !== "sailfish"
+                    visible: os === "windows"
                     anchors.verticalCenter: parent.verticalCenter
                     width: mainWindow.width * 0.2
                     color: "white"
                 }
                 MorzynCheckBox {
                     id: switchFullscreen
-                    visible: os !== "sailfish"
-                    checked: gameService.getBoolSetting("fullscreen")
+                    visible: os === "windows"
+                    checked: allViews.fullscreen
                     onCheckedChanged: {
                         if (os === "sailfish") return;
                         if (os === "android") return;
@@ -53,6 +53,19 @@ Item {
                     onCheckedChanged: {
                         mainWindow.musicActivated = checked;
                         gameService.setBoolSetting("music", mainWindow.musicActivated);
+                        if (mainWindow.musicActivated && game.state === "optionsState")
+                        {
+                            titleSound.morzynPlay();
+                            if (os !== "sailfish")
+                                titleSound.volume = 1.0;
+                        }
+                        else
+                        {
+                            if (os === "sailfish")
+                                titleSound.pause();
+                            else
+                                titleSound.volume = 0.0;
+                        }
                     }
                 }
             }
@@ -82,6 +95,11 @@ Item {
         anchors.margins: 20 * mainWindow.height / mainWindow.sourceHeight
         onClicked: {
             game.state = "mainMenuState";
+        }
+    }
+    onVisibleChanged: {
+        if (visible) {
+            switchFullscreen.checked = allViews.fullscreen;
         }
     }
 }

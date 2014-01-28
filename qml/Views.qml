@@ -65,29 +65,8 @@ Item {
         id: gameOverView
     }
 
-    Connections {
-        target: game
-        onStateChanged: {
-            // Neustart beim Zurückkehren
-            if (game.state === "mainMenuState")
-            {
-                /*if (!titleSound.playing() && mainWindow.applicationActive)
-                {
-                    if (os !== "sailfish")
-                        titleSound.volume = 1.0;
-                    titleSound.play();
-                }*/
-                if (mainWindow.applicationActive)
-                {
-                    gameService.playTitleSong(true);
-                }
-            }
-        }
-    }
-
     Component.onCompleted: {
         //console.log(morzyn.Spells.Creatures.Creature[0].name);
-        //gameService.playTitleSong(true);
         console.log("Library count: " + library.creatures.count);
     }
 

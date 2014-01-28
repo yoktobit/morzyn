@@ -48,7 +48,7 @@ Rectangle {
     MorzynButton {
         id: mainMenuGrimoireButton
         x: parent.width * 0.6
-        y: parent.height * 0.3
+        y: parent.height * 0.25
         text: qsTr("Grimoire", "Grimoire in main menu")
         onClicked: {
             game.state = "grimoireState";
@@ -57,10 +57,30 @@ Rectangle {
     MorzynButton {
         id: mainMenuOptionsButton
         x: parent.width * 0.6
-        y: parent.height * 0.5
+        y: parent.height * 0.4
         text: qsTr("Options", "Options in main menu")
         onClicked: {
             game.state = "optionsState";
+        }
+    }
+    MorzynButton {
+        id: mainMenuHelpButton
+        x: parent.width * 0.6
+        y: parent.height * 0.55
+        text: qsTr("Online Help", "Online Help in main menu")
+        onClicked: {
+            console.log("Locale: " + locale);
+            allViews.fullscreen = false;
+            console.log(allViews.fullscreen);
+            gameService.setFullScreen(allViews.fullscreen);
+            if (locale === "de_DE")
+            {
+                Qt.openUrlExternally("http://yoktobit.de/morzyn/pageger/pagereadme.html");
+            }
+            else
+            {
+                Qt.openUrlExternally("http://yoktobit.de/morzyn/pageusa/pagereadme.html");
+            }
         }
     }
     MorzynButton {
@@ -88,6 +108,13 @@ Rectangle {
     }
     onVisibleChanged: {
         if (visible)
-            gameService.playTitleSong(true);
+        {
+            if (mainWindow.musicActivated && mainWindow.applicationActive)
+            {
+                titleSound.morzynPlay();
+                if (os !== "sailfish")
+                    titleSound.volume = 1.0;
+            }
+        }
     }
 }

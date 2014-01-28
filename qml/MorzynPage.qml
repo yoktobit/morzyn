@@ -41,7 +41,7 @@ Page {
                 if (!mainWindow.applicationActive)
                 {
                     mainWindow.playSounds = false;
-                    if (gameService.isTitleSongPlaying())
+                    if (titleSound.playbackState === Audio.PlayingState)
                     {
                         mainWindow.titleSoundLastPlayState = true;
                         console.log("TitleSound was running");
@@ -51,7 +51,10 @@ Page {
                         mainWindow.titleSoundLastPlayState = false;
                         console.log("TitleSound was not running");
                     }
-                    gameService.playTitleSong(false);
+                    if (os === "sailfish")
+                        titleSound.pause();
+                    else
+                        titleSound.volume = 0.0;
                     console.log("TitleSound stopped");
                 }
                 else
@@ -59,20 +62,22 @@ Page {
                     mainWindow.playSounds = true;
                     if (mainWindow.titleSoundLastPlayState)
                     {
-                        gameService.playTitleSong(true);
+                        titleSound.morzynPlay();
+                        if (os !== "sailfish")
+                            titleSound.volume = 1.0;
                         console.log("TitleSound resumed");
                     }
                 }
             }
         }
 
-        /*Audio {
+        MorzynAudio {
             id: titleSound
             // temporary disabled
             source: "sounds/morzyn intro.mp3"
             autoPlay: false
             loops: Audio.Infinite
-            Behavior on volume {
+            /*Behavior on volume {
                 PropertyAnimation {
                     duration: 2000
                     onRunningChanged: {
@@ -85,14 +90,7 @@ Page {
                         }
                     }
                 }
-            }
+            }*/
         }
-        Audio {
-            id: noSound
-            source: "sounds/noSound.wav"
-        }
-        Component.onCompleted: {
-            noSound.play();
-        }*/
     }
 }

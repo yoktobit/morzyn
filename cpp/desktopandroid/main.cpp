@@ -53,7 +53,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<Statistics>("harbour.morzyn", 1,0 , "Statistics");
     //qmlRegisterType<IAI>("harbour.morzyn", 1,0 , "IAI");
 
+#ifndef Q_OS_ANDROID
     QSettings settings(QSettings::IniFormat, QSettings::UserScope, "yoktobit", "morzyn");
+#else
+    QSettings settings;
+#endif
     if (!settings.contains("fullscreen"))
         settings.setValue("fullscreen", QVariant((bool)true));
     if (!settings.contains("music"))
@@ -95,10 +99,16 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("game", &g);
     viewer.rootContext()->setContextProperty("statistics", &s);
     viewer.rootContext()->setContextProperty("library", &l);
-    viewer.rootContext()->setContextProperty("os", QVariant("desktop"));
+#ifdef Q_OS_ANDROID
+    QString os = "android";
+#else
+    QString os = "windows";
+#endif
+    viewer.rootContext()->setContextProperty("os", QVariant(os));
     viewer.rootContext()->setContextProperty("hCount", QVariant(c.HCOUNT));
     viewer.rootContext()->setContextProperty("vCount", QVariant(c.VCOUNT));
     viewer.rootContext()->setContextProperty("version", QVariant(version));
+    viewer.rootContext()->setContextProperty("locale", QVariant(locale));
     viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
     viewer.setTitle(QString("Morzyn %0").arg(version));
     //viewer.showExpanded();

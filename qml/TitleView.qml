@@ -18,7 +18,9 @@ Rectangle {
             onClicked: {
                 titleViewTimer.stop();
                 if (tempLoader.status === Loader.Ready)
-                  game.state = "mainMenuState";
+                {
+                    game.state = "mainMenuState";
+                }
                 //exitTitle();
             }
         }
@@ -38,7 +40,7 @@ Rectangle {
             GrowingText {
                 standardSize: 20
                 color: "white"
-                text: tempLoader.status === Loader.Ready ? "Press any key to continue..." : "Loading..."
+                text: tempLoader.status === Loader.Ready ? qsTr("Press any key to continue...") : qsTr("Loading...")
             }
         }
         Rectangle {
@@ -62,6 +64,18 @@ Rectangle {
             if (tempLoader.status === Loader.Ready)
             {
                 titleViewTimer.start();
+            }
+        }
+    }
+    Connections {
+        target: game
+        onStateChanged: {
+            if (game.state == "spellSelectState")
+            {
+                if (os === "sailfish")
+                    titleSound.pause();
+                else
+                    titleSound.volume = 0.0;
             }
         }
     }

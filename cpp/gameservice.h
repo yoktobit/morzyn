@@ -114,6 +114,7 @@ public:
     void emitCreatureDistanceAttacked(Creature *attackingCreature, Creature *attackedCreature, int nDamage);
 
     QMediaPlayer* titleSound;
+    bool previousPlayedTitleSound;
 
     //void setStateManager(StateManager* sm);
     void setGame(Game* g);

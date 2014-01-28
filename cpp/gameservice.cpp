@@ -24,6 +24,7 @@ GameService::GameService(QObject *parent) :
     //connect(statemanager, SIGNAL(playerSwitched(Player*)), SLOT(initPlayerForNewRound(Player*)));
     //connect(statemanager->totalPlayerCountState, SIGNAL(entered()), this, SLOT(resetGame()));
     titleSound = NULL;
+    previousPlayedTitleSound = false;
 }
 
 QList<int> GameService::generateDistinctNumberList(int count, int min, int max)
@@ -363,7 +364,7 @@ bool GameService::isSelectable(Creature *creature)
 {
     if (!creature->alive())
     {
-        setMessage("Creature is dead!");
+        setMessage(tr("Creature is dead!"));
         return false;
     }
     // Selections can only be done in moveState
@@ -376,7 +377,7 @@ bool GameService::isSelectable(Creature *creature)
     {
         if (!game->selectedCreature())
         {
-            setMessage("This is not your creature!");
+            setMessage(tr("This is not your creature!"));
         }
         return false;
     }
@@ -448,7 +449,7 @@ bool GameService::isMovementPossible(Creature *creature, int x, int y)
     // enemy in range? Sorry, you have to attack...
     if (isCreatureNearEnemy(creature))
     {
-        setMessage("You can't move, there's an enemy beside you!");
+        setMessage(tr("You can't move, there's an enemy beside you!"));
         return false;
     }
     qDebug("End isMovementPossible");
@@ -576,7 +577,7 @@ bool GameService::isAttackable(Creature *attacker, Creature *attacked)
     // allready attacked? not once more!
     if (attacker->hasAttacked())
     {
-        setMessage("You can attack only once!");
+        setMessage(tr("You can attack only once!"));
         return false;
     }
 
@@ -1062,12 +1063,12 @@ bool GameService::isCastable(int x, int y, Creature* creature)
             }
             else
             {
-                setMessage("You have to cast this spell on an enemy creature");
+                setMessage(tr("You have to cast this spell on an enemy creature"));
             }
         }
         else
         {
-            setMessage("This creature is not in the range of your spell");
+            setMessage(tr("This creature is not in the range of your spell"));
         }
         qDebug() << getDistance(game->currentPlayer(), x, y) << ">" << scroll->range();
     }
@@ -1255,16 +1256,20 @@ void GameService::playTitleSong(bool startstop)
     if (!titleSound)
     {
         titleSound = new QMediaPlayer;
-#ifdef SAILFISH
-    QString file(SailfishApp::pathTo("qml/sounds/morzyn intro.mp3").toLocalFile());
+#ifdef Q_OS_ANDROID
+    QUrl file("assets:/qml/sounds/morzyn intro.mp3");
 #else
-    QString file("qml/sounds/morzyn intro.mp3");
+#ifdef SAILFISH
+    QUrl file(SailfishApp::pathTo("qml/sounds/morzyn intro.mp3").toLocalFile());
+#else
+    QUrl file(QUrl::fromLocalFile("qml/sounds/morzyn intro.mp3"));
 #endif
-        titleSound->setMedia(QUrl::fromLocalFile(file));
+#endif
+        titleSound->setMedia(file);
         qDebug() << titleSound->availability();
         qDebug() << "Loaded song " << "qml/morzyn/sounds/morzyn intro.mp3";
     }
-    if (musicAllowed && startstop /* && titleSound->state() != QMediaPlayer::PlayingState*/)
+    if (musicAllowed && startstop/* && titleSound->state() != QMediaPlayer::PlayingState*/)
     {
         QPropertyAnimation* animation = new QPropertyAnimation(titleSound, "volume", this);
         animation->setDuration(2000);
@@ -1397,9 +1402,9 @@ void GameService::simulateFight(Creature *c1, Creature *c2)
         }
     }
     if (cLeft->alive())
-        setMessage(QString("%0 wins (left side)").arg(cLeft->species()));
+        setMessage(QString(tr("%0 wins (left side)")).arg(cLeft->species()));
     else
-        setMessage(QString("%0 wins (right side)").arg(cRight->species()));
+        setMessage(QString(tr("%0 wins (right side)")).arg(cRight->species()));
 }
 
 QStringList GameService::getCreatureImages(QString filenamePattern)
@@ -1448,8 +1453,6 @@ bool GameService::getBoolSetting(QString name)
 void GameService::setBoolSetting(QString name, bool bValue)
 {
     settings->setValue(name, QVariant((bool)bValue));
-    if (name == "music")
-        playTitleSong(bValue);
     settings->sync();
 }
 
@@ -1578,15 +1581,15 @@ void GameService::gameStateChanged(QString state)
 {
     if (state == "moveState")
     {
-        setMessage("Move or attack!");
+        setMessage(tr("Move or attack!"));
     }
     else if (state == "castSpellState")
     {
-        setMessage("Cast the spell beside you!");
+        setMessage(tr("Cast the spell beside you!"));
     }
     else if (state == "spellSelectState")
     {
-        setMessage("Select a spell!");
+        setMessage(tr("Select a spell!"));
     }
     else
     {

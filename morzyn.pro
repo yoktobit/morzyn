@@ -35,29 +35,38 @@ SOURCES += cpp/desktopandroid/main.cpp \
     cpp/tutorialplayerai.cpp \
     cpp/tutorialopponentai.cpp
 
-TRANSLATIONS = morzyn_de.ts
+TRANSLATIONS = translations/morzyn_de.ts
 
 lupdate_only {
-SOURCES = BackButton.qml \
-    CreatureImage.qml \
-    CreatureInformation.qml \
-    DistanceAttackImage.qml \
-    DropList.qml \
-    GameOverView.qml \
-    GameView.qml \
-    GrowingText.qml \
-    InGameMenuView.qml \
-    main.qml \
-    MainMenuView.qml \
-    MorzynButton.qml \
-    PlayerColorSelector.qml \
-    PlayerCountView.qml \
-    PlayerNameView.qml \
-    Scroll.qml \
-    ScrollInformation.qml \
-    SpellSelectView.qml \
-    Switch.qml \
-    TitleView.qml
+SOURCES = qml/BackButton.qml \
+    qml/CreatureImage.qml \
+    qml/CreatureInformation.qml \
+    qml/DistanceAttackImage.qml \
+    qml/DropList.qml \
+    qml/GameOverView.qml \
+    qml/GameView.qml \
+    qml/GrimoireView.qml \
+    qml/GrowingText.qml \
+    qml/InGameMenuView.qml \
+    qml/main.qml \
+    qml/MainMenuView.qml \
+    qml/MenuButton.qml \
+    qml/morzyn.qml \
+    qml/MorzynAudio.qml \
+    qml/MorzynCheckBox.qml \
+    qml/MorzynPage.qml \
+    qml/OptionsView.qml \
+    qml/Views.qml \
+    qml/MorzynButton.qml \
+    qml/PlayerColorSelector.qml \
+    qml/PlayerCountView.qml \
+    qml/PlayerNameView.qml \
+    qml/Scroll.qml \
+    qml/ScrollInformation.qml \
+    qml/SpellSelectView.qml \
+    qml/Switch.qml \
+    qml/TitleView.qml \
+    qml/TitlePage.qml
 }
 
 RC_FILE += morzyn.rc
@@ -83,6 +92,7 @@ HEADERS += \
     cpp/tutorialopponentai.h
 
 OTHER_FILES += \
+    ts.list \
     android/AndroidManifest.xml \
     morzyn.rc \
     android/res/layout/splash.xml \

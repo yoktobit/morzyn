@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.1" language="de_DE">
 <context>
     <name>CreatureInformation</name>
     <message>
@@ -64,6 +64,98 @@
         <comment>standard player name</comment>
         <translation>Spieler %1</translation>
     </message>
+    <message>
+        <source>You are already there ;-)</source>
+        <translation>Du bist schon dort ;-)</translation>
+    </message>
+    <message>
+        <source>You have to move field per field</source>
+        <translation>Du musst dich Feld für Feld bewegen</translation>
+    </message>
+    <message>
+        <source>You&apos;ve got not enough move points to move there</source>
+        <translation>Du hast nicht genug Bewegungspunkte, um dich dorthin zu bewegen</translation>
+    </message>
+    <message>
+        <source>You can&apos;t attack your own creatures</source>
+        <translation>Du kannst nicht deine eigenen Kreaturen angreifen</translation>
+    </message>
+    <message>
+        <source>This one is too far away to attack</source>
+        <translation>Der ist zu weit weg für einen Angriff</translation>
+    </message>
+    <message>
+        <source>You don&apos;t have enough move points to attack this creature</source>
+        <translation>Du hast nicht genug Bewegungspunkte, um diese Kreatur anzugreifen</translation>
+    </message>
+    <message>
+        <source>Your selected creature has no distance attack</source>
+        <translation>Deine gewählte Kreatur hat keine Distanzattacke</translation>
+    </message>
+    <message>
+        <source>This creature already used it&apos;s distance attack</source>
+        <translation>Deine Kreatur hat ihre Distanzattacke bereits eingesetzt</translation>
+    </message>
+    <message>
+        <source>Don&apos;t harm your own creatures ;-)</source>
+        <translation>Tu deinen eigenen Kreaturen nicht weh ;-)</translation>
+    </message>
+    <message>
+        <source>Please cancel move mode first to use the distance attack</source>
+        <translation>Bitte schließe den Bewegungsmodus erst ab vor einer Distanzattacke</translation>
+    </message>
+    <message>
+        <source>This one is too far away!</source>
+        <translation>Der ist zu weit weg!</translation>
+    </message>
+    <message>
+        <source>You have to cast your spell exactly beside you</source>
+        <translation>Du musst dein Zauber direkt neben dir wirken</translation>
+    </message>
+    <message>
+        <source>Creature is dead!</source>
+        <translation>Die Kreatur ist tot!</translation>
+    </message>
+    <message>
+        <source>This is not your creature!</source>
+        <translation>Das ist nicht deine Kreatur!</translation>
+    </message>
+    <message>
+        <source>You can&apos;t move, there&apos;s an enemy beside you!</source>
+        <translation>Die kannst dich nicht bewegen, da ist ein Gegner neben dir!</translation>
+    </message>
+    <message>
+        <source>You can attack only once!</source>
+        <translation>Du kannst nur einmal angreifen!</translation>
+    </message>
+    <message>
+        <source>You have to cast this spell on an enemy creature</source>
+        <translation>Du musst diesen Zauber auf einen Gegner anwenden</translation>
+    </message>
+    <message>
+        <source>This creature is not in the range of your spell</source>
+        <translation>Die Kreatur ist nicht in Reichweite deines Zaubers</translation>
+    </message>
+    <message>
+        <source>%0 wins (left side)</source>
+        <translation>%0 gewinnt (linke Seite)</translation>
+    </message>
+    <message>
+        <source>%0 wins (right side)</source>
+        <translation>%0 gewinnt (rechte Seite)</translation>
+    </message>
+    <message>
+        <source>Move or attack!</source>
+        <translation>Beweg dich oder kämpfe!</translation>
+    </message>
+    <message>
+        <source>Cast the spell beside you!</source>
+        <translation>Zaubere die Kreatur direkt neben dir!</translation>
+    </message>
+    <message>
+        <source>Select a spell!</source>
+        <translation>Wähle einen Zauber!</translation>
+    </message>
 </context>
 <context>
     <name>GameView</name>
@@ -114,6 +206,19 @@
     </message>
 </context>
 <context>
+    <name>GrimoireView</name>
+    <message>
+        <source>Fight!</source>
+        <comment>Fight in Grimoire</comment>
+        <translation>Kämpft!</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>Back in Grimoire</comment>
+        <translation>Zurück</translation>
+    </message>
+</context>
+<context>
     <name>InGameMenuView</name>
     <message>
         <source>Continue</source>
@@ -124,6 +229,11 @@
         <source>Back to Main Menu</source>
         <comment>Back to Main Menu in in-game-menu</comment>
         <translation>Zurück zum Hauptmenü</translation>
+    </message>
+    <message>
+        <source>Quit</source>
+        <comment>Quit in main menu</comment>
+        <translation>Beenden</translation>
     </message>
 </context>
 <context>
@@ -137,6 +247,44 @@
         <source>Quit</source>
         <comment>Quit in main menu</comment>
         <translation>Beenden</translation>
+    </message>
+    <message>
+        <source>Grimoire</source>
+        <comment>Grimoire in main menu</comment>
+        <translation>Grimoire</translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <comment>Options in main menu</comment>
+        <translation>Optionen</translation>
+    </message>
+    <message>
+        <source>Online Help</source>
+        <comment>Online Help in main menu</comment>
+        <translation>Onlinehilfe</translation>
+    </message>
+</context>
+<context>
+    <name>OptionsView</name>
+    <message>
+        <source>Fullscreen:</source>
+        <comment>Fullscreen: in options</comment>
+        <translation>Vollbild:</translation>
+    </message>
+    <message>
+        <source>Music:</source>
+        <comment>Music: in options</comment>
+        <translation>Musik:</translation>
+    </message>
+    <message>
+        <source>Sound:</source>
+        <comment>Sound: in options</comment>
+        <translation>Sound-Effekte:</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>Back in Options</comment>
+        <translation>Zurück</translation>
     </message>
 </context>
 <context>
@@ -214,6 +362,25 @@
         <source>Type</source>
         <comment>Type in scroll information</comment>
         <translation>Typ</translation>
+    </message>
+</context>
+<context>
+    <name>SpellSelectView</name>
+    <message>
+        <source>Available mana</source>
+        <comment>available mana in SpellSelectView</comment>
+        <translation>Verfügbares Mana</translation>
+    </message>
+</context>
+<context>
+    <name>TitleView</name>
+    <message>
+        <source>Press any key to continue...</source>
+        <translation>Drücke eine beliebige Taste zum Fortfahren...</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation>Lade...</translation>
     </message>
 </context>
 </TS>

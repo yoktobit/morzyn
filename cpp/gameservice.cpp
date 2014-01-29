@@ -1363,7 +1363,8 @@ void GameService::setFullScreen(bool fullscreen)
     }
     else
     {
-        viewer->showNormal();
+        if (viewer->windowState() != Qt::WindowMaximized)
+            viewer->showNormal();
     }
     setBoolSetting("fullscreen", fullscreen);
 }

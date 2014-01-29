@@ -19,7 +19,7 @@ Rectangle {
     Rectangle {
         color: "#AA222222"
         visible: creature1 === null
-        x: parent.width * 0.2
+        x: parent.width * 0.1
         y: parent.height * 0.1
         width: parent.width * 0.3
         height: parent.height * 0.6
@@ -47,8 +47,8 @@ Rectangle {
     GrowingText {
         text: "VS"
         standardSize: 30
-        x: parent.width * 0.525
-        y: parent.height * 0.4
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: parent.height * 0.3
     }
 
     Rectangle {
@@ -80,7 +80,7 @@ Rectangle {
     Rectangle {
         id: grimoireLeftDetails
         visible: creature1 !== null
-        x: parent.width * 0.2
+        x: parent.width * 0.1
         y: parent.height * 0.1
         width: parent.width * 0.3
         height: parent.height * 0.6
@@ -96,7 +96,7 @@ Rectangle {
             ListView {
                 id: grimoireLeftImages
                 orientation: ListView.Horizontal
-                width: parent.width
+                width: childrenRect.width
                 height: 30 * mainWindow.height / mainWindow.sourceHeight
                 delegate: Image {
                     id: creatureLeftImage
@@ -141,7 +141,7 @@ Rectangle {
             ListView {
                 id: grimoireRightImages
                 orientation: ListView.Horizontal
-                width: parent.width
+                width: childrenRect.width
                 height: 30 * mainWindow.height / mainWindow.sourceHeight
                 delegate: Image {
                     id: creatureRightImage

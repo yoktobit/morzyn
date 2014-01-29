@@ -15,6 +15,7 @@ Image {
     SoundEffect {
         id: distFire01
         source: "sounds/distfire01.wav"
+        loops: 0
     }
     SoundEffect {
         id: distFire02
@@ -39,14 +40,17 @@ Image {
     SoundEffect {
         id: distHit01
         source: "sounds/disthit01.wav"
+        loops: 0
     }
     SoundEffect {
         id: distHit02
         source: "sounds/disthit02.wav"
+        loops: 0
     }
     SoundEffect {
         id: distHit03
         source: "sounds/disthit03.wav"
+        loops: 0
     }
     SoundEffect {
         id: distMiss01

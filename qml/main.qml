@@ -45,6 +45,7 @@ Rectangle {
         autoLoad: true
         loops: Audio.Infinite
         Behavior on volume {
+            enabled: isBehaviourEnabled
             PropertyAnimation {
                 duration: 2000
                 onRunningChanged: {

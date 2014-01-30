@@ -247,7 +247,14 @@ Rectangle {
                 console.log("Schaden: " + nDamage);
                 creatureDamageStarText.text = nDamage;
                 startype = "staryellow.png";
-
+                if (attackingCreature.strength <= nDamage)
+                {
+                    startype = "starred.png";
+                }
+                else if (nDamage === 0)
+                {
+                    startype = "starwhite.png";
+                }
                 creatureDamageStarAnimation.start();
                 console.log("scale animation aquire");
                 game.aquire();

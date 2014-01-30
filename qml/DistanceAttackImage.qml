@@ -12,55 +12,55 @@ Image {
     visible: false
     signal animationFinished(var attackedCreature, int nDamage)
 
-    SoundEffect {
+    Audio {
         id: distFire01
         source: "sounds/distfire01.wav"
         loops: 0
     }
-    SoundEffect {
+    Audio {
         id: distFire02
         source: "sounds/distfire02.wav"
     }
-    SoundEffect {
+    Audio {
         id: distFire03
         source: "sounds/distfire03.wav"
     }
-    SoundEffect {
+    Audio {
         id: distFly01
         source: "sounds/distfly01.wav"
     }
-    SoundEffect {
+    Audio {
         id: distFly02
         source: "sounds/distfly02.wav"
     }
-    SoundEffect {
+    Audio {
         id: distFly03
         source: "sounds/distfly03.wav"
     }
-    SoundEffect {
+    Audio {
         id: distHit01
         source: "sounds/disthit01.wav"
         loops: 0
     }
-    SoundEffect {
+    Audio {
         id: distHit02
         source: "sounds/disthit02.wav"
         loops: 0
     }
-    SoundEffect {
+    Audio {
         id: distHit03
         source: "sounds/disthit03.wav"
         loops: 0
     }
-    SoundEffect {
+    Audio {
         id: distMiss01
         source: "sounds/distmiss01.wav"
     }
-    SoundEffect {
+    Audio {
         id: distMiss02
         source: "sounds/distmiss02.wav"
     }
-    SoundEffect {
+    Audio {
         id: distMiss03
         source: "sounds/distmiss03.wav"
     }

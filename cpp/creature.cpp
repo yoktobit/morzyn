@@ -4,6 +4,7 @@ Creature::Creature(QObject *parent) :
     QObject(parent)
 {
     this->m_hasMoved = false;
+    this->m_Name = QString("");
 }
 
 void Creature::load(QDomNode *node)

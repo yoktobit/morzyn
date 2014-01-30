@@ -305,7 +305,8 @@ Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: parent.width
                     font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
-                    text: hoveredCreature && hoveredCreature.species === "wizard" ? hoveredCreature.name : hoveredCreature ? hoveredCreature.player.name + "'s " + hoveredCreature.species : ""
+                    //text: hoveredCreature && hoveredCreature.species === "wizard" ? hoveredCreature.name : hoveredCreature ? hoveredCreature.player.name + "'s " + hoveredCreature.species : ""
+                    text: hoveredCreature ? hoveredCreature.name : ""
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                 }

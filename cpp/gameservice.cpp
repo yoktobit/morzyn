@@ -296,6 +296,11 @@ void GameService::addCreature(Creature *c, int x, int y)
     newCreature->setY(game->currentPlayer()->y());
     qDebug() << "creature x = " << c->x() << "creature y" << c->y();
     newCreature->setPlayer(game->currentPlayer());
+    QString newCreaturesName = newCreature->player()->name() + QString("'");
+    if (!newCreature->player()->name().endsWith("s"))
+        newCreaturesName += QString("s");
+    newCreaturesName += QString(" %0").arg(newCreature->species());
+    newCreature->setName(newCreaturesName);
     game->currentPlayer()->m_Creatures.append(newCreature);
     game->m_creatures.append(newCreature);
     game->emitPropertyChanged();

@@ -75,7 +75,7 @@ Rectangle {
             GrowingText {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: (145 * mainWindow.myHeight) / mainWindow.sourceHeight
-                color: "#0000FF"
+                color: "#1111FF"
                 standardSize: 15
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Available mana", "available mana in SpellSelectView")
@@ -90,7 +90,7 @@ Rectangle {
                 font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                 text: game.currentPlayer ? game.currentPlayer.spellPoints : ""
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: "#0000FF"
+                color: "#1111FF"
             }
         }
     }

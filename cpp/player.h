@@ -9,7 +9,6 @@
 class Player : public Creature
 {
     Q_OBJECT
-    Q_PROPERTY(QString name READ name WRITE setName NOTIFY propertyChanged)
     //Q_PROPERTY(PlayerColor* color READ color WRITE setColor NOTIFY propertyChanged)
     Q_PROPERTY(int spellPoints READ spellPoints WRITE setSpellPoints NOTIFY propertyChanged)
     Q_PROPERTY(bool isNPC READ isNPC WRITE setIsNPC NOTIFY propertyChanged)
@@ -19,8 +18,6 @@ class Player : public Creature
 
 public:
     explicit Player(QObject *parent = 0);
-    inline QString name() const { return m_Name; }
-    inline void setName(QString name) { m_Name = name; /*emit propertyChanged();*/ }
     inline int spellPoints() const { return m_SpellPoints; }
     void setSpellPoints(int spellPoints);
     bool isNPC() { return m_isNPC; }
@@ -44,7 +41,6 @@ public:
     }
 
 protected:
-    QString m_Name;
     int m_SpellPoints;
     bool m_isNPC;
     QString m_type;

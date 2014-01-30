@@ -32,6 +32,7 @@ class Creature : public QObject
     Q_PROPERTY(int remainingMovePoints READ remainingMovePoints WRITE setRemainingMovePoints NOTIFY propertyChanged)
     Q_PROPERTY(bool hasMoved READ hasMoved WRITE setHasMoved NOTIFY propertyChanged)
     Q_PROPERTY(Player* player READ player WRITE setPlayer NOTIFY propertyChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY propertyChanged)
     Q_PROPERTY(QString originalName READ originalName WRITE setOriginalName NOTIFY propertyChanged)
     Q_PROPERTY(int x READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(int y READ y WRITE setY NOTIFY yChanged)
@@ -78,6 +79,8 @@ public:
     inline void setDistanceImageFilePattern(QString distanceImageFilePattern) { m_DistanceImageFilePattern = distanceImageFilePattern; emit propertyChanged(); }
 
     // Runtime Properties
+    inline QString name() const { return m_Name; }
+    inline void setName(QString name) { m_Name = name; /*emit propertyChanged();*/ }
     inline QString imageFilename() const { return m_ImageFilename; }
     inline void setImageFilename(QString imageFilename) { m_ImageFilename = imageFilename; emit imageFilenameChanged(m_ImageFilename); }
     inline QString distanceImageFilename() const { return m_DistanceImageFilename; }
@@ -162,6 +165,7 @@ protected:
     QString m_DistanceImageFilePattern;
 
     // Runtime Properties
+    QString m_Name;
     QString m_ImageFilename;
     QString m_DistanceImageFilename;
     double m_RemainingMovePoints;

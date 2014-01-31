@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<manifest android:versionCode="7" xmlns:android="http://schemas.android.com/apk/res/android" package="de.yoktobit.morzyn" android:versionName="0.7.15" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="de.yoktobit.morzyn" android:versionCode="8" android:installLocation="auto" android:versionName="0.7.15">
     <application android:name="org.qtproject.qt5.android.bindings.QtApplication" android:icon="@drawable/icon" android:label="Morzyn">
-        <activity android:name="org.qtproject.qt5.android.bindings.QtActivity" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation" android:screenOrientation="sensorLandscape" android:label="@string/app_name">
+        <activity android:screenOrientation="sensorLandscape" android:name="org.qtproject.qt5.android.bindings.QtActivity" android:label="@string/app_name" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -32,7 +32,7 @@
         </activity>
     </application>
     <uses-sdk android:targetSdkVersion="14" android:minSdkVersion="9"/>
-    <supports-screens android:anyDensity="true" android:normalScreens="true" android:smallScreens="true" android:largeScreens="true"/>
+    <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:anyDensity="true"/>
     <!-- %%INSERT_PERMISSIONS -->
     <!-- %%INSERT_FEATURES -->
     <uses-permission android:name="android.permission.INTERNET"/>

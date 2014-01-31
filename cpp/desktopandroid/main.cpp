@@ -14,6 +14,7 @@
 #include <time.h>
 #include <QTranslator>
 #include <QSettings>
+#include <QScreen>
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -71,10 +72,18 @@ int main(int argc, char *argv[])
 
     qsrand ( time(NULL) );
 
+    double minHorizontalSize = 150.0;
+    double minVerticalSize = 90.0;
+    //double minHorizontalSize = 300.0;
+    //double minVerticalSize = 200.0;
+
+    QScreen* screen = app.primaryScreen();
+    QSizeF screenSize = screen->physicalSize();
+    qDebug() << "screen width:" << screenSize.width() << "screen height:" << screenSize.height();
     QString locale = QLocale::system().name();
 
     QTranslator translator;
-    translator.load(QString("morzyn_") + locale, "translations");
+    translator.load(QString("morzyn_") + locale.left(2).toLower(), "translations");
     app.installTranslator(&translator);
 
     QtQuick2ApplicationViewer viewer;
@@ -91,6 +100,12 @@ int main(int argc, char *argv[])
     gs.setStatistics(&s);
     gs.setSettings(&settings);
     gs.viewer = &viewer;
+
+    if (screenSize.width() < minHorizontalSize || screenSize.height() < minVerticalSize)
+    {
+        c.HCOUNT = 10;
+        c.VCOUNT = 10;
+    }
 
 #ifndef Q_OS_ANDROID
     viewer.setIcon(QIcon("qml/morzyn/images/morzyn.png"));

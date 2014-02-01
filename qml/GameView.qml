@@ -46,7 +46,7 @@ Rectangle {
 
     function playMeleeHit()
     {
-        if (!mainWindow.playSounds || os === "sailfish") return;
+        if (!mainWindow.playSounds || os === "sailfish_sick") return;
         var randomnumber = Math.floor(Math.random() * 5);
         console.log("MeleeHit " + randomnumber);
         switch (randomnumber)
@@ -76,7 +76,7 @@ Rectangle {
 
     function playMeleeMiss()
     {
-        if (!mainWindow.playSounds || os === "sailfish") return;
+        if (!mainWindow.playSounds || os === "sailfish_sick") return;
         var randomnumber = Math.floor(Math.random() * 3);
         console.log("MeleeMiss " + randomnumber);
         switch (randomnumber)
@@ -139,7 +139,7 @@ Rectangle {
                 gameService.placePlayers();
                 console.log("ImageFilename Player 0" + game.creatures[0].imageFilename);
                 allreadyShown = true;
-                if (os !== "sailfish")
+                if (os !== "sailfish_sick")
                     titleSound.volume = 0.0;
                 else
                     titleSound.pause();

@@ -72,7 +72,7 @@ Rectangle {
         onStateChanged: {
             if (game.state == "spellSelectState")
             {
-                if (os === "sailfish")
+                if (os === "sailfish_sick")
                     titleSound.pause();
                 else
                     titleSound.volume = 0.0;

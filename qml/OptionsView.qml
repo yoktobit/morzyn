@@ -56,12 +56,12 @@ Item {
                         if (mainWindow.musicActivated && game.state === "optionsState")
                         {
                             titleSound.morzynPlay();
-                            if (os !== "sailfish")
+                            if (os !== "sailfish_sick")
                                 titleSound.volume = 1.0;
                         }
                         else
                         {
-                            if (os === "sailfish")
+                            if (os === "sailfish_sick")
                                 titleSound.pause();
                             else
                                 titleSound.volume = 0.0;

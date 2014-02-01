@@ -1035,6 +1035,7 @@ void GameService::buy(Creature *creature)
 
 bool GameService::isCastable(int x, int y, Creature* creature)
 {
+    bool bIsCastable = true;
     qDebug() << "begin isCastable at" << x << "," << y;
     Player* player = game->currentPlayer();
     int nPlayerX = player->x();
@@ -1048,11 +1049,17 @@ bool GameService::isCastable(int x, int y, Creature* creature)
         if (xDist <= 1 && yDist <= 1 && !(xDist == 0 && yDist == 0))
         {
             qDebug() << "end isCastable with true";
-            return true;
         }
         else
         {
             setMessage(tr("You have to cast your spell exactly beside you"));
+            bIsCastable = false;
+        }
+        Creature* existingCreature = getCreatureAt(x, y);
+        if (existingCreature && existingCreature->alive())
+        {
+            setMessage(tr("You can't cast a creature where another one exists."));
+            bIsCastable = false;
         }
     }
     else
@@ -1064,21 +1071,22 @@ bool GameService::isCastable(int x, int y, Creature* creature)
             if (getCreatureAt(x, y) && isEnemy(getCreatureAt(x, y)))
             {
                 qDebug() << "end isCastable with true (" << getDistance(game->currentPlayer(), x, y) << "<=" << scroll->range();
-                return true;
             }
             else
             {
                 setMessage(tr("You have to cast this spell on an enemy creature"));
+                bIsCastable = false;
             }
         }
         else
         {
             setMessage(tr("This creature is not in the range of your spell"));
+            bIsCastable = false;
         }
         qDebug() << getDistance(game->currentPlayer(), x, y) << ">" << scroll->range();
     }
     qDebug() << "end isCastable with false";
-    return false;
+    return bIsCastable;
 }
 
 void GameService::castCreature(int x, int y, Creature *creature)

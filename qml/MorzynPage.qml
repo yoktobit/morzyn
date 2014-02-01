@@ -51,7 +51,7 @@ Page {
                         mainWindow.titleSoundLastPlayState = false;
                         console.log("TitleSound was not running");
                     }
-                    if (os === "sailfish")
+                    if (os === "sailfish_sick")
                         titleSound.pause();
                     else
                         titleSound.volume = 0.0;
@@ -63,7 +63,7 @@ Page {
                     if (mainWindow.titleSoundLastPlayState)
                     {
                         titleSound.morzynPlay();
-                        if (os !== "sailfish")
+                        if (os !== "sailfish_sick")
                             titleSound.volume = 1.0;
                         console.log("TitleSound resumed");
                     }
@@ -73,11 +73,10 @@ Page {
 
         MorzynAudio {
             id: titleSound
-            // temporary disabled
             source: "sounds/morzyn intro.mp3"
             autoPlay: false
             loops: Audio.Infinite
-            /*Behavior on volume {
+            Behavior on volume {
                 PropertyAnimation {
                     duration: 2000
                     onRunningChanged: {
@@ -90,7 +89,7 @@ Page {
                         }
                     }
                 }
-            }*/
+            }
         }
     }
 }

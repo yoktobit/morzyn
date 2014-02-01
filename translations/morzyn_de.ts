@@ -156,6 +156,10 @@
         <source>Select a spell!</source>
         <translation>Wähle einen Zauber!</translation>
     </message>
+    <message>
+        <source>You can&apos;t cast a creature where another one exists.</source>
+        <translation type="unfinished">Du kannst keine Kreatur dort zaubern, wo schon eine ist.</translation>
+    </message>
 </context>
 <context>
     <name>GameView</name>

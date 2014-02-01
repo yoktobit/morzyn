@@ -67,7 +67,7 @@ Image {
 
     function playOneOf(sound1, sound2, sound3)
     {
-        if (!mainWindow.playSounds || os === "sailfish") return;
+        if (!mainWindow.playSounds || os === "sailfish_sick") return;
         var randomnumber = Math.floor(Math.random() * 3);
         console.log("DistFire " + randomnumber);
         switch (randomnumber)
@@ -141,11 +141,11 @@ Image {
             {
                 animationFinished(attackedCreature, nDamage);
                 distFly01.stop(); distFly02.stop(); distFly03.stop();
-                if (nDamage > 0 && (!attackingCreature.immune || attackingCreature.immune !== attackedCreature.immune) && os !== "sailfish")
+                if (nDamage > 0 && (!attackingCreature.immune || attackingCreature.immune !== attackedCreature.immune) && os !== "sailfish_sick")
                 {
                     playOneOf(distHit01, distHit02, distHit03);
                 }
-                else if (os !== "sailfish")
+                else if (os !== "sailfish_sick")
                 {
                     playOneOf(distMiss01, distMiss02, distMiss03);
                 }
@@ -175,7 +175,7 @@ Image {
         console.log("toY: " + distanceAttackImageAnimationY.to);
         visible = true;
         distanceAttackImageAnimation.start();
-        if (os !== "sailfish") {
+        if (os !== "sailfish_sick") {
             playOneOf(distFire01, distFire02, distFire03);
             playOneOf(distFly01, distFly02, distFly03);
         }

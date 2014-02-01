@@ -43,7 +43,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QString locale = QLocale::system().name();
 
     QTranslator translator;
-    translator.load(QString("morzyn_") + locale, "translations");
+    translator.load(QString("morzyn_") + locale.left(2).toLower(), "translations");
     app->installTranslator(&translator);
 
     GameService gs;

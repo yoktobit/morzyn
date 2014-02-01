@@ -112,7 +112,7 @@ Rectangle {
             if (mainWindow.musicActivated && mainWindow.applicationActive)
             {
                 titleSound.morzynPlay();
-                if (os !== "sailfish" && titleSound.volume !== 1.0)
+                if (os !== "sailfish_sick" && titleSound.volume !== 1.0)
                     titleSound.volume = 1.0;
                 titleSound.isBehaviourEnabled = true;
             }

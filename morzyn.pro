@@ -19,6 +19,12 @@ TARGET = morzyn
 
 QT += xml multimedia
 
+
+CONFIG(debug, debug|release) {
+    DEFINES += _DEBUG
+}
+
+
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += cpp/desktopandroid/main.cpp \
     cpp/dbloader.cpp \
@@ -38,7 +44,7 @@ SOURCES += cpp/desktopandroid/main.cpp \
 TRANSLATIONS = translations/morzyn_de.ts
 
 lupdate_only {
-SOURCES = qml/BackButton.qml \
+OTHER_FILES += qml/BackButton.qml \
     qml/CreatureImage.qml \
     qml/CreatureInformation.qml \
     qml/DistanceAttackImage.qml \

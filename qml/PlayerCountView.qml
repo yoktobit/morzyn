@@ -38,27 +38,34 @@ Rectangle {
         spacing: 20
         Repeater {
             model: 8
-            delegate: Text {
-                font.family: "VivaldiD"
-                font.pixelSize: (70 * mainWindow.myHeight) / mainWindow.sourceHeight
-                text: index
+            delegate: Image {
+                source: "images/button.png"
+                height: innerText.height + (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+                width: innerText.width + (30 * mainWindow.myHeight) / mainWindow.sourceHeight
                 visible: (index <= max) && (index >= min)
-                MouseArea {
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    acceptedButtons: Qt.LeftButton
-                    propagateComposedEvents: true
-                    onClicked: {
-                        console.debug("Selected " + index);
-                        selected = index;
-                        changed();
-                        game.state = (game.state === "totalPlayerCountState") ? "humanPlayerCountState" : "playerNameState"
-                    }
-                    onEntered: {
-                        parent.color = "red";
-                    }
-                    onExited: {
-                        parent.color = "black";
+                Text {
+                    id: innerText
+                    font.family: "VivaldiD"
+                    font.pixelSize: (70 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    text: index
+                    anchors.centerIn: parent
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        acceptedButtons: Qt.LeftButton
+                        propagateComposedEvents: true
+                        onClicked: {
+                            console.debug("Selected " + index);
+                            selected = index;
+                            changed();
+                            game.state = (game.state === "totalPlayerCountState") ? "humanPlayerCountState" : "playerNameState"
+                        }
+                        onEntered: {
+                            parent.color = "red";
+                        }
+                        onExited: {
+                            parent.color = "black";
+                        }
                     }
                 }
             }

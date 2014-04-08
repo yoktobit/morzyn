@@ -15,6 +15,9 @@
 #include <QTranslator>
 #include <QSettings>
 #include <QScreen>
+#ifdef Q_OS_WIN
+#include <dir.h>
+#endif
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -39,6 +42,11 @@ int main(int argc, char *argv[])
 {
     //qInstallMessageHandler(myMessageOutput); //install : set the callback
     QGuiApplication app(argc, argv);
+#ifdef Q_OS_WIN
+#ifndef _DEBUG
+    chdir(app.applicationDirPath().toStdString().c_str());
+#endif
+#endif
 
     QString version("v0.7.15");
 

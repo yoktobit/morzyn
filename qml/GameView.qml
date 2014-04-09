@@ -290,7 +290,7 @@ Rectangle {
                 visible: game.currentPlayer && !game.currentPlayer.isNPC
                 onBackClicked: {
                     if (checkInput()) return;
-                    gameService.abort();
+                    gameService.abort(spellSelectView.selectedCreature);
                 }
             }
             Column {
@@ -409,6 +409,7 @@ Rectangle {
         anchors.margins: 10 * mainWindow.myHeight / mainWindow.sourceHeight
         font.family: "VivaldiD"
         color: "white"
+        visible: game && game.currentPlayer && !game.currentPlayer.isNPC
     }
 
     MouseArea {
@@ -418,7 +419,7 @@ Rectangle {
         onClicked: {
             if (checkInput()) return;
             console.log("gameViewRightClick");
-            gameService.abort();
+            gameService.abort(spellSelectView.selectedCreature);
             mouse.accepted = false;
         }
     }
@@ -433,7 +434,7 @@ Rectangle {
         if (event.key === Qt.Key_Backspace)
         {
             if (checkInput()) return;
-            gameService.abort();
+            gameService.abort(spellSelectView.selectedCreature);
         }
         else if (event.key === Qt.Key_Escape && (game.state === "spellSelectState" || game.state === "moveState" || game.state === "castSpellState"))
         {

@@ -138,11 +138,10 @@ IAI::MovementAction* EasyAI::calculateMovement()
     if (lstFree.count() == 0)
     {
         u->setRemainingMovePoints(0);
-        m_PreviousAction = ACTION_NOTHING;
+        movementAction->action = ACTION_NOTHING;
         nCreatureIndex++;
         qDebug() << "break calculateMovement() without action" << gameService->game->currentPlayer()->name();
-        delete movementAction;
-        return NULL;
+        return movementAction;
     }
     QMap<double, QPoint> lstOrderedFree;
     gameService->getOrderedFieldsByEnemy(lstFree, nearestEnemy, lstOrderedFree);

@@ -514,7 +514,8 @@ void GameService::initPlayerForNewRound(Player *player)
     }
     else if (player->race() == "sorcerer" && statistics->rounds() != 1)
     {
-        player->setSpellPoints(player->spellPoints() + 3);
+        if (player->spellPoints() < 28)
+            player->setSpellPoints(player->spellPoints() + 3);
     }
     qDebug() << "end initPlayerForNewRound" << "with" << player->name();
 }
@@ -932,7 +933,7 @@ void GameService::deselectAll()
     game->setSelectedCreature(NULL);
 }
 
-void GameService::abort()
+void GameService::abort(Creature *creature)
 {
     if (game->state() == "spellSelectState")
     {
@@ -965,6 +966,11 @@ void GameService::abort()
     }
     else if (game->state() == "castSpellState")
     {
+        if (creature)
+        {
+            // Manakosten wieder erstatten
+            game->currentPlayer()->setSpellPoints(game->currentPlayer()->spellPoints() + creature->manaCost());
+        }
         game->setState("moveState");
     }
 }

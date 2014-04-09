@@ -168,7 +168,7 @@ public slots:
     void switchNextPlayer();
     void resetGame();
     void gameStateChanged(QString state);
-    Q_INVOKABLE void abort();
+    Q_INVOKABLE void abort(Creature* creature = NULL);
     Q_INVOKABLE void start();
     Q_INVOKABLE void emitPlayersCreaturesDie(Player* player);
     void setMessage(QString arg)

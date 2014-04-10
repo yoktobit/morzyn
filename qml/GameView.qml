@@ -210,28 +210,34 @@ Rectangle {
                 visible: game.state !== "spellSelectState"
             }
 
-            Grid {
-                id: gameViewBackRowGrid
+            Rectangle {
                 anchors.centerIn: parent
                 width: hCount * (((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight)
                 height: vCount * (((416.0 / vCount) * mainWindow.myHeight) / mainWindow.sourceHeight) // Absicht, damit height immer = width
-                rows: vCount
-                columns: hCount
-                Repeater {
-                    model: (hCount * vCount)
-                    delegate: Rectangle {
-                        width: height // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-                        height: ((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight
-                        color: "transparent"
-                        border.width: 1
-                        border.color: "black"
-                        MouseArea {
-                            anchors.fill: parent
-                            acceptedButtons: Qt.LeftButton
-                            propagateComposedEvents: true
-                            onClicked: {
-                                if (checkInput()) return;
-                                emptyFieldClicked(index);
+                color: "transparent"
+                border.width: 2
+                border.color: "black"
+                Grid {
+                    id: gameViewBackRowGrid
+                    anchors.fill: parent
+                    rows: vCount
+                    columns: hCount
+                    Repeater {
+                        model: (hCount * vCount)
+                        delegate: Rectangle {
+                            width: height // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+                            height: ((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight
+                            color: "transparent"
+                            border.width: 1
+                            border.color: "black"
+                            MouseArea {
+                                anchors.fill: parent
+                                acceptedButtons: Qt.LeftButton
+                                propagateComposedEvents: true
+                                onClicked: {
+                                    if (checkInput()) return;
+                                    emptyFieldClicked(index);
+                                }
                             }
                         }
                     }

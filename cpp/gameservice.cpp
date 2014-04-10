@@ -1120,8 +1120,7 @@ void GameService::getFreeFieldsAround(Creature *creature, QList<QPoint> &lstFree
 
 Creature * GameService::getNearestEnemy(Creature *creature)
 {
-    double dMinDistance = 1000.0;
-    Creature *nearestEnemy = NULL;
+    QMap<int,QList<Creature*> > distMap;
     for (int ii = 0; ii < game->m_players.length(); ii++)
     {
         Player* player = game->m_players[ii];
@@ -1133,21 +1132,35 @@ Creature * GameService::getNearestEnemy(Creature *creature)
             Creature* enemy = player->m_Creatures[jj];
             if (!enemy->alive()) continue;
             double dDistance = getDistance(creature, enemy->x(), enemy->y());
-            if (dDistance < dMinDistance)
+            if (dDistance <= 1.5) dDistance = 1;
+            if (!distMap.contains(dDistance))
             {
-                dMinDistance = dDistance;
-                nearestEnemy = enemy;
+                QList<Creature*> newList; newList.append(enemy);
+                distMap.insert(dDistance, newList);
+            }
+            else
+            {
+                distMap[dDistance].append(enemy);
             }
         }
         // player himself?
         double dDistance = getDistance(creature, player->x(), player->y());
-        if (dDistance < dMinDistance)
+        if (dDistance <= 1.5) dDistance = 1;
+        if (!distMap.contains(dDistance))
         {
-            dMinDistance = dDistance;
-            nearestEnemy = player;
+            QList<Creature*> newList; newList.append(player);
+            distMap.insert(dDistance, newList);
+        }
+        else
+        {
+            distMap[dDistance].append(player);
         }
     }
-    return nearestEnemy;
+    if (distMap.size() == 0)
+        return NULL;
+    QList<Creature*> nearestCreatures = distMap.first();
+    int nRand = randomInteger(0, nearestCreatures.size());
+    return nearestCreatures[nRand];
 }
 
 void GameService::getOrderedFieldsByEnemy(const QList<QPoint> &lstFree, Creature *creature, QMap<double, QPoint> &map)

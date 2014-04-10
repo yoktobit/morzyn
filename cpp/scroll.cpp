@@ -18,6 +18,7 @@ void Scroll::load(QDomNode *node)
     m_ManaCost = node->attributes().namedItem("manacost").nodeValue().toInt();
     qDebug() << "loading maxdamage";
     m_maxDamage = node->attributes().namedItem("maxdam").nodeValue().toInt();
+    m_DistanceStrength = m_maxDamage;
     m_minDamage = node->attributes().namedItem("mindam").nodeValue().toInt();
     m_Species = node->attributes().namedItem("name").nodeValue();
     m_range = node->attributes().namedItem("range").nodeValue().toInt();

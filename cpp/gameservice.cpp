@@ -1158,7 +1158,7 @@ Creature * GameService::getNearestEnemy(Creature *creature)
     }
     if (distMap.size() == 0)
         return NULL;
-    QList<Creature*> nearestCreatures = distMap.first();
+    QList<Creature*> nearestCreatures = distMap[distMap.keys().first()];
     int nRand = randomInteger(0, nearestCreatures.size());
     return nearestCreatures[nRand];
 }

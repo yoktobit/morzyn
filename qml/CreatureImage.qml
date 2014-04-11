@@ -7,7 +7,7 @@ import QtQuick 2.1
 
 Rectangle {
     id: creatureImageRect
-    color: "transparent"
+    color: currentColor
     width: creatureImage.width
     height: creatureImage.height
     x: modelData === undefined || modelData === null ? 0 : modelData.xField * (((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight) // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
@@ -17,6 +17,14 @@ Rectangle {
     property int movements: 0
 
     property string startype: "staryellow.png"
+
+    property color markColor: "#5533FF33"
+    property color noColor: "transparent"
+    property color selectedColor: "#AA000000"
+    property color currentColor: game.currentPlayer && modelData.player && game.currentPlayer === modelData.player ? markColor : noColor
+
+    border.width: 2
+    border.color: "transparent"
 
     property var modelData
 
@@ -119,7 +127,10 @@ Rectangle {
     Connections {
         target: game
         onSelectedCreatureChanged: {
-            color = (game.selectedCreature === modelData) ? "#AA000000" : "transparent";
+            color = (game.selectedCreature === modelData) ? selectedColor : currentColor;
+        }
+        onCurrentPlayerChanged: {
+            color = (game.selectedCreature === modelData) ? selectedColor : currentColor;
         }
     }
 
@@ -348,15 +359,15 @@ Rectangle {
         alwaysRunToEnd: true
         loops: 3
         ColorAnimation {
-            from: "transparent"
-            to: "#AA000000"
+            from: currentColor
+            to: selectedColor
             duration: 100
             target: creatureImageRect
             property: "color"
         }
         ColorAnimation {
-            from: "#AA000000"
-            to: "transparent"
+            from: selectedColor
+            to: currentColor
             duration: 100
             target: creatureImageRect
             property: "color"
@@ -365,7 +376,7 @@ Rectangle {
             if (!running)
             {
                 console.log("Stopped Blinking");
-                creatureImageRect.color = "transparent";
+                creatureImageRect.color = currentColor;
                 console.log("blinking animation release");
                 game.release();
             }

@@ -12,21 +12,21 @@ Description: |-
 Configure: none
 Builder: qtc5
 PkgConfigBR:
-- sailfishapp
-- Qt5Xml
-- Qt5Multimedia
-- Qt5Core
-- Qt5Qml
 - Qt5Quick
+- Qt5Qml
+- Qt5Core
+- Qt5Multimedia
+- Qt5Xml
+- sailfishapp
 Requires:
 - sailfishsilica-qt5
 Files:
-- /usr/share/icons/hicolor/86x86/apps
-- /usr/share/applications
-- /usr/share/harbour-morzyn
-- /usr/bin
-- '%{_datadir}/icons/hicolor/86x86/apps'
-- '%{_bindir}'
-- '%{_datadir}/harbour-morzyn'
 - '%{_datadir}/applications'
+- '%{_datadir}/harbour-morzyn'
+- '%{_bindir}'
+- '%{_datadir}/icons/hicolor/86x86/apps'
+- /usr/bin
+- /usr/share/harbour-morzyn
+- /usr/share/applications
+- /usr/share/icons/hicolor/86x86/apps
 PkgBR: []

@@ -15,7 +15,7 @@
 #include <QTranslator>
 #include <QSettings>
 #include <QScreen>
-#ifdef Q_OS_WIN
+#ifdef Q_OS_WIN32
 #include <dir.h>
 #endif
 
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 {
     //qInstallMessageHandler(myMessageOutput); //install : set the callback
     QGuiApplication app(argc, argv);
-#ifdef Q_OS_WIN
+#ifdef Q_OS_WIN32
 #ifndef _DEBUG
     chdir(app.applicationDirPath().toStdString().c_str());
 #endif

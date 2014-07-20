@@ -97,6 +97,7 @@ public:
     Q_INVOKABLE void addTutorialPlayer(Player* player);
     Q_INVOKABLE void placeTutorialPlayers();
     Q_INVOKABLE void quit();
+    Q_INVOKABLE bool getFullScreen();
 
     void emitCreatureMoved(Creature* creature);
     void emitPlayerSwitched(Player* player);
@@ -128,7 +129,6 @@ public:
     Library* library;
     Statistics* statistics;
     QSettings* settings;
-    QQuickView* viewer;
     QString message() const
     {
         return m_message;

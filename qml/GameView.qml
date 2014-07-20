@@ -139,10 +139,11 @@ Rectangle {
                 gameService.placePlayers();
                 console.log("ImageFilename Player 0" + game.creatures[0].imageFilename);
                 allreadyShown = true;
-                if (os !== "sailfish_sick")
+                /*if (os !== "sailfish_sick")
                     titleSound.volume = 0.0;
                 else
-                    titleSound.pause();
+                    titleSound.pause();*/
+                gameService.playTitleSong(false);
             }
         }
     }

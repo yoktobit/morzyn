@@ -29,6 +29,7 @@ class Game : public QObject
     Q_PROPERTY(int lastDamage READ lastDamage WRITE setLastDamage NOTIFY lastDamageChanged)
     Q_PROPERTY(bool hasBegun READ hasBegun WRITE setHasBegun NOTIFY hasBegunChanged)
     Q_PROPERTY(bool manaMode READ manaMode WRITE setManaMode NOTIFY manaModeChanged)
+    Q_PROPERTY(bool fullScreen READ fullScreen WRITE setFullScreen NOTIFY fullScreenChanged)
 
 public:
     explicit Game(QObject *parent = 0);
@@ -112,6 +113,11 @@ public:
     bool manaMode() const
     {
         return m_manaMode;
+    }
+
+    bool fullScreen() const
+    {
+        return m_fullScreen;
     }
 
 signals:
@@ -227,6 +233,14 @@ void setManaMode(bool arg)
     }
 }
 
+void setFullScreen(bool arg)
+{
+    if (m_fullScreen != arg) {
+        m_fullScreen = arg;
+        emit fullScreenChanged(arg);
+    }
+}
+
 private:
 
 Player* m_currentPlayer;
@@ -250,10 +264,13 @@ int m_lastDamage;
 
 bool m_manaMode;
 
+bool m_fullScreen;
+
 signals:
 void onAvailable();
 void hasBegunChanged(bool arg);
 void manaModeChanged(bool arg);
+void fullScreenChanged(bool arg);
 };
 
 #endif // GAME_H

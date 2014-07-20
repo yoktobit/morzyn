@@ -55,16 +55,18 @@ Item {
                         gameService.setBoolSetting("music", mainWindow.musicActivated);
                         if (mainWindow.musicActivated && game.state === "optionsState")
                         {
-                            titleSound.morzynPlay();
+                            /*titleSound.morzynPlay();
                             if (os !== "sailfish_sick")
-                                titleSound.volume = 1.0;
+                                titleSound.volume = 1.0;*/
+                            gameService.playTitleSong(true);
                         }
                         else
                         {
-                            if (os === "sailfish_sick")
+                            /*if (os === "sailfish_sick")
                                 titleSound.pause();
                             else
-                                titleSound.volume = 0.0;
+                                titleSound.volume = 0.0;*/
+                            gameService.playTitleSong(false);
                         }
                     }
                 }

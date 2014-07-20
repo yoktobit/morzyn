@@ -41,7 +41,7 @@ Page {
                 if (!mainWindow.applicationActive)
                 {
                     mainWindow.playSounds = false;
-                    if (titleSound.playbackState === Audio.PlayingState)
+                    /*if (titleSound.playbackState === Audio.PlayingState)
                     {
                         mainWindow.titleSoundLastPlayState = true;
                         console.log("TitleSound was running");
@@ -55,23 +55,25 @@ Page {
                         titleSound.pause();
                     else
                         titleSound.volume = 0.0;
-                    console.log("TitleSound stopped");
+                    console.log("TitleSound stopped");*/
+                    gameService.playTitleSong(false);
                 }
                 else
                 {
                     mainWindow.playSounds = true;
-                    if (mainWindow.titleSoundLastPlayState)
+                    /*if (mainWindow.titleSoundLastPlayState)
                     {
                         titleSound.morzynPlay();
                         if (os !== "sailfish_sick")
                             titleSound.volume = 1.0;
                         console.log("TitleSound resumed");
-                    }
+                    }*/
+                    gameService.playTitleSong(true);
                 }
             }
         }
 
-        MorzynAudio {
+        /*MorzynAudio {
             id: titleSound
             source: "sounds/morzyn intro.mp3"
             autoPlay: false
@@ -90,6 +92,6 @@ Page {
                     }
                 }
             }
-        }
+        }*/
     }
 }

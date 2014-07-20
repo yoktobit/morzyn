@@ -1,5 +1,6 @@
-#include <QtGui/QGuiApplication>
-#include "qtquick2applicationviewer.h"
+#include <QApplication>
+//#include "qtquick2applicationviewer.h"
+#include <QQmlApplicationEngine>
 #include <QQmlEngine>
 #include <QQmlContext>
 #include <QQuickItem>
@@ -41,7 +42,7 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 int main(int argc, char *argv[])
 {
     //qInstallMessageHandler(myMessageOutput); //install : set the callback
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 #ifdef Q_OS_WIN32
 #ifndef _DEBUG
     chdir(app.applicationDirPath().toStdString().c_str());
@@ -94,7 +95,8 @@ int main(int argc, char *argv[])
     translator.load(QString("morzyn_") + locale.left(2).toLower(), "translations");
     app.installTranslator(&translator);
 
-    QtQuick2ApplicationViewer viewer;
+    //QtQuick2ApplicationViewer viewer;
+    QQmlApplicationEngine viewer;
 
     GameService gs;
     Game g;
@@ -107,7 +109,7 @@ int main(int argc, char *argv[])
     gs.setLibrary(&l);
     gs.setStatistics(&s);
     gs.setSettings(&settings);
-    gs.viewer = &viewer;
+    //gs.viewer = &viewer;
 
     if (screenSize.width() < minHorizontalSize || screenSize.height() < minVerticalSize)
     {
@@ -116,7 +118,7 @@ int main(int argc, char *argv[])
     }
 
 #ifndef Q_OS_ANDROID
-    viewer.setIcon(QIcon("qml/morzyn/images/morzyn.png"));
+    //viewer.setIcon(QIcon("qml/morzyn/images/morzyn.png"));
 #endif
     viewer.rootContext()->setContextProperty("gameService", &gs);
     viewer.rootContext()->setContextProperty("game", &g);
@@ -132,13 +134,14 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("vCount", QVariant(c.VCOUNT));
     viewer.rootContext()->setContextProperty("version", QVariant(version));
     viewer.rootContext()->setContextProperty("locale", QVariant(locale));
-    viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
-    viewer.setTitle(QString("Morzyn %0").arg(version));
+    //viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
+    //viewer.setTitle(QString("Morzyn %0").arg(version));
+    viewer.load(QUrl(QStringLiteral("qml/main.qml")));
     //viewer.showExpanded();
-    if (bFullscreen)
+    /*if (bFullscreen)
         viewer.showFullScreen();
     else
-        viewer.show();
+        viewer.show();*/
 
     return app.exec();
 }

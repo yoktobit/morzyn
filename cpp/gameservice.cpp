@@ -1389,16 +1389,8 @@ int GameService::getColorIndex(QString imageFilename)
 
 void GameService::setFullScreen(bool fullscreen)
 {
-    if (fullscreen)
-    {
-        viewer->showFullScreen();
-    }
-    else
-    {
-        if (viewer->windowState() != Qt::WindowMaximized)
-            viewer->showNormal();
-    }
     setBoolSetting("fullscreen", fullscreen);
+    game->setFullScreen(fullscreen);
 }
 
 void GameService::simulateFight(Creature *c1, Creature *c2)
@@ -1559,6 +1551,11 @@ void GameService::quit()
     qApp->quit();
 }
 
+bool GameService::getFullScreen()
+{
+    return settings->value("fullscreen", QVariant(true)).toBool();
+}
+
 void GameService::setGame(Game *g)
 {
     this->game = g;
@@ -1586,6 +1583,7 @@ void GameService::setStatistics(Statistics *s)
 void GameService::setSettings(QSettings *s)
 {
     this->settings = s;
+    game->setFullScreen(s->value("fullscreen", QVariant(true)).toBool());
 }
 
 void GameService::resetGame()

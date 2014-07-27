@@ -1292,7 +1292,7 @@ void GameService::playTitleSong(bool startstop)
     QUrl file("assets:/qml/sounds/morzyn intro.mp3");
 #else
 #ifdef SAILFISH
-    QUrl file(SailfishApp::pathTo("qml/sounds/morzyn intro.mp3").toLocalFile());
+    QUrl file = (SailfishApp::pathTo("qml/sounds/morzyn intro.mp3")/*.toLocalFile()*/);
 #else
     QUrl file(QUrl::fromLocalFile("qml/sounds/morzyn intro.mp3"));
 #endif
@@ -1303,16 +1303,19 @@ void GameService::playTitleSong(bool startstop)
     }
     if (musicAllowed && startstop/* && titleSound->state() != QMediaPlayer::PlayingState*/)
     {
+#ifndef SAILFISH
         QPropertyAnimation* animation = new QPropertyAnimation(titleSound, "volume", this);
         animation->setDuration(2000);
         //animation->setStartValue(0);
         animation->setEndValue(100);
         qDebug() << "Fading in song " << "qml/morzyn/sounds/morzyn intro.mp3";
         animation->start(QAbstractAnimation::DeleteWhenStopped);
+#endif
         titleSound->play();
     }
     else if (!musicAllowed || (!startstop /*&& titleSound->state() == QMediaPlayer::PlayingState*/))
     {
+#ifndef SAILFISH
         QPropertyAnimation* animation = new QPropertyAnimation(titleSound, "volume", this);
         animation->setDuration(2000);
         //animation->setStartValue(100);
@@ -1320,6 +1323,9 @@ void GameService::playTitleSong(bool startstop)
         qDebug() << "Fading out song " << "qml/morzyn/sounds/morzyn intro.mp3";
         connect(animation, SIGNAL(finished()), titleSound, SLOT(pause()));
         animation->start(QAbstractAnimation::DeleteWhenStopped);
+#else
+        titleSound->pause();
+#endif
     }
 }
 

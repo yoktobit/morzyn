@@ -2,7 +2,6 @@
 // Do not remove copyright notice
 
 import QtQuick 2.1
-//import QtQuick.Controls 1.0
 
 Rectangle {
     anchors.fill: parent
@@ -41,7 +40,18 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 onBackClicked: {
                     if (checkInput()) return;
-                    gameService.abort();
+                    if (os !== "android")
+                        gameService.abort();
+                    else
+                    {
+                        if (hoverCreature)
+                        {
+                            gameService.tryBuy(hoverCreature);
+                            selectedCreature = hoverCreature;
+                        }
+                        else
+                            gameService.abort();
+                    }
                 }
             }
 
@@ -75,7 +85,8 @@ Rectangle {
             GrowingText {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: (145 * mainWindow.myHeight) / mainWindow.sourceHeight
-                color: "#1111FF"
+                //color: "#1111FF"
+                color: "#FFFFFF"
                 standardSize: 15
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: qsTr("Available mana", "available mana in SpellSelectView")
@@ -90,7 +101,7 @@ Rectangle {
                 font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                 text: game.currentPlayer ? game.currentPlayer.spellPoints : ""
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: "#1111FF"
+                color: "#7777FF"
             }
         }
     }
@@ -111,30 +122,45 @@ Rectangle {
     }
     Component {
         id: spellSelectComponent
-        Item {
+        Rectangle {
+            id: spellSelectComponentRectangle
             width: Math.max(spellSelectComponentText.width, (230 * mainWindow.myWidth) / mainWindow.sourceWidth)
             height: spellSelectComponentText.height
+            color: "transparent"
+            //border.width: 4
+            //border.color: hoverCreature === modelData ? "red" : "transparent"
             Text {
                 id: spellSelectComponentText
                 text: species
                 //width: 230
                 font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
                 font.family: "VivaldiD"
-                color: game.currentPlayer.spellPoints >= manaCost ? "#FFFFFF" : "#AAAAAA"
+                color: game.currentPlayer.spellPoints >= manaCost ? (hoverCreature === modelData ? "#00FF00" : "#FFFFFF") : (hoverCreature === modelData ? "red" : "#AAAAAA")
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
                     acceptedButtons: Qt.LeftButton
                     //propagateComposedEvents: true
                     onEntered: {
-                        hoverCreature = modelData;
+                        if (os !== "android")
+                            hoverCreature = modelData;
                     }
                     onExited: {
                     }
                     onClicked: {
                         if (checkInput()) return;
-                        gameService.tryBuy(modelData);
-                        selectedCreature = modelData;
+                        if (os !== "android")
+                        {
+                            gameService.tryBuy(modelData);
+                            selectedCreature = modelData;
+                        }
+                        else
+                        {
+                            if (hoverCreature === modelData)
+                                hoverCreature = null;
+                            else
+                                hoverCreature = modelData;
+                        }
                     }
                 }
             }

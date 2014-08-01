@@ -15,11 +15,12 @@ Grid {
     spacing: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
     GrowingText {
         text: qsTr("Cost", "Cost in creature information")
-        color: "#1111FF"
+        //color: "#1111FF"
+        color: (hoveredCreature && player.spellPoints >= hoveredCreature.manaCost ? positiveColor : negativeColor)
     }
     GrowingText {
         text: hoveredCreature !== null ? hoveredCreature.manaCost : ""
-        color: "#1111FF"
+        color: "#7777FF"
     }
     GrowingText {
         text: qsTr("Health", "Health in creature information")

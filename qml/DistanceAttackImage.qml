@@ -67,7 +67,7 @@ Image {
 
     function playOneOf(sound1, sound2, sound3)
     {
-        if (!mainWindow.playSounds || os === "sailfish_sick") return;
+        if (!mainWindow.soundActivated || !mainWindow.playSounds || os === "sailfish_sick") return;
         var randomnumber = Math.floor(Math.random() * 3);
         console.log("DistFire " + randomnumber);
         switch (randomnumber)

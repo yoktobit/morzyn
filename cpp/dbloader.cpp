@@ -59,6 +59,11 @@ QQmlListProperty<Creature> Library::creatures()
     return QQmlListProperty<Creature>(this, 0, &Library::creatureCount, &Library::creature);
 }
 
+bool creatureNameLessThan(Creature* c1, Creature* c2)
+{
+    return c1->species().toLower() < c2->species().toLower();
+}
+
 void Library::getAllCreatures()
 {
     lstAllCreatures.clear();
@@ -78,6 +83,7 @@ void Library::getAllCreatures()
     {
         lstAllCreatures << c;
     }
+    qSort(lstAllCreatures.begin(), lstAllCreatures.end(), creatureNameLessThan);
 }
 
 void Library::loadAll()

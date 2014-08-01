@@ -1,30 +1,12 @@
-# Add more folders to ship with the application, here
-folder_01.source = qml
-folder_01.target = .
-folder_02.source = translations
-folder_02.target = .
-DEPLOYMENTFOLDERS = folder_01 folder_02
-
-# If your application uses the Qt Mobility libraries, uncomment the following
-# lines and add the respective components to the MOBILITY variable.
-# CONFIG += mobility
-# MOBILITY +=
-
-#CONFIG += console
-
 TEMPLATE = app
 
 TARGET = morzyn
 
 QT += qml quick widgets xml multimedia
 
-# Additional import path used to resolve QML modules in Creator's code model
-QML_IMPORT_PATH =
-
 CONFIG(debug, debug|release) {
     DEFINES += _DEBUG
 }
-
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += cpp/desktopandroid/main.cpp \
@@ -44,7 +26,6 @@ SOURCES += cpp/desktopandroid/main.cpp \
 
 TRANSLATIONS = translations/morzyn_de.ts
 
-lupdate_only {
 OTHER_FILES += qml/BackButton.qml \
     qml/CreatureImage.qml \
     qml/CreatureInformation.qml \
@@ -74,12 +55,8 @@ OTHER_FILES += qml/BackButton.qml \
     qml/Switch.qml \
     qml/TitleView.qml \
     qml/TitlePage.qml
-}
 
 RC_FILE += morzyn.rc
-
-# Please do not modify the following two lines. Required for deployment.
-#include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 
 HEADERS += \
     cpp/dbloader.h \
@@ -128,8 +105,25 @@ HEADERS += \
 #    android/src/org/qtproject/qt5/android/bindings/QtActivity.java \
 #    android/src/org/qtproject/qt5/android/bindings/QtApplication.java
 
-#ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+android {
+    ASSET_INSTALL_PATH = /assets
+    folder_01.files = qml/*
+    folder_01.path = $$ASSET_INSTALL_PATH/qml
+    folder_01.depends += FORCE
+    folder_02.files = translations/*
+    folder_02.path = $$ASSET_INSTALL_PATH/translations
+    folder_01.depends += FORCE
+    INSTALLS += folder_01 folder_02
+} else {
+    ASSET_INSTALL_PATH = $$OUT_PWD
+    folder_01.source = qml
+    folder_01.path = .
+    folder_02.source = translations
+    folder_02.path = .
+    DEPLOYMENTFOLDERS += folder_01 folder_02
+}
 
 # Default rules for deployment.
 include(deployment.pri)
-qtcAddDeployment()

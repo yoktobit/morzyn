@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
-    QString version("v0.7.15");
+    QString version("v0.7.16");
 
     QCoreApplication::setOrganizationDomain("de.yoktobit");
     QCoreApplication::setOrganizationName("yoktobit");
@@ -136,7 +136,11 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("locale", QVariant(locale));
     //viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
     //viewer.setTitle(QString("Morzyn %0").arg(version));
+#ifdef Q_OS_ANDROID
+    viewer.load(QUrl(QStringLiteral("assets:/qml/main.qml")));
+#else
     viewer.load(QUrl(QStringLiteral("qml/main.qml")));
+#endif
     //viewer.showExpanded();
     /*if (bFullscreen)
         viewer.showFullScreen();

@@ -69,6 +69,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import dalvik.system.DexClassLoader;
@@ -687,6 +688,12 @@ public class QtActivity extends Activity
                 setContentView(m_activityInfo.metaData.getInt("android.app.splash_screen"));
             startApp(true);
         }
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().getDecorView()
+                .setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                       | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
     //---------------------------------------------------------------------------
 

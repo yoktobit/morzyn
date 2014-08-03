@@ -46,6 +46,7 @@ Rectangle {
                     {
                         if (hoverCreature)
                         {
+                            game.tempCreature = hoverCreature;
                             gameService.tryBuy(hoverCreature);
                             selectedCreature = hoverCreature;
                         }
@@ -135,7 +136,7 @@ Rectangle {
                 //width: 230
                 font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
                 font.family: "VivaldiD"
-                color: game.currentPlayer.spellPoints >= manaCost ? (hoverCreature === modelData ? "#00FF00" : "#FFFFFF") : (hoverCreature === modelData ? "red" : "#AAAAAA")
+                color: modelData && game.currentPlayer.spellPoints >= manaCost ? (hoverCreature === modelData ? "#00FF00" : "#FFFFFF") : (hoverCreature === modelData ? "red" : "#AAAAAA")
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
@@ -151,6 +152,7 @@ Rectangle {
                         if (checkInput()) return;
                         if (os !== "android")
                         {
+                            game.tempCreature = modelData;
                             gameService.tryBuy(modelData);
                             selectedCreature = modelData;
                         }

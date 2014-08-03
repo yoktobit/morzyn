@@ -18,12 +18,13 @@ Rectangle {
 
     property string startype: "staryellow.png"
 
-    property color markColor: "#5533FF33"
+    property color markColor: "#99CCCCCC"
     property color noColor: "transparent"
-    property color selectedColor: "#AA000000"
+    property color selectedColor: "#55FFFF33"
+    property color doneColor: "#AACCCC00"
     property color currentColor: game.currentPlayer && modelData.player && game.currentPlayer === modelData.player ? markColor : noColor
 
-    border.width: 2
+    border.width: 3
     border.color: "transparent"
 
     property var modelData

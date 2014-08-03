@@ -98,7 +98,7 @@
     </message>
     <message>
         <source>Don&apos;t harm your own creatures ;-)</source>
-        <translation>Tu deinen eigenen Kreaturen nicht weh ;-)</translation>
+        <translation type="vanished">Tu deinen eigenen Kreaturen nicht weh ;-)</translation>
     </message>
     <message>
         <source>Please cancel move mode first to use the distance attack</source>
@@ -158,7 +158,11 @@
     </message>
     <message>
         <source>You can&apos;t cast a creature where another one exists.</source>
-        <translation type="unfinished">Du kannst keine Kreatur dort zaubern, wo schon eine ist.</translation>
+        <translation>Du kannst keine Kreatur dort zaubern, wo schon eine ist.</translation>
+    </message>
+    <message>
+        <source>Tip: Don&apos;t harm your own creatures ;-)</source>
+        <translation>Tip: Tu deinen eigenen Kreaturen nicht weh ;-)</translation>
     </message>
 </context>
 <context>

@@ -422,7 +422,7 @@ double GameService::getDistance(Creature *creature, int x, int y)
     return getDistance(creature->x(), creature->y(), x, y);
 }
 
-bool GameService::isMovementPossible(Creature *creature, int x, int y)
+bool GameService::isMovementPossible(Creature *creature, int x, int y, bool message = true)
 {
     qDebug("Begin isMovementPossible");
     if (game->state() != "moveState") return false;
@@ -433,19 +433,22 @@ bool GameService::isMovementPossible(Creature *creature, int x, int y)
     // same position? oh no, you don't have to move to where you allready are...
     if (dist == 0)
     {
-        setMessage(tr("You are already there ;-)"));
+        if (message)
+            setMessage(tr("You are already there ;-)"));
         return false;
     }
     // more than one field? not possible
     if (dist > 1.5)
     {
-        setMessage(tr("You have to move field per field"));
+        if (message)
+            setMessage(tr("You have to move field per field"));
         return false;
     }
     // farer away as speed allows? not possible
     if (creature->remainingMovePoints() < 0.5)
     {
-        setMessage(tr("You've got not enough move points to move there"));
+        if (message)
+            setMessage(tr("You've got not enough move points to move there"));
         return false;
     }
     //if (creature->remainingMovePoints() < (int)dist) return false;
@@ -454,7 +457,8 @@ bool GameService::isMovementPossible(Creature *creature, int x, int y)
     // enemy in range? Sorry, you have to attack...
     if (isCreatureNearEnemy(creature))
     {
-        setMessage(tr("You can't move, there's an enemy beside you!"));
+        if (message)
+            setMessage(tr("You can't move, there's an enemy beside you!"));
         return false;
     }
     qDebug("End isMovementPossible");
@@ -647,9 +651,9 @@ bool GameService::isDistanceAttackable(Creature *attacker, Creature *attacked)
     // no friendly fire!
     if (attacker->player() == attacked->player())
     {
-        qDebug() << "friendly fire not possible";
-        setMessage(tr("Don't harm your own creatures ;-)"));
-        return false;
+        qDebug() << "friendly fire is possible";
+        setMessage(tr("Tip: Don't harm your own creatures ;-)"));
+        //return true;
     }
     if (attacker->remainingMovePoints() > 0 && !attacker->hasAttacked())
     {
@@ -1560,6 +1564,32 @@ void GameService::quit()
 bool GameService::getFullScreen()
 {
     return settings->value("fullscreen", QVariant(true)).toBool();
+}
+
+QColor GameService::getColorOfEmptyField(int index, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state)
+{
+    if (!currentPlayer) return Qt::transparent;
+    QPoint fieldPoint(index % config->HCOUNT, index / config->HCOUNT);
+    QList<QPoint> lstPoints;
+    if (state == "castSpellState")
+    {
+        if (!game->tempCreature()) return Qt::transparent;
+        qDebug() << "is" << game->tempCreature()->metaObject()->className();
+        if (!QString(game->tempCreature()->metaObject()->className()).startsWith("Creature"))
+            return Qt::transparent;
+        getFreeFieldsAround(currentPlayer, lstPoints);
+        if (lstPoints.contains(fieldPoint))
+            return QColor::fromRgba(0x5533FF33);
+    }
+    else if (state == "moveState")
+    {
+        if (!selectedCreature) return Qt::transparent;
+        getFreeFieldsAround(selectedCreature, lstPoints);
+        if (lstPoints.contains(fieldPoint))
+            if (isMovementPossible(selectedCreature, fieldPoint.x(), fieldPoint.y(), false))
+                return QColor::fromRgba(0x5533FF33);
+    }
+    return Qt::transparent;
 }
 
 void GameService::setGame(Game *g)

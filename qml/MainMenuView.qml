@@ -27,7 +27,7 @@ Rectangle {
     }
     MorzynButton {
         id: mainMenuStartButton
-        x: parent.width * 0.6
+        x: parent.width * 0.62
         y: parent.height * 0.1
         text: qsTr("Start", "Start in main menu")
         onClicked: {
@@ -37,7 +37,7 @@ Rectangle {
     }
     /*MorzynButton {
         id: mainMenuTutorialButton
-        x: parent.width * 0.6
+        x: parent.width * 0.62
         y: parent.height * 0.1
         text: qsTr("Tutorial", "Tutorial in main menu")
         onClicked: {
@@ -47,7 +47,7 @@ Rectangle {
     }*/
     MorzynButton {
         id: mainMenuGrimoireButton
-        x: parent.width * 0.6
+        x: parent.width * 0.62
         y: parent.height * 0.25
         text: qsTr("Grimoire", "Grimoire in main menu")
         onClicked: {
@@ -56,7 +56,7 @@ Rectangle {
     }
     MorzynButton {
         id: mainMenuOptionsButton
-        x: parent.width * 0.6
+        x: parent.width * 0.62
         y: parent.height * 0.4
         text: qsTr("Options", "Options in main menu")
         onClicked: {
@@ -65,7 +65,7 @@ Rectangle {
     }
     MorzynButton {
         id: mainMenuHelpButton
-        x: parent.width * 0.6
+        x: parent.width * 0.62
         y: parent.height * 0.55
         text: qsTr("Online Help", "Online Help in main menu")
         onClicked: {
@@ -85,7 +85,7 @@ Rectangle {
     }
     MorzynButton {
         id: mainMenuQuitButton
-        x: parent.width * 0.6
+        x: parent.width * 0.62
         y: parent.height * 0.7
         text: qsTr("Quit", "Quit in main menu")
         onClicked: {

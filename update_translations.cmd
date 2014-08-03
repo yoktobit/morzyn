@@ -1,1 +1,1 @@
-C:\Tools\Qt\5.2.0\msvc2010\bin\lupdate.exe -verbose -pro morzyn.pro -ts translations/morzyn_de.ts
+C:\Tools\Qt\5.3\mingw482_32\bin\lupdate.exe -verbose -pro morzyn.pro -ts translations/morzyn_de.ts

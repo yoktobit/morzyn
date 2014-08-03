@@ -15,6 +15,7 @@ Game::Game(QObject *parent) :
     m_isLocked = false;
     m_semaphore = new QSemaphore(MAX_ANIMATION);
     m_manaMode = false;
+    m_tempCreature = NULL;
 }
 
 void Game::append_creature(QQmlListProperty<Creature> *list, Creature *creature)

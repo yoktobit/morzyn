@@ -35,7 +35,7 @@ public:
     Q_INVOKABLE void resetMovementPoints(Creature *creature);
     Q_INVOKABLE double getDistance(int sourceX, int sourceY, int targetX, int targetY);
     Q_INVOKABLE double getDistance(Creature *creature, int x, int y);
-    Q_INVOKABLE bool isMovementPossible(Creature *creature, int x, int y);
+    Q_INVOKABLE bool isMovementPossible(Creature *creature, int x, int y, bool message);
     Q_INVOKABLE double getRealMovementDistance(Creature *creature, int x, int y);
     Q_INVOKABLE void tryMoveCreature(Creature *creature, int x, int y);
     Q_INVOKABLE void moveCreature(Creature *creature, int x, int y);
@@ -98,6 +98,7 @@ public:
     Q_INVOKABLE void placeTutorialPlayers();
     Q_INVOKABLE void quit();
     Q_INVOKABLE bool getFullScreen();
+    Q_INVOKABLE QColor getColorOfEmptyField(int index, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state);
 
     void emitCreatureMoved(Creature* creature);
     void emitPlayerSwitched(Player* player);

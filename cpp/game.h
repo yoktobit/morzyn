@@ -30,6 +30,7 @@ class Game : public QObject
     Q_PROPERTY(bool hasBegun READ hasBegun WRITE setHasBegun NOTIFY hasBegunChanged)
     Q_PROPERTY(bool manaMode READ manaMode WRITE setManaMode NOTIFY manaModeChanged)
     Q_PROPERTY(bool fullScreen READ fullScreen WRITE setFullScreen NOTIFY fullScreenChanged)
+    Q_PROPERTY(Creature* tempCreature READ tempCreature WRITE setTempCreature NOTIFY tempCreatureChanged)
 
 public:
     explicit Game(QObject *parent = 0);
@@ -120,6 +121,11 @@ public:
     bool fullScreen() const
     {
         return m_fullScreen;
+    }
+
+    Creature* tempCreature() const
+    {
+        return m_tempCreature;
     }
 
 signals:
@@ -243,6 +249,14 @@ void setFullScreen(bool arg)
     }
 }
 
+void setTempCreature(Creature* arg)
+{
+    if (m_tempCreature != arg) {
+        m_tempCreature = arg;
+        emit tempCreatureChanged(arg);
+    }
+}
+
 private:
 
 Player* m_currentPlayer;
@@ -273,11 +287,14 @@ bool m_manaMode;
 
 bool m_fullScreen;
 
+Creature* m_tempCreature;
+
 signals:
 void onAvailable();
 void hasBegunChanged(bool arg);
 void manaModeChanged(bool arg);
 void fullScreenChanged(bool arg);
+void tempCreatureChanged(Creature* arg);
 };
 
 #endif // GAME_H

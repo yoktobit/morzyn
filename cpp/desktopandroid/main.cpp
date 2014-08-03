@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_ANDROID
     QString os = "android";
 #else
-    QString os = "android";
+    QString os = "windows";
 #endif
     viewer.rootContext()->setContextProperty("os", QVariant(os));
     viewer.rootContext()->setContextProperty("hCount", QVariant(c.HCOUNT));

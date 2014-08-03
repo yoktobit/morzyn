@@ -1603,11 +1603,14 @@ void GameService::resetGame()
     game->m_AI.clear();
     game->m_players.clear();
     game->m_creatures.clear();
+    game->m_scrolls.clear();
     game->setSelectedCreature(NULL);
     game->setLastDamage(0);
     game->setIsCreatureDying(false);
     game->setIsLocked(false);
     game->emitCreaturesChanged();
+    game->emitPlayersChanged();
+    game->emitScrollsChanged();
     game->arrUsedPlayerColors.clear();
     delete game->m_semaphore;
     game->m_semaphore = new QSemaphore(MAX_ANIMATION);

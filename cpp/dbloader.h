@@ -14,7 +14,7 @@
 class Library : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QQmlListProperty<Creature> creatures READ creatures)
+    Q_PROPERTY(QQmlListProperty<Creature> creatures READ creatures NOTIFY creaturesChanged)
 
 public:
     explicit Library(QObject *parent = 0);
@@ -43,7 +43,7 @@ public:
     static int creatureCount(QQmlListProperty<Creature> *list);
     static Creature* creature(QQmlListProperty<Creature> *list, int index);
 signals:
-
+    void creaturesChanged();
 public slots:
 
 };

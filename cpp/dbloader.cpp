@@ -47,7 +47,9 @@ int Library::creatureCount(QQmlListProperty<Creature> *list)
 Creature *Library::creature(QQmlListProperty<Creature> *list, int index)
 {
     Library *library = qobject_cast<Library*>(list->object);
-    return library->lstAllCreatures.at(index);
+    if (index >= 0 && index < library->lstAllCreatures.length())
+        return library->lstAllCreatures.at(index);
+    return NULL;
 }
 
 QQmlListProperty<Creature> Library::creatures()

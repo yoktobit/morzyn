@@ -50,8 +50,10 @@ Rectangle {
                     selectByMouse: true
                     maximumLength: 14
                     onTextChanged: {
-                        game.players[index].name = text;
-                        game.creatures[index].name = text;
+                        if (index >= 0 && index < game.players.length)
+                            game.players[index].name = text;
+                        if (index >= 0 && index < game.creatures.length)
+                            game.creatures[index].name = text;
                     }
                     onActiveFocusChanged: {
                         if (activeFocus)
@@ -86,8 +88,10 @@ Rectangle {
                 }
                 onSelectedValueChanged: {
                     console.log("Race: " + selectedValue);
-                    game.players[index].race = selectedValue;
-                    game.creatures[index].race = selectedValue;
+                    if (index >= 0 && index < game.players.length)
+                        game.players[index].race = selectedValue;
+                    if (index >= 0 && index < game.creatures.length)
+                        game.creatures[index].race = selectedValue;
                 }
             }
             /*DropList {

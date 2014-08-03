@@ -91,3 +91,24 @@ void Player::initialize()
     }
     m_originalHp = this->m_HP;
 }
+
+int Player::count_possibleCreature(QQmlListProperty<Creature> *list)
+{
+    Player *player = qobject_cast<Player *>(list->object);
+    if (player)
+        return player->m_PossibleCreatures.count();
+    return 0;
+}
+
+Creature* Player::at_possibleCreature(QQmlListProperty<Creature> *list, int index)
+{
+    Player *player = qobject_cast<Player *>(list->object);
+    if (player && index < player->m_PossibleCreatures.size() && index >= 0)
+        return player->m_PossibleCreatures.at(index);
+    return NULL;
+}
+
+QQmlListProperty<Creature> Player::possibleCreatures()
+{
+    return QQmlListProperty<Creature>(this, 0, &Player::count_possibleCreature, &Player::at_possibleCreature);
+}

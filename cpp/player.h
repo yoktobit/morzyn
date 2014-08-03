@@ -16,6 +16,9 @@ class Player : public Creature
     Q_PROPERTY(QString race READ race WRITE setRace NOTIFY propertyChanged)
     Q_PROPERTY(QQmlListProperty<Creature> possibleCreatures READ possibleCreatures NOTIFY possibleCreaturesChanged)
 
+    static int count_possibleCreature(QQmlListProperty<Creature> *list);
+    static Creature *at_possibleCreature(QQmlListProperty<Creature> *list, int index);
+
 public:
     explicit Player(QObject *parent = 0);
     inline int spellPoints() const { return m_SpellPoints; }
@@ -29,10 +32,8 @@ public:
     {
         return isNPC() ? tr("AI ", "AI shortcut as player category") : tr("Human ", "human as player category");
     }
-    QQmlListProperty<Creature> possibleCreatures()
-    {
-        return QQmlListProperty<Creature>(this, m_PossibleCreatures);
-    }
+    QQmlListProperty<Creature> possibleCreatures();
+
     void emitPossibleCreaturesChanged() { emit possibleCreaturesChanged(); }
 
     QString race() const

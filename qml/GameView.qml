@@ -134,10 +134,8 @@ Rectangle {
             console.log("B: " + game.state);
             if (game.state === "spellSelectState" && !allreadyShown)
             {
-                console.log("vorm placen ImageFilename Player 0" + game.creatures[0].imageFilename);
                 console.log("placing players");
                 gameService.placePlayers();
-                console.log("ImageFilename Player 0" + game.creatures[0].imageFilename);
                 allreadyShown = true;
                 /*if (os !== "sailfish_sick")
                     titleSound.volume = 0.0;

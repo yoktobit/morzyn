@@ -58,7 +58,7 @@ public:
     }
     QQmlListProperty<Scroll> scrolls()
     {
-        return QQmlListProperty<Scroll>(this, m_scrolls);
+        return QQmlListProperty<Scroll>(this, 0, &Game::append_scroll, &Game::count_scroll, &Game::at_scroll, &Game::clear_scroll);
     }
     int playerCount() const {
         return m_players.count();
@@ -68,6 +68,8 @@ public:
     }
     void emitPropertyChanged() { emit propertyChanged(); }
     void emitCreaturesChanged() { emit creaturesChanged(); }
+    void emitPlayersChanged() { emit playersChanged(); }
+    void emitScrollsChanged() { emit scrollsChanged(); }
 
     Player* currentPlayer() const
     {
@@ -258,6 +260,11 @@ static void append_player(QQmlListProperty<Player> *list, Player *creature);
 static int count_player(QQmlListProperty<Player> *list);
 static Player *at_player(QQmlListProperty<Player> *list, int index);
 static void clear_player(QQmlListProperty<Player> *list);
+
+static void append_scroll(QQmlListProperty<Scroll> *list, Scroll *scroll);
+static int count_scroll(QQmlListProperty<Scroll> *list);
+static Scroll *at_scroll(QQmlListProperty<Scroll> *list, int index);
+static void clear_scroll(QQmlListProperty<Scroll> *list);
 
 bool m_isLocked;
 int m_lastDamage;

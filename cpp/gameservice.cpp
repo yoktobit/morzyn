@@ -727,6 +727,15 @@ int GameService::calculateDamage(Creature *attacker, Creature *attacked)
     {
         iSchaden = 0;
     }
+    if (attacker->player() == attacker && attacker->player()->race() == "rogue" && attacked != attacked->player())
+    {
+        int nVolltreffer = randomInteger(0, 100);
+        if (nVolltreffer >= 25 && nVolltreffer < 50)
+        {
+            qDebug() << "M-m-m-m-multikill! Naja fast, aber der Rogue hat voll zugeschlagen.";
+            iSchaden = attacked->hp();
+        }
+    }
     return iSchaden;
 }
 
@@ -1566,11 +1575,12 @@ bool GameService::getFullScreen()
     return settings->value("fullscreen", QVariant(true)).toBool();
 }
 
-QColor GameService::getColorOfEmptyField(int index, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state)
+QColor GameService::getColorOfEmptyField(int index, bool isLocked, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state)
 {
     if (!currentPlayer) return Qt::transparent;
     QPoint fieldPoint(index % config->HCOUNT, index / config->HCOUNT);
     QList<QPoint> lstPoints;
+    if (isLocked) return Qt::transparent;
     if (state == "castSpellState")
     {
         if (!game->tempCreature()) return Qt::transparent;

@@ -226,7 +226,13 @@ Rectangle {
                         delegate: Rectangle {
                             width: height // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
                             height: ((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight
-                            color: gameService.getColorOfEmptyField(index, game.selectedCreature ? game.selectedCreature.x : -1, game.selectedCreature ? game.selectedCreature.y : -1, game.selectedCreature, game.currentPlayer, game.state)//"transparent"
+                            color: gameService.getColorOfEmptyField(index
+                                     , game.isLocked
+                                     , game.selectedCreature ? game.selectedCreature.x : -1
+                                     , game.selectedCreature ? game.selectedCreature.y : -1
+                                     , game.selectedCreature
+                                     , game.currentPlayer
+                                     , game.state)//"transparent"
                             border.width: 1
                             border.color: "black"
                             MouseArea {

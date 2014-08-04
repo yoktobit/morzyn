@@ -13,6 +13,10 @@ ApplicationWindow {
     height: 600
     id: mainWindow
 
+    minimumWidth: 600
+    minimumHeight: width * 0.55
+    maximumHeight: width * 0.76
+
     title: "Morzyn " + version
 
     property bool firstInitSound: true

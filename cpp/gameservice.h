@@ -139,6 +139,7 @@ public:
 private:
 
     QString m_message;
+    bool m_bWriteMessages;
 
 signals:
     void creatureMoved(Creature* creature);
@@ -174,6 +175,7 @@ public slots:
     Q_INVOKABLE void emitPlayersCreaturesDie(Player* player);
     void setMessage(QString arg)
     {
+        if (!m_bWriteMessages) return;
         if (m_message != arg) {
             m_message = arg;
             emit messageChanged(arg);

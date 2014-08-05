@@ -31,7 +31,7 @@ Rectangle {
     Rectangle {
         width: wiese.width
         height: wiese.height
-        color: "#AA222222"
+        color: "#CC222222"
     }
 
     Item {

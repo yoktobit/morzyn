@@ -18,9 +18,9 @@ Rectangle {
 
     property string startype: "staryellow.png"
 
-    property color markColor: "#99CCCCCC"
+    property color markColor: "#66000000"
     property color noColor: "transparent"
-    property color selectedColor: "#55FFFF33"
+    property color selectedColor: "#88CCCCCC"
     property color doneColor: "#AACCCC00"
     property color currentColor: game.currentPlayer && modelData.player && game.currentPlayer === modelData.player ? markColor : noColor
 
@@ -34,33 +34,6 @@ Rectangle {
     }
 
     property bool directionLeft: false
-
-    SequentialAnimation on rotation {
-        id: attackAnimation
-        running: false
-        RotationAnimation {
-            from: 0
-            to: directionLeft ? -15 : 15
-            duration: 250
-        }
-        RotationAnimation {
-            from: directionLeft ? -15 : 15
-            to: 0
-            duration: 250
-        }
-        onRunningChanged: {
-            if (!running)
-            {
-                console.log("rotation animation release");
-                game.release();
-            }
-            else
-            {
-                console.log("rotation animation aquire");
-                game.aquire();
-            }
-        }
-    }
 
     Component.onDestruction: {
     }
@@ -140,6 +113,32 @@ Rectangle {
         source: modelData === undefined || modelData === null ? "" : "images/" + modelData.imageFilename
         height: (416.0 / vCount) * mainWindow.myHeight / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
         width: (416.0 / vCount) * mainWindow.myHeight / mainWindow.sourceHeight
+        SequentialAnimation on rotation {
+            id: attackAnimation
+            running: false
+            RotationAnimation {
+                from: 0
+                to: directionLeft ? -15 : 15
+                duration: 250
+            }
+            RotationAnimation {
+                from: directionLeft ? -15 : 15
+                to: 0
+                duration: 250
+            }
+            onRunningChanged: {
+                if (!running)
+                {
+                    console.log("rotation animation release");
+                    game.release();
+                }
+                else
+                {
+                    console.log("rotation animation aquire");
+                    game.aquire();
+                }
+            }
+        }
         MouseArea {
             anchors.fill: parent
             acceptedButtons: Qt.LeftButton

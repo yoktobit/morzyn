@@ -20,7 +20,7 @@ Grid {
     }
     GrowingText {
         text: hoveredCreature !== null ? hoveredCreature.manaCost : ""
-        color: "#7777FF"
+        color: "#36b2ff"
     }
     GrowingText {
         text: qsTr("Health", "Health in creature information")

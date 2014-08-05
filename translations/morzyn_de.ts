@@ -146,7 +146,7 @@
     </message>
     <message>
         <source>Move or attack!</source>
-        <translation>Beweg dich oder kämpfe!</translation>
+        <translation type="vanished">Beweg dich oder kämpfe!</translation>
     </message>
     <message>
         <source>Cast the spell beside you!</source>
@@ -163,6 +163,30 @@
     <message>
         <source>Tip: Don&apos;t harm your own creatures ;-)</source>
         <translation>Tip: Tu deinen eigenen Kreaturen nicht weh ;-)</translation>
+    </message>
+    <message>
+        <source>This creature has already finished it&apos;s move!</source>
+        <translation>Diese Kreatur hat ihren Zug bereits abgeschlossen!</translation>
+    </message>
+    <message>
+        <source>%0 moves left ...</source>
+        <translation>%0 Züge übrig ...</translation>
+    </message>
+    <message>
+        <source>Select a unit!</source>
+        <translation>Wähle eine Einheit!</translation>
+    </message>
+    <message>
+        <source>Choose a target!</source>
+        <translation>Wähle ein Ziel!</translation>
+    </message>
+    <message>
+        <source>Attack!</source>
+        <translation>Greife an!</translation>
+    </message>
+    <message>
+        <source>Move!</source>
+        <translation>Bewege deine Einheit!</translation>
     </message>
 </context>
 <context>

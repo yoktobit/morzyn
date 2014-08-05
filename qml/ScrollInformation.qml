@@ -20,7 +20,7 @@ Grid {
     }
     GrowingText {
         text: hoveredCreature ? hoveredCreature.manaCost : ""
-        color: "#7777FF"
+        color: "#36b2ff"
     }
     GrowingText {
         text: qsTr("Damage", "Damage in scroll information")

@@ -102,7 +102,7 @@ Rectangle {
                 font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
                 text: game.currentPlayer ? game.currentPlayer.spellPoints : ""
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: "#7777FF"
+                color: "#36b2ff"
             }
         }
     }
@@ -170,7 +170,7 @@ Rectangle {
     }
 
     Flow {
-        x: 20
+        x: 40
         y: (40 * mainWindow.myHeight) / mainWindow.sourceHeight
         flow: GridView.TopToBottom
         width: wiese.width

@@ -54,7 +54,8 @@ OTHER_FILES += qml/BackButton.qml \
     qml/SpellSelectView.qml \
     qml/Switch.qml \
     qml/TitleView.qml \
-    qml/TitlePage.qml
+    qml/TitlePage.qml \
+    qml/database/database.xml
 
 RC_FILE += morzyn.rc
 

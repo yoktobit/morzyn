@@ -25,6 +25,7 @@ GameService::GameService(QObject *parent) :
     //connect(statemanager->totalPlayerCountState, SIGNAL(entered()), this, SLOT(resetGame()));
     titleSound = NULL;
     previousPlayedTitleSound = false;
+    m_bWriteMessages = true;
 }
 
 QList<int> GameService::generateDistinctNumberList(int count, int min, int max)
@@ -361,6 +362,14 @@ bool GameService::canAfford(Player *p, Creature *c)
 void GameService::selectCreature(Creature *creature)
 {
     game->setSelectedCreature(creature);
+    if (isCreatureNearEnemy(creature))
+    {
+        setMessage(tr("Attack!"));
+    }
+    else
+    {
+        setMessage(tr("Move!"));
+    }
     creature->setHasMoved(true);
     emitCreatureSelected(creature);
 }
@@ -394,7 +403,7 @@ bool GameService::isSelectable(Creature *creature)
     // if creature has allready been moved in this round, no way to do that again
     if (creature->hasMoved())
     {
-        setMessage("This creature has already finished it's move!");
+        setMessage(tr("This creature has already finished it's move!"));
         return false;
     }
     // all negative conditions = false? then here we go, you are able to select
@@ -476,6 +485,7 @@ double GameService::getRealMovementDistance(Creature *creature, int x, int y)
 
 void GameService::moveCreature(Creature *creature, int x, int y)
 {
+    setMessage("");
     qDebug("Begin moveCreature");
     double realDist = getRealMovementDistance(creature, x, y);
     qDebug("realDist: %f", realDist);
@@ -483,6 +493,20 @@ void GameService::moveCreature(Creature *creature, int x, int y)
     creature->setY(y);
     creature->setHasMoved(true);
     creature->setRemainingMovePoints(creature->remainingMovePoints() - realDist);
+    int left = (int)(creature->remainingMovePoints() + 0.5);
+    if (left > 0)
+    {
+        if (isCreatureNearEnemy(creature))
+        {
+            setMessage(tr("Attack!"));
+        }
+        else
+        {
+            setMessage(tr("%0 moves left ...").arg(left));
+        }
+    }
+    else
+        setMessage("");
     emitCreatureMoved(creature);
     qDebug("End moveCreature");
 }
@@ -597,6 +621,7 @@ bool GameService::isAttackable(Creature *attacker, Creature *attacked)
 
 void GameService::attackCreature(Creature *attackedCreature)
 {
+    setMessage("");
     Creature *attackingCreature = game->selectedCreature();
     // calculate damage
     int nDamage = calculateDamage(attackingCreature, attackedCreature);
@@ -668,6 +693,8 @@ bool GameService::isDistanceAttackable(Creature *attacker, Creature *attacked)
         return false;
     }
     qDebug() << "isDistanceAttackable = true";
+    // zurücksetzen
+    setMessage("");
     return true;
 }
 
@@ -1580,26 +1607,57 @@ QColor GameService::getColorOfEmptyField(int index, bool isLocked, int x, int y,
     if (!currentPlayer) return Qt::transparent;
     QPoint fieldPoint(index % config->HCOUNT, index / config->HCOUNT);
     QList<QPoint> lstPoints;
-    if (isLocked) return Qt::transparent;
+    QColor color = Qt::transparent;
+    m_bWriteMessages = false;
+    if (isLocked) goto ende;
+    if (currentPlayer->isNPC()) goto ende;
     if (state == "castSpellState")
     {
-        if (!game->tempCreature()) return Qt::transparent;
+        if (!game->tempCreature()) goto ende;
         qDebug() << "is" << game->tempCreature()->metaObject()->className();
         if (!QString(game->tempCreature()->metaObject()->className()).startsWith("Creature"))
-            return Qt::transparent;
-        getFreeFieldsAround(currentPlayer, lstPoints);
-        if (lstPoints.contains(fieldPoint))
-            return QColor::fromRgba(0x5533FF33);
+        {
+            if (isCastable(fieldPoint.x(), fieldPoint.y(), game->tempCreature()))
+            {
+                color = QColor::fromRgba(0x55FF0000);
+                goto ende;
+            }
+        }
+        else
+        {
+            getFreeFieldsAround(currentPlayer, lstPoints);
+            if (lstPoints.contains(fieldPoint))
+            {
+                color = QColor::fromRgba(0x5533FF33);
+                goto ende;
+            }
+        }
     }
     else if (state == "moveState")
     {
-        if (!selectedCreature) return Qt::transparent;
+        if (!selectedCreature) goto ende;
         getFreeFieldsAround(selectedCreature, lstPoints);
         if (lstPoints.contains(fieldPoint))
             if (isMovementPossible(selectedCreature, fieldPoint.x(), fieldPoint.y(), false))
-                return QColor::fromRgba(0x5533FF33);
+            {
+                color = QColor::fromRgba(0x5533FF33);
+                goto ende;
+            }
+            Creature *enemy = getCreatureAt(fieldPoint.x(), fieldPoint.y());
+            if (enemy && isAttackable(selectedCreature, enemy))
+            {
+                color = QColor::fromRgba(0x55FF0000);
+                goto ende;
+            }
+            else if (enemy && selectedCreature && isDistanceAttackable(selectedCreature, enemy))
+            {
+                color = QColor::fromRgba(0x55FF0000);
+                goto ende;
+            }
     }
-    return Qt::transparent;
+    ende:
+    m_bWriteMessages = true;
+    return color;
 }
 
 void GameService::setGame(Game *g)
@@ -1661,11 +1719,14 @@ void GameService::gameStateChanged(QString state)
 {
     if (state == "moveState")
     {
-        setMessage(tr("Move or attack!"));
+        setMessage(tr("Select a unit!"));
     }
     else if (state == "castSpellState")
     {
-        setMessage(tr("Cast the spell beside you!"));
+        if (game->tempCreature() && QString(game->tempCreature()->metaObject()->className()).startsWith("Creature"))
+            setMessage(tr("Cast the spell beside you!"));
+        else
+            setMessage(tr("Choose a target!"));
     }
     else if (state == "spellSelectState")
     {

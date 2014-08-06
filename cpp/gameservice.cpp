@@ -10,6 +10,7 @@
 #include "dbloader.h"
 #include "easyai.h"
 #include <QPropertyAnimation>
+#include <QMediaPlaylist>
 #ifdef SAILFISH
 #include <sailfishapp.h>
 #endif
@@ -957,6 +958,7 @@ void GameService::tryMoveCreature(Creature *creature, int x, int y)
             }
             else
             {
+                setMessage(tr("Choose a target!"));
                 game->selectedCreature()->setDistanceAttackMode(true);
             }
         }
@@ -971,6 +973,7 @@ void GameService::deselectAll()
         game->selectedCreature()->setHasMoved(true);
     }
     game->setSelectedCreature(NULL);
+    setMessage(tr("Select a unit!"));
 }
 
 void GameService::abort(Creature *creature)
@@ -988,6 +991,7 @@ void GameService::abort(Creature *creature)
             {
                 qDebug() << "enabling distance attack";
                 game->selectedCreature()->setRemainingMovePoints(0);
+                setMessage(tr("Choose a target!"));
                 game->selectedCreature()->setDistanceAttackMode(true);
             }
             else
@@ -1337,7 +1341,10 @@ void GameService::playTitleSong(bool startstop)
     QUrl file(QUrl::fromLocalFile("qml/sounds/morzyn intro.mp3"));
 #endif
 #endif
-        titleSound->setMedia(file);
+        QMediaPlaylist *playlist = new QMediaPlaylist;
+        playlist->addMedia(file);
+        playlist->setPlaybackMode(QMediaPlaylist::Loop);
+        titleSound->setPlaylist(playlist);
         qDebug() << titleSound->availability();
         qDebug() << "Loaded song " << "qml/morzyn/sounds/morzyn intro.mp3";
     }

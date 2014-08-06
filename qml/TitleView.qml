@@ -92,4 +92,16 @@ Rectangle {
         }
     }
     anchors.fill: parent
+    focus: true
+    Keys.enabled: true
+    Keys.onPressed: {
+        if (!visible) return;
+        console.debug("TitleView KEY_PRESSED");
+        titleViewTimer.stop();
+        if (tempLoader.status === Loader.Ready)
+        {
+            event.accepted = true;
+            game.state = "mainMenuState";
+        }
+    }
 }

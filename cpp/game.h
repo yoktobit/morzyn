@@ -99,7 +99,6 @@ public:
 
     bool isLocked()
     {
-        qDebug() << "Available: " << available() << "max: " << MAX_ANIMATION;
         return available() < MAX_ANIMATION;
     }
 

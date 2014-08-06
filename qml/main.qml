@@ -53,7 +53,6 @@ ApplicationWindow {
         id: loaderViews
         anchors.fill: parent
         source: "Views.qml"
-        focus: true
         asynchronous: true
         visible: status == Loader.Ready
     }

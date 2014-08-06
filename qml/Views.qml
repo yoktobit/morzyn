@@ -71,6 +71,7 @@ Item {
     }
 
     property bool fullscreen: gameService.getBoolSetting("fullscreen");
+
     Keys.onPressed: {
         console.log("KEY_PRESSED: " + event.key)
         if ((event.key === Qt.Key_PageUp))

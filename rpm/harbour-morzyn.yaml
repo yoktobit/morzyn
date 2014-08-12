@@ -1,7 +1,7 @@
 Name: harbour-morzyn
 Summary: Morzyn - A Tribute to Morkin 2
-Version: 0.7.15
-Release: 2
+Version: 0.7.16
+Release: 4
 Group: Qt/Qt
 License: LICENSE
 Sources:
@@ -25,8 +25,8 @@ Files:
 - '%{_datadir}/harbour-morzyn'
 - '%{_bindir}'
 - '%{_datadir}/icons/hicolor/86x86/apps'
-- /usr/bin
-- /usr/share/harbour-morzyn
-- /usr/share/applications
-- /usr/share/icons/hicolor/86x86/apps
+#- /usr/bin
+#- /usr/share/harbour-morzyn
+#- /usr/share/applications
+#- /usr/share/icons/hicolor/86x86/apps
 PkgBR: []

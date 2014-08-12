@@ -48,7 +48,7 @@ QList<int> GameService::generateDistinctNumberList(int count, int min, int max)
 int GameService::randomInteger(int min, int max)
 {
     int number = (qrand() % (max - min)) + min;
-    qDebug() << "Random:" << number;
+    //qDebug() << "Random:" << number;
     return number;
 }
 
@@ -106,7 +106,7 @@ void GameService::addPlayers(int nTotalPlayerCount, int nHumanPlayerCount)
     QSet<int> lstUsedNames;
     for (int ii = 0; ii < nTotalPlayerCount; ii++)
     {
-        qDebug() << "Creating Player Index" << ii;
+        //qDebug() << "Creating Player Index" << ii;
         Player* p = new Player(game);
         addPlayer(p);
         if (p->isNPC())
@@ -151,8 +151,8 @@ void GameService::placePlayers()
         {
             randomplaceX = rand() % (config->HCOUNT - 1);
             randomplaceY = rand() % (config->VCOUNT - 1);
-            qDebug() << "RandomPlaceX: " << randomplaceX;
-            qDebug() << "RandomPlaceY: " << randomplaceY;
+            //qDebug() << "RandomPlaceX: " << randomplaceX;
+            //qDebug() << "RandomPlaceY: " << randomplaceY;
             ii++;
             // max 30x probieren
             if (ii > maxLoops) break;
@@ -161,7 +161,7 @@ void GameService::placePlayers()
             player->setY(randomplaceY);
             nearest = getNearestEnemy(player);
             nearestDistance = getDistance(player, nearest->x(), nearest->y());
-            qDebug() << player->name() << "nearest distance to" << ((Player*)nearest)->name() << ":" << nearestDistance;
+            //qDebug() << player->name() << "nearest distance to" << ((Player*)nearest)->name() << ":" << nearestDistance;
         } while(nearestDistance < 3 || nearestDistance > 5);
 
         // komplett von vorn probieren
@@ -198,7 +198,7 @@ Scroll* addScrollToList(Player* player, QList<Creature*> *list, Scroll* c)
         manaCost = qRound((double(manaCost) * 0.85) + 0.5);
         cNew->sourceCode->attributes().namedItem("manacost").setNodeValue(QString("%1").arg(manaCost));
         cNew->setManaCost(manaCost);
-        qDebug() << "New Mana Cost:" << manaCost;
+        //qDebug() << "New Mana Cost:" << manaCost;
     }
     list->append(cNew);
     return cNew;
@@ -206,7 +206,7 @@ Scroll* addScrollToList(Player* player, QList<Creature*> *list, Scroll* c)
 
 void GameService::loadPlayerSpells(Player *player)
 {
-    qDebug() << "Begin loadPlayerSpells";
+    //qDebug() << "Begin loadPlayerSpells";
     QSet<int> mana;
     QSet<Creature*> creatures;
     while(player->m_PossibleCreatures.length() < 1)
@@ -262,7 +262,7 @@ void GameService::loadPlayerSpells(Player *player)
             mana.insert(library->lstScrolls[r]->manaCost());
         }
     }
-    qDebug() << "End loadPlayerSpells";
+    //qDebug() << "End loadPlayerSpells";
     /*foreach(int i, lst0)
     {
         player->m_PossibleCreatures.append(library->lstCategory0[i]);
@@ -290,13 +290,13 @@ void GameService::addCreature(Creature *c, int x, int y)
 {
     Creature* newCreature = new Creature(c->parent());
     newCreature->load(c->sourceCode);
-    qDebug() << "Distance Attack?" << c->hasDistanceAttack();
+    //qDebug() << "Distance Attack?" << c->hasDistanceAttack();
     newCreature->setUnitClass("Creature");
     setCreatureImage(newCreature);
-    qDebug() << "creature Image = " << c->imageFilename();
+    //qDebug() << "creature Image = " << c->imageFilename();
     newCreature->setX(game->currentPlayer()->x());
     newCreature->setY(game->currentPlayer()->y());
-    qDebug() << "creature x = " << c->x() << "creature y" << c->y();
+    //qDebug() << "creature x = " << c->x() << "creature y" << c->y();
     newCreature->setPlayer(game->currentPlayer());
     QString newCreaturesName = newCreature->player()->name() + QString("'");
     if (!newCreature->player()->name().endsWith("s"))
@@ -317,12 +317,12 @@ void GameService::addCreature(Creature *c, int x, int y)
 void GameService::castScroll(Scroll *s, int x, int y)
 {
     Scroll* newScroll = new Scroll(s->parent());
-    qDebug() << "loading scroll" << s->species();
+    //qDebug() << "loading scroll" << s->species();
     newScroll->load(s->sourceCode);
-    qDebug() << "loaded scroll" << newScroll->species();
+    //qDebug() << "loaded scroll" << newScroll->species();
     newScroll->setUnitClass("Scroll");
     setCreatureImage(newScroll);
-    qDebug() << "Image: " << newScroll->imageFilename() << "Distance Image: " << newScroll->distanceImageFilename();
+    //qDebug() << "Image: " << newScroll->imageFilename() << "Distance Image: " << newScroll->distanceImageFilename();
     newScroll->setX(game->currentPlayer()->x());
     newScroll->setY(game->currentPlayer()->y());
     newScroll->setPlayer(game->currentPlayer());
@@ -360,9 +360,9 @@ bool GameService::canAfford(Player *p, Creature *c)
     return true;
 }
 
-void GameService::selectCreature(Creature *creature)
+void GameService::selectCreature(Creature *creature, bool emitSignal)
 {
-    game->setSelectedCreature(creature);
+    game->setSelectedCreature(creature, emitSignal);
     if (isCreatureNearEnemy(creature))
     {
         setMessage(tr("Attack!"));
@@ -372,7 +372,8 @@ void GameService::selectCreature(Creature *creature)
         setMessage(tr("Move!"));
     }
     creature->setHasMoved(true);
-    emitCreatureSelected(creature);
+    if (emitSignal)
+        emitCreatureSelected(creature);
 }
 
 bool GameService::isSelectable(Creature *creature)
@@ -487,9 +488,9 @@ double GameService::getRealMovementDistance(Creature *creature, int x, int y)
 void GameService::moveCreature(Creature *creature, int x, int y)
 {
     setMessage("");
-    qDebug("Begin moveCreature");
+    //qDebug("Begin moveCreature");
     double realDist = getRealMovementDistance(creature, x, y);
-    qDebug("realDist: %f", realDist);
+    //qDebug("realDist: %f", realDist);
     creature->setX(x);
     creature->setY(y);
     creature->setHasMoved(true);
@@ -509,7 +510,7 @@ void GameService::moveCreature(Creature *creature, int x, int y)
     else
         setMessage("");
     emitCreatureMoved(creature);
-    qDebug("End moveCreature");
+    //qDebug("End moveCreature");
 }
 
 bool GameService::isCreatureNearEnemy(Creature *creature)
@@ -530,7 +531,7 @@ bool GameService::isCreatureNearEnemy(Creature *creature)
 
 void GameService::initPlayerForNewRound(Player *player)
 {
-    qDebug() << "begin initPlayerForNewRound" << "with" << player->name();
+    //qDebug() << "begin initPlayerForNewRound" << "with" << player->name();
     // resetMovePoints for everybody
     resetMovementPoints(player);
     foreach(Creature *c, player->m_Creatures)
@@ -546,7 +547,7 @@ void GameService::initPlayerForNewRound(Player *player)
         if (player->spellPoints() < 28)
             player->setSpellPoints(player->spellPoints() + 3);
     }
-    qDebug() << "end initPlayerForNewRound" << "with" << player->name();
+    //qDebug() << "end initPlayerForNewRound" << "with" << player->name();
 }
 
 void GameService::switchNextPlayer()
@@ -616,32 +617,35 @@ bool GameService::isAttackable(Creature *attacker, Creature *attacked)
         return false;
     }
 
-    qDebug() << "Yeah, " << attacked->species() << " can be attacked, yoah.";
+    //qDebug() << "Yeah, " << attacked->species() << " can be attacked, yoah.";
     return true;
 }
 
-void GameService::attackCreature(Creature *attackedCreature)
+void GameService::attackCreature(Creature *attackedCreature, bool emitSignal)
 {
     setMessage("");
     Creature *attackingCreature = game->selectedCreature();
     // calculate damage
     int nDamage = calculateDamage(attackingCreature, attackedCreature);
-    qDebug() << "calculated Damage:" << nDamage;
+    //qDebug() << "calculated Damage:" << nDamage;
     game->setLastDamage(nDamage);
     // calculate resulting spell point bonsu
     int nSpellPointBonus = calculateSpellPointBonus(nDamage);
-    qDebug() << "calculated spell point bonus" << nSpellPointBonus;
+    //qDebug() << "calculated spell point bonus" << nSpellPointBonus;
     // apply damage to attacked creature
     applyDamage(attackedCreature, nDamage, true);
-    qDebug() << nDamage << "damage applied";
+    //qDebug() << nDamage << "damage applied";
     // apply spell point bonsu to player of selected creature
     applySpellPointBonus(attackingCreature->player(), nSpellPointBonus);
     if (attackingCreature->player())
-        qDebug() << "This makes " << nDamage << " hit points damage to " << attackedCreature->species() << " and " << nSpellPointBonus << " bonus spell points for " << attackingCreature->player()->name();
+    {
+        //qDebug() << "This makes " << nDamage << " hit points damage to " << attackedCreature->species() << " and " << nSpellPointBonus << " bonus spell points for " << attackingCreature->player()->name();
+    }
     attackingCreature->setHasAttacked(true);
     if (!attackingCreature->hasDistanceAttack())
-        deselectAll();
-    emitCreatureAttacked(attackingCreature, attackedCreature, nDamage);
+        deselectAll(emitSignal);
+    if (emitSignal)
+        emitCreatureAttacked(attackingCreature, attackedCreature, nDamage);
 }
 
 bool GameService::isDistanceAttackable(Creature *creature)
@@ -653,23 +657,23 @@ bool GameService::isDistanceAttackable(Creature *attacker, Creature *attacked)
 {
     if (!attacker)
     {
-        qDebug() << "no attacker";
+        //qDebug() << "no attacker";
         return false;
     }
     if (attacker == attacked)
     {
-        qDebug() << "It's me!";
+        //qDebug() << "It's me!";
         return false;
     }
     if (!attacker->hasDistanceAttack())
     {
-        qDebug() << "has no distance attack";
+        //qDebug() << "has no distance attack";
         setMessage(tr("Your selected creature has no distance attack"));
         return false;
     }
     if (attacker->hasDistanceAttacked())
     {
-        qDebug() << "already used distance attack";
+        //qDebug() << "already used distance attack";
         setMessage(tr("This creature already used it's distance attack"));
         return false;
     }
@@ -677,29 +681,29 @@ bool GameService::isDistanceAttackable(Creature *attacker, Creature *attacked)
     // no friendly fire!
     if (attacker->player() == attacked->player())
     {
-        qDebug() << "friendly fire is possible";
+        //qDebug() << "friendly fire is possible";
         setMessage(tr("Tip: Don't harm your own creatures ;-)"));
         //return true;
     }
     if (attacker->remainingMovePoints() > 0 && !attacker->hasAttacked())
     {
-        qDebug() << "is still in movement mode";
+        //qDebug() << "is still in movement mode";
         setMessage(tr("Please cancel move mode first to use the distance attack"));
         return false;
     }
     if (int(getRealMovementDistance(attacker, attacked->x(), attacked->y())) > attacker->distanceRange())
     {
-        qDebug() << "too far away";
+        //qDebug() << "too far away";
         setMessage(tr("This one is too far away!"));
         return false;
     }
-    qDebug() << "isDistanceAttackable = true";
+    //qDebug() << "isDistanceAttackable = true";
     // zurücksetzen
     setMessage("");
     return true;
 }
 
-void GameService::distanceAttackCreature(Creature *attackedCreature)
+void GameService::distanceAttackCreature(Creature *attackedCreature, bool emitSignal)
 {
     Creature *attackingCreature = game->selectedCreature();
     // calculate damage
@@ -711,9 +715,12 @@ void GameService::distanceAttackCreature(Creature *attackedCreature)
     // apply spell point bonsu to player of selected creature
     applySpellPointBonus(attackingCreature->player(), nSpellPointBonus);
     if (attackingCreature->player())
-        qDebug() << "This makes " << nDamage << " hit points damage to " << attackedCreature->species() << " and " << nSpellPointBonus << " bonus spell points for " << attackingCreature->player()->name();
-    emitCreatureDistanceAttacked(attackingCreature, attackedCreature, nDamage);
-    deselectAll();
+    {
+        //qDebug() << "This makes " << nDamage << " hit points damage to " << attackedCreature->species() << " and " << nSpellPointBonus << " bonus spell points for " << attackingCreature->player()->name();
+    }
+    if (emitSignal)
+        emitCreatureDistanceAttacked(attackingCreature, attackedCreature, nDamage);
+    deselectAll(emitSignal);
 }
 
 void GameService::scrollAttackCreature(Scroll* scroll, Creature *attackedCreature)
@@ -726,7 +733,7 @@ void GameService::scrollAttackCreature(Scroll* scroll, Creature *attackedCreatur
         nDamage = randomInteger(scroll->minDamage(), scroll->maxDamage() + 1);
     nDamage = nDamage > attackedCreature->hp() ? attackedCreature->hp() : nDamage;
 
-    if (!scroll->immune().isEmpty() && scroll->immune() == attackedCreature->immune())
+    if (!scroll->immune().isEmpty() && (scroll->immune() == attackedCreature->immune() || attackedCreature->immune() == "ALL"))
     {
         // #56 Bei Immunität zufällig 0 oder 1 Schaden
         nDamage = randomInteger(0, 2);
@@ -738,7 +745,7 @@ void GameService::scrollAttackCreature(Scroll* scroll, Creature *attackedCreatur
     applyDamage(attackedCreature, nDamage, false);
     // apply spell point bonsu to player of selected creature
     applySpellPointBonus(scroll->player(), nSpellPointBonus);
-    qDebug() << "This makes " << nDamage << " hit points damage to " << attackedCreature->species() << " and " << nSpellPointBonus << " bonus spell points for " << scroll->player()->name();
+    //qDebug() << "This makes " << nDamage << " hit points damage to " << attackedCreature->species() << " and " << nSpellPointBonus << " bonus spell points for " << scroll->player()->name();
     emitCreatureDistanceAttacked(scroll, attackedCreature, nDamage);
     deselectAll();
 }
@@ -760,7 +767,7 @@ int GameService::calculateDamage(Creature *attacker, Creature *attacked)
         int nVolltreffer = randomInteger(0, 100);
         if (nVolltreffer >= 25 && nVolltreffer < 50)
         {
-            qDebug() << "M-m-m-m-multikill! Naja fast, aber der Rogue hat voll zugeschlagen.";
+            //qDebug() << "M-m-m-m-multikill! Naja fast, aber der Rogue hat voll zugeschlagen.";
             iSchaden = attacked->hp();
         }
     }
@@ -785,7 +792,7 @@ int GameService::calculateDistanceDamage(Creature *attacker, Creature *attacked)
         nSchaden = 0;
     }
     // #56: 0 oder 1 Schaden bei Immunität
-    if (!attacker->immune().isEmpty() && attacker->immune() == attacked->immune())
+    if (!attacker->immune().isEmpty() && (attacker->immune() == attacked->immune() || attacked->immune() == "ALL"))
     {
         nSchaden = randomInteger(0, 2);
     }
@@ -829,7 +836,7 @@ bool GameService::isKillable(Creature *c)
 
 void GameService::killCreature(Creature *c)
 {
-    qDebug() << "begin killCreature" << c->species();
+    //qDebug() << "begin killCreature" << c->species();
     if (c->player() == c)
     {
         // kill player
@@ -852,7 +859,7 @@ void GameService::killCreature(Creature *c)
     }
     //game->emitPropertyChanged();
     //game->emitCreaturesChanged();
-    qDebug() << "end killCreature" << c->species();
+    //qDebug() << "end killCreature" << c->species();
 }
 
 void GameService::tryGameOver()
@@ -863,13 +870,13 @@ void GameService::tryGameOver()
 
 bool GameService::isGameOver()
 {
-    qDebug() << "begin isGameOver";
+    //qDebug() << "begin isGameOver";
     int playerCount = 0;
     foreach (Player *p, game->m_players)
     {
         if (p->alive()) playerCount++;
     }
-    qDebug() << "end isGameOver with " << (playerCount <= 1);
+    //qDebug() << "end isGameOver with " << (playerCount <= 1);
     if (playerCount <= 1)
         return true;
     return false;
@@ -877,18 +884,18 @@ bool GameService::isGameOver()
 
 void GameService::goGameOver()
 {
-    qDebug() << "begin goGameOver";
+    //qDebug() << "begin goGameOver";
     game->isOver = true;
     game->setState("gameOverState");
     emitGameOver();
-    qDebug() << "end goGameOver";
+    //qDebug() << "end goGameOver";
 }
 
 void GameService::applySpellPointBonus(Player* player, int nSpellPoints)
 {
     if (player)
     {
-        qDebug() << "applying spell point bonus" << nSpellPoints;
+        //qDebug() << "applying spell point bonus" << nSpellPoints;
         player->setSpellPoints(player->spellPoints() + nSpellPoints);
     }
 }
@@ -915,15 +922,15 @@ Creature* GameService::getCreatureAt(int x, int y)
 
 bool GameService::tryAttackCreature(Creature *creature)
 {
-    qDebug() << "begin tryAttackCreature";
+    //qDebug() << "begin tryAttackCreature";
     if (game->state() != "moveState") return false;
     if (isAttackable(creature))
     {
         attackCreature(creature);
-        qDebug() << "end tryAttackCreature = true";
+        //qDebug() << "end tryAttackCreature = true";
         return true;
     }
-    qDebug() << "end tryAttackCreature = false";
+    //qDebug() << "end tryAttackCreature = false";
     return false;
 }
 
@@ -935,11 +942,11 @@ void GameService::tryAttacks(Creature *creature)
 
 void GameService::tryDistanceAttackCreature(Creature *creature)
 {
-    qDebug() << "begin tryDistanceAttackCreature";
+    //qDebug() << "begin tryDistanceAttackCreature";
     if (game->state() != "moveState") return;
     if (isDistanceAttackable(creature))
         distanceAttackCreature(creature);
-    qDebug() << "end tryDistanceAttackCreature";
+    //qDebug() << "end tryDistanceAttackCreature";
 }
 
 void GameService::tryMoveCreature(Creature *creature, int x, int y)
@@ -965,14 +972,14 @@ void GameService::tryMoveCreature(Creature *creature, int x, int y)
     }
 }
 
-void GameService::deselectAll()
+void GameService::deselectAll(bool emitSignal)
 {
     if (game->selectedCreature())
     {
         game->selectedCreature()->setHasDistanceAttacked(true);
         game->selectedCreature()->setHasMoved(true);
     }
-    game->setSelectedCreature(NULL);
+    game->setSelectedCreature(NULL, emitSignal);
     setMessage(tr("Select a unit!"));
 }
 
@@ -986,17 +993,17 @@ void GameService::abort(Creature *creature)
     {
         if (game->selectedCreature())
         {
-            qDebug() << "Has Distance attack and not allready done it?" << game->selectedCreature()->hasDistanceAttack();
+            //qDebug() << "Has Distance attack and not allready done it?" << game->selectedCreature()->hasDistanceAttack();
             if (game->selectedCreature()->hasDistanceAttack() && !game->selectedCreature()->hasDistanceAttacked() && !game->selectedCreature()->distanceAttackMode())
             {
-                qDebug() << "enabling distance attack";
+                //qDebug() << "enabling distance attack";
                 game->selectedCreature()->setRemainingMovePoints(0);
                 setMessage(tr("Choose a target!"));
                 game->selectedCreature()->setDistanceAttackMode(true);
             }
             else
             {
-                qDebug() << "deselecting";
+                //qDebug() << "deselecting";
                 game->selectedCreature()->setRemainingMovePoints(0);
                 game->selectedCreature()->setHasDistanceAttacked(true);
                 game->selectedCreature()->setDistanceAttackMode(false);
@@ -1063,7 +1070,7 @@ void GameService::tryCast(int x, int y, Creature *creature)
         else
         {
             Scroll* scroll = qobject_cast<Scroll*>(creature);
-            qDebug() << "Scroll, here we go!";
+            //qDebug() << "Scroll, here we go!";
             castScroll(scroll, x, y);
         }
     }
@@ -1086,19 +1093,19 @@ void GameService::buy(Creature *creature)
 bool GameService::isCastable(int x, int y, Creature* creature)
 {
     bool bIsCastable = true;
-    qDebug() << "begin isCastable at" << x << "," << y;
+    //qDebug() << "begin isCastable at" << x << "," << y;
     Player* player = game->currentPlayer();
     int nPlayerX = player->x();
     int nPlayerY = player->y();
     int xDist = abs(nPlayerX - x);
     int yDist = abs(nPlayerY - y);
-    qDebug() << creature->metaObject()->className();
+    //qDebug() << creature->metaObject()->className();
     if (QString(creature->metaObject()->className()).startsWith("Creature"))
     {
-        qDebug() << "It's yet another creature";
+        //qDebug() << "It's yet another creature";
         if (xDist <= 1 && yDist <= 1 && !(xDist == 0 && yDist == 0))
         {
-            qDebug() << "end isCastable with true";
+            //qDebug() << "end isCastable with true";
         }
         else
         {
@@ -1114,13 +1121,13 @@ bool GameService::isCastable(int x, int y, Creature* creature)
     }
     else
     {
-        qDebug() << "Wuhuuu, a scroll";
+        //qDebug() << "Wuhuuu, a scroll";
         Scroll* scroll = qobject_cast<Scroll*>(creature);
         if (getDistance(game->currentPlayer(), x, y) <= scroll->range())
         {
             if (getCreatureAt(x, y) && isEnemy(getCreatureAt(x, y)))
             {
-                qDebug() << "end isCastable with true (" << getDistance(game->currentPlayer(), x, y) << "<=" << scroll->range();
+                //qDebug() << "end isCastable with true (" << getDistance(game->currentPlayer(), x, y) << "<=" << scroll->range();
             }
             else
             {
@@ -1133,15 +1140,15 @@ bool GameService::isCastable(int x, int y, Creature* creature)
             setMessage(tr("This creature is not in the range of your spell"));
             bIsCastable = false;
         }
-        qDebug() << getDistance(game->currentPlayer(), x, y) << ">" << scroll->range();
+        //qDebug() << getDistance(game->currentPlayer(), x, y) << ">" << scroll->range();
     }
-    qDebug() << "end isCastable with false";
+    //qDebug() << "end isCastable with false";
     return bIsCastable;
 }
 
 void GameService::castCreature(int x, int y, Creature *creature)
 {
-    qDebug() << "Casting creature";
+    //qDebug() << "Casting creature";
     addCreature(creature, x, y);
     game->setState("moveState");
     //statemanager->gotoMoveState();
@@ -1301,7 +1308,7 @@ void GameService::setCreatureImage(int index, int currentColor, QString category
     else return;
     game->m_creatures.at(index)->setImageFilename(strFilename);
     game->m_players.at(index)->setImageFilename(strFilename);
-    qDebug() << game->m_creatures.at(index)->imageFilename();
+    //qDebug() << game->m_creatures.at(index)->imageFilename();
 }
 
 void GameService::getEnemiesAround(Creature *creature, QList<Creature *> &lstEnemies)
@@ -1442,47 +1449,90 @@ int GameService::getColorIndex(QString imageFilename)
 
 void GameService::setFullScreen(bool fullscreen)
 {
+#ifdef Q_OS_WIN32
     setBoolSetting("fullscreen", fullscreen);
     game->setFullScreen(fullscreen);
+#else
+    setBoolSetting("fullscreen", true);
+    game->setFullScreen(true);
+#endif
 }
 
 void GameService::simulateFight(Creature *c1, Creature *c2)
 {
+    double dLeftPoints = 0.0;
+    double dRightPoints = 0.0;
     Creature* cLeft = new Creature(c1->parent());
     cLeft->load(c1->sourceCode);
     Creature* cRight = new Creature(c2->parent());
     cRight->load(c2->sourceCode);
-    while (cLeft->alive() && cRight->alive())
+    for (int ii = 0; ii < 1000; ii++)
     {
-        selectCreature(cLeft);
-        qDebug() << cLeft->species() << "selected";
-        attackCreature(cRight);
-        qDebug() << cRight->species() << "attacked";
-        if (isKillable(cRight))
-            break;
-        if (cLeft->hasDistanceAttack())
+        cLeft->setAlive(true);
+        cLeft->setHp(cLeft->originalHp());
+        cRight->setAlive(true);
+        cRight->setHp(cRight->originalHp());
+        while (cLeft->alive() && cRight->alive())
         {
-            distanceAttackCreature(cRight);
-            if (isKillable(cRight))
+            selectCreature(cLeft, false);
+            //qDebug() << cLeft->species() << "selected";
+            attackCreature(cRight, false);
+
+            //qDebug() << cRight->species() << "attacked";
+            if (!cRight->alive())
                 break;
+            if (cLeft->hasDistanceAttack())
+            {
+                distanceAttackCreature(cRight, false);
+                if (!cRight->alive())
+                    break;
+            }
+            //qDebug() << cRight->species() << "selected";
+            selectCreature(cRight, false);
+            //qDebug() << cLeft->species() << "attacked";
+            attackCreature(cLeft, false);
+
+            if (!cLeft->alive())
+                break;
+            if (cRight->hasDistanceAttack())
+            {
+                distanceAttackCreature(cLeft, false);
+                if (!cLeft->alive())
+                    break;
+            }
         }
-        qDebug() << cRight->species() << "selected";
-        selectCreature(cRight);
-        qDebug() << cLeft->species() << "attacked";
-        attackCreature(cLeft);
-        if (isKillable(cLeft))
-            break;
-        if (cRight->hasDistanceAttack())
+        if (cLeft->alive())
         {
-            distanceAttackCreature(cLeft);
-            if (isKillable(cLeft))
-                break;
+            dLeftPoints++;
+            //qDebug() << "Left:" << dLeftPoints;
+            dRightPoints += ((double)cLeft->originalHp() - (double)cLeft->hp()) / (double)cLeft->originalHp();
+            //qDebug() << "Right:" << dRightPoints;
+        }
+        else
+        {
+            dRightPoints++;
+            //qDebug() << "Right:" << dRightPoints;
+            dLeftPoints += ((double)cRight->originalHp() - (double)cRight->hp()) / (double)cRight->originalHp();
+            //qDebug() << "Left:" << dLeftPoints;
         }
     }
-    if (cLeft->alive())
-        setMessage(QString(tr("%0 wins (left side)")).arg(cLeft->species()));
+    cLeft->deleteLater();
+    cRight->deleteLater();
+    int iLeftPoints = qRound(dLeftPoints);
+    int iRightPoints = qRound(dRightPoints);
+    if (iLeftPoints > iRightPoints)
+    {
+        setMessage(QString(tr("%0 wins (left side) %1:%2")).arg(c1->species()).arg(iLeftPoints).arg(iRightPoints));
+    }
+    else if (iLeftPoints == iRightPoints)
+    {
+        setMessage(QString(tr("Draw! (%0:%1)").arg(iLeftPoints).arg(iRightPoints)));
+    }
     else
-        setMessage(QString(tr("%0 wins (right side)")).arg(cRight->species()));
+    {
+        setMessage(QString(tr("%0 wins (right side) %1:%2")).arg(c2->species()).arg(iLeftPoints).arg(iRightPoints));
+    }
+    qDebug() << message();
 }
 
 QStringList GameService::getCreatureImages(QString filenamePattern)
@@ -1524,7 +1574,7 @@ void GameService::saveSettings(bool bMusic, bool bSound, bool bFullscreen)
 
 bool GameService::getBoolSetting(QString name)
 {
-    qDebug() << "Boolean Setting" << name << ":" << settings->value(name, QVariant((bool)false)).toBool();
+    //qDebug() << "Boolean Setting" << name << ":" << settings->value(name, QVariant((bool)false)).toBool();
     return settings->value(name, QVariant((bool)false)).toBool();
 }
 
@@ -1601,6 +1651,7 @@ void GameService::placeTutorialPlayers()
 
 void GameService::quit()
 {
+    resetGame();
     qApp->quit();
 }
 
@@ -1621,7 +1672,7 @@ QColor GameService::getColorOfEmptyField(int index, bool isLocked, int x, int y,
     if (state == "castSpellState")
     {
         if (!game->tempCreature()) goto ende;
-        qDebug() << "is" << game->tempCreature()->metaObject()->className();
+        //qDebug() << "is" << game->tempCreature()->metaObject()->className();
         if (!QString(game->tempCreature()->metaObject()->className()).startsWith("Creature"))
         {
             if (isCastable(fieldPoint.x(), fieldPoint.y(), game->tempCreature()))
@@ -1777,7 +1828,7 @@ void GameService::emitCreatureUnhovered()
 
 void GameService::gotoMoveState()
 {
-    qDebug() << "manual Transition to move state";
+    //qDebug() << "manual Transition to move state";
     emit moveStateGo();
 }
 

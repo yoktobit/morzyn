@@ -23,7 +23,7 @@ Player::Player(QObject *parent) :
 void Player::setSpellPoints(int spellPoints)
 {
     m_SpellPoints = spellPoints;
-    propertyChanged();
+    spellPointsChanged(spellPoints);
 }
 
 void Player::initializeScrolls()
@@ -37,7 +37,7 @@ void Player::initialize()
     if (race() == "rogue")
     {
         this->m_Speed = 2;
-        this->m_Strength = rand() % 2 + 3; // 3 bis 4
+        this->m_Strength = 4;//rand() % 2 + 3; // 3 bis 4
         this->m_Defense = rand() % 2 + 6; // 6 bis 7
         this->m_HP = rand() % 3 + 15; // 15 bis 17
         this->m_SpellPoints = 20;
@@ -50,12 +50,13 @@ void Player::initialize()
     else if (race() == "sorcerer")
     {
         this->m_Speed = 1;
-        this->m_Strength = 2; // 2
+        this->m_Strength = 3; // 2
         this->m_Defense = rand() % 2 + 2; // 2 bis 3
         this->m_HP = rand() % 3 + 13; // 13 bis 15
         this->m_SpellPoints = 20;
         this->m_Player = this;
         this->m_Species = "wizard";
+        m_Immune = "ALL";
         m_alive = true;
         m_hasDistanceAttack = false;
         m_RemainingMovePoints = this->m_Speed;

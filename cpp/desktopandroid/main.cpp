@@ -63,13 +63,19 @@ int main(int argc, char *argv[])
     qmlRegisterType<Statistics>("harbour.morzyn", 1,0 , "Statistics");
     //qmlRegisterType<IAI>("harbour.morzyn", 1,0 , "IAI");
 
-#ifndef Q_OS_ANDROID
+#ifdef Q_OS_WIN32
     QSettings settings(QSettings::IniFormat, QSettings::UserScope, "yoktobit", "morzyn");
 #else
     QSettings settings;
 #endif
+#ifdef Q_OS_WIN32
     if (!settings.contains("fullscreen"))
+    {
         settings.setValue("fullscreen", QVariant((bool)true));
+    }
+#else
+    settings.setValue("fullscreen", QVariant((bool)true));
+#endif
     if (!settings.contains("music"))
         settings.setValue("music", QVariant((bool)true));
     if (!settings.contains("sound"))

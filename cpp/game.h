@@ -157,11 +157,12 @@ void setCurrentPlayer(Player* arg)
     }
 }
 
-void setSelectedCreature(Creature* arg)
+void setSelectedCreature(Creature* arg, bool emitSignal = true)
 {
     if (m_selectedCreature != arg) {
         m_selectedCreature = arg;
-        emit selectedCreatureChanged(arg);
+        if (emitSignal)
+            emit selectedCreatureChanged(arg);
     }
 }
 

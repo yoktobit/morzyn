@@ -220,6 +220,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.margins: 20 * mainWindow.height / mainWindow.sourceHeight
         onClicked: {
+            gameService.resetGame();
             game.state = "mainMenuState";
         }
     }

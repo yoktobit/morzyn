@@ -10,37 +10,37 @@ class Creature : public QObject
 {
     Q_OBJECT
     // Creature Properties
-    Q_PROPERTY(QString species READ species WRITE setSpecies NOTIFY propertyChanged)
-    Q_PROPERTY(int category READ category WRITE setCategory NOTIFY propertyChanged)
-    Q_PROPERTY(int manaCost READ manaCost WRITE setManaCost NOTIFY propertyChanged)
-    Q_PROPERTY(int hp READ hp WRITE setHp NOTIFY propertyChanged)
-    Q_PROPERTY(int strength READ strength WRITE setStrength NOTIFY propertyChanged)
-    Q_PROPERTY(int defense READ defense WRITE setDefense NOTIFY propertyChanged)
-    Q_PROPERTY(int speed READ speed WRITE setSpeed NOTIFY propertyChanged)
-    Q_PROPERTY(bool hasDistanceAttack READ hasDistanceAttack WRITE setHasDistanceAttack NOTIFY propertyChanged)
-    Q_PROPERTY(int distanceRange READ distanceRange WRITE setDistanceRange NOTIFY propertyChanged)
-    Q_PROPERTY(int distanceStrength READ distanceStrength WRITE setDistanceStrength NOTIFY propertyChanged)
-    Q_PROPERTY(QString immune READ immune WRITE setImmune NOTIFY propertyChanged)
-    Q_PROPERTY(QString imageFilePattern READ imageFilePattern WRITE setImageFilePattern NOTIFY propertyChanged)
-    Q_PROPERTY(QString cheat READ cheat WRITE setCheat NOTIFY propertyChanged)
-    Q_PROPERTY(QString distanceImageFilePattern READ distanceImageFilePattern WRITE setDistanceImageFilePattern NOTIFY propertyChanged)
-    Q_PROPERTY(QString type READ type WRITE setType NOTIFY propertyChanged)
+    Q_PROPERTY(QString species READ species WRITE setSpecies NOTIFY speciesChanged)
+    Q_PROPERTY(int category READ category WRITE setCategory NOTIFY categoryChanged)
+    Q_PROPERTY(int manaCost READ manaCost WRITE setManaCost NOTIFY manaCostChanged)
+    Q_PROPERTY(int hp READ hp WRITE setHp NOTIFY hpChanged)
+    Q_PROPERTY(int strength READ strength WRITE setStrength NOTIFY strengthChanged)
+    Q_PROPERTY(int defense READ defense WRITE setDefense NOTIFY defenseChanged)
+    Q_PROPERTY(int speed READ speed WRITE setSpeed NOTIFY speedChanged)
+    Q_PROPERTY(bool hasDistanceAttack READ hasDistanceAttack WRITE setHasDistanceAttack NOTIFY hasDistanceAttackChanged)
+    Q_PROPERTY(int distanceRange READ distanceRange WRITE setDistanceRange NOTIFY distanceRangeChanged)
+    Q_PROPERTY(int distanceStrength READ distanceStrength WRITE setDistanceStrength NOTIFY distanceStrengthChanged)
+    Q_PROPERTY(QString immune READ immune WRITE setImmune NOTIFY immuneChanged)
+    Q_PROPERTY(QString imageFilePattern READ imageFilePattern WRITE setImageFilePattern NOTIFY imageFilePatternChanged)
+    Q_PROPERTY(QString cheat READ cheat WRITE setCheat NOTIFY cheatChanged)
+    Q_PROPERTY(QString distanceImageFilePattern READ distanceImageFilePattern WRITE setDistanceImageFilePattern NOTIFY distanceImageFilePatternChanged)
+    Q_PROPERTY(QString type READ type WRITE setType NOTIFY typeChanged)
 
     // Runtime Properties
     Q_PROPERTY(QString imageFilename READ imageFilename WRITE setImageFilename NOTIFY imageFilenameChanged)
-    Q_PROPERTY(QString distanceImageFilename READ distanceImageFilename WRITE setDistanceImageFilename NOTIFY propertyChanged)
-    Q_PROPERTY(int remainingMovePoints READ remainingMovePoints WRITE setRemainingMovePoints NOTIFY propertyChanged)
-    Q_PROPERTY(bool hasMoved READ hasMoved WRITE setHasMoved NOTIFY propertyChanged)
-    Q_PROPERTY(Player* player READ player WRITE setPlayer NOTIFY propertyChanged)
-    Q_PROPERTY(QString name READ name WRITE setName NOTIFY propertyChanged)
-    Q_PROPERTY(QString originalName READ originalName WRITE setOriginalName NOTIFY propertyChanged)
+    Q_PROPERTY(QString distanceImageFilename READ distanceImageFilename WRITE setDistanceImageFilename NOTIFY distanceImageFilenameChanged)
+    Q_PROPERTY(int remainingMovePoints READ remainingMovePoints WRITE setRemainingMovePoints NOTIFY remainingMovePointsChanged)
+    Q_PROPERTY(bool hasMoved READ hasMoved WRITE setHasMoved NOTIFY hasMovedChanged)
+    Q_PROPERTY(Player* player READ player WRITE setPlayer NOTIFY playerChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString originalName READ originalName WRITE setOriginalName NOTIFY originalNameChanged)
     Q_PROPERTY(int x READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(int y READ y WRITE setY NOTIFY yChanged)
     Q_PROPERTY(int xField READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(int yField READ y WRITE setY NOTIFY yChanged)
-    Q_PROPERTY(bool hasAttacked READ hasAttacked WRITE setHasAttacked NOTIFY propertyChanged)
-    Q_PROPERTY(bool hasDistanceAttacked READ hasDistanceAttacked WRITE setHasDistanceAttacked NOTIFY propertyChanged)
-    Q_PROPERTY(QString unitClass READ unitClass WRITE setUnitClass NOTIFY propertyChanged)
+    Q_PROPERTY(bool hasAttacked READ hasAttacked WRITE setHasAttacked NOTIFY hasAttackedChanged)
+    Q_PROPERTY(bool hasDistanceAttacked READ hasDistanceAttacked WRITE setHasDistanceAttacked NOTIFY hasDistanceAttackedChanged)
+    Q_PROPERTY(QString unitClass READ unitClass WRITE setUnitClass NOTIFY unitClassChanged)
     Q_PROPERTY(bool alive READ alive WRITE setAlive NOTIFY aliveChanged)
     Q_PROPERTY(int originalHp READ originalHp WRITE setOriginalHp NOTIFY originalHpChanged)
     Q_PROPERTY(bool distanceAttackMode READ distanceAttackMode WRITE setDistanceAttackMode NOTIFY distanceAttackModeChanged)
@@ -50,47 +50,47 @@ public:
 
     // Creature Properties
     inline QString species() const { return m_Species; }
-    inline void setSpecies(QString species) { m_Species = species; emit propertyChanged(); }
+    inline void setSpecies(QString species) { if (m_Species != species) { m_Species = species; emit speciesChanged(species); } }
     inline int category() const { return m_Category; }
-    inline void setCategory(int category) { m_Category = category; emit propertyChanged(); }
+    inline void setCategory(int category) { if (m_Category != category) { m_Category = category; emit categoryChanged(category); } }
     inline int manaCost() const { return m_ManaCost; }
-    inline void setManaCost(int manaCost) { m_ManaCost = manaCost; emit propertyChanged(); }
+    inline void setManaCost(int manaCost) { if (m_ManaCost != manaCost) { m_ManaCost = manaCost; emit manaCostChanged(manaCost); } }
     inline int hp() const { return m_HP; }
-    inline void setHp(int hp) { m_HP = hp; emit propertyChanged(); }
+    inline void setHp(int hp) { if (m_HP != hp) { m_HP = hp; emit hpChanged(hp); } }
     inline int strength() const { return m_Strength; }
-    inline void setStrength(int strength) { m_Strength = strength; emit propertyChanged(); }
+    inline void setStrength(int strength) { if (m_Strength != strength) { m_Strength = strength; emit strengthChanged(strength); } }
     inline int defense() const { return m_Defense; }
-    inline void setDefense(int defense) { m_Defense = defense; emit propertyChanged(); }
+    inline void setDefense(int defense) { if (m_Defense != defense) { m_Defense = defense; emit defenseChanged(defense); } }
     inline int speed() const { return m_Speed; }
-    inline void setSpeed(int speed) { m_Speed = speed; emit propertyChanged(); }
+    inline void setSpeed(int speed) { if (m_Speed != speed) { m_Speed = speed; emit speedChanged(speed); } }
     inline bool hasDistanceAttack() const { return m_hasDistanceAttack; }
-    inline void setHasDistanceAttack(bool hasDistanceAttack) { m_hasDistanceAttack = hasDistanceAttack; emit propertyChanged(); }
+    inline void setHasDistanceAttack(bool hasDistanceAttack) { if (m_hasDistanceAttack != hasDistanceAttack) { m_hasDistanceAttack = hasDistanceAttack; emit hasDistanceAttackChanged(hasDistanceAttack); } }
     inline int distanceRange() const { return m_DistanceRange; }
-    inline void setDistanceRange(int distanceRange) { m_DistanceRange = distanceRange; emit propertyChanged(); }
+    inline void setDistanceRange(int distanceRange) { if (m_DistanceRange != distanceRange) { m_DistanceRange = distanceRange; emit distanceRangeChanged(distanceRange); } }
     inline int distanceStrength() const { return m_DistanceStrength; }
-    inline void setDistanceStrength(int distanceStrength) { m_DistanceStrength = distanceStrength; emit propertyChanged(); }
+    inline void setDistanceStrength(int distanceStrength) { if (m_DistanceStrength != distanceStrength) { m_DistanceStrength = distanceStrength; emit distanceStrengthChanged(distanceStrength); } }
     inline QString immune() const { return m_Immune; }
-    inline void setImmune(QString immune) { m_Immune = immune; emit propertyChanged(); }
+    inline void setImmune(QString immune) { if (m_Immune != immune) { m_Immune = immune; emit immuneChanged(immune); } }
     inline QString imageFilePattern() const { return m_ImageFilePattern; }
-    inline void setImageFilePattern(QString imageFilePattern) { m_ImageFilePattern = imageFilePattern; emit propertyChanged(); }
+    inline void setImageFilePattern(QString imageFilePattern) { if (m_ImageFilePattern != imageFilePattern) { m_ImageFilePattern = imageFilePattern; emit imageFilePatternChanged(imageFilePattern); } }
     inline QString cheat() const { return m_Cheat; }
-    inline void setCheat(QString cheat) { m_Cheat = cheat; emit propertyChanged(); }
+    inline void setCheat(QString cheat) { if (m_Cheat != cheat) { m_Cheat = cheat; emit cheatChanged(cheat); } }
     inline QString distanceImageFilePattern() const { return m_DistanceImageFilePattern; }
-    inline void setDistanceImageFilePattern(QString distanceImageFilePattern) { m_DistanceImageFilePattern = distanceImageFilePattern; emit propertyChanged(); }
+    inline void setDistanceImageFilePattern(QString distanceImageFilePattern) { if (m_DistanceImageFilePattern != distanceImageFilePattern) { m_DistanceImageFilePattern = distanceImageFilePattern; emit distanceImageFilePatternChanged(distanceImageFilePattern); } }
 
     // Runtime Properties
     inline QString name() const { return m_Name; }
-    inline void setName(QString name) { m_Name = name; /*emit propertyChanged();*/ }
+    inline void setName(QString name) { if (m_Name != name) { m_Name = name; emit nameChanged(name); }/*emit propertyChanged();*/ }
     inline QString imageFilename() const { return m_ImageFilename; }
-    inline void setImageFilename(QString imageFilename) { m_ImageFilename = imageFilename; emit imageFilenameChanged(m_ImageFilename); }
+    inline void setImageFilename(QString imageFilename) { if (m_ImageFilename != imageFilename) { m_ImageFilename = imageFilename; emit imageFilenameChanged(m_ImageFilename); } }
     inline QString distanceImageFilename() const { return m_DistanceImageFilename; }
-    inline void setDistanceImageFilename(QString distanceImageFilename) { m_DistanceImageFilename = distanceImageFilename; emit propertyChanged(); }
+    inline void setDistanceImageFilename(QString distanceImageFilename) { if (m_DistanceImageFilename != distanceImageFilename) { m_DistanceImageFilename = distanceImageFilename; emit distanceImageFilenameChanged(distanceImageFilename); } }
     inline double remainingMovePoints() const { return m_RemainingMovePoints; }
-    inline void setRemainingMovePoints(double remainingMovePoints) { m_RemainingMovePoints = remainingMovePoints; emit propertyChanged(); }
+    inline void setRemainingMovePoints(double remainingMovePoints) { if (m_RemainingMovePoints != remainingMovePoints) { m_RemainingMovePoints = remainingMovePoints; emit remainingMovePointsChanged(remainingMovePoints); } }
     inline bool hasMoved() const { return m_hasMoved; }
-    inline void setHasMoved(bool hasMoved) { m_hasMoved = hasMoved; emit propertyChanged(); }
+    inline void setHasMoved(bool hasMoved) { if (m_hasMoved != hasMoved) { m_hasMoved = hasMoved; emit hasMovedChanged(hasMoved); } }
     inline Player* player() const { return m_Player; }
-    inline void setPlayer(Player* player) { m_Player = player; emit propertyChanged(); }
+    inline void setPlayer(Player* player) { if (m_Player != player) { m_Player = player; emit playerChanged(player); } }
 
     QDomNode* sourceCode;
     virtual void load(QDomNode* node);
@@ -190,6 +190,31 @@ signals:
 
     void distanceAttackModeChanged(bool arg);
 
+    void speciesChanged(QString arg);
+    void hpChanged(int arg);
+    void categoryChanged(int arg);
+    void manaCostChanged(int arg);
+    void strengthChanged(int arg);
+    void defenseChanged(int arg);
+    void speedChanged(int arg);
+    void hasDistanceAttackChanged(bool arg);
+    void distanceRangeChanged(int arg);
+    void distanceStrengthChanged(int arg);
+    void immuneChanged(QString arg);
+    void imageFilePatternChanged(QString arg);
+    void cheatChanged(QString arg);
+    void distanceImageFilePatternChanged(QString arg);
+    void distanceImageFilenameChanged(QString arg);
+    void remainingMovePointsChanged(int arg);
+    void hasMovedChanged(bool arg);
+    void typeChanged(QString type);
+    void playerChanged(Player* arg);
+    void nameChanged(QString arg);
+    void originalNameChanged(QString arg);
+    void hasDistanceAttackedChanged(bool arg);
+    void hasAttackedChanged(bool arg);
+    void unitClassChanged(QString arg);
+
 public slots:
 
     void setX(int arg)
@@ -210,34 +235,35 @@ public slots:
     {
         if (m_originalName != arg) {
             m_originalName = arg;
-            emit propertyChanged();
+            emit originalNameChanged(arg);
         }
     }
     void setHasAttacked(bool arg)
     {
         if (m_hasAttacked != arg) {
             m_hasAttacked = arg;
+            emit hasAttackedChanged(arg);
         }
     }
     void setHasDistanceAttacked(bool arg)
     {
         if (m_hasDistanceAttacked != arg) {
             m_hasDistanceAttacked = arg;
-            emit propertyChanged();
+            emit hasDistanceAttackedChanged(arg);
         }
     }
     void setType(QString arg)
     {
         if (m_type != arg) {
             m_type = arg;
-            emit propertyChanged();
+            emit typeChanged(arg);
         }
     }
     void setUnitClass(QString arg)
     {
         if (m_unitClass != arg) {
             m_unitClass = arg;
-            emit propertyChanged();
+            emit unitClassChanged(arg);
         }
     }
     void setAlive(bool arg)

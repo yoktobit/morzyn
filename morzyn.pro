@@ -8,6 +8,10 @@ CONFIG(debug, debug|release) {
     DEFINES += _DEBUG
 }
 
+CONFIG(release, debug|release) {
+    DEFINES += QT_NO_DEBUG
+}
+
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += cpp/desktopandroid/main.cpp \
     cpp/dbloader.cpp \
@@ -55,7 +59,8 @@ OTHER_FILES += qml/BackButton.qml \
     qml/Switch.qml \
     qml/TitleView.qml \
     qml/TitlePage.qml \
-    qml/database/database.xml
+    qml/database/database.xml \
+    android\AndroidManifest.xml
 
 RC_FILE += morzyn.rc
 
@@ -120,9 +125,17 @@ android {
 } else {
     ASSET_INSTALL_PATH = $$OUT_PWD
     folder_01.source = qml
-    folder_01.path = .
+    CONFIG(release, debug|release) {
+        folder_01.path = ./release
+    } else {
+        folder_01.path = .
+    }
     folder_02.source = translations
-    folder_02.path = .
+    CONFIG(release, debug|release) {
+        folder_02.path = ./release
+    } else {
+        folder_02.path = .
+    }
     DEPLOYMENTFOLDERS += folder_01 folder_02
 }
 

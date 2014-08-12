@@ -63,5 +63,23 @@ HEADERS += \
 OTHER_FILES = \
     rpm/harbour-morzyn.yaml \
     rpm/harbour-morzyn.spec \
-    qml/*.* \
+    qml/BackButton.qml \
+    qml/*View.qml \
+    qml/CreatureImage.qml \
+    qml/CreatureInformation.qml \
+    qml/DistanceAttackImage.qml \
+    qml/DropList.qml \
+    qml/GrowingText.qml \
+    qml/MenuButton.qml \
+    qml/morzyn.qml \
+    qml/MorzynAudio.qml \
+    qml/MorzynButton.qml \
+    qml/MorzynCheckBox.qml \
+    qml/MorzynPage.qml \
+    qml/PlayerColorSelector.qml \
+    qml/Scroll.qml \
+    qml/ScrollInformation.qml \
+    qml/Switch.qml \
+    qml/TitlePage.qml \
+    qml/Views.qml \
     harbour-morzyn.desktop

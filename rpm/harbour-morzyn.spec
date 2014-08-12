@@ -13,8 +13,8 @@ Name:       harbour-morzyn
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Morzyn - A Tribute to Morkin 2
-Version:    0.7.15
-Release:    2
+Version:    0.7.16
+Release:    4
 Group:      Qt/Qt
 License:    LICENSE
 Source0:    %{name}-%{version}.tar.bz2
@@ -63,9 +63,6 @@ rm -rf %{buildroot}
 %{_datadir}/harbour-morzyn
 %{_bindir}
 %{_datadir}/icons/hicolor/86x86/apps
-/usr/bin
-/usr/share/harbour-morzyn
-/usr/share/applications
-/usr/share/icons/hicolor/86x86/apps
 # >> files
+%exclude %{_datadir}/harbour-morzyn/qml/main.qml
 # << files

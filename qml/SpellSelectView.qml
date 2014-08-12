@@ -40,7 +40,7 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 onBackClicked: {
                     if (checkInput()) return;
-                    if (os !== "android")
+                    if (os !== "android" && os !== "sailfish")
                         gameService.abort();
                     else
                     {
@@ -143,14 +143,14 @@ Rectangle {
                     acceptedButtons: Qt.LeftButton
                     //propagateComposedEvents: true
                     onEntered: {
-                        if (os !== "android")
+                        if (os !== "android" && os !== "sailfish")
                             hoverCreature = modelData;
                     }
                     onExited: {
                     }
                     onClicked: {
                         if (checkInput()) return;
-                        if (os !== "android")
+                        if (os !== "android" && os !== "sailfish")
                         {
                             game.tempCreature = modelData;
                             gameService.tryBuy(modelData);

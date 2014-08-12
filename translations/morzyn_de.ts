@@ -138,11 +138,11 @@
     </message>
     <message>
         <source>%0 wins (left side)</source>
-        <translation>%0 gewinnt (linke Seite)</translation>
+        <translation type="vanished">%0 gewinnt (linke Seite)</translation>
     </message>
     <message>
         <source>%0 wins (right side)</source>
-        <translation>%0 gewinnt (rechte Seite)</translation>
+        <translation type="vanished">%0 gewinnt (rechte Seite)</translation>
     </message>
     <message>
         <source>Move or attack!</source>
@@ -187,6 +187,18 @@
     <message>
         <source>Move!</source>
         <translation>Bewege deine Einheit!</translation>
+    </message>
+    <message>
+        <source>%0 wins (left side) %1:%2</source>
+        <translation>%0 gewinnt (linke Seite) %1:%2</translation>
+    </message>
+    <message>
+        <source>Draw! (%0:%1)</source>
+        <translation>Unentschieden! %0:%1</translation>
+    </message>
+    <message>
+        <source>%0 wins (right side) %1:%2</source>
+        <translation>%0 gewinnt (rechte Seite) %1:%2</translation>
     </message>
 </context>
 <context>

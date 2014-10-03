@@ -55,9 +55,13 @@ Rectangle {
                         if (index >= 0 && index < game.creatures.length)
                             game.creatures[index].name = text;
                     }
+                    focus: false
                     onActiveFocusChanged: {
                         if (activeFocus)
+                        {
+                            console.debug("active focus " + name);
                             selectAll();
+                        }
                     }
                 }
             }
@@ -139,6 +143,7 @@ Rectangle {
         id: playerNameViewListView
         anchors.fill: parent
         anchors.margins: (10 * mainWindow.myHeight) / mainWindow.sourceHeight
+        focus: true
         delegate: creatureNameComponent
         model: game.players
         spacing: (10 * mainWindow.myHeight) / mainWindow.sourceHeight

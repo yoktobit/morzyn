@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/BackButton.qml</file>
+        <file>qml/CreatureImage.qml</file>
+        <file>qml/CreatureInformation.qml</file>
+        <file>qml/database.js</file>
+        <file>qml/DistanceAttackImage.qml</file>
+        <file>qml/DropList.qml</file>
+        <file>qml/GameOverView.qml</file>
+        <file>qml/gameservice.js</file>
+        <file>qml/GameView.qml</file>
+        <file>qml/GrimoireView.qml</file>
+        <file>qml/GrowingText.qml</file>
+        <file>qml/InGameMenuView.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/MainMenuView.qml</file>
+        <file>qml/MenuButton.qml</file>
+        <file>qml/morzyn.qml</file>
+        <file>qml/MorzynAudio.qml</file>
+        <file>qml/MorzynButton.qml</file>
+        <file>qml/MorzynCheckBox.qml</file>
+        <file>qml/MorzynPage.qml</file>
+        <file>qml/OptionsView.qml</file>
+        <file>qml/PlayerColorSelector.qml</file>
+        <file>qml/PlayerCountView.qml</file>
+        <file>qml/PlayerNameView.qml</file>
+        <file>qml/Scroll.qml</file>
+        <file>qml/ScrollInformation.qml</file>
+        <file>qml/service.js</file>
+        <file>qml/SpellSelectView.qml</file>
+        <file>qml/Switch.qml</file>
+        <file>qml/TitlePage.qml</file>
+        <file>qml/TitleView.qml</file>
+        <file>qml/Views.qml</file>
+        <file>qml/database/database.xml</file>
+        <file>qml/fonts/vivaldi.ttf</file>
+        <file>qml/HealingHeart.qml</file>
+    </qresource>
+</RCC>

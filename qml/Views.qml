@@ -5,7 +5,6 @@ import harbour.morzyn 1.0
 Item {
     id: allViews
     anchors.fill: parent
-    focus: true
     FontLoader {
         source: "fonts/vivaldi.ttf"
     }
@@ -35,8 +34,10 @@ Item {
         onStateChanged: {
             if (game.state === "spellSelectState")
             {
+                console.debug("gameView spellSelectState");
                 gameView.visible = true;
                 gameView.focus = true;
+                console.debug("gameView activeFocus " + gameView.activeFocus);
             }
             else if (game.state === "mainMenuState")
             {
@@ -58,7 +59,7 @@ Item {
         id: gameView
         visible: false
         onVisibleChanged: {
-            console.log(visible);
+            if (visible) gameView.focus = true;
         }
     }
     GameOverView {
@@ -72,6 +73,7 @@ Item {
 
     property bool fullscreen: gameService.getBoolSetting("fullscreen");
 
+    Keys.enabled: true
     Keys.onPressed: {
         console.log("KEY_PRESSED: " + event.key)
         if ((event.key === Qt.Key_PageUp))

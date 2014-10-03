@@ -9,6 +9,14 @@ Scroll::Scroll(QObject *parent) :
 void Scroll::load(QDomNode *node)
 {
     this->sourceCode = node;
+    if (node == NULL)
+    {
+        if (m_Species == "Healing")
+        {
+            loadHealing();
+            return;
+        }
+    }
     qDebug() << "loading imagefilepattern";
     m_DistanceImageFilePattern = node->attributes().namedItem("file").nodeValue();
     m_ImageFilePattern = node->attributes().namedItem("file").nodeValue();
@@ -25,4 +33,24 @@ void Scroll::load(QDomNode *node)
     m_type = node->attributes().namedItem("type").nodeValue();
     m_Immune = node->attributes().namedItem("type").nodeValue();
     m_hasDistanceAttack = true;
+    m_Category = -1;
+}
+
+void Scroll::loadHealing()
+{
+    m_DistanceImageFilename = "heart.png";
+    m_DistanceImageFilePattern = "heart.png";
+    m_ImageFilename = "heart.png";
+    m_ImageFilePattern = "heart.png";
+    m_jumps = 0;
+    m_ManaCost = 15;
+    m_maxDamage = 0;
+    m_DistanceStrength = 0;
+    m_minDamage = 0;
+    m_Species = "Healing";
+    m_range = 4;
+    m_type = "friendly";
+    m_Immune = "Healing";
+    m_hasDistanceAttack = true;
+    m_Category = -1;
 }

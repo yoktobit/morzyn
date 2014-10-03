@@ -111,6 +111,7 @@ IAI::MovementAction* EasyAI::calculateMovement()
     } while(1);
 
     Creature *nearestEnemy = gameService->getNearestEnemy(u);
+    qDebug() << "Nearest Enemy" << nearestEnemy->name();
     if (gameService->isEnemyAdjacent(u, nearestEnemy) && (m_PreviousAction == ACTION_MOVE || m_PreviousAction == ACTION_NOTHING))
     {
         if (u->remainingMovePoints() >= 0.5)
@@ -140,6 +141,7 @@ IAI::MovementAction* EasyAI::calculateMovement()
         u->setRemainingMovePoints(0);
         movementAction->action = ACTION_NOTHING;
         nCreatureIndex++;
+        lstWayPoints.clear();
         qDebug() << "break calculateMovement() without action" << gameService->game->currentPlayer()->name();
         return movementAction;
     }
@@ -223,6 +225,7 @@ IAI::MovementAction* EasyAI::calculateMovement()
     m_PreviousAction = ACTION_NOTHING;
     movementAction->action = ACTION_NOTHING;
     nCreatureIndex++;
+    lstWayPoints.clear();
     qDebug() << "end calculateMovement() without action" << gameService->game->currentPlayer()->name();
     return movementAction;
 }

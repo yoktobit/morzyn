@@ -96,7 +96,7 @@ void Library::loadAll()
 #ifdef SAILFISH
     QFile file(SailfishApp::pathTo("qml/database/database.xml").toLocalFile());
 #else
-    QFile file(QString("qml/database/database.xml"));
+    QFile file(QString(":/qml/database/database.xml"));
 #endif
 #endif
 

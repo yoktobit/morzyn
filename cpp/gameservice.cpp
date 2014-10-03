@@ -262,6 +262,13 @@ void GameService::loadPlayerSpells(Player *player)
             mana.insert(library->lstScrolls[r]->manaCost());
         }
     }
+    Scroll *healing = new Scroll(player);
+    healing->setUnitClass("Scroll");
+    healing->setSpecies("Healing");
+    healing->load(NULL);
+    creatures.insert(healing);
+    mana.insert(healing->manaCost());
+    player->m_PossibleCreatures.append(healing);
     //qDebug() << "End loadPlayerSpells";
     /*foreach(int i, lst0)
     {
@@ -317,10 +324,17 @@ void GameService::addCreature(Creature *c, int x, int y)
 void GameService::castScroll(Scroll *s, int x, int y)
 {
     Scroll* newScroll = new Scroll(s->parent());
+    newScroll->setSpecies(s->species()); // wichtig für Scrolls ohne sourceCode
     //qDebug() << "loading scroll" << s->species();
     newScroll->load(s->sourceCode);
     //qDebug() << "loaded scroll" << newScroll->species();
     newScroll->setUnitClass("Scroll");
+
+    if (newScroll->species() == "Healing")
+    {
+        castHealing(newScroll, x, y);
+        return;
+    }
     setCreatureImage(newScroll);
     //qDebug() << "Image: " << newScroll->imageFilename() << "Distance Image: " << newScroll->distanceImageFilename();
     newScroll->setX(game->currentPlayer()->x());
@@ -1123,22 +1137,45 @@ bool GameService::isCastable(int x, int y, Creature* creature)
     {
         //qDebug() << "Wuhuuu, a scroll";
         Scroll* scroll = qobject_cast<Scroll*>(creature);
-        if (getDistance(game->currentPlayer(), x, y) <= scroll->range())
+        if (scroll->type() != "friendly")
         {
-            if (getCreatureAt(x, y) && isEnemy(getCreatureAt(x, y)))
+            if (getDistance(game->currentPlayer(), x, y) <= scroll->range())
             {
-                //qDebug() << "end isCastable with true (" << getDistance(game->currentPlayer(), x, y) << "<=" << scroll->range();
+                if (getCreatureAt(x, y) && isEnemy(getCreatureAt(x, y)))
+                {
+                    //qDebug() << "end isCastable with true (" << getDistance(game->currentPlayer(), x, y) << "<=" << scroll->range();
+                }
+                else
+                {
+                    setMessage(tr("You have to cast this spell on an enemy creature"));
+                    bIsCastable = false;
+                }
             }
             else
             {
-                setMessage(tr("You have to cast this spell on an enemy creature"));
+                setMessage(tr("This creature is not in the range of your spell"));
                 bIsCastable = false;
             }
         }
-        else
+        else // d.h. (scroll->type = "friendly") z.B. healing
         {
-            setMessage(tr("This creature is not in the range of your spell"));
-            bIsCastable = false;
+            if (getDistance(game->currentPlayer(), x, y) <= scroll->range())
+            {
+                if (getCreatureAt(x, y))
+                {
+                    //qDebug() << "end isCastable with true (" << getDistance(game->currentPlayer(), x, y) << "<=" << scroll->range();
+                }
+                else
+                {
+                    setMessage(tr("You have to cast this spell on a creature"));
+                    bIsCastable = false;
+                }
+            }
+            else
+            {
+                setMessage(tr("This creature is not in the range of your spell"));
+                bIsCastable = false;
+            }
         }
         //qDebug() << getDistance(game->currentPlayer(), x, y) << ">" << scroll->range();
     }
@@ -1221,6 +1258,7 @@ void GameService::getOrderedFieldsByEnemy(const QList<QPoint> &lstFree, Creature
         double distance = getDistance(creature, p.x(), p.y());
         map.insert(distance, p);
     }
+    qDebug() << "Entfernungen" << map;
 }
 
 bool GameService::isEnemyAdjacent(Creature *creature, Creature *enemy)
@@ -1283,6 +1321,8 @@ void GameService::checkCheat(QString strNewCheatCharacter)
         qDebug() << "Is cheat a" << c->species();
         if (game->strCurrentCheat.toLower().endsWith(c->cheat().toLower()))
         {
+            if (game->currentPlayer()->m_PossibleCreatures.last()->category() > 3)
+                game->currentPlayer()->m_PossibleCreatures.pop_back();
             game->currentPlayer()->m_PossibleCreatures.append(c);
             game->currentPlayer()->emitPossibleCreaturesChanged();
             qDebug() << "Damn Cheater! Now you can cast" << c->species();
@@ -1345,7 +1385,8 @@ void GameService::playTitleSong(bool startstop)
 #ifdef SAILFISH
     QUrl file = (SailfishApp::pathTo("qml/sounds/morzyn intro.mp3")/*.toLocalFile()*/);
 #else
-    QUrl file(QUrl::fromLocalFile("qml/sounds/morzyn intro.mp3"));
+    QUrl file("qrc:/qml/sounds/morzyn intro.mp3");
+    //QUrl file(QUrl::fromLocalFile("qml/sounds/morzyn intro.mp3"));
 #endif
 #endif
         QMediaPlaylist *playlist = new QMediaPlaylist;
@@ -1545,7 +1586,7 @@ QStringList GameService::getCreatureImages(QString filenamePattern)
 #ifdef SAILFISH
     QDir dirImages(SailfishApp::pathTo("qml/images").toLocalFile());
 #else
-    QDir dirImages(QString(DEPLOYMENT_PATH) + QString("qml/images"));
+    QDir dirImages(QString(":/qml/images"));
 #endif
 #endif
     QStringList lstFilters;
@@ -1677,7 +1718,14 @@ QColor GameService::getColorOfEmptyField(int index, bool isLocked, int x, int y,
         {
             if (isCastable(fieldPoint.x(), fieldPoint.y(), game->tempCreature()))
             {
-                color = QColor::fromRgba(0x55FF0000);
+                if (game->tempCreature()->type() == "friendly")
+                {
+                    color = QColor::fromRgba(0x5533FF33);
+                }
+                else
+                {
+                    color = QColor::fromRgba(0x55FF0000);
+                }
                 goto ende;
             }
         }
@@ -1716,6 +1764,26 @@ QColor GameService::getColorOfEmptyField(int index, bool isLocked, int x, int y,
     ende:
     m_bWriteMessages = true;
     return color;
+}
+
+void GameService::castHealing(Scroll *newScroll, int x, int y)
+{
+    newScroll->setX(game->currentPlayer()->x());
+    newScroll->setY(game->currentPlayer()->y());
+    newScroll->setPlayer(game->currentPlayer());
+    game->m_scrolls.append(newScroll);
+    game->emitPropertyChanged();
+
+    Creature* c = getCreatureAt(x, y);
+    if (c)
+    {
+        double newHp = (double)c->hp() + 0.5 * (double)c->hp();
+        if (newHp > c->originalHp())
+            newHp = c->originalHp();
+        qDebug() << "newHp" << newHp;
+        c->setHp(newHp);
+    }
+    game->setState("moveState");
 }
 
 void GameService::setGame(Game *g)

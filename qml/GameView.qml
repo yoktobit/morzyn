@@ -409,6 +409,12 @@ Rectangle {
     SpellSelectView {
         id: spellSelectView
         visible: game.state === "spellSelectState" && game.currentPlayer !== null && !game.currentPlayer.isNPC
+        onVisibleChanged: {
+            if (visible)
+            {
+                gameView.forceActiveFocus();
+            }
+        }
     }
     GrowingText {
         text: gameService.message
@@ -439,7 +445,12 @@ Rectangle {
         visible: false
     }
     focus: true
+    onActiveFocusChanged: {
+        console.debug("active focus gameView = " + activeFocus);
+    }
+
     property string cheat
+    Keys.enabled: true
     Keys.onPressed: {
         console.log("gedrueckt: " + event.text);
         if (event.key === Qt.Key_Backspace)

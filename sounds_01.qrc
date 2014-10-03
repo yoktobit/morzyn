@@ -1,0 +1,32 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/sounds/distfire01.wav</file>
+        <file>qml/sounds/distfire02.wav</file>
+        <file>qml/sounds/distfire03.wav</file>
+        <file>qml/sounds/distfly01.wav</file>
+        <file>qml/sounds/distfly02.wav</file>
+        <file>qml/sounds/distfly03.wav</file>
+        <file>qml/sounds/disthit01.wav</file>
+        <file>qml/sounds/disthit02.wav</file>
+        <file>qml/sounds/disthit03.wav</file>
+        <file>qml/sounds/disthit04.wav</file>
+        <file>qml/sounds/distmiss01.wav</file>
+        <file>qml/sounds/distmiss02.wav</file>
+        <file>qml/sounds/distmiss03.wav</file>
+        <file>qml/sounds/distmiss04.wav</file>
+        <file>qml/sounds/distmiss05.wav</file>
+        <file>qml/sounds/meleehit01.wav</file>
+        <file>qml/sounds/meleehit02.wav</file>
+        <file>qml/sounds/meleehit03.wav</file>
+        <file>qml/sounds/meleehit04.wav</file>
+        <file>qml/sounds/meleehit05.wav</file>
+        <file>qml/sounds/meleemiss01.wav</file>
+        <file>qml/sounds/meleemiss02.wav</file>
+        <file>qml/sounds/meleemiss03.wav</file>
+        <file>qml/sounds/menu01.wav</file>
+        <file>qml/sounds/menu02.wav</file>
+        <file>qml/sounds/menu03.wav</file>
+        <file>qml/sounds/menu04.wav</file>
+        <file>qml/sounds/noSound.wav</file>
+    </qresource>
+</RCC>

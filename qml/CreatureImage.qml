@@ -202,10 +202,14 @@ Rectangle {
                 }
                 else
                 {
-
+                    //game.aquire();
                 }
             }
         }
+    }
+
+    HealingHeart {
+        id: healingHeart
     }
 
     SequentialAnimation on scale {
@@ -332,7 +336,16 @@ Rectangle {
                 console.log("Distanz-Schaden: " + nDamage);
                 creatureDamageStarText.text = nDamage;
                 startype = "staryellow.png";
-                if (attackingCreature.immune && attackingCreature.immune !== "" && attackingCreature.immune === attackedCreature.immune)
+                var immune = false;
+                if (attackedCreature.immune === "ALL")
+                {
+                    immune = true;
+                }
+                else if (attackingCreature.immune && attackedCreature.immune && attackingCreature.immune === attackedCreature.immune)
+                {
+                    immune = true;
+                }
+                if (immune)
                 {
                     startype = "stargreen.png";
                 }

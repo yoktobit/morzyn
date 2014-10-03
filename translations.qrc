@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>translations/morzyn_de.qm</file>
+        <file>translations/morzyn_de.ts</file>
+    </qresource>
+</RCC>

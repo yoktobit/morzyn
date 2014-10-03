@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 #ifdef Q_OS_WIN32
 #ifndef _DEBUG
-    chdir(app.applicationDirPath().toStdString().c_str());
+    //chdir(app.applicationDirPath().toStdString().c_str());
 #endif
 #endif
 
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
     QString locale = QLocale::system().name();
 
     QTranslator translator;
-    translator.load(QString("morzyn_") + locale.left(2).toLower(), "translations");
+    translator.load(QString("morzyn_") + locale.left(2).toLower(), ":/translations");
     app.installTranslator(&translator);
 
     //QtQuick2ApplicationViewer viewer;
@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_ANDROID
     viewer.load(QUrl(QStringLiteral("assets:/qml/main.qml")));
 #else
-    viewer.load(QUrl(QStringLiteral("qml/main.qml")));
+    viewer.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 #endif
     //viewer.showExpanded();
     /*if (bFullscreen)

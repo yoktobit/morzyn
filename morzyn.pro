@@ -28,6 +28,12 @@ SOURCES += cpp/desktopandroid/main.cpp \
     cpp/tutorialplayerai.cpp \
     cpp/tutorialopponentai.cpp
 
+RESOURCES += qml.qrc \
+    images.qrc \
+    sounds_01.qrc \
+    sounds_02.qrc \
+    translations.qrc
+
 TRANSLATIONS = translations/morzyn_de.ts
 
 OTHER_FILES += qml/BackButton.qml \
@@ -140,4 +146,4 @@ android {
 }
 
 # Default rules for deployment.
-include(deployment.pri)
+#include(deployment.pri)

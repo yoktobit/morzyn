@@ -25,7 +25,7 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 dropList.state = "open";
-                dropList.focus = true;
+                //dropList.focus = true;
             }
         }
     }

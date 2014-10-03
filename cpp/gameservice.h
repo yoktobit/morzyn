@@ -99,6 +99,7 @@ public:
     Q_INVOKABLE void quit();
     Q_INVOKABLE bool getFullScreen();
     Q_INVOKABLE QColor getColorOfEmptyField(int index, bool isLocked, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state);
+    Q_INVOKABLE void castHealing(Scroll* newScroll, int x, int y);
 
     void emitCreatureMoved(Creature* creature);
     void emitPlayerSwitched(Player* player);

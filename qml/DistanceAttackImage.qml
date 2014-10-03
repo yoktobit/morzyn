@@ -141,11 +141,21 @@ Image {
             {
                 animationFinished(attackedCreature, nDamage);
                 distFly01.stop(); distFly02.stop(); distFly03.stop();
-                if (nDamage > 0 && (!attackingCreature.immune || attackingCreature.immune !== attackedCreature.immune) && os !== "sailfish_sick")
+                var immune = false;
+                if (attackedCreature.immune === "ALL")
+                {
+                    immune = true;
+                }
+                else if (attackingCreature.immune && attackedCreature.immune && attackingCreature.immune === attackedCreature.immune)
+                {
+                    immune = true;
+                }
+
+                if (nDamage > 0 && !immune)
                 {
                     playOneOf(distHit01, distHit02, distHit03);
                 }
-                else if (os !== "sailfish_sick")
+                else
                 {
                     playOneOf(distMiss01, distMiss02, distMiss03);
                 }

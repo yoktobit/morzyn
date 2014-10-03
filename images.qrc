@@ -1,0 +1,242 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/images/amazon a.png</file>
+        <file>qml/images/amazon b.png</file>
+        <file>qml/images/amazon c.png</file>
+        <file>qml/images/amazon d.png</file>
+        <file>qml/images/angel a.png</file>
+        <file>qml/images/angel b.png</file>
+        <file>qml/images/angel c.png</file>
+        <file>qml/images/banner.png</file>
+        <file>qml/images/basilisk a.png</file>
+        <file>qml/images/basilisk b.png</file>
+        <file>qml/images/bat a.png</file>
+        <file>qml/images/bat b.png</file>
+        <file>qml/images/bat c.png</file>
+        <file>qml/images/borderlayout.png</file>
+        <file>qml/images/button minimieren.png</file>
+        <file>qml/images/button schliessen.png</file>
+        <file>qml/images/button.png</file>
+        <file>qml/images/buttonok.png</file>
+        <file>qml/images/carnivora a.png</file>
+        <file>qml/images/carnivora b.png</file>
+        <file>qml/images/centaur a.png</file>
+        <file>qml/images/centaur b.png</file>
+        <file>qml/images/crab a.png</file>
+        <file>qml/images/crab b.png</file>
+        <file>qml/images/cyclops a.png</file>
+        <file>qml/images/cyclops b.png</file>
+        <file>qml/images/cyclops c.png</file>
+        <file>qml/images/cyclops d.png</file>
+        <file>qml/images/cyclops e.png</file>
+        <file>qml/images/dark priest red.png</file>
+        <file>qml/images/death knight a.png</file>
+        <file>qml/images/death knight b.png</file>
+        <file>qml/images/death knight c.png</file>
+        <file>qml/images/death knight d.png</file>
+        <file>qml/images/devil a.png</file>
+        <file>qml/images/devil b.png</file>
+        <file>qml/images/dire wolf a.png</file>
+        <file>qml/images/dire wolf b.png</file>
+        <file>qml/images/dragon a.png</file>
+        <file>qml/images/dragon b.png</file>
+        <file>qml/images/dwarf a.png</file>
+        <file>qml/images/dwarf b.png</file>
+        <file>qml/images/dwarf c.png</file>
+        <file>qml/images/dwarf d.png</file>
+        <file>qml/images/earthworm a.png</file>
+        <file>qml/images/earthworm b.png</file>
+        <file>qml/images/elvish bowman a.png</file>
+        <file>qml/images/elvish bowman b.png</file>
+        <file>qml/images/elvish warrior a.png</file>
+        <file>qml/images/elvish warrior b.png</file>
+        <file>qml/images/elvish warrior c.png</file>
+        <file>qml/images/elvish warrior d.png</file>
+        <file>qml/images/elvish warrior e.png</file>
+        <file>qml/images/elvish warrior f.png</file>
+        <file>qml/images/ent a.png</file>
+        <file>qml/images/ent b.png</file>
+        <file>qml/images/evil eye a.png</file>
+        <file>qml/images/evil eye b.png</file>
+        <file>qml/images/fairy a.png</file>
+        <file>qml/images/fairy b.png</file>
+        <file>qml/images/fairy c.png</file>
+        <file>qml/images/fairy d.png</file>
+        <file>qml/images/fairy dragon a.png</file>
+        <file>qml/images/fairy dragon b.png</file>
+        <file>qml/images/fairy dragon c.png</file>
+        <file>qml/images/fairy dragon d.png</file>
+        <file>qml/images/fire golem a.png</file>
+        <file>qml/images/fire golem b.png</file>
+        <file>qml/images/flying death a.png</file>
+        <file>qml/images/flying death b.png</file>
+        <file>qml/images/ghost a.png</file>
+        <file>qml/images/ghost b.png</file>
+        <file>qml/images/ghost c.png</file>
+        <file>qml/images/ghost d.png</file>
+        <file>qml/images/giant a.png</file>
+        <file>qml/images/giant b.png</file>
+        <file>qml/images/giant c.png</file>
+        <file>qml/images/giant d.png</file>
+        <file>qml/images/giant warrior a.png</file>
+        <file>qml/images/giant warrior b.png</file>
+        <file>qml/images/giant warrior c.png</file>
+        <file>qml/images/giant warrior d.png</file>
+        <file>qml/images/gnome a.png</file>
+        <file>qml/images/gnome b.png</file>
+        <file>qml/images/gnome c.png</file>
+        <file>qml/images/gnome d.png</file>
+        <file>qml/images/gorilla a.png</file>
+        <file>qml/images/gorilla b.png</file>
+        <file>qml/images/gremlin a.png</file>
+        <file>qml/images/gremlin b.png</file>
+        <file>qml/images/gremlin c.png</file>
+        <file>qml/images/gremlin d.png</file>
+        <file>qml/images/haken.png</file>
+        <file>qml/images/hangman a.png</file>
+        <file>qml/images/hangman b.png</file>
+        <file>qml/images/horn beast a.png</file>
+        <file>qml/images/horn beast b.png</file>
+        <file>qml/images/hornet a.png</file>
+        <file>qml/images/hornet b.png</file>
+        <file>qml/images/ice golem a.png</file>
+        <file>qml/images/ice golem b.png</file>
+        <file>qml/images/ice golem c.png</file>
+        <file>qml/images/ice golem d.png</file>
+        <file>qml/images/ice golem e.png</file>
+        <file>qml/images/kreuz.png</file>
+        <file>qml/images/lady death a.png</file>
+        <file>qml/images/lady death b.png</file>
+        <file>qml/images/lady death c.png</file>
+        <file>qml/images/lady death d.png</file>
+        <file>qml/images/menu fledermaeuse.png</file>
+        <file>qml/images/menu text bat.png</file>
+        <file>qml/images/morzynmenu.png</file>
+        <file>qml/images/mummy a.png</file>
+        <file>qml/images/mummy b.png</file>
+        <file>qml/images/mummy c.png</file>
+        <file>qml/images/mutant a.png</file>
+        <file>qml/images/mutant b.png</file>
+        <file>qml/images/obelix a.png</file>
+        <file>qml/images/obelix b.png</file>
+        <file>qml/images/orc a.png</file>
+        <file>qml/images/orc b.png</file>
+        <file>qml/images/orc c.png</file>
+        <file>qml/images/orc d.png</file>
+        <file>qml/images/orc e.png</file>
+        <file>qml/images/osama a.png</file>
+        <file>qml/images/osama b.png</file>
+        <file>qml/images/pharaoh a.png</file>
+        <file>qml/images/pharaoh b.png</file>
+        <file>qml/images/rat a.png</file>
+        <file>qml/images/rat b.png</file>
+        <file>qml/images/rogue black.png</file>
+        <file>qml/images/rogue blood.png</file>
+        <file>qml/images/rogue blue.png</file>
+        <file>qml/images/rogue gold.png</file>
+        <file>qml/images/rogue green.png</file>
+        <file>qml/images/rogue night.png</file>
+        <file>qml/images/rogue pink.png</file>
+        <file>qml/images/rogue purple.png</file>
+        <file>qml/images/rogue red.png</file>
+        <file>qml/images/rogue white.png</file>
+        <file>qml/images/santa a.png</file>
+        <file>qml/images/santa b.png</file>
+        <file>qml/images/skeleton a.png</file>
+        <file>qml/images/skeleton b.png</file>
+        <file>qml/images/skeleton c.png</file>
+        <file>qml/images/skeleton d.png</file>
+        <file>qml/images/snake a.png</file>
+        <file>qml/images/snake b.png</file>
+        <file>qml/images/son goku a.png</file>
+        <file>qml/images/son goku b.png</file>
+        <file>qml/images/sorcerer black.png</file>
+        <file>qml/images/sorcerer blood.png</file>
+        <file>qml/images/sorcerer blue.png</file>
+        <file>qml/images/sorcerer gold.png</file>
+        <file>qml/images/sorcerer green.png</file>
+        <file>qml/images/sorcerer night.png</file>
+        <file>qml/images/sorcerer pink.png</file>
+        <file>qml/images/sorcerer purple.png</file>
+        <file>qml/images/sorcerer red.png</file>
+        <file>qml/images/sorcerer white.png</file>
+        <file>qml/images/spell axe.png</file>
+        <file>qml/images/spell death ball.png</file>
+        <file>qml/images/spell fire bolt a.png</file>
+        <file>qml/images/spell fire bolt b.png</file>
+        <file>qml/images/spell fire storm.png</file>
+        <file>qml/images/spell heal.png</file>
+        <file>qml/images/spell holy flash.png</file>
+        <file>qml/images/spell ice bolt a.png</file>
+        <file>qml/images/spell ice bolt b.png</file>
+        <file>qml/images/spell magic arrow.png</file>
+        <file>qml/images/spell magic attack a.png</file>
+        <file>qml/images/spell magic attack b.png</file>
+        <file>qml/images/spell magic attack c.png</file>
+        <file>qml/images/spell shadow blast.png</file>
+        <file>qml/images/spell snowflake.png</file>
+        <file>qml/images/spell thunderbolt.png</file>
+        <file>qml/images/spider a.png</file>
+        <file>qml/images/spider b.png</file>
+        <file>qml/images/spielfeld.png</file>
+        <file>qml/images/spongebob a.png</file>
+        <file>qml/images/spongebob b.png</file>
+        <file>qml/images/star.png</file>
+        <file>qml/images/stargreen.png</file>
+        <file>qml/images/starred.png</file>
+        <file>qml/images/starwhite.png</file>
+        <file>qml/images/staryellow.png</file>
+        <file>qml/images/statusback.png</file>
+        <file>qml/images/stern.png</file>
+        <file>qml/images/stone golem a.png</file>
+        <file>qml/images/stone golem b.png</file>
+        <file>qml/images/stone golem c.png</file>
+        <file>qml/images/stone golem d.png</file>
+        <file>qml/images/stone golem e.png</file>
+        <file>qml/images/sword master a.png</file>
+        <file>qml/images/sword master b.png</file>
+        <file>qml/images/titelbild.png</file>
+        <file>qml/images/titleback.png</file>
+        <file>qml/images/triton a.png</file>
+        <file>qml/images/triton b.png</file>
+        <file>qml/images/troll a.png</file>
+        <file>qml/images/troll b.png</file>
+        <file>qml/images/vader a.png</file>
+        <file>qml/images/vader b.png</file>
+        <file>qml/images/vampire a.png</file>
+        <file>qml/images/vampire b.png</file>
+        <file>qml/images/vampire c.png</file>
+        <file>qml/images/vulture a.png</file>
+        <file>qml/images/vulture b.png</file>
+        <file>qml/images/warrior black.png</file>
+        <file>qml/images/warrior blood.png</file>
+        <file>qml/images/warrior blue.png</file>
+        <file>qml/images/warrior gold.png</file>
+        <file>qml/images/warrior green.png</file>
+        <file>qml/images/warrior night.png</file>
+        <file>qml/images/warrior pink.png</file>
+        <file>qml/images/warrior purple.png</file>
+        <file>qml/images/warrior red.png</file>
+        <file>qml/images/warrior white.png</file>
+        <file>qml/images/werewolf a.png</file>
+        <file>qml/images/werewolf b.png</file>
+        <file>qml/images/wiese.png</file>
+        <file>qml/images/wisp a.png</file>
+        <file>qml/images/wisp b.png</file>
+        <file>qml/images/wisp c.png</file>
+        <file>qml/images/wisp d.png</file>
+        <file>qml/images/witch a.png</file>
+        <file>qml/images/witch b.png</file>
+        <file>qml/images/witch c.png</file>
+        <file>qml/images/witch d.png</file>
+        <file>qml/images/yeti a.png</file>
+        <file>qml/images/yeti b.png</file>
+        <file>qml/images/yoda a.png</file>
+        <file>qml/images/yoda b.png</file>
+        <file>qml/images/zombie a.png</file>
+        <file>qml/images/zombie b.png</file>
+        <file>qml/images/zombie c.png</file>
+        <file>qml/images/zombie d.png</file>
+        <file>qml/images/heart.png</file>
+    </qresource>
+</RCC>

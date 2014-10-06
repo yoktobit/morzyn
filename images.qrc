@@ -238,5 +238,6 @@
         <file>qml/images/zombie c.png</file>
         <file>qml/images/zombie d.png</file>
         <file>qml/images/heart.png</file>
+        <file>qml/images/manatransfer.png</file>
     </qresource>
 </RCC>

@@ -66,7 +66,8 @@ OTHER_FILES += qml/BackButton.qml \
     qml/TitleView.qml \
     qml/TitlePage.qml \
     qml/database/database.xml \
-    android\AndroidManifest.xml
+    android\AndroidManifest.xml \
+    qml/ManaTransferImage.qml
 
 RC_FILE += morzyn.rc
 

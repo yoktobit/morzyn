@@ -2,9 +2,16 @@ import QtQuick 2.0
 
 Image {
     id: creatureHealingHeart
+
+    property alias healingAmount: creatureHealingHeartText.text
+
+    function start()
+    {
+        creatureHealingHeartAnimation.start();
+    }
+
     source: "images/heart.png"
-    width: creatureImage.width
-    height: creatureImage.height
+    anchors.fill: parent
     scale: 0
     Text {
         id: creatureHealingHeartText
@@ -36,7 +43,7 @@ Image {
             }
             else
             {
-
+                game.aquire();
             }
         }
     }

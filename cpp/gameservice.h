@@ -100,6 +100,7 @@ public:
     Q_INVOKABLE bool getFullScreen();
     Q_INVOKABLE QColor getColorOfEmptyField(int index, bool isLocked, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state);
     Q_INVOKABLE void castHealing(Scroll* newScroll, int x, int y);
+    Q_INVOKABLE void castManaTransfer(Scroll* newScroll, int x, int y);
 
     void emitCreatureMoved(Creature* creature);
     void emitPlayerSwitched(Player* player);
@@ -161,6 +162,8 @@ signals:
     void gameReset();
     void playersCreaturesDie(Player* player);
     void messageChanged(QString arg);
+    void creatureHealed(Creature* creature, int hp);
+    void manaTransfered(Creature *attackingCreature, Creature *attackedCreature, int nMana);
 
 public slots:
     void setTotalPlayers(int number);
@@ -182,6 +185,7 @@ public slots:
             emit messageChanged(arg);
         }
     }
+    int getManaTransferAmount(Player *player);
 };
 
 #endif // GAMESERVICE_H

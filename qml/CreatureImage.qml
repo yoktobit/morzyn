@@ -208,10 +208,6 @@ Rectangle {
         }
     }
 
-    HealingHeart {
-        id: healingHeart
-    }
-
     SequentialAnimation on scale {
         id: creatureDeadAnimation
         alwaysRunToEnd: true
@@ -256,6 +252,15 @@ Rectangle {
 
     Connections {
         target: gameService
+
+        onCreatureHealed: {
+            if (creature === modelData)
+            {
+                healingHeart.healingAmount = hp;
+                healingHeart.start();
+            }
+        }
+
         onCreatureAttacked: {
             if (attackedCreature === modelData)
             {
@@ -401,6 +406,11 @@ Rectangle {
             }
         }
     }
+
+    HealingHeart {
+        id: healingHeart
+    }
+
     Component.onCompleted: {
         visible = modelData.alive;
     }

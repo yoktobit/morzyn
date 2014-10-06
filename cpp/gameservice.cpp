@@ -262,6 +262,7 @@ void GameService::loadPlayerSpells(Player *player)
             mana.insert(library->lstScrolls[r]->manaCost());
         }
     }
+
     Scroll *healing = new Scroll(player);
     healing->setUnitClass("Scroll");
     healing->setSpecies("Healing");
@@ -269,6 +270,15 @@ void GameService::loadPlayerSpells(Player *player)
     creatures.insert(healing);
     mana.insert(healing->manaCost());
     player->m_PossibleCreatures.append(healing);
+
+    Scroll *manaTransfer = new Scroll(player);
+    manaTransfer->setUnitClass("Scroll");
+    manaTransfer->setSpecies("Mana Transfer");
+    manaTransfer->load(NULL);
+    creatures.insert(manaTransfer);
+    mana.insert(manaTransfer->manaCost());
+    player->m_PossibleCreatures.append(manaTransfer);
+
     //qDebug() << "End loadPlayerSpells";
     /*foreach(int i, lst0)
     {
@@ -333,6 +343,11 @@ void GameService::castScroll(Scroll *s, int x, int y)
     if (newScroll->species() == "Healing")
     {
         castHealing(newScroll, x, y);
+        return;
+    }
+    if (newScroll->species() == "Mana Transfer")
+    {
+        castManaTransfer(newScroll, x, y);
         return;
     }
     setCreatureImage(newScroll);
@@ -560,6 +575,13 @@ void GameService::initPlayerForNewRound(Player *player)
     {
         if (player->spellPoints() < 28)
             player->setSpellPoints(player->spellPoints() + 3);
+    }
+    foreach(Creature *c, player->m_PossibleCreatures)
+    {
+        if (c->species() == "Mana Transfer")
+        {
+            c->setManaCost(getManaTransferAmount(player));
+        }
     }
     //qDebug() << "end initPlayerForNewRound" << "with" << player->name();
 }
@@ -1100,7 +1122,10 @@ void GameService::tryBuy(Creature *creature)
 
 void GameService::buy(Creature *creature)
 {
-    game->currentPlayer()->setSpellPoints(game->currentPlayer()->spellPoints() - creature->manaCost());
+    if (creature->species() != "Mana Transfer")
+    {
+        game->currentPlayer()->setSpellPoints(game->currentPlayer()->spellPoints() - creature->manaCost());
+    }
     game->setState("castSpellState");
 }
 
@@ -1777,11 +1802,40 @@ void GameService::castHealing(Scroll *newScroll, int x, int y)
     Creature* c = getCreatureAt(x, y);
     if (c)
     {
-        double newHp = (double)c->hp() + 0.5 * (double)c->hp();
+        int diff = 0.5 * (double)c->hp();
+        int newHp = c->hp() + diff;
         if (newHp > c->originalHp())
             newHp = c->originalHp();
         qDebug() << "newHp" << newHp;
+        diff = newHp - c->hp();
         c->setHp(newHp);
+        emit creatureHealed(c, diff);
+    }
+    game->setState("moveState");
+}
+
+int GameService::getManaTransferAmount(Player* player)
+{
+    return player->spellPoints() / 3;
+}
+
+void GameService::castManaTransfer(Scroll *newScroll, int x, int y)
+{
+    newScroll->setX(game->currentPlayer()->x());
+    newScroll->setY(game->currentPlayer()->y());
+    newScroll->setPlayer(game->currentPlayer());
+    game->m_scrolls.append(newScroll);
+    game->emitPropertyChanged();
+
+    Creature* c = getCreatureAt(x, y);
+    if (c)
+    {
+        int diff = getManaTransferAmount(game->currentPlayer());
+        int nSpellPoints1 = game->currentPlayer()->spellPoints() - diff;
+        int nSpellPoints2 = c->player()->spellPoints() + diff;
+        game->currentPlayer()->setSpellPoints(nSpellPoints1);
+        c->player()->setSpellPoints(nSpellPoints2);
+        emit manaTransfered(game->currentPlayer(), c->player(), diff);
     }
     game->setState("moveState");
 }

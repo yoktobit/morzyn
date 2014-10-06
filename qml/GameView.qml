@@ -43,6 +43,12 @@ Rectangle {
 
         }
     }
+    Component {
+        id: manaTransferImageComponent
+        ManaTransferImage {
+
+        }
+    }
 
     function playMeleeHit()
     {
@@ -124,6 +130,15 @@ Rectangle {
             {
                 creatures.push(newObject);
                 newObject.modelData = creature;
+            }
+        }
+        onManaTransfered: {
+            var newManaItem = manaTransferImageComponent.createObject(gameCreatureParentItem);
+            if (newManaItem)
+            {
+                newManaItem.attackingCreature = attackingCreature;
+                newManaItem.attackedCreature = attackedCreature;
+                newManaItem.start();
             }
         }
     }

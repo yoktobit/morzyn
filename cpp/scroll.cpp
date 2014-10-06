@@ -16,6 +16,11 @@ void Scroll::load(QDomNode *node)
             loadHealing();
             return;
         }
+        if (m_Species == "Mana Transfer")
+        {
+            loadManaTransfer();
+            return;
+        }
     }
     qDebug() << "loading imagefilepattern";
     m_DistanceImageFilePattern = node->attributes().namedItem("file").nodeValue();
@@ -51,6 +56,25 @@ void Scroll::loadHealing()
     m_range = 4;
     m_type = "friendly";
     m_Immune = "Healing";
+    m_hasDistanceAttack = true;
+    m_Category = -1;
+}
+
+void Scroll::loadManaTransfer()
+{
+    m_DistanceImageFilename = "heart.png";
+    m_DistanceImageFilePattern = "heart.png";
+    m_ImageFilename = "heart.png";
+    m_ImageFilePattern = "heart.png";
+    m_jumps = 0;
+    m_ManaCost = 0;
+    m_maxDamage = 0;
+    m_DistanceStrength = 0;
+    m_minDamage = 0;
+    m_Species = "Mana Transfer";
+    m_range = 5;
+    m_type = "friendly";
+    m_Immune = "Mana";
     m_hasDistanceAttack = true;
     m_Category = -1;
 }

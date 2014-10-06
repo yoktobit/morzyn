@@ -42,6 +42,7 @@ public:
     virtual void load(QDomNode* node);
 
     void loadHealing();
+    void loadManaTransfer();
 signals:
     void propertyChanged();
 public slots:

@@ -47,6 +47,7 @@ public:
     Q_INVOKABLE void attackCreature(Creature *creature, bool emitSignal = true);
     Q_INVOKABLE bool isDistanceAttackable(Creature *creature);
     Q_INVOKABLE bool isDistanceAttackable(Creature *attacker, Creature* attacked);
+    Q_INVOKABLE bool canSee(Creature *attacker, Creature* attacked);
     Q_INVOKABLE void tryDistanceAttackCreature(Creature *creature);
     Q_INVOKABLE void distanceAttackCreature(Creature *creature, bool emitSignal = true);
     Q_INVOKABLE void scrollAttackCreature(Scroll* scroll, Creature *creature);
@@ -98,7 +99,7 @@ public:
     Q_INVOKABLE void placeTutorialPlayers();
     Q_INVOKABLE void quit();
     Q_INVOKABLE bool getFullScreen();
-    Q_INVOKABLE QColor getColorOfEmptyField(int index, bool isLocked, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state);
+    Q_INVOKABLE QColor getColorOfEmptyField(int index, bool isLocked, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state, int counter);
     Q_INVOKABLE void castHealing(Scroll* newScroll, int x, int y);
     Q_INVOKABLE void castManaTransfer(Scroll* newScroll, int x, int y);
 

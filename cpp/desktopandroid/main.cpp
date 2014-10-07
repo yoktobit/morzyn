@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
-    QString version("v0.7.16");
+    QString version("v0.7.17");
 
     QCoreApplication::setOrganizationDomain("de.yoktobit");
     QCoreApplication::setOrganizationName("yoktobit");

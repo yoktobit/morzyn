@@ -68,8 +68,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     view->rootContext()->setContextProperty("os", QVariant("sailfish"));
     view->rootContext()->setContextProperty("hCount", QVariant(c.HCOUNT));
     view->rootContext()->setContextProperty("vCount", QVariant(c.VCOUNT));
-    view->rootContext()->setContextProperty("version", QVariant("0.7.16"));
-    view->setTitle("Morzyn v0.7.16");
+    view->rootContext()->setContextProperty("version", QVariant("0.7.17"));
+    view->setTitle("Morzyn v0.7.17");
     view->setSource(SailfishApp::pathTo("qml/morzyn.qml"));
     view->show();
     

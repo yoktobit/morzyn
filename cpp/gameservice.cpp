@@ -719,12 +719,17 @@ bool GameService::isDistanceAttackable(Creature *attacker, Creature *attacked)
     {
         //qDebug() << "friendly fire is possible";
         setMessage(tr("Tip: Don't harm your own creatures ;-)"));
-        //return true;
+        //return false;
     }
     if (attacker->remainingMovePoints() > 0 && !attacker->hasAttacked())
     {
         //qDebug() << "is still in movement mode";
         setMessage(tr("Please cancel move mode first to use the distance attack"));
+        return false;
+    }
+    if (!canSee(attacker, attacked))
+    {
+        setMessage(tr("Another creature is blocking the attack."));
         return false;
     }
     if (int(getRealMovementDistance(attacker, attacked->x(), attacked->y())) > attacker->distanceRange())
@@ -736,6 +741,39 @@ bool GameService::isDistanceAttackable(Creature *attacker, Creature *attacked)
     //qDebug() << "isDistanceAttackable = true";
     // zurücksetzen
     setMessage("");
+    return true;
+}
+
+bool GameService::canSee(Creature *attacker, Creature *attacked)
+{
+    int eyes11x = attacker->x() * 10 + 4;
+    int eyes12x = attacker->x() * 10 + 6;
+    int eyes11y = attacker->y() * 10 + 2;
+    int eyes12y = eyes11y + 1;
+
+    int eyes21x = attacked->x() * 10 + 4;
+    int eyes22x = attacked->x() * 10 + 6;
+    int eyes21y = attacked->y() * 10 + 2;
+    int eyes22y = eyes21y + 1;
+
+    QPolygon collisionPoly;
+    collisionPoly << QPoint(eyes11x, eyes11y) << QPoint(eyes12x, eyes12y) << QPoint(eyes22x, eyes22y) << QPoint(eyes21x, eyes21y) << QPoint(eyes11x, eyes11y);
+    QRegion collisionRegion(collisionPoly);
+    for (int xx = 0; xx < config->HCOUNT; xx++)
+    {
+        for (int yy = 0; yy < config->VCOUNT; yy++)
+        {
+            Creature* currentCreature = getCreatureAt(xx, yy);
+            if (currentCreature == attacker || currentCreature == attacked)
+                continue;
+            QRect currentRect(xx * 10, yy * 10, 10, 10);
+            if (collisionRegion.intersects(currentRect) && currentCreature)
+            {
+                qDebug() << xx << yy << "is blocking the spell";
+                return false;
+            }
+        }
+    }
     return true;
 }
 
@@ -1034,6 +1072,7 @@ void GameService::abort(Creature *creature)
             {
                 //qDebug() << "enabling distance attack";
                 game->selectedCreature()->setRemainingMovePoints(0);
+                game->increase();
                 setMessage(tr("Choose a target!"));
                 game->selectedCreature()->setDistanceAttackMode(true);
             }
@@ -1726,8 +1765,9 @@ bool GameService::getFullScreen()
     return settings->value("fullscreen", QVariant(true)).toBool();
 }
 
-QColor GameService::getColorOfEmptyField(int index, bool isLocked, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state)
+QColor GameService::getColorOfEmptyField(int index, bool isLocked, int x, int y, Creature *selectedCreature, Player *currentPlayer, QString state, int counter)
 {
+    Q_UNUSED(counter)
     if (!currentPlayer) return Qt::transparent;
     QPoint fieldPoint(index % config->HCOUNT, index / config->HCOUNT);
     QList<QPoint> lstPoints;
@@ -1802,7 +1842,19 @@ void GameService::castHealing(Scroll *newScroll, int x, int y)
     Creature* c = getCreatureAt(x, y);
     if (c)
     {
-        int diff = 0.5 * (double)c->hp();
+        int percent = 0;
+        // Bei Spielern: zwischen 20 und 40 Prozent wiederherstellen
+        if (c->player() == c)
+        {
+            percent = randomInteger(20, 41);
+        }
+        // bei Kreaturen: zwischen 50 und 75 Prozent wiederherstellen
+        else
+        {
+            percent = randomInteger(50, 76);
+        }
+        double dPercent = (double)percent / 100.0;
+        int diff = dPercent * (double)c->hp();
         int newHp = c->hp() + diff;
         if (newHp > c->originalHp())
             newHp = c->originalHp();
@@ -1890,6 +1942,7 @@ void GameService::resetGame()
     game->emitPlayersChanged();
     game->emitScrollsChanged();
     game->arrUsedPlayerColors.clear();
+    game->setCounter(0);
     delete game->m_semaphore;
     game->m_semaphore = new QSemaphore(MAX_ANIMATION);
     emit gameReset();

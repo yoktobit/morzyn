@@ -31,6 +31,7 @@ class Game : public QObject
     Q_PROPERTY(bool manaMode READ manaMode WRITE setManaMode NOTIFY manaModeChanged)
     Q_PROPERTY(bool fullScreen READ fullScreen WRITE setFullScreen NOTIFY fullScreenChanged)
     Q_PROPERTY(Creature* tempCreature READ tempCreature WRITE setTempCreature NOTIFY tempCreatureChanged)
+    Q_PROPERTY(int counter READ counter WRITE setCounter NOTIFY counterChanged)
 
 public:
     explicit Game(QObject *parent = 0);
@@ -125,6 +126,11 @@ public:
     Creature* tempCreature() const
     {
         return m_tempCreature;
+    }
+
+    int counter() const
+    {
+        return m_counter;
     }
 
 signals:
@@ -257,6 +263,20 @@ void setTempCreature(Creature* arg)
     }
 }
 
+void setCounter(int arg)
+{
+    if (m_counter == arg)
+        return;
+
+    m_counter = arg;
+    emit counterChanged(arg);
+}
+
+void increase()
+{
+    setCounter(m_counter + 1);
+}
+
 private:
 
 Player* m_currentPlayer;
@@ -289,12 +309,15 @@ bool m_fullScreen;
 
 Creature* m_tempCreature;
 
+int m_counter;
+
 signals:
 void onAvailable();
 void hasBegunChanged(bool arg);
 void manaModeChanged(bool arg);
 void fullScreenChanged(bool arg);
 void tempCreatureChanged(Creature* arg);
+void counterChanged(int arg);
 };
 
 #endif // GAME_H

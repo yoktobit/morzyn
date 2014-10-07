@@ -247,7 +247,8 @@ Rectangle {
                                      , game.selectedCreature ? game.selectedCreature.y : -1
                                      , game.selectedCreature
                                      , game.currentPlayer
-                                     , game.state)//"transparent"
+                                     , game.state
+                                     , game.counter)//"transparent"
                             border.width: 1
                             border.color: "black"
                             MouseArea {

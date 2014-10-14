@@ -465,6 +465,40 @@ Rectangle {
         console.debug("active focus gameView = " + activeFocus);
     }
 
+    Rectangle {
+        id: cheatBox
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: "#AA000000"
+        visible: false
+        height: (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+        width: parent.width / 2
+        TextInput {
+            id: cheatInput
+            anchors.fill: parent
+            color: "white"
+            font.pixelSize: (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+            onAccepted: {
+                gameService.checkCheat(cheatInput.text);
+                cheatBox.visible = false;
+                cheatInput.text = "";
+            }
+        }
+    }
+    MultiPointTouchArea {
+        id: cheatTouchArea
+        anchors.top: parent.top
+        anchors.right: parent.right
+        width: parent.width / 5
+        height: parent.height / 2
+        maximumTouchPoints: 3
+        minimumTouchPoints: 3
+        onPressed: {
+            cheatBox.visible = true;
+            accept = false;
+        }
+    }
+
     property string cheat
     Keys.enabled: true
     Keys.onPressed: {

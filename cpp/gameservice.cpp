@@ -1444,7 +1444,8 @@ void GameService::playTitleSong(bool startstop)
     {
         titleSound = new QMediaPlayer;
 #ifdef Q_OS_ANDROID
-    QUrl file("assets:/qml/sounds/morzyn intro.mp3");
+    //QUrl file("assets:/qml/sounds/morzyn intro.mp3");
+    QUrl file("qrc:/qml/sounds/morzyn intro.mp3");
 #else
 #ifdef SAILFISH
     QUrl file = (SailfishApp::pathTo("qml/sounds/morzyn intro.mp3")/*.toLocalFile()*/);
@@ -1645,7 +1646,8 @@ QStringList GameService::getCreatureImages(QString filenamePattern)
     QString strFilePattern = filenamePattern;
     QStringList lstMatchingFiles;
 #ifdef Q_OS_ANDROID
-    QDir dirImages("assets:/qml/images");
+    //QDir dirImages("assets:/qml/images");
+    QDir dirImages(QString(":/qml/images"));
 #else
 #ifdef SAILFISH
     QDir dirImages(SailfishApp::pathTo("qml/images").toLocalFile());

@@ -122,13 +122,13 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 android {
     ASSET_INSTALL_PATH = /assets
-    folder_01.files = qml/*
-    folder_01.path = $$ASSET_INSTALL_PATH/qml
-    folder_01.depends += FORCE
-    folder_02.files = translations/*
-    folder_02.path = $$ASSET_INSTALL_PATH/translations
-    folder_01.depends += FORCE
-    INSTALLS += folder_01 folder_02
+    #folder_01.files = qml/*
+    #folder_01.path = $$ASSET_INSTALL_PATH/qml
+    #folder_01.depends += FORCE
+    #folder_02.files = translations/*
+    #folder_02.path = $$ASSET_INSTALL_PATH/translations
+    #folder_01.depends += FORCE
+    #INSTALLS += folder_01 folder_02
 } else {
     ASSET_INSTALL_PATH = $$OUT_PWD
     folder_01.source = qml

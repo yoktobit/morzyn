@@ -91,7 +91,8 @@ void Library::getAllCreatures()
 void Library::loadAll()
 {
 #ifdef Q_OS_ANDROID
-    QFile file("assets:/qml/database/database.xml");
+    //QFile file("assets:/qml/database/database.xml");
+    QFile file(QString(":/qml/database/database.xml"));
 #else
 #ifdef SAILFISH
     QFile file(SailfishApp::pathTo("qml/database/database.xml").toLocalFile());

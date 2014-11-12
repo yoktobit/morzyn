@@ -143,7 +143,8 @@ int main(int argc, char *argv[])
     //viewer.setMainQmlFile(QStringLiteral("qml/main.qml"));
     //viewer.setTitle(QString("Morzyn %0").arg(version));
 #ifdef Q_OS_ANDROID
-    viewer.load(QUrl(QStringLiteral("assets:/qml/main.qml")));
+    //viewer.load(QUrl(QStringLiteral("assets:/qml/main.qml")));
+    viewer.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 #else
     viewer.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 #endif

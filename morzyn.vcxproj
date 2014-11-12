@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AA6A766E-7853-3518-8FBF-4AD3E6945D37}</ProjectGuid>
+    <RootNamespace>morzyn</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <MinimumVisualStudioVersion>12.00</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <ApplicationTypeRevision>8.1</ApplicationTypeRevision>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;" Label="Configuration">
+    <PlatformToolSet>v120</PlatformToolSet>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>morzyn</PrimaryOutput>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;" Label="Configuration">
+    <PlatformToolSet>v120</PlatformToolSet>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>morzyn</PrimaryOutput>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  </ImportGroup>
+  <ImportGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists(&apos;$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props&apos;)" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\</OutDir>
+    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\</IntDir>
+    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">morzyn</TargetName>
+    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">false</LinkIncremental>
+    <GenerateManifest Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">false</GenerateManifest>
+    <OutDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\</OutDir>
+    <IntDir Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\</IntDir>
+    <TargetName Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">morzyn</TargetName>
+    <IgnoreImportLibrary Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</IgnoreImportLibrary>
+    <GenerateManifest Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">
+    <ClCompile>
+      <AdditionalIncludeDirectories>&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtQuick&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtMultimedia&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtQml&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtWidgets&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtXml&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtNetwork&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtGui&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtANGLE&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtCore&quot;;&quot;release&quot;;..\..\..\..\Tools\Qt\5.3\winrt_x64\mkspecs\winrt-x64-msvc2013;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>release\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_LARGEFILE_SUPPORT;Q_BYTE_ORDER=Q_LITTLE_ENDIAN;QT_NO_PRINTER;QT_NO_PRINTDIALOG;WINAPI_FAMILY=WINAPI_FAMILY_APP;X64;__X64__;__x64__;QT_NO_DEBUG;QT_NO_DEBUG;QT_QUICK_LIB;QT_MULTIMEDIA_LIB;QT_QML_LIB;QT_WIDGETS_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_OPENGL_ES_2;QT_OPENGL_ES_2_ANGLE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName></ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>C:\Tools\Qt\5.3\winrt_x64\lib\qtmain.lib;runtimeobject.lib;windowscodecs.lib;kernel32.lib;ole32.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Quick.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Multimedia.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Qml.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Widgets.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Xml.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Network.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Gui.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Core.lib;libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Tools\Qt\5.3\winrt_x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/APPCONTAINER %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateManifest>false</GenerateManifest>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\morzyn.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_LARGEFILE_SUPPORT;Q_BYTE_ORDER=Q_LITTLE_ENDIAN;QT_NO_PRINTER;QT_NO_PRINTDIALOG;WINAPI_FAMILY=WINAPI_FAMILY_APP;X64;__X64__;__x64__;QT_NO_DEBUG;QT_NO_DEBUG;QT_QUICK_LIB;QT_MULTIMEDIA_LIB;QT_QML_LIB;QT_WIDGETS_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_OPENGL_ES_2;QT_OPENGL_ES_2_ANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <Target Name="WinDeployQt_Release|x64" Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;" Inputs="$(OutDir)\$(TargetName).exe" Outputs="$(TargetName).windeployqt.$(Platform).$(Configuration)">
+    <Message Text="C:\Tools\Qt\5.3\winrt_x64\bin\windeployqt.exe -qmldir C:\dev\morzyn\src\morzyn -list relative -dir &quot;$(MSBuildProjectDirectory)&quot; &quot;$(OutDir)\$(TargetName).exe&quot; > &quot;$(TargetName).windeployqt.$(Platform).$(Configuration)&quot;" />
+    <Exec Command="C:\Tools\Qt\5.3\winrt_x64\bin\windeployqt.exe -qmldir C:\dev\morzyn\src\morzyn -list relative -dir &quot;$(MSBuildProjectDirectory)&quot; &quot;$(OutDir)\$(TargetName).exe&quot; > &quot;$(TargetName).windeployqt.$(Platform).$(Configuration)&quot;" />
+  </Target>
+  <Target Name="PopulateWinDeployQtItems_Release|x64" Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;" AfterTargets="Link" DependsOnTargets="WinDeployQt_Release|x64">
+    <ReadLinesFromFile File="$(TargetName).windeployqt.$(Platform).$(Configuration)">
+      <Output TaskParameter="Lines" ItemName="DeploymentItems" />
+    </ReadLinesFromFile>
+    <ItemGroup>
+      <None Include="@(DeploymentItems)">
+        <DeploymentContent>true</DeploymentContent>
+      </None>
+    </ItemGroup>
+  </Target>
+  <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">
+    <ClCompile>
+      <AdditionalIncludeDirectories>&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtQuick&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtMultimedia&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtQml&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtWidgets&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtXml&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtNetwork&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtGui&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtANGLE&quot;;&quot;..\..\..\..\Tools\Qt\5.3\winrt_x64\include\QtCore&quot;;&quot;debug&quot;;..\..\..\..\Tools\Qt\5.3\winrt_x64\mkspecs\winrt-x64-msvc2013;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zm200 -w34100 -w34189 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <CompileAsWinRT>false</CompileAsWinRT>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>debug\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_LARGEFILE_SUPPORT;Q_BYTE_ORDER=Q_LITTLE_ENDIAN;QT_NO_PRINTER;QT_NO_PRINTDIALOG;WINAPI_FAMILY=WINAPI_FAMILY_APP;X64;__X64__;__x64__;_DEBUG;QT_QUICK_LIB;QT_MULTIMEDIA_LIB;QT_QML_LIB;QT_WIDGETS_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_OPENGL_ES_2;QT_OPENGL_ES_2_ANGLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>C:\Tools\Qt\5.3\winrt_x64\lib\qtmaind.lib;runtimeobject.lib;windowscodecs.lib;kernel32.lib;ole32.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Quickd.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Multimediad.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Qmld.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Widgetsd.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Xmld.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Networkd.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Guid.lib;C:\Tools\Qt\5.3\winrt_x64\lib\Qt5Cored.lib;libEGLd.lib;libGLESv2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Tools\Qt\5.3\winrt_x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/APPCONTAINER %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateManifest>false</GenerateManifest>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <OutputFile>$(OutDir)\morzyn.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;QT_LARGEFILE_SUPPORT;Q_BYTE_ORDER=Q_LITTLE_ENDIAN;QT_NO_PRINTER;QT_NO_PRINTDIALOG;WINAPI_FAMILY=WINAPI_FAMILY_APP;X64;__X64__;__x64__;_DEBUG;QT_QUICK_LIB;QT_MULTIMEDIA_LIB;QT_QML_LIB;QT_WIDGETS_LIB;QT_XML_LIB;QT_NETWORK_LIB;QT_GUI_LIB;QT_CORE_LIB;QT_OPENGL_ES_2;QT_OPENGL_ES_2_ANGLE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <Target Name="WinDeployQt_Debug|x64" Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;" Inputs="$(OutDir)\$(TargetName).exe" Outputs="$(TargetName).windeployqt.$(Platform).$(Configuration)">
+    <Message Text="C:\Tools\Qt\5.3\winrt_x64\bin\windeployqt.exe -qmldir C:\dev\morzyn\src\morzyn -list relative -dir &quot;$(MSBuildProjectDirectory)&quot; &quot;$(OutDir)\$(TargetName).exe&quot; > &quot;$(TargetName).windeployqt.$(Platform).$(Configuration)&quot;" />
+    <Exec Command="C:\Tools\Qt\5.3\winrt_x64\bin\windeployqt.exe -qmldir C:\dev\morzyn\src\morzyn -list relative -dir &quot;$(MSBuildProjectDirectory)&quot; &quot;$(OutDir)\$(TargetName).exe&quot; > &quot;$(TargetName).windeployqt.$(Platform).$(Configuration)&quot;" />
+  </Target>
+  <Target Name="PopulateWinDeployQtItems_Debug|x64" Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;" AfterTargets="Link" DependsOnTargets="WinDeployQt_Debug|x64">
+    <ReadLinesFromFile File="$(TargetName).windeployqt.$(Platform).$(Configuration)">
+      <Output TaskParameter="Lines" ItemName="DeploymentItems" />
+    </ReadLinesFromFile>
+    <ItemGroup>
+      <None Include="@(DeploymentItems)">
+        <DeploymentContent>true</DeploymentContent>
+      </None>
+    </ItemGroup>
+  </Target>
+  <ItemGroup>
+    <ClCompile Include="cpp\creature.cpp" />
+    <ClCompile Include="cpp\dbloader.cpp" />
+    <ClCompile Include="cpp\easyai.cpp" />
+    <ClCompile Include="cpp\enemyname.cpp" />
+    <ClCompile Include="cpp\game.cpp" />
+    <ClCompile Include="cpp\gameservice.cpp" />
+    <ClCompile Include="cpp\iai.cpp" />
+    <ClCompile Include="cpp\desktopandroid\main.cpp" />
+    <ClCompile Include="cpp\player.cpp" />
+    <ClCompile Include="cpp\playercolor.cpp" />
+    <ClCompile Include="cpp\scroll.cpp" />
+    <ClCompile Include="cpp\statistics.cpp" />
+    <ClCompile Include="cpp\tutorialopponentai.cpp" />
+    <ClCompile Include="cpp\tutorialplayerai.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cpp\constants.h" />
+    <CustomBuild Include="cpp\creature.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\creature.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\creature.h -o release\moc_creature.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\creature.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_creature.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\creature.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\creature.h -o debug\moc_creature.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\creature.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_creature.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\dbloader.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\dbloader.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\dbloader.h -o release\moc_dbloader.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\dbloader.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_dbloader.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\dbloader.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\dbloader.h -o debug\moc_dbloader.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\dbloader.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_dbloader.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\easyai.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\easyai.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\easyai.h -o release\moc_easyai.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\easyai.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_easyai.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\easyai.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\easyai.h -o debug\moc_easyai.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\easyai.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_easyai.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\enemyname.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\enemyname.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\enemyname.h -o release\moc_enemyname.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\enemyname.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_enemyname.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\enemyname.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\enemyname.h -o debug\moc_enemyname.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\enemyname.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_enemyname.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\game.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\game.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\game.h -o release\moc_game.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\game.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_game.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\game.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\game.h -o debug\moc_game.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\game.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_game.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\gameservice.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\gameservice.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\gameservice.h -o release\moc_gameservice.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\gameservice.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_gameservice.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\gameservice.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\gameservice.h -o debug\moc_gameservice.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\gameservice.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_gameservice.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\iai.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\iai.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\iai.h -o release\moc_iai.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\iai.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_iai.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\iai.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\iai.h -o debug\moc_iai.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\iai.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_iai.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\player.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\player.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\player.h -o release\moc_player.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\player.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_player.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\player.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\player.h -o debug\moc_player.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\player.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_player.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\playercolor.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\playercolor.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\playercolor.h -o release\moc_playercolor.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\playercolor.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_playercolor.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\playercolor.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\playercolor.h -o debug\moc_playercolor.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\playercolor.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_playercolor.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\scroll.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\scroll.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\scroll.h -o release\moc_scroll.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\scroll.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_scroll.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\scroll.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\scroll.h -o debug\moc_scroll.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\scroll.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_scroll.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\statistics.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\statistics.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\statistics.h -o release\moc_statistics.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\statistics.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_statistics.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\statistics.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\statistics.h -o debug\moc_statistics.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\statistics.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_statistics.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\tutorialopponentai.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\tutorialopponentai.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\tutorialopponentai.h -o release\moc_tutorialopponentai.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\tutorialopponentai.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_tutorialopponentai.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\tutorialopponentai.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\tutorialopponentai.h -o debug\moc_tutorialopponentai.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\tutorialopponentai.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_tutorialopponentai.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="cpp\tutorialplayerai.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cpp\tutorialplayerai.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -DQT_NO_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\tutorialplayerai.h -o release\moc_tutorialplayerai.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC cpp\tutorialplayerai.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_tutorialplayerai.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cpp\tutorialplayerai.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQ_BYTE_ORDER=Q_LITTLE_ENDIAN -DQT_NO_PRINTER -DQT_NO_PRINTDIALOG -DWINAPI_FAMILY=WINAPI_FAMILY_APP -DX64 -D__X64__ -D__x64__ -D_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_QML_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB -DQT_NETWORK_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_OPENGL_ES_2 -DQT_OPENGL_ES_2_ANGLE -D_MSC_VER=1800 -IC:/Tools/Qt/5.3/winrt_x64/mkspecs/winrt-x64-msvc2013 -IC:/dev/morzyn/src/morzyn -IC:/Tools/Qt/5.3/winrt_x64/include -IC:/Tools/Qt/5.3/winrt_x64/include/QtQuick -IC:/Tools/Qt/5.3/winrt_x64/include/QtMultimedia -IC:/Tools/Qt/5.3/winrt_x64/include/QtQml -IC:/Tools/Qt/5.3/winrt_x64/include/QtWidgets -IC:/Tools/Qt/5.3/winrt_x64/include/QtXml -IC:/Tools/Qt/5.3/winrt_x64/include/QtNetwork -IC:/Tools/Qt/5.3/winrt_x64/include/QtGui -IC:/Tools/Qt/5.3/winrt_x64/include/QtANGLE -IC:/Tools/Qt/5.3/winrt_x64/include/QtCore cpp\tutorialplayerai.h -o debug\moc_tutorialplayerai.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC cpp\tutorialplayerai.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_tutorialplayerai.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="debug\moc_creature.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_creature.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_dbloader.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_dbloader.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_easyai.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_easyai.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_enemyname.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_enemyname.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_game.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_game.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_gameservice.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_gameservice.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_iai.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_iai.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_player.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_player.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_playercolor.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_playercolor.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_scroll.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_scroll.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_statistics.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_statistics.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_tutorialopponentai.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_tutorialopponentai.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_tutorialplayerai.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_tutorialplayerai.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\qrc_images.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\qrc_images.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\qrc_qml.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\qrc_qml.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\qrc_sounds_01.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\qrc_sounds_01.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\qrc_sounds_02.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\qrc_sounds_02.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\qrc_translations.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\qrc_translations.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="qml\BackButton.qml" />
+    <None Include="qml\CreatureImage.qml" />
+    <None Include="qml\CreatureInformation.qml" />
+    <None Include="qml\DistanceAttackImage.qml" />
+    <None Include="qml\DropList.qml" />
+    <None Include="qml\GameOverView.qml" />
+    <None Include="qml\GameView.qml" />
+    <None Include="qml\GrimoireView.qml" />
+    <None Include="qml\GrowingText.qml" />
+    <None Include="qml\HealingHeart.qml" />
+    <None Include="qml\InGameMenuView.qml" />
+    <None Include="qml\MainMenuView.qml" />
+    <None Include="qml\ManaTransferImage.qml" />
+    <None Include="qml\MenuButton.qml" />
+    <None Include="qml\MorzynAudio.qml" />
+    <None Include="qml\MorzynButton.qml" />
+    <None Include="qml\MorzynCheckBox.qml" />
+    <None Include="qml\MorzynPage.qml" />
+    <None Include="qml\OptionsView.qml" />
+    <None Include="qml\PlayerColorSelector.qml" />
+    <None Include="qml\PlayerCountView.qml" />
+    <None Include="qml\PlayerNameView.qml" />
+    <None Include="qml\Scroll.qml" />
+    <None Include="qml\ScrollInformation.qml" />
+    <None Include="qml\SpellSelectView.qml" />
+    <None Include="qml\Switch.qml" />
+    <None Include="qml\TitlePage.qml" />
+    <None Include="qml\TitleView.qml" />
+    <None Include="qml\Views.qml" />
+    <None Include="a.png" />
+    <None Include="qml\images\amazon" />
+    <None Include="qml\images\angel" />
+    <None Include="arrow.png" />
+    <None Include="attack" />
+    <None Include="axe.png" />
+    <None Include="b.png" />
+    <None Include="ball.png" />
+    <None Include="qml\images\banner.png" />
+    <None Include="qml\images\basilisk" />
+    <None Include="bat.png" />
+    <None Include="qml\images\bat" />
+    <None Include="beast" />
+    <None Include="black.png" />
+    <None Include="blast.png" />
+    <None Include="blood.png" />
+    <None Include="blue.png" />
+    <None Include="bolt" />
+    <None Include="qml\images\borderlayout.png" />
+    <None Include="bowman" />
+    <None Include="qml\images\button.png" />
+    <None Include="qml\images\buttonok.png" />
+    <None Include="qml\images\button" />
+    <None Include="c.png" />
+    <None Include="qml\images\carnivora" />
+    <None Include="qml\images\centaur" />
+    <None Include="qml\images\crab" />
+    <None Include="qml\images\cyclops" />
+    <None Include="d.png" />
+    <None Include="qml\images\dark" />
+    <None Include="qml\database.js" />
+    <None Include="qml\database\database.xml" />
+    <None Include="death" />
+    <None Include="qml\images\death" />
+    <None Include="qml\images\devil" />
+    <None Include="qml\images\dire" />
+    <None Include="qml\sounds\distfire01.wav" />
+    <None Include="qml\sounds\distfire02.wav" />
+    <None Include="qml\sounds\distfire03.wav" />
+    <None Include="qml\sounds\distfly01.wav" />
+    <None Include="qml\sounds\distfly02.wav" />
+    <None Include="qml\sounds\distfly03.wav" />
+    <None Include="qml\sounds\disthit01.wav" />
+    <None Include="qml\sounds\disthit02.wav" />
+    <None Include="qml\sounds\disthit03.wav" />
+    <None Include="qml\sounds\disthit04.wav" />
+    <None Include="qml\sounds\distmiss01.wav" />
+    <None Include="qml\sounds\distmiss02.wav" />
+    <None Include="qml\sounds\distmiss03.wav" />
+    <None Include="qml\sounds\distmiss04.wav" />
+    <None Include="qml\sounds\distmiss05.wav" />
+    <None Include="dragon" />
+    <None Include="qml\images\dragon" />
+    <None Include="qml\images\dwarf" />
+    <None Include="e.png" />
+    <None Include="qml\images\earthworm" />
+    <None Include="qml\images\elvish" />
+    <None Include="qml\images\ent" />
+    <None Include="qml\images\evil" />
+    <None Include="eye" />
+    <None Include="f.png" />
+    <None Include="qml\images\fairy" />
+    <None Include="fire" />
+    <None Include="qml\images\fire" />
+    <None Include="flash.png" />
+    <None Include="fledermaeuse.png" />
+    <None Include="qml\images\flying" />
+    <None Include="qml\gameservice.js" />
+    <None Include="qml\images\ghost" />
+    <None Include="qml\images\giant" />
+    <None Include="qml\images\gnome" />
+    <None Include="goku" />
+    <None Include="gold.png" />
+    <None Include="golem" />
+    <None Include="qml\images\gorilla" />
+    <None Include="green.png" />
+    <None Include="qml\images\gremlin" />
+    <None Include="qml\images\haken.png" />
+    <None Include="qml\images\hangman" />
+    <None Include="heal.png" />
+    <None Include="qml\images\heart.png" />
+    <None Include="holy" />
+    <None Include="qml\images\hornet" />
+    <None Include="qml\images\horn" />
+    <None Include="ice" />
+    <None Include="qml\images\ice" />
+    <CustomBuild Include="images.qrc">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">images.qrc;qml\images\son goku a.png;qml\images\elvish warrior f.png;qml\images\spongebob a.png;qml\images\orc a.png;qml\images\zombie c.png;qml\images\spell fire bolt b.png;qml\images\warrior red.png;qml\images\cyclops d.png;qml\images\spell ice bolt b.png;qml\images\warrior pink.png;qml\images\angel c.png;qml\images\stargreen.png;qml\images\skeleton c.png;qml\images\stone golem c.png;qml\images\rat a.png;qml\images\santa a.png;qml\images\elvish warrior d.png;qml\images\amazon c.png;qml\images\sorcerer black.png;qml\images\dire wolf b.png;qml\images\zombie a.png;qml\images\dwarf d.png;qml\images\spell snowflake.png;qml\images\mutant b.png;qml\images\cyclops b.png;qml\images\obelix a.png;qml\images\borderlayout.png;qml\images\yoda b.png;qml\images\angel a.png;qml\images\skeleton a.png;qml\images\stone golem a.png;qml\images\sorcerer red.png;qml\images\gorilla a.png;qml\images\devil b.png;qml\images\elvish warrior b.png;qml\images\gnome d.png;qml\images\amazon a.png;qml\images\dwarf b.png;qml\images\spell heal.png;qml\images\fairy dragon c.png;qml\images\snake a.png;qml\images\spielfeld.png;qml\images\vader a.png;qml\images\earthworm b.png;qml\images\flying death a.png;qml\images\rogue pink.png;qml\images\warrior blood.png;qml\images\gnome b.png;qml\images\death knight d.png;qml\images\werewolf a.png;qml\images\basilisk b.png;qml\images\fairy d.png;qml\images\warrior night.png;qml\images\rogue blood.png;qml\images\dragon a.png;qml\images\spell axe.png;qml\images\witch c.png;qml\images\rogue night.png;qml\images\sorcerer blue.png;qml\images\spell magic attack b.png;qml\images\wiese.png;qml\images\fairy dragon a.png;qml\images\lady death d.png;qml\images\osama a.png;qml\images\ice golem d.png;qml\images\starwhite.png;qml\images\wisp c.png;qml\images\death knight b.png;qml\images\mummy b.png;qml\images\warrior green.png;qml\images\fairy b.png;qml\images\spider b.png;qml\images\fire golem b.png;qml\images\gremlin c.png;qml\images\hornet a.png;qml\images\titleback.png;qml\images\witch a.png;qml\images\rogue green.png;qml\images\buttonok.png;qml\images\lady death b.png;qml\images\button minimieren.png;qml\images\warrior blue.png;qml\images\giant warrior c.png;qml\images\ice golem b.png;qml\images\elvish bowman a.png;qml\images\wisp a.png;qml\images\ghost c.png;qml\images\giant d.png;qml\images\gremlin a.png;qml\images\crab a.png;qml\images\heart.png;qml\images\ent b.png;qml\images\triton b.png;qml\images\vampire b.png;qml\images\horn beast a.png;qml\images\bat b.png;qml\images\giant warrior a.png;qml\images\troll a.png;qml\images\hangman b.png;qml\images\orc d.png;qml\images\ghost a.png;qml\images\menu text bat.png;qml\images\giant b.png;qml\images\sword master a.png;qml\images\kreuz.png;qml\images\banner.png;qml\images\evil eye a.png;qml\images\spell fire storm.png;qml\images\star.png;qml\images\son goku b.png;qml\images\spongebob b.png;qml\images\pharaoh a.png;qml\images\sorcerer purple.png;qml\images\vulture a.png;qml\images\orc b.png;qml\images\carnivora a.png;qml\images\spell death ball.png;qml\images\zombie d.png;qml\images\rogue red.png;qml\images\staryellow.png;qml\images\rogue blue.png;qml\images\yeti a.png;qml\images\sorcerer gold.png;qml\images\warrior white.png;qml\images\cyclops e.png;qml\images\centaur a.png;qml\images\sorcerer blood.png;qml\images\skeleton d.png;qml\images\stone golem d.png;qml\images\rogue white.png;qml\images\rat b.png;qml\images\santa b.png;qml\images\elvish warrior e.png;qml\images\sorcerer night.png;qml\images\manatransfer.png;qml\images\amazon d.png;qml\images\rogue purple.png;qml\images\zombie b.png;qml\images\spell fire bolt a.png;qml\images\cyclops c.png;qml\images\spell ice bolt a.png;qml\images\obelix b.png;qml\images\angel b.png;qml\images\warrior gold.png;qml\images\skeleton b.png;qml\images\stone golem b.png;qml\images\sorcerer green.png;qml\images\elvish warrior c.png;qml\images\gorilla b.png;qml\images\amazon b.png;qml\images\dire wolf a.png;qml\images\dwarf c.png;qml\images\dark priest red.png;qml\images\mutant a.png;qml\images\cyclops a.png;qml\images\yoda a.png;qml\images\menu fledermaeuse.png;qml\images\fairy dragon d.png;qml\images\snake b.png;qml\images\spell shadow blast.png;qml\images\button schliessen.png;qml\images\vader b.png;qml\images\elvish warrior a.png;qml\images\devil a.png;qml\images\flying death b.png;qml\images\gnome c.png;qml\images\werewolf b.png;qml\images\dwarf a.png;qml\images\dragon b.png;qml\images\witch d.png;qml\images\spell magic attack c.png;qml\images\spell thunderbolt.png;qml\images\warrior purple.png;qml\images\fairy dragon b.png;qml\images\osama b.png;qml\images\earthworm a.png;qml\images\ice golem e.png;qml\images\gnome a.png;qml\images\wisp d.png;qml\images\mummy c.png;qml\images\death knight c.png;qml\images\rogue gold.png;qml\images\basilisk a.png;qml\images\fairy c.png;qml\images\titelbild.png;qml\images\gremlin d.png;qml\images\hornet b.png;qml\images\warrior black.png;qml\images\witch b.png;qml\images\spell magic attack a.png;qml\images\rogue black.png;qml\images\button.png;qml\images\lady death c.png;qml\images\giant warrior d.png;qml\images\ice golem c.png;qml\images\elvish bowman b.png;qml\images\wisp b.png;qml\images\stern.png;qml\images\death knight a.png;qml\images\ghost d.png;qml\images\mummy a.png;qml\images\sorcerer white.png;qml\images\fairy a.png;qml\images\spider a.png;qml\images\fire golem a.png;qml\images\gremlin b.png;qml\images\crab b.png;qml\images\spell holy flash.png;qml\images\vampire c.png;qml\images\lady death a.png;qml\images\horn beast b.png;qml\images\bat c.png;qml\images\haken.png;qml\images\giant warrior b.png;qml\images\ice golem a.png;qml\images\troll b.png;qml\images\orc e.png;qml\images\ghost b.png;qml\images\giant c.png;qml\images\sword master b.png;qml\images\starred.png;qml\images\ent a.png;qml\images\evil eye b.png;qml\images\triton a.png;qml\images\vampire a.png;qml\images\spell magic arrow.png;qml\images\morzynmenu.png;qml\images\bat a.png;qml\images\statusback.png;qml\images\pharaoh b.png;qml\images\hangman a.png;qml\images\vulture b.png;qml\images\orc c.png;qml\images\carnivora b.png;qml\images\sorcerer pink.png;qml\images\giant a.png;qml\images\yeti b.png;qml\images\centaur b.png;qml\images\stone golem e.png;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name images images.qrc -o release\qrc_images.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">RCC images.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\qrc_images.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">images.qrc;qml\images\son goku a.png;qml\images\elvish warrior f.png;qml\images\spongebob a.png;qml\images\orc a.png;qml\images\zombie c.png;qml\images\spell fire bolt b.png;qml\images\warrior red.png;qml\images\cyclops d.png;qml\images\spell ice bolt b.png;qml\images\warrior pink.png;qml\images\angel c.png;qml\images\stargreen.png;qml\images\skeleton c.png;qml\images\stone golem c.png;qml\images\rat a.png;qml\images\santa a.png;qml\images\elvish warrior d.png;qml\images\amazon c.png;qml\images\sorcerer black.png;qml\images\dire wolf b.png;qml\images\zombie a.png;qml\images\dwarf d.png;qml\images\spell snowflake.png;qml\images\mutant b.png;qml\images\cyclops b.png;qml\images\obelix a.png;qml\images\borderlayout.png;qml\images\yoda b.png;qml\images\angel a.png;qml\images\skeleton a.png;qml\images\stone golem a.png;qml\images\sorcerer red.png;qml\images\gorilla a.png;qml\images\devil b.png;qml\images\elvish warrior b.png;qml\images\gnome d.png;qml\images\amazon a.png;qml\images\dwarf b.png;qml\images\spell heal.png;qml\images\fairy dragon c.png;qml\images\snake a.png;qml\images\spielfeld.png;qml\images\vader a.png;qml\images\earthworm b.png;qml\images\flying death a.png;qml\images\rogue pink.png;qml\images\warrior blood.png;qml\images\gnome b.png;qml\images\death knight d.png;qml\images\werewolf a.png;qml\images\basilisk b.png;qml\images\fairy d.png;qml\images\warrior night.png;qml\images\rogue blood.png;qml\images\dragon a.png;qml\images\spell axe.png;qml\images\witch c.png;qml\images\rogue night.png;qml\images\sorcerer blue.png;qml\images\spell magic attack b.png;qml\images\wiese.png;qml\images\fairy dragon a.png;qml\images\lady death d.png;qml\images\osama a.png;qml\images\ice golem d.png;qml\images\starwhite.png;qml\images\wisp c.png;qml\images\death knight b.png;qml\images\mummy b.png;qml\images\warrior green.png;qml\images\fairy b.png;qml\images\spider b.png;qml\images\fire golem b.png;qml\images\gremlin c.png;qml\images\hornet a.png;qml\images\titleback.png;qml\images\witch a.png;qml\images\rogue green.png;qml\images\buttonok.png;qml\images\lady death b.png;qml\images\button minimieren.png;qml\images\warrior blue.png;qml\images\giant warrior c.png;qml\images\ice golem b.png;qml\images\elvish bowman a.png;qml\images\wisp a.png;qml\images\ghost c.png;qml\images\giant d.png;qml\images\gremlin a.png;qml\images\crab a.png;qml\images\heart.png;qml\images\ent b.png;qml\images\triton b.png;qml\images\vampire b.png;qml\images\horn beast a.png;qml\images\bat b.png;qml\images\giant warrior a.png;qml\images\troll a.png;qml\images\hangman b.png;qml\images\orc d.png;qml\images\ghost a.png;qml\images\menu text bat.png;qml\images\giant b.png;qml\images\sword master a.png;qml\images\kreuz.png;qml\images\banner.png;qml\images\evil eye a.png;qml\images\spell fire storm.png;qml\images\star.png;qml\images\son goku b.png;qml\images\spongebob b.png;qml\images\pharaoh a.png;qml\images\sorcerer purple.png;qml\images\vulture a.png;qml\images\orc b.png;qml\images\carnivora a.png;qml\images\spell death ball.png;qml\images\zombie d.png;qml\images\rogue red.png;qml\images\staryellow.png;qml\images\rogue blue.png;qml\images\yeti a.png;qml\images\sorcerer gold.png;qml\images\warrior white.png;qml\images\cyclops e.png;qml\images\centaur a.png;qml\images\sorcerer blood.png;qml\images\skeleton d.png;qml\images\stone golem d.png;qml\images\rogue white.png;qml\images\rat b.png;qml\images\santa b.png;qml\images\elvish warrior e.png;qml\images\sorcerer night.png;qml\images\manatransfer.png;qml\images\amazon d.png;qml\images\rogue purple.png;qml\images\zombie b.png;qml\images\spell fire bolt a.png;qml\images\cyclops c.png;qml\images\spell ice bolt a.png;qml\images\obelix b.png;qml\images\angel b.png;qml\images\warrior gold.png;qml\images\skeleton b.png;qml\images\stone golem b.png;qml\images\sorcerer green.png;qml\images\elvish warrior c.png;qml\images\gorilla b.png;qml\images\amazon b.png;qml\images\dire wolf a.png;qml\images\dwarf c.png;qml\images\dark priest red.png;qml\images\mutant a.png;qml\images\cyclops a.png;qml\images\yoda a.png;qml\images\menu fledermaeuse.png;qml\images\fairy dragon d.png;qml\images\snake b.png;qml\images\spell shadow blast.png;qml\images\button schliessen.png;qml\images\vader b.png;qml\images\elvish warrior a.png;qml\images\devil a.png;qml\images\flying death b.png;qml\images\gnome c.png;qml\images\werewolf b.png;qml\images\dwarf a.png;qml\images\dragon b.png;qml\images\witch d.png;qml\images\spell magic attack c.png;qml\images\spell thunderbolt.png;qml\images\warrior purple.png;qml\images\fairy dragon b.png;qml\images\osama b.png;qml\images\earthworm a.png;qml\images\ice golem e.png;qml\images\gnome a.png;qml\images\wisp d.png;qml\images\mummy c.png;qml\images\death knight c.png;qml\images\rogue gold.png;qml\images\basilisk a.png;qml\images\fairy c.png;qml\images\titelbild.png;qml\images\gremlin d.png;qml\images\hornet b.png;qml\images\warrior black.png;qml\images\witch b.png;qml\images\spell magic attack a.png;qml\images\rogue black.png;qml\images\button.png;qml\images\lady death c.png;qml\images\giant warrior d.png;qml\images\ice golem c.png;qml\images\elvish bowman b.png;qml\images\wisp b.png;qml\images\stern.png;qml\images\death knight a.png;qml\images\ghost d.png;qml\images\mummy a.png;qml\images\sorcerer white.png;qml\images\fairy a.png;qml\images\spider a.png;qml\images\fire golem a.png;qml\images\gremlin b.png;qml\images\crab b.png;qml\images\spell holy flash.png;qml\images\vampire c.png;qml\images\lady death a.png;qml\images\horn beast b.png;qml\images\bat c.png;qml\images\haken.png;qml\images\giant warrior b.png;qml\images\ice golem a.png;qml\images\troll b.png;qml\images\orc e.png;qml\images\ghost b.png;qml\images\giant c.png;qml\images\sword master b.png;qml\images\starred.png;qml\images\ent a.png;qml\images\evil eye b.png;qml\images\triton a.png;qml\images\vampire a.png;qml\images\spell magic arrow.png;qml\images\morzynmenu.png;qml\images\bat a.png;qml\images\statusback.png;qml\images\pharaoh b.png;qml\images\hangman a.png;qml\images\vulture b.png;qml\images\orc c.png;qml\images\carnivora b.png;qml\images\sorcerer pink.png;qml\images\giant a.png;qml\images\yeti b.png;qml\images\centaur b.png;qml\images\stone golem e.png;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name images images.qrc -o debug\qrc_images.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">RCC images.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\qrc_images.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="intro.mp3" />
+    <None Include="knight" />
+    <None Include="qml\images\kreuz.png" />
+    <None Include="qml\images\lady" />
+    <None Include="magic" />
+    <None Include="qml\main.qml" />
+    <None Include="qml\images\manatransfer.png" />
+    <None Include="master" />
+    <None Include="qml\sounds\meleehit01.wav" />
+    <None Include="qml\sounds\meleehit02.wav" />
+    <None Include="qml\sounds\meleehit03.wav" />
+    <None Include="qml\sounds\meleehit04.wav" />
+    <None Include="qml\sounds\meleehit05.wav" />
+    <None Include="qml\sounds\meleemiss01.wav" />
+    <None Include="qml\sounds\meleemiss02.wav" />
+    <None Include="qml\sounds\meleemiss03.wav" />
+    <None Include="qml\sounds\menu01.wav" />
+    <None Include="qml\sounds\menu02.wav" />
+    <None Include="qml\sounds\menu03.wav" />
+    <None Include="qml\sounds\menu04.wav" />
+    <None Include="qml\images\menu" />
+    <None Include="minimieren.png" />
+    <None Include="qml\morzyn.qml" />
+    <None Include="translations\morzyn_de.qm" />
+    <None Include="translations\morzyn_de.ts" />
+    <None Include="qml\images\morzynmenu.png" />
+    <None Include="qml\sounds\morzyn" />
+    <None Include="qml\images\mummy" />
+    <None Include="qml\images\mutant" />
+    <None Include="night.png" />
+    <None Include="qml\sounds\noSound.wav" />
+    <None Include="qml\images\obelix" />
+    <None Include="qml\images\orc" />
+    <None Include="qml\images\osama" />
+    <None Include="qml\images\pharaoh" />
+    <None Include="pink.png" />
+    <None Include="priest" />
+    <None Include="purple.png" />
+    <CustomBuild Include="qml.qrc">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">qml.qrc;qml\TitlePage.qml;qml\TitleView.qml;qml\SpellSelectView.qml;qml\GameView.qml;qml\PlayerNameView.qml;qml\ScrollInformation.qml;qml\ManaTransferImage.qml;qml\MorzynCheckBox.qml;qml\service.js;qml\gameservice.js;qml\Switch.qml;qml\GrimoireView.qml;qml\BackButton.qml;qml\CreatureImage.qml;qml\OptionsView.qml;qml\DropList.qml;qml\morzyn.qml;qml\PlayerColorSelector.qml;qml\HealingHeart.qml;qml\DistanceAttackImage.qml;qml\MorzynButton.qml;qml\InGameMenuView.qml;qml\database.js;qml\GameOverView.qml;qml\GrowingText.qml;qml\CreatureInformation.qml;qml\Scroll.qml;qml\MorzynPage.qml;qml\main.qml;qml\Views.qml;qml\MenuButton.qml;qml\MainMenuView.qml;qml\MorzynAudio.qml;qml\PlayerCountView.qml;qml\database\database.xml;qml\fonts\vivaldi.ttf;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name qml qml.qrc -o release\qrc_qml.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">RCC qml.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\qrc_qml.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">qml.qrc;qml\TitlePage.qml;qml\TitleView.qml;qml\SpellSelectView.qml;qml\GameView.qml;qml\PlayerNameView.qml;qml\ScrollInformation.qml;qml\ManaTransferImage.qml;qml\MorzynCheckBox.qml;qml\service.js;qml\gameservice.js;qml\Switch.qml;qml\GrimoireView.qml;qml\BackButton.qml;qml\CreatureImage.qml;qml\OptionsView.qml;qml\DropList.qml;qml\morzyn.qml;qml\PlayerColorSelector.qml;qml\HealingHeart.qml;qml\DistanceAttackImage.qml;qml\MorzynButton.qml;qml\InGameMenuView.qml;qml\database.js;qml\GameOverView.qml;qml\GrowingText.qml;qml\CreatureInformation.qml;qml\Scroll.qml;qml\MorzynPage.qml;qml\main.qml;qml\Views.qml;qml\MenuButton.qml;qml\MainMenuView.qml;qml\MorzynAudio.qml;qml\PlayerCountView.qml;qml\database\database.xml;qml\fonts\vivaldi.ttf;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name qml qml.qrc -o debug\qrc_qml.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">RCC qml.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\qrc_qml.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="qml\images\rat" />
+    <None Include="red.png" />
+    <None Include="qml\images\rogue" />
+    <None Include="qml\images\santa" />
+    <None Include="schliessen.png" />
+    <None Include="qml\service.js" />
+    <None Include="shadow" />
+    <None Include="qml\images\skeleton" />
+    <None Include="qml\images\snake" />
+    <None Include="snowflake.png" />
+    <None Include="qml\images\son" />
+    <None Include="qml\images\sorcerer" />
+    <CustomBuild Include="sounds_01.qrc">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">sounds_01.qrc;qml\sounds\distfire02.wav;qml\sounds\menu04.wav;qml\sounds\distfire03.wav;qml\sounds\disthit01.wav;qml\sounds\disthit02.wav;qml\sounds\disthit03.wav;qml\sounds\disthit04.wav;qml\sounds\distmiss01.wav;qml\sounds\distmiss02.wav;qml\sounds\distmiss03.wav;qml\sounds\meleehit01.wav;qml\sounds\distmiss04.wav;qml\sounds\distmiss05.wav;qml\sounds\meleehit02.wav;qml\sounds\meleehit03.wav;qml\sounds\meleehit04.wav;qml\sounds\meleehit05.wav;qml\sounds\distfly01.wav;qml\sounds\distfly02.wav;qml\sounds\distfly03.wav;qml\sounds\meleemiss01.wav;qml\sounds\meleemiss02.wav;qml\sounds\meleemiss03.wav;qml\sounds\menu01.wav;qml\sounds\menu02.wav;qml\sounds\distfire01.wav;qml\sounds\menu03.wav;qml\sounds\noSound.wav;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name sounds_01 sounds_01.qrc -o release\qrc_sounds_01.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">RCC sounds_01.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\qrc_sounds_01.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">sounds_01.qrc;qml\sounds\distfire02.wav;qml\sounds\menu04.wav;qml\sounds\distfire03.wav;qml\sounds\disthit01.wav;qml\sounds\disthit02.wav;qml\sounds\disthit03.wav;qml\sounds\disthit04.wav;qml\sounds\distmiss01.wav;qml\sounds\distmiss02.wav;qml\sounds\distmiss03.wav;qml\sounds\meleehit01.wav;qml\sounds\distmiss04.wav;qml\sounds\distmiss05.wav;qml\sounds\meleehit02.wav;qml\sounds\meleehit03.wav;qml\sounds\meleehit04.wav;qml\sounds\meleehit05.wav;qml\sounds\distfly01.wav;qml\sounds\distfly02.wav;qml\sounds\distfly03.wav;qml\sounds\meleemiss01.wav;qml\sounds\meleemiss02.wav;qml\sounds\meleemiss03.wav;qml\sounds\menu01.wav;qml\sounds\menu02.wav;qml\sounds\distfire01.wav;qml\sounds\menu03.wav;qml\sounds\noSound.wav;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name sounds_01 sounds_01.qrc -o debug\qrc_sounds_01.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">RCC sounds_01.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\qrc_sounds_01.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="sounds_02.qrc">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">sounds_02.qrc;qml\sounds\morzyn intro.mp3;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name sounds_02 sounds_02.qrc -o release\qrc_sounds_02.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">RCC sounds_02.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\qrc_sounds_02.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">sounds_02.qrc;qml\sounds\morzyn intro.mp3;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name sounds_02 sounds_02.qrc -o debug\qrc_sounds_02.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">RCC sounds_02.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\qrc_sounds_02.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="qml\images\spell" />
+    <None Include="qml\images\spider" />
+    <None Include="qml\images\spielfeld.png" />
+    <None Include="qml\images\spongebob" />
+    <None Include="qml\images\star.png" />
+    <None Include="qml\images\stargreen.png" />
+    <None Include="qml\images\starred.png" />
+    <None Include="qml\images\starwhite.png" />
+    <None Include="qml\images\staryellow.png" />
+    <None Include="qml\images\statusback.png" />
+    <None Include="qml\images\stern.png" />
+    <None Include="qml\images\stone" />
+    <None Include="storm.png" />
+    <None Include="qml\images\sword" />
+    <None Include="text" />
+    <None Include="thunderbolt.png" />
+    <None Include="qml\images\titelbild.png" />
+    <None Include="qml\images\titleback.png" />
+    <CustomBuild Include="translations.qrc">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">translations.qrc;translations\morzyn_de.ts;translations\morzyn_de.qm;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name translations translations.qrc -o release\qrc_translations.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">RCC translations.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\qrc_translations.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">translations.qrc;translations\morzyn_de.ts;translations\morzyn_de.qm;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Tools\Qt\5.3\winrt_x64\bin\rcc.exe -name translations translations.qrc -o debug\qrc_translations.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">RCC translations.qrc</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\qrc_translations.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="qml\images\triton" />
+    <None Include="qml\images\troll" />
+    <None Include="qml\images\vader" />
+    <None Include="qml\images\vampire" />
+    <None Include="qml\fonts\vivaldi.ttf" />
+    <None Include="qml\images\vulture" />
+    <None Include="qml\images\warrior" />
+    <None Include="warrior" />
+    <None Include="qml\images\werewolf" />
+    <None Include="white.png" />
+    <None Include="qml\images\wiese.png" />
+    <None Include="qml\images\wisp" />
+    <None Include="qml\images\witch" />
+    <None Include="wolf" />
+    <None Include="qml\images\yeti" />
+    <None Include="qml\images\yoda" />
+    <None Include="qml\images\zombie" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="morzyn.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+    <Image Include="assets/logo_large.png" />
+    <Image Include="assets/logo_store.png" />
+    <Image Include="assets/logo_splash.png" />
+    <Image Include="assets/logo_small.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

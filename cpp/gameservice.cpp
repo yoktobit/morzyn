@@ -1205,9 +1205,14 @@ bool GameService::isCastable(int x, int y, Creature* creature)
         {
             if (getDistance(game->currentPlayer(), x, y) <= scroll->range())
             {
-                if (getCreatureAt(x, y) && isEnemy(getCreatureAt(x, y)))
+                Creature *c = getCreatureAt(x, y);
+                if (c && isEnemy(c))
                 {
                     //qDebug() << "end isCastable with true (" << getDistance(game->currentPlayer(), x, y) << "<=" << scroll->range();
+                    if (!canSee(game->currentPlayer(), c))
+                    {
+                        bIsCastable = false;
+                    }
                 }
                 else
                 {
@@ -1225,9 +1230,13 @@ bool GameService::isCastable(int x, int y, Creature* creature)
         {
             if (getDistance(game->currentPlayer(), x, y) <= scroll->range())
             {
-                if (getCreatureAt(x, y))
+                Creature *c = getCreatureAt(x, y);
+                if (c)
                 {
-                    //qDebug() << "end isCastable with true (" << getDistance(game->currentPlayer(), x, y) << "<=" << scroll->range();
+                    if (!canSee(game->currentPlayer(), c))
+                    {
+                        bIsCastable = false;
+                    }
                 }
                 else
                 {

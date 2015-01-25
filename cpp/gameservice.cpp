@@ -263,13 +263,16 @@ void GameService::loadPlayerSpells(Player *player)
         }
     }
 
-    Scroll *healing = new Scroll(player);
-    healing->setUnitClass("Scroll");
-    healing->setSpecies("Healing");
-    healing->load(NULL);
-    creatures.insert(healing);
-    mana.insert(healing->manaCost());
-    player->m_PossibleCreatures.append(healing);
+    if (player->race() == "sorcerer")
+    {
+        Scroll *healing = new Scroll(player);
+        healing->setUnitClass("Scroll");
+        healing->setSpecies("Healing");
+        healing->load(NULL);
+        creatures.insert(healing);
+        mana.insert(healing->manaCost());
+        player->m_PossibleCreatures.append(healing);
+    }
 
     Scroll *manaTransfer = new Scroll(player);
     manaTransfer->setUnitClass("Scroll");
@@ -1854,15 +1857,15 @@ void GameService::castHealing(Scroll *newScroll, int x, int y)
     if (c)
     {
         int percent = 0;
-        // Bei Spielern: zwischen 20 und 40 Prozent wiederherstellen
+        // Bei Spielern: zwischen 30 und 50 Prozent wiederherstellen
         if (c->player() == c)
         {
-            percent = randomInteger(20, 41);
+            percent = randomInteger(30, 51);
         }
-        // bei Kreaturen: zwischen 50 und 75 Prozent wiederherstellen
+        // bei Kreaturen: zwischen 50 und 85 Prozent wiederherstellen
         else
         {
-            percent = randomInteger(50, 76);
+            percent = randomInteger(50, 86);
         }
         double dPercent = (double)percent / 100.0;
         int diff = dPercent * (double)c->hp();

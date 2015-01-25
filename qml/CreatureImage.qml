@@ -261,6 +261,14 @@ Rectangle {
             }
         }
 
+        onManaTransfered: {
+            if (attackedCreature === modelData)
+            {
+                manaStar.manaAmount = mana;
+                manaStar.start();
+            }
+        }
+
         onCreatureAttacked: {
             if (attackedCreature === modelData)
             {
@@ -409,6 +417,10 @@ Rectangle {
 
     HealingHeart {
         id: healingHeart
+    }
+
+    ManaStar {
+        id: manaStar
     }
 
     Component.onCompleted: {

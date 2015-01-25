@@ -13,8 +13,8 @@ Name:       harbour-morzyn
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Morzyn - A Tribute to Morkin 2
-Version:    0.7.16
-Release:    4
+Version:    0.7.17
+Release:    2
 Group:      Qt/Qt
 License:    LICENSE
 Source0:    %{name}-%{version}.tar.bz2

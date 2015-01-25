@@ -32,7 +32,7 @@ Creature* EasyAI::calculateSpellSelection()
             else
             {
                 Creature *nearestEnemy = gameService->getNearestEnemy(gameService->game->currentPlayer());//gameService->is
-                if (nearestEnemy && gameService->isCastable(nearestEnemy->x(), nearestEnemy->y(), c))
+                if (nearestEnemy && gameService->isCastable(nearestEnemy->x(), nearestEnemy->y(), c) && c->species() != "Healing" && c->species() != "Mana Transfer")
                 {
                     affordableCreatures.append(c);
                 }

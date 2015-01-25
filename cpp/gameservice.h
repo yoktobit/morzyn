@@ -164,7 +164,7 @@ signals:
     void playersCreaturesDie(Player* player);
     void messageChanged(QString arg);
     void creatureHealed(Creature* creature, int hp);
-    void manaTransfered(Creature *attackingCreature, Creature *attackedCreature, int nMana);
+    void manaTransfered(Creature *attackingCreature, Creature *attackedCreature, int mana);
 
 public slots:
     void setTotalPlayers(int number);

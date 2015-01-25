@@ -239,5 +239,6 @@
         <file>qml/images/zombie d.png</file>
         <file>qml/images/heart.png</file>
         <file>qml/images/manatransfer.png</file>
+        <file>qml/images/starblue.png</file>
     </qresource>
 </RCC>

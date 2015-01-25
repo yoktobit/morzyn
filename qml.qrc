@@ -36,5 +36,6 @@
         <file>qml/fonts/vivaldi.ttf</file>
         <file>qml/HealingHeart.qml</file>
         <file>qml/ManaTransferImage.qml</file>
+        <file>qml/ManaStar.qml</file>
     </qresource>
 </RCC>

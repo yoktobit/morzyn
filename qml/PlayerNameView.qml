@@ -31,8 +31,8 @@ Rectangle {
                 color: "red"
             }
             Rectangle {
-                width: (200 * mainWindow.myWidth) / mainWindow.sourceWidth
-                height: (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+                width: parent.width * 0.3//(200 * mainWindow.myWidth) / mainWindow.sourceWidth
+                height: parent.height //(30 * mainWindow.myHeight) / mainWindow.sourceHeight
                 border.width: 1
                 border.color: "gray"
                 color: "#55AAAAAA"
@@ -44,7 +44,7 @@ Rectangle {
                     anchors.leftMargin: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
                     anchors.rightMargin: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
                     anchors.verticalCenter: parent.verticalCenter
-                    font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    font.pixelSize: parent.height * 0.9//(20 * mainWindow.myHeight) / mainWindow.sourceHeight
                     text: name
                     mouseSelectionMode: TextInput.SelectCharacters
                     selectByMouse: true

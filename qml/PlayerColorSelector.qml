@@ -19,7 +19,7 @@ Rectangle {
         id: playerColorSelectorImage
         source: "images/" + imageFilename // playerColors.get(current).file
         width: height //* sourceSize.width / sourceSize.height
-        height: (sourceSize.height * mainWindow.myHeight) / mainWindow.sourceHeight
+        height: mainWindow.height * 0.05//(sourceSize.height * mainWindow.myHeight) / mainWindow.sourceHeight
         anchors.centerIn: parent
         MouseArea {
             anchors.fill: parent

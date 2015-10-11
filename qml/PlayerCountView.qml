@@ -40,13 +40,13 @@ Rectangle {
             model: 8
             delegate: Image {
                 source: "images/button.png"
-                height: innerText.height + (30 * mainWindow.myHeight) / mainWindow.sourceHeight
-                width: innerText.width + (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+                height: width //innerText.height + (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+                width: mainWindow.width * 0.1//innerText.width + (30 * mainWindow.myHeight) / mainWindow.sourceHeight
                 visible: (index <= max) && (index >= min)
                 Text {
                     id: innerText
                     font.family: "VivaldiD"
-                    font.pixelSize: (70 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    font.pixelSize: parent.height * 0.5//(70 * mainWindow.myHeight) / mainWindow.sourceHeight
                     text: index
                     anchors.centerIn: parent
                     MouseArea {

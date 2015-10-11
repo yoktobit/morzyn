@@ -10,11 +10,11 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 
     // rumdrehen...Sailfish...tztztz
-    property double myWidth: height
-    property double myHeight: width
+    property double myWidth: width
+    property double myHeight: height
 
-    property double sourceWidth: 693
-    property double sourceHeight: 499
+    property double sourceWidth: 693.0
+    property double sourceHeight: 499.0
 
     property bool playSounds: true
     property bool titleSoundLastPlayState: false

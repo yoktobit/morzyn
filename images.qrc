@@ -240,5 +240,6 @@
         <file>qml/images/heart.png</file>
         <file>qml/images/manatransfer.png</file>
         <file>qml/images/starblue.png</file>
+        <file>morzyn.ico</file>
     </qresource>
 </RCC>

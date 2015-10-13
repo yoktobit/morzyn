@@ -1590,48 +1590,50 @@ void GameService::simulateFight(Creature *c1, Creature *c2)
         cLeft->setHp(cLeft->originalHp());
         cRight->setAlive(true);
         cRight->setHp(cRight->originalHp());
+        Creature *cFirst = ii % 2 == 0 ? cLeft : cRight;
+        Creature *cSecond = ii % 2 == 0 ? cRight : cLeft;
         while (cLeft->alive() && cRight->alive())
         {
-            selectCreature(cLeft, false);
+            selectCreature(cFirst, false);
             //qDebug() << cLeft->species() << "selected";
-            attackCreature(cRight, false);
+            attackCreature(cSecond, false);
 
             //qDebug() << cRight->species() << "attacked";
-            if (!cRight->alive())
+            if (!cSecond->alive())
                 break;
-            if (cLeft->hasDistanceAttack())
+            if (cFirst->hasDistanceAttack())
             {
-                distanceAttackCreature(cRight, false);
-                if (!cRight->alive())
+                distanceAttackCreature(cSecond, false);
+                if (!cSecond->alive())
                     break;
             }
             //qDebug() << cRight->species() << "selected";
-            selectCreature(cRight, false);
+            selectCreature(cSecond, false);
             //qDebug() << cLeft->species() << "attacked";
-            attackCreature(cLeft, false);
+            attackCreature(cFirst, false);
 
-            if (!cLeft->alive())
+            if (!cFirst->alive())
                 break;
-            if (cRight->hasDistanceAttack())
+            if (cSecond->hasDistanceAttack())
             {
-                distanceAttackCreature(cLeft, false);
-                if (!cLeft->alive())
+                distanceAttackCreature(cFirst, false);
+                if (!cFirst->alive())
                     break;
             }
         }
         if (cLeft->alive())
         {
             dLeftPoints++;
-            //qDebug() << "Left:" << dLeftPoints;
+            qDebug() << "Left:" << dLeftPoints;
             dRightPoints += ((double)cLeft->originalHp() - (double)cLeft->hp()) / (double)cLeft->originalHp();
-            //qDebug() << "Right:" << dRightPoints;
+            qDebug() << "Right:" << dRightPoints;
         }
         else
         {
             dRightPoints++;
-            //qDebug() << "Right:" << dRightPoints;
+            qDebug() << "Right:" << dRightPoints;
             dLeftPoints += ((double)cRight->originalHp() - (double)cRight->hp()) / (double)cRight->originalHp();
-            //qDebug() << "Left:" << dLeftPoints;
+            qDebug() << "Left:" << dLeftPoints;
         }
     }
     cLeft->deleteLater();

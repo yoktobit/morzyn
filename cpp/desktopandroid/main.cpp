@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("yoktobit");
     QCoreApplication::setApplicationName("morzyn");
     QCoreApplication::setApplicationVersion(version);
+    app.setWindowIcon(QIcon("qrc:/morzyn.ico"));
 
     qmlRegisterType<Creature>("harbour.morzyn", 1,0 , "Creature");
     qmlRegisterType<Player>("harbour.morzyn", 1,0 , "Player");

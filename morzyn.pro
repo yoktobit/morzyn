@@ -36,6 +36,13 @@ RESOURCES += qml.qrc \
 
 TRANSLATIONS = translations/morzyn_de.ts
 
+WINRT_MANIFEST = Package.appxmanifest
+WINRT_MANIFEST.logo_41x41 = assets/logo_41x41.png
+WINRT_MANIFEST.logo_44x44 = assets/logo_44x44.png
+WINRT_MANIFEST.logo_71x71 = assets/logo_71x71.png
+WINRT_MANIFEST.logo_small = assets/logo_small.png
+WINRT_MANIFEST.logo_large = assets/logo_large.png
+
 OTHER_FILES += qml/BackButton.qml \
     qml/CreatureImage.qml \
     qml/CreatureInformation.qml \
@@ -70,6 +77,7 @@ OTHER_FILES += qml/BackButton.qml \
     qml/ManaTransferImage.qml
 
 RC_FILE += morzyn.rc
+ICON = morzyn.ico
 
 HEADERS += \
     cpp/dbloader.h \

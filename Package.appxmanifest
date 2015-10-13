@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
   <Identity
-    Name=""
+    Name="de.yoktobit.morzyn"
     ProcessorArchitecture="x64"
     Publisher="CN=Martin"
     Version="1.0.0.0" />
   <Properties>
-    <DisplayName>morzyn</DisplayName>
-    <PublisherDisplayName>Default publisher display name</PublisherDisplayName>
+    <DisplayName>Morzyn</DisplayName>
+    <PublisherDisplayName>yoktobit</PublisherDisplayName>
     <Logo>assets/logo_store.png</Logo>
   </Properties>
   <Prerequisites>
@@ -23,8 +23,8 @@
       Executable="morzyn.exe"
       EntryPoint="morzyn.App">
       <m2:VisualElements
-        DisplayName="morzyn"
-        Description="Default package description"
+        DisplayName="Morzyn"
+        Description="Morzyn is a game about fighting wizards. You are a mighty wizard and your mission is to defeat all the enemies on the playground."
         BackgroundColor="green"
         ForegroundText="light"
         Square150x150Logo="assets/logo_large.png"

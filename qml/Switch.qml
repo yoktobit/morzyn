@@ -11,7 +11,7 @@ Rectangle {
     property string selectedValue: model.get(currentIndex).value
 
     width: mainWindow.width * 0.25//(100 * mainWindow.myWidth) / mainWindow.sourceWidth
-    height: width * 0.2//(25 * mainWindow.myHeight) / mainWindow.sourceHeight
+    height: mainWindow.height * 0.05//width * 0.15//(25 * mainWindow.myHeight) / mainWindow.sourceHeight
     border.width: 1
     border.color: "red"
     color: "black"

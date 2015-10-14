@@ -9,10 +9,6 @@ ApplicationWindow {
     id: mainWindow
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 
-    // rumdrehen...Sailfish...tztztz
-    property double myWidth: width
-    property double myHeight: height
-
     property double sourceWidth: 693.0
     property double sourceHeight: 499.0
 
@@ -21,6 +17,9 @@ ApplicationWindow {
 
     property bool soundActivated: gameService.getBoolSetting("sound")
     property bool musicActivated: gameService.getBoolSetting("music")
+
+    allowedOrientations: Orientation.Landscape
+    _defaultPageOrientations: Orientation.Landscape
 
     initialPage:
         Component { MorzynPage {} }

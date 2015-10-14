@@ -21,18 +21,19 @@ Rectangle {
     Component {
         id: creatureNameComponent
         Row {
-            spacing: (10 * mainWindow.myHeight) / mainWindow.sourceHeight
+            spacing: (10 * mainWindow1.myHeight) / mainWindow.sourceHeight
             height: playerColorSelector.height
+            width: parent.width
             z: game.players.length - index
 
             Text {
                 text: originalName
-                font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
+                font.pixelSize: (20 * mainWindow1.myHeight) / mainWindow.sourceHeight
                 color: "red"
             }
             Rectangle {
                 width: parent.width * 0.3//(200 * mainWindow.myWidth) / mainWindow.sourceWidth
-                height: parent.height //(30 * mainWindow.myHeight) / mainWindow.sourceHeight
+                height: parent.height //(30 * mainWindow1.myHeight) / mainWindow.sourceHeight
                 border.width: 1
                 border.color: "gray"
                 color: "#55AAAAAA"
@@ -41,13 +42,14 @@ Rectangle {
                     id: creatureNameComponentTextInput
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    anchors.leftMargin: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
-                    anchors.rightMargin: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
+                    anchors.leftMargin: (10 * mainWindow1.myWidth) / mainWindow.sourceWidth
+                    anchors.rightMargin: (10 * mainWindow1.myWidth) / mainWindow.sourceWidth
                     anchors.verticalCenter: parent.verticalCenter
-                    font.pixelSize: parent.height * 0.9//(20 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    font.pixelSize: parent.height * 0.9//(20 * mainWindow1.myHeight) / mainWindow.sourceHeight
                     text: name
                     mouseSelectionMode: TextInput.SelectCharacters
                     selectByMouse: true
+                    clip: true
                     maximumLength: 14
                     onTextChanged: {
                         if (index >= 0 && index < game.players.length)
@@ -142,16 +144,16 @@ Rectangle {
     ListView {
         id: playerNameViewListView
         anchors.fill: parent
-        anchors.margins: (10 * mainWindow.myHeight) / mainWindow.sourceHeight
+        anchors.margins: (10 * mainWindow1.myHeight) / mainWindow.sourceHeight
         focus: true
         delegate: creatureNameComponent
         model: game.players
-        spacing: (10 * mainWindow.myHeight) / mainWindow.sourceHeight
+        spacing: (10 * mainWindow1.myHeight) / mainWindow.sourceHeight
         section.property: "type"
         section.delegate: Text {
-            font.pixelSize: (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+            font.pixelSize: (30 * mainWindow1.myHeight) / mainWindow.sourceHeight
             text: qsTr("%1Players", "for player category caption").arg(section)
-            height: font.pixelSize + ((10 * mainWindow.myHeight) / mainWindow.sourceHeight)
+            height: font.pixelSize + ((10 * mainWindow1.myHeight) / mainWindow.sourceHeight)
             color: "red"
         }
     }
@@ -188,6 +190,6 @@ Rectangle {
     MenuButton {
         anchors.top: parent.top
         anchors.right: parent.right
-        anchors.margins: 0.02 * mainWindow.myWidth
+        anchors.margins: 0.02 * mainWindow1.myWidth
     }
 }

@@ -16,14 +16,14 @@ Rectangle {
         x: parent.width * 0.1
         y: parent.height * 0.1
         width: height * sourceSize.width / sourceSize.height
-        height: parent.height * 0.5//(sourceSize.height * mainWindow.myHeight) / 600 // Absicht mit der 600, weil sonst zu groß
+        height: parent.height * 0.5//(sourceSize.height * mainWindow1.myHeight) / 600 // Absicht mit der 600, weil sonst zu groß
     }
     Image {
         source: "images/menu fledermaeuse.png"
         x: parent.width * 0.1
         y: parent.height * 0.65
         width: height * sourceSize.width / sourceSize.height
-        height: parent.height * 0.25//(sourceSize.height * mainWindow.myHeight) / 600 // Absicht mit der 600
+        height: parent.height * 0.25//(sourceSize.height * mainWindow1.myHeight) / 600 // Absicht mit der 600
     }
     MorzynButton {
         id: mainMenuStartButton

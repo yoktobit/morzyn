@@ -4,14 +4,18 @@ import QtMultimedia 5.0
 
 Page {
     id: mainWindow1
-    allowedOrientations: Qt.LandscapeOrientation
 
     onWidthChanged: {
-        console.log("Width:" + mainWindow.myWidth);
+        console.log("Width:" + mainWindow1.myWidth);
     }
     onHeightChanged: {
-        console.log("Height: " + mainWindow.myHeight);
+        console.log("Height: " + mainWindow1.myHeight);
     }
+
+    property double myWidth: width
+    property double myHeight: height
+
+    allowedOrientations: Orientation.Landscape
 
     SilicaGridView {
         anchors.fill: parent

@@ -12,7 +12,7 @@ Grid {
     columns: 2
     visible: hoveredCreature !== null && hoveredCreature.unitClass === "Creature"
     enabled: hoveredCreature !== null
-    spacing: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
+    spacing: (10 * mainWindow1.myWidth) / mainWindow.sourceWidth
     GrowingText {
         text: qsTr("Cost", "Cost in creature information")
         //color: "#1111FF"

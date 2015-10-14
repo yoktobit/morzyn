@@ -810,7 +810,7 @@ void GameService::scrollAttackCreature(Scroll* scroll, Creature *attackedCreatur
         nDamage = randomInteger(scroll->minDamage(), scroll->maxDamage() + 1);
     nDamage = nDamage > attackedCreature->hp() ? attackedCreature->hp() : nDamage;
 
-    if (!scroll->immune().isEmpty() && (scroll->immune() == attackedCreature->immune() || attackedCreature->immune() == "ALL"))
+    if (!scroll->immune().isEmpty() && scroll->immune() != "" && (scroll->immune() == attackedCreature->immune() || attackedCreature->immune() == "ALL"))
     {
         // #56 Bei Immunität zufällig 0 oder 1 Schaden
         nDamage = randomInteger(0, 2);
@@ -869,7 +869,7 @@ int GameService::calculateDistanceDamage(Creature *attacker, Creature *attacked)
         nSchaden = 0;
     }
     // #56: 0 oder 1 Schaden bei Immunität
-    if (!attacker->immune().isEmpty() && (attacker->immune() == attacked->immune() || attacked->immune() == "ALL"))
+    if (!attacker->immune().isEmpty() && attacker->immune() != "" && (attacker->immune() == attacked->immune() || attacked->immune() == "ALL"))
     {
         nSchaden = randomInteger(0, 2);
     }

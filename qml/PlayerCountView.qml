@@ -24,11 +24,11 @@ Rectangle {
     MenuButton {
         anchors.top: parent.top
         anchors.right: parent.right
-        anchors.margins: 0.02 * mainWindow.myWidth
+        anchors.margins: 0.02 * mainWindow1.myWidth
     }
     Text {
         font.family: "VivaldiD"
-        font.pixelSize: (50 * mainWindow.myHeight) / mainWindow.sourceHeight
+        font.pixelSize: (50 * mainWindow1.myHeight) / mainWindow.sourceHeight
         text: type == "total" ? qsTr("How many total players?", "How many total players question") : qsTr("How many human players?", "How many human players question")
         anchors.top: playerCountViewShade.top
         anchors.horizontalCenter: playerCountViewShade.horizontalCenter
@@ -40,13 +40,13 @@ Rectangle {
             model: 8
             delegate: Image {
                 source: "images/button.png"
-                height: width //innerText.height + (30 * mainWindow.myHeight) / mainWindow.sourceHeight
-                width: mainWindow.width * 0.1//innerText.width + (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+                height: width //innerText.height + (30 * mainWindow1.myHeight) / mainWindow.sourceHeight
+                width: mainWindow.width * 0.1//innerText.width + (30 * mainWindow1.myHeight) / mainWindow.sourceHeight
                 visible: (index <= max) && (index >= min)
                 Text {
                     id: innerText
                     font.family: "VivaldiD"
-                    font.pixelSize: parent.height * 0.5//(70 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    font.pixelSize: parent.height * 0.5//(70 * mainWindow1.myHeight) / mainWindow.sourceHeight
                     text: index
                     anchors.centerIn: parent
                     MouseArea {

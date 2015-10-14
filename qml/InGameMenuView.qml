@@ -16,15 +16,15 @@ Rectangle {
             source: "images/wiese.png"
             opacity: 0.1
             visible: true
-            width: mainWindow.myWidth * 5/7
-            height: mainWindow.myHeight
+            width: mainWindow1.myWidth * 5/7
+            height: mainWindow1.myHeight
         }
         Image {
             id: statusback
             source: "images/statusback.png"
             visible: true
-            width: mainWindow.myWidth * 2/7
-            height: mainWindow.myHeight
+            width: mainWindow1.myWidth * 2/7
+            height: mainWindow1.myHeight
         }
     }
 
@@ -48,24 +48,24 @@ Rectangle {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Menu"
-            font.pixelSize: (35 * mainWindow.myHeight) / mainWindow.sourceHeight
+            font.pixelSize: (35 * mainWindow1.myHeight) / mainWindow.sourceHeight
             font.family: "VivaldiD"
             color: "white"
         }
         Flow {
             //x: 20
-            //y: (40 * mainWindow.myHeight) / mainWindow.sourceHeight
+            //y: (40 * mainWindow1.myHeight) / mainWindow.sourceHeight
             flow: GridView.TopToBottom
             spacing: 10
             anchors.centerIn: parent
             Item {
                 id: continueButton
-                width: Math.max(spellSelectComponentText1.width, (230 * mainWindow.myWidth) / mainWindow.sourceWidth)
+                width: Math.max(spellSelectComponentText1.width, (230 * mainWindow1.myWidth) / mainWindow.sourceWidth)
                 height: spellSelectComponentText1.height
                 Text {
                     id: spellSelectComponentText1
                     text: qsTr("Continue", "Continue in in-game-menu")
-                    font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    font.pixelSize: (34 * mainWindow1.myHeight) / mainWindow.sourceHeight
                     font.family: "VivaldiD"
                     color: "white"
                     MouseArea {
@@ -87,12 +87,12 @@ Rectangle {
             }
             Item {
                 id: exitButton
-                width: Math.max(spellSelectComponentText2.width, (230 * mainWindow.myWidth) / mainWindow.sourceWidth)
+                width: Math.max(spellSelectComponentText2.width, (230 * mainWindow1.myWidth) / mainWindow.sourceWidth)
                 height: spellSelectComponentText2.height
                 Text {
                     id: spellSelectComponentText2
                     text: qsTr("Back to Main Menu", "Back to Main Menu in in-game-menu")
-                    font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    font.pixelSize: (34 * mainWindow1.myHeight) / mainWindow.sourceHeight
                     font.family: "VivaldiD"
                     color: "white"
                     MouseArea {
@@ -116,12 +116,12 @@ Rectangle {
             }
             Item {
                 id: quitButton
-                width: Math.max(spellSelectComponentText2.width, (230 * mainWindow.myWidth) / mainWindow.sourceWidth)
+                width: Math.max(spellSelectComponentText2.width, (230 * mainWindow1.myWidth) / mainWindow.sourceWidth)
                 height: spellSelectComponentText2.height
                 Text {
                     id: spellSelectComponentText3
                     text: qsTr("Quit", "Quit in main menu")
-                    font.pixelSize: (34 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    font.pixelSize: (34 * mainWindow1.myHeight) / mainWindow.sourceHeight
                     font.family: "VivaldiD"
                     color: "white"
                     MouseArea {

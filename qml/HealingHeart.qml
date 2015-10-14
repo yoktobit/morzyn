@@ -16,7 +16,7 @@ Image {
     Text {
         id: creatureHealingHeartText
         anchors.centerIn: parent
-        font.pixelSize: (12 * mainWindow.myHeight) / mainWindow.sourceHeight
+        font.pixelSize: (12 * mainWindow1.myHeight) / mainWindow.sourceHeight
     }
     SequentialAnimation on scale {
         id: creatureHealingHeartAnimation

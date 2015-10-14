@@ -9,7 +9,7 @@ Rectangle {
     Image {
         id: scrollImage
         source: "images/" + imageFilename
-        height: (((sourceSize.height * 13.0) / vCount) * mainWindow.myHeight) / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+        height: (((sourceSize.height * 13.0) / vCount) * mainWindow1.myHeight) / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
         width: height
     }
 }

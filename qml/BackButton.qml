@@ -22,8 +22,8 @@ Rectangle {
     Image {
         id: backButtonGrowingText
         source: "images/haken.png"
-        width: 36 * mainWindow.myWidth / mainWindow.sourceWidth
-        height: 36 * mainWindow.myHeight / mainWindow.sourceHeight
+        width: 36 * mainWindow1.myWidth / mainWindow.sourceWidth
+        height: 36 * mainWindow1.myHeight / mainWindow.sourceHeight
         anchors.centerIn: parent
     }
     MouseArea {

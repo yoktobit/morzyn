@@ -214,20 +214,20 @@ Rectangle {
         Image {
             id: gameViewBackRowWiese
             source: "images/wiese.png"
-            width: mainWindow.myWidth * 5/7
-            height: mainWindow.myHeight
+            width: mainWindow1.myWidth * 5/7
+            height: mainWindow1.myHeight
 
             MenuButton {
                 anchors.top: parent.top
                 anchors.right: parent.right
-                anchors.margins: 0.02 * mainWindow.myWidth
+                anchors.margins: 0.02 * mainWindow1.myWidth
                 visible: game.state !== "spellSelectState"
             }
 
             Rectangle {
                 anchors.centerIn: parent
-                width: hCount * (((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight)
-                height: vCount * (((416.0 / vCount) * mainWindow.myHeight) / mainWindow.sourceHeight) // Absicht, damit height immer = width
+                width: hCount * (((416.0 / hCount) * mainWindow1.myHeight) / mainWindow.sourceHeight)
+                height: vCount * (((416.0 / vCount) * mainWindow1.myHeight) / mainWindow.sourceHeight) // Absicht, damit height immer = width
                 color: "transparent"
                 border.width: 2
                 border.color: "black"
@@ -240,7 +240,7 @@ Rectangle {
                         model: (hCount * vCount)
                         delegate: Rectangle {
                             width: height // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-                            height: ((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight
+                            height: ((416.0 / hCount) * mainWindow1.myHeight) / mainWindow.sourceHeight
                             color: gameService.getColorOfEmptyField(index
                                      , game.isLocked
                                      , game.selectedCreature ? game.selectedCreature.x : -1
@@ -291,17 +291,17 @@ Rectangle {
         Image {
             id: gameViewBackRowStatusBack
             source: "images/statusback.png"
-            width: mainWindow.myWidth * 2/7
-            height: mainWindow.myHeight
+            width: mainWindow1.myWidth * 2/7
+            height: mainWindow1.myHeight
             /*Text {
-                anchors.topMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
-                anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
+                anchors.topMargin: (80 * mainWindow1.myHeight) / mainWindow.sourceHeight
+                anchors.bottomMargin: (80 * mainWindow1.myHeight) / mainWindow.sourceHeight
                 anchors.leftMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
                 anchors.rightMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
                 anchors.fill: parent
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: parent.width
-                font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
+                font.pixelSize: (20 * mainWindow1.myHeight) / mainWindow.sourceHeight
                 text: game.state === "moveState" ? game.currentPlayer.name + ", make your move!" : (game.state === "castSpellState" ? game.currentPlayer.name + ", cast your spell!" : "")
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 color: "#00FF00"
@@ -309,10 +309,10 @@ Rectangle {
             }*/
             BackButton {
                 //x: gameViewBackRowStatusBack.x - width - (20 * mainWindow.myWidth / mainWindow.sourceWidth)
-                //y: mainWindow.myHeight - height - (50 * mainWindow.myHeight / mainWindow.sourceHeight)
-                //anchors.bottomMargin: 10 * mainWindow.myHeight / mainWindow.sourceHeight
+                //y: mainWindow1.myHeight - height - (50 * mainWindow1.myHeight / mainWindow.sourceHeight)
+                //anchors.bottomMargin: 10 * mainWindow1.myHeight / mainWindow.sourceHeight
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
+                anchors.bottomMargin: (80 * mainWindow1.myHeight) / mainWindow.sourceHeight
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: game.currentPlayer && !game.currentPlayer.isNPC
                 onBackClicked: {
@@ -321,31 +321,31 @@ Rectangle {
                 }
             }
             Column {
-                anchors.topMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
-                anchors.bottomMargin: (80 * mainWindow.myHeight) / mainWindow.sourceHeight
-                anchors.leftMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
-                anchors.rightMargin: (30 * mainWindow.myWidth) / mainWindow.sourceWidth
+                anchors.topMargin: (80 * mainWindow1.myHeight) / mainWindow.sourceHeight
+                anchors.bottomMargin: (80 * mainWindow1.myHeight) / mainWindow.sourceHeight
+                anchors.leftMargin: (30 * mainWindow1.myWidth) / mainWindow.sourceWidth
+                anchors.rightMargin: (30 * mainWindow1.myWidth) / mainWindow.sourceWidth
                 anchors.fill: parent
                 visible: hoveredCreature !== null
                 enabled: hoveredCreature !== null
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: parent.width
-                    font.pixelSize: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    font.pixelSize: (20 * mainWindow1.myHeight) / mainWindow.sourceHeight
                     //text: hoveredCreature && hoveredCreature.species === "wizard" ? hoveredCreature.name : hoveredCreature ? hoveredCreature.player.name + "'s " + hoveredCreature.species : ""
                     text: hoveredCreature ? hoveredCreature.name : ""
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
                 }
                 Item {
-                    height: (20 * mainWindow.myHeight) / mainWindow.sourceHeight
+                    height: (20 * mainWindow1.myHeight) / mainWindow.sourceHeight
                     width: 100
                 }
                 Grid {
                     flow: Grid.LeftToRight
                     columns: 2
                     visible: hoveredCreature !== null && hoveredCreature !== undefined
-                    spacing: (10 * mainWindow.myWidth) / mainWindow.sourceWidth
+                    spacing: (10 * mainWindow1.myWidth) / mainWindow.sourceWidth
                     GrowingText {
                         text: hoveredCreature && hoveredCreature.species === "wizard" ? qsTr("Spell Points", "Spell Points in game status view") : ""
                         color: (hoveredCreature && hoveredCreature.player === game.currentPlayer) ? "#FFFFFF" : "#AAAAAA"
@@ -439,7 +439,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         horizontalAlignment: Text.AlignHCenter
-        anchors.margins: 10 * mainWindow.myHeight / mainWindow.sourceHeight
+        anchors.margins: 10 * mainWindow1.myHeight / mainWindow.sourceHeight
         font.family: "VivaldiD"
         color: "white"
         visible: game && game.currentPlayer && !game.currentPlayer.isNPC
@@ -471,13 +471,13 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         color: "#AA000000"
         visible: false
-        height: (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+        height: (30 * mainWindow1.myHeight) / mainWindow.sourceHeight
         width: parent.width / 2
         TextInput {
             id: cheatInput
             anchors.fill: parent
             color: "white"
-            font.pixelSize: (30 * mainWindow.myHeight) / mainWindow.sourceHeight
+            font.pixelSize: (30 * mainWindow1.myHeight) / mainWindow.sourceHeight
             onAccepted: {
                 gameService.checkCheat(cheatInput.text);
                 cheatBox.visible = false;

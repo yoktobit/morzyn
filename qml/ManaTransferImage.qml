@@ -3,8 +3,8 @@ import QtMultimedia 5.0
 
 Item {
     id: manaTransferImage
-    height: (416.0 / vCount) * mainWindow.myHeight / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-    width: (416.0 / vCount) * mainWindow.myHeight / mainWindow.sourceHeight
+    height: (416.0 / vCount) * mainWindow1.myHeight / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+    width: (416.0 / vCount) * mainWindow1.myHeight / mainWindow.sourceHeight
 
     property var attackingCreature: null
     property var attackedCreature: null
@@ -62,8 +62,8 @@ Item {
             id: manaTransferImageAnimationX
             target: manaTransferImage
             property: "x"
-            from: attackingCreature ? attackingCreature.xField * (((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-            to: attackedCreature ? attackedCreature.xField * (((416.0 / vCount) * mainWindow.myHeight) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+            from: attackingCreature ? attackingCreature.xField * (((416.0 / hCount) * mainWindow1.myHeight) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+            to: attackedCreature ? attackedCreature.xField * (((416.0 / vCount) * mainWindow1.myHeight) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
             duration: getDuration(attackingCreature ? attackingCreature.xField : 0, attackedCreature ? attackedCreature.xField : 0, attackingCreature ? attackingCreature.yField : 0, attackedCreature ? attackedCreature.yField : 0);
         }
 
@@ -71,8 +71,8 @@ Item {
             id: manaTransferImageAnimationY
             target: manaTransferImage
             property: "y"
-            from: attackingCreature ? attackingCreature.yField * (((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-            to: attackedCreature ? attackedCreature.yField * (((416.0 / vCount) * mainWindow.myHeight) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+            from: attackingCreature ? attackingCreature.yField * (((416.0 / hCount) * mainWindow1.myHeight) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+            to: attackedCreature ? attackedCreature.yField * (((416.0 / vCount) * mainWindow1.myHeight) / mainWindow.sourceHeight) : 0 // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
             duration: getDuration(attackingCreature ? attackingCreature.xField : 0, attackedCreature ? attackedCreature.xField : 0, attackingCreature ? attackingCreature.yField : 0, attackedCreature ? attackedCreature.yField : 0);
         }
         onRunningChanged: {

@@ -39,9 +39,6 @@ ApplicationWindow {
     property int sourceWidth: 693
     property int sourceHeight: 499
 
-    property double myWidth: width
-    property double myHeight: height
-
     property bool playSounds: true
 
     property bool soundActivated: gameService.getBoolSetting("sound")
@@ -49,17 +46,26 @@ ApplicationWindow {
 
     property bool applicationActive: true
 
-    Loader {
-        id: loaderViews
+    Item {
+        id: mainWindow1
         anchors.fill: parent
-        source: "Views.qml"
-        asynchronous: true
-        visible: status == Loader.Ready
-    }
 
-    TitleView {
-        visible: game.state === "titleScreenState"
-        tempLoader: loaderViews
+        property double myWidth: width
+        property double myHeight: height
+
+        Loader {
+            id: loaderViews
+            anchors.fill: parent
+            source: "Views.qml"
+            asynchronous: true
+            visible: status == Loader.Ready
+        }
+
+        TitleView {
+            visible: game.state === "titleScreenState"
+            tempLoader: loaderViews
+        }
+
     }
 
     /*MorzynAudio {

@@ -1,13 +1,13 @@
 import QtQuick 2.0
 
 Rectangle {
-    width: 0.04 * mainWindow.myWidth
+    width: 0.04 * mainWindow1.myWidth
     height: width
     Image {
         id: menuImage
         source: "images/morzynmenu.png"
         anchors.centerIn: parent
-        width: 0.03 * mainWindow.myWidth
+        width: 0.03 * mainWindow1.myWidth
         height: width
     }
     color: "#44FFFFFF"

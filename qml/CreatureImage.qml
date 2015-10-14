@@ -10,8 +10,8 @@ Rectangle {
     color: currentColor
     width: creatureImage.width
     height: creatureImage.height
-    x: modelData === undefined || modelData === null ? 0 : modelData.xField * (((416.0 / hCount) * mainWindow.myHeight) / mainWindow.sourceHeight) // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-    y: modelData === undefined || modelData === null ? 0 : modelData.yField * (((416.0 / vCount) * mainWindow.myHeight) / mainWindow.sourceHeight)
+    x: modelData === undefined || modelData === null ? 0 : modelData.xField * (((416.0 / hCount) * mainWindow1.myHeight) / mainWindow.sourceHeight) // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+    y: modelData === undefined || modelData === null ? 0 : modelData.yField * (((416.0 / vCount) * mainWindow1.myHeight) / mainWindow.sourceHeight)
     property bool isDying: false
 
     property int movements: 0
@@ -111,8 +111,8 @@ Rectangle {
     Image {
         id: creatureImage
         source: modelData === undefined || modelData === null ? "" : "images/" + modelData.imageFilename
-        height: (416.0 / vCount) * mainWindow.myHeight / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
-        width: (416.0 / vCount) * mainWindow.myHeight / mainWindow.sourceHeight
+        height: (416.0 / vCount) * mainWindow1.myHeight / mainWindow.sourceHeight // Absicht, damit width immer = height, damit Seitenverhältnis bleibt
+        width: (416.0 / vCount) * mainWindow1.myHeight / mainWindow.sourceHeight
         SequentialAnimation on rotation {
             id: attackAnimation
             running: false
@@ -165,7 +165,7 @@ Rectangle {
         Text {
             id: creatureDamageStarText
             anchors.centerIn: parent
-            font.pixelSize: (12 * mainWindow.myHeight) / mainWindow.sourceHeight
+            font.pixelSize: (12 * mainWindow1.myHeight) / mainWindow.sourceHeight
         }
         SequentialAnimation on scale {
             id: creatureDamageStarAnimation
@@ -350,13 +350,16 @@ Rectangle {
                 creatureDamageStarText.text = nDamage;
                 startype = "staryellow.png";
                 var immune = false;
-                if (attackedCreature.immune === "ALL")
+                if (attackingCreature.immune && attackingCreature.immune !== "")
                 {
-                    immune = true;
-                }
-                else if (attackingCreature.immune && attackedCreature.immune && attackingCreature.immune === attackedCreature.immune)
-                {
-                    immune = true;
+                    if (attackedCreature.immune === "ALL")
+                    {
+                        immune = true;
+                    }
+                    else if (attackingCreature.immune && attackedCreature.immune && attackingCreature.immune === attackedCreature.immune)
+                    {
+                        immune = true;
+                    }
                 }
                 if (immune)
                 {

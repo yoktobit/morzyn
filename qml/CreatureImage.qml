@@ -250,6 +250,8 @@ Rectangle {
         }
     }
 
+    property bool manaTransfer: false
+
     Connections {
         target: gameService
 
@@ -264,8 +266,7 @@ Rectangle {
         onManaTransfered: {
             if (attackedCreature === modelData)
             {
-                manaStar.manaAmount = mana;
-                manaStar.start();
+                manaTransfer = true;
             }
         }
 
@@ -361,18 +362,24 @@ Rectangle {
                         immune = true;
                     }
                 }
-                if (immune)
+                if (!manaTransfer && immune)
                 {
                     startype = "stargreen.png";
                 }
-                else if (attackingCreature.distanceStrength <= nDamage)
+                else if (!manaTransfer && attackingCreature.distanceStrength <= nDamage)
                 {
                     startype = "starred.png";
                 }
-                else if (nDamage === 0)
+                else if (!manaTransfer && nDamage === 0)
                 {
                     startype = "starwhite.png";
                 }
+                else if (manaTransfer)
+                {
+                    startype = "starblue.png";
+                    manaTransfer = false;
+                }
+
                 creatureDamageStarAnimation.start();
             }
         }

@@ -46,7 +46,9 @@ Rectangle {
     Component {
         id: manaTransferImageComponent
         ManaTransferImage {
-
+            onAnimationFinished: {
+                distanceAnimationFinished(attackingCreature, attackedCreature, mana);
+            }
         }
     }
 
@@ -138,6 +140,7 @@ Rectangle {
             {
                 newManaItem.attackingCreature = attackingCreature;
                 newManaItem.attackedCreature = attackedCreature;
+                newManaItem.mana = mana;
                 newManaItem.start();
             }
         }

@@ -9,6 +9,10 @@ Item {
     property var attackingCreature: null
     property var attackedCreature: null
 
+    signal animationFinished
+
+    property int mana
+
     Image {
         source: "images/manatransfer.png"
         anchors.fill: parent
@@ -80,6 +84,7 @@ Item {
             {
                 distFly01.stop(); distFly02.stop(); distFly03.stop();
                 manaTransferImage.visible = false;
+                animationFinished();
                 game.release();
             }
             else

@@ -749,28 +749,26 @@ bool GameService::isDistanceAttackable(Creature *attacker, Creature *attacked)
 
 bool GameService::canSee(Creature *attacker, Creature *attacked)
 {
-    int eyes11x = attacker->x() * 10 + 4;
-    int eyes12x = attacker->x() * 10 + 6;
-    int eyes11y = attacker->y() * 10 + 2;
-    int eyes12y = eyes11y + 1;
+    int eyes1x = attacker->x() * 10 + 5;
+    int eyes1y = attacker->y() * 10 + 5;
 
-    int eyes21x = attacked->x() * 10 + 4;
-    int eyes22x = attacked->x() * 10 + 6;
-    int eyes21y = attacked->y() * 10 + 2;
-    int eyes22y = eyes21y + 1;
+    int eyes2x = attacked->x() * 10 + 5;
+    int eyes2y = attacked->y() * 10 + 5;
 
-    QPolygon collisionPoly;
-    collisionPoly << QPoint(eyes11x, eyes11y) << QPoint(eyes12x, eyes12y) << QPoint(eyes22x, eyes22y) << QPoint(eyes21x, eyes21y) << QPoint(eyes11x, eyes11y);
-    QRegion collisionRegion(collisionPoly);
+    QLine line(eyes1x, eyes1y, eyes2x, eyes2y);
+
+    qDebug() << "Line: " << line;
+
     for (int xx = 0; xx < config->HCOUNT; xx++)
     {
         for (int yy = 0; yy < config->VCOUNT; yy++)
         {
             Creature* currentCreature = getCreatureAt(xx, yy);
-            if (currentCreature == attacker || currentCreature == attacked)
+            if (!currentCreature || currentCreature == attacker || currentCreature == attacked)
                 continue;
             QRect currentRect(xx * 10, yy * 10, 10, 10);
-            if (collisionRegion.intersects(currentRect) && currentCreature)
+            qDebug() << "Rectangle " << currentRect;
+            if (lineIntersectsRect(line, currentRect) && currentCreature)
             {
                 qDebug() << xx << yy << "is blocking the spell";
                 return false;

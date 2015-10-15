@@ -144,6 +144,49 @@ private:
     QString m_message;
     bool m_bWriteMessages;
 
+    bool lineIntersectsLine(QPoint l1p1, QPoint l1p2, QPoint l2p1, QPoint l2p2)
+    {
+        float q = (l1p1.y() - l2p1.y()) * (l2p2.x() - l2p1.x()) - (l1p1.x() - l2p1.x()) * (l2p2.y() - l2p1.y());
+        float d = (l1p2.x() - l1p1.x()) * (l2p2.y() - l2p1.y()) - (l1p2.y() - l1p1.y()) * (l2p2.x() - l2p1.x());
+
+        if( d == 0 )
+        {
+            return false;
+        }
+
+        float r = q / d;
+
+        q = (l1p1.y() - l2p1.y()) * (l1p2.x() - l1p1.x()) - (l1p1.x() - l2p1.x()) * (l1p2.y() - l1p1.y());
+        float s = q / d;
+
+        if( r < 0 || r > 1 || s < 0 || s > 1 )
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    bool lineIntersectsRect(QLine line, QRect rect)
+    {
+        if (rect.left() > qMax(line.x1(), line.x2()) || rect.right() < qMin(line.x1(), line.x2()))
+        {
+            return false;
+        }
+
+        if (rect.bottom() < qMin(line.y1(), line.y2()) || rect.top() > qMax(line.y1(), line.y2()))
+        {
+            return false;
+        }
+
+        return lineIntersectsLine(line.p1(), line.p2(), rect.topLeft(), rect.topRight()) ||
+                       lineIntersectsLine(line.p1(), line.p2(), rect.topRight(), rect.bottomRight()) ||
+                       lineIntersectsLine(line.p1(), line.p2(), rect.bottomRight(), rect.bottomLeft()) ||
+                       lineIntersectsLine(line.p1(), line.p2(), rect.bottomLeft(), rect.topLeft()) ||
+                       (rect.contains(line.p1()) && rect.contains(line.p2()));
+    }
+
+
 signals:
     void creatureMoved(Creature* creature);
     void playerSwitched(Player* player);

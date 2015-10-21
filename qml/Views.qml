@@ -17,9 +17,6 @@ Item {
         visible: game.state === "totalPlayerCountState"
         min: 2
         max: 7
-        onVisibleChanged: {
-            if (visible) totalPlayerCountView.forceActiveFocus();
-        }
     }
     PlayerCountView {
         id: humanPlayerCountView
@@ -27,9 +24,6 @@ Item {
         visible: game.state === "humanPlayerCountState"
         min: 0
         max: totalPlayerCountView.selected
-        onVisibleChanged: {
-            if (visible) humanPlayerCountView.forceActiveFocus();
-        }
     }
     PlayerNameView {
         id: playerNameView
@@ -79,30 +73,21 @@ Item {
 
     property bool fullscreen: gameService.getBoolSetting("fullscreen");
 
-    focus: true
     Keys.enabled: true
     Keys.onPressed: {
-        console.log("Views KEY_PRESSED: " + event.key)
+        console.log("KEY_PRESSED: " + event.key)
         if ((event.key === Qt.Key_PageUp))
         {
             fullscreen = !fullscreen;
             gameService.setFullScreen(fullscreen);
         }
-        else if (event.key === Qt.Key_Escape)
-        {
-            console.log("Escape pressed");
-            if (!game.hasBegun && game.state !== "mainMenuState")
-            {
-                gameService.resetGame();
-                game.state = "mainMenuState";
-            }
-        }
     }
 
     Keys.onReleased: {
-        console.log("Views KEY_RELEASED: " + event.key)
+        console.log("KEY_PRESSED: " + event.key)
         if ((event.key === Qt.BackButton) || event.key == Qt.Key_Back || event.key == Qt.Key_MediaPrevious || event.key == 16777313)
         {
+            event.accepted = true;
             if (game.hasBegun)
             {
                 console.debug("calling in-game-menu");

@@ -1868,7 +1868,7 @@ void GameService::castHealing(Scroll *newScroll, int x, int y)
             percent = randomInteger(50, 86);
         }
         double dPercent = (double)percent / 100.0;
-        int diff = qRound(dPercent * ((double)c->originalHp() - (double)c->hp()));
+        int diff = dPercent * (double)c->hp();
         int newHp = c->hp() + diff;
         if (newHp > c->originalHp())
             newHp = c->originalHp();

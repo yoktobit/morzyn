@@ -5,6 +5,8 @@ import QtQuick 2.1
 
 Rectangle {
 
+    id: titleScreenView
+
     signal exitTitle
 
     property Loader tempLoader
@@ -81,27 +83,37 @@ Rectangle {
         }
     }
 
+    function switchAway()
+    {
+        titleScreenView.visible = false;
+        titleScreenView.focus = false;
+        Keys.enabled = false;
+        game.state = "mainMenuState";
+    }
+
     Timer {
         id: titleViewTimer
         interval: 5000
         repeat: false
         running: false
         onTriggered: {
-            game.state = "mainMenuState";
+            switchAway();
             //exitTitle();
         }
     }
     anchors.fill: parent
     focus: true
     Keys.enabled: true
+    Keys.priority: Keys.AfterItem
     Keys.onPressed: {
+        event.accepted = false;
+        console.log("Titlescreen gedrückt");
         if (!visible) return;
         console.debug("TitleView KEY_PRESSED");
         titleViewTimer.stop();
         if (tempLoader.status === Loader.Ready)
         {
-            event.accepted = true;
-            game.state = "mainMenuState";
+            switchAway();
         }
     }
 }

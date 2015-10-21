@@ -505,7 +505,7 @@ Rectangle {
     property string cheat
     Keys.enabled: true
     Keys.onPressed: {
-        console.log("gedrueckt: " + event.text);
+        console.log("GameView gedrueckt: " + event.text);
         if (event.key === Qt.Key_Backspace)
         {
             if (checkInput()) return;
@@ -513,12 +513,13 @@ Rectangle {
         }
         else if (event.key === Qt.Key_Escape && (game.state === "spellSelectState" || game.state === "moveState" || game.state === "castSpellState"))
         {
-            inGameMenuView.visible = true;
+            inGameMenuView.visible = !inGameMenuView.visible;
         }
         else
         {
             if (checkInput()) return;
             gameService.checkCheat(event.text);
         }
+        event.accepted = false;
     }
 }

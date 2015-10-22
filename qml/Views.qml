@@ -74,7 +74,7 @@ Item {
 
     Component.onCompleted: {
         //console.log(morzyn.Spells.Creatures.Creature[0].name);
-        console.log("Library count: " + library.creatures.count);
+        console.log("Library count: " + library.creatures.length);
     }
 
     property bool fullscreen: gameService.getBoolSetting("fullscreen");

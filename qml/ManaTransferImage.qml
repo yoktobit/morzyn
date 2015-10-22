@@ -30,6 +30,21 @@ Item {
         id: distFly03
         source: "sounds/distfly03.wav"
     }
+    Audio {
+        id: distHit01
+        source: "sounds/disthit01.wav"
+        loops: 0
+    }
+    Audio {
+        id: distHit02
+        source: "sounds/disthit02.wav"
+        loops: 0
+    }
+    Audio {
+        id: distHit03
+        source: "sounds/disthit03.wav"
+        loops: 0
+    }
 
     function playOneOf(sound1, sound2, sound3)
     {
@@ -83,6 +98,7 @@ Item {
             if (!running)
             {
                 distFly01.stop(); distFly02.stop(); distFly03.stop();
+                playOneOf(distHit01, distHit02, distHit03);
                 manaTransferImage.visible = false;
                 animationFinished();
                 game.release();

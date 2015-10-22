@@ -92,7 +92,10 @@ ApplicationWindow {
     }*/
 
     Component.onCompleted: {
+        console.log(library);
         library.loadAll();
+        console.log("library loaded");
+        console.log(library.creatures.length);
     }
 
 }

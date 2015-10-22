@@ -26,7 +26,7 @@ Rectangle {
         ListView {
             id: grimoireLeftList
             anchors.fill: parent
-            anchors.margins: (18 * mainWindow.myHeight) / mainWindow.sourceHeight
+            anchors.margins: (18 * mainWindow1.myHeight) / mainWindow.sourceHeight
             model: library.creatures
             delegate: GrowingText {
                 standardSize: 18
@@ -61,7 +61,7 @@ Rectangle {
         ListView {
             id: grimoireRightList
             anchors.fill: parent
-            anchors.margins: (18 * mainWindow.myHeight) / mainWindow.sourceHeight
+            anchors.margins: (18 * mainWindow1.myHeight) / mainWindow.sourceHeight
             model: library.creatures
             delegate: GrowingText {
                 standardSize: 18
